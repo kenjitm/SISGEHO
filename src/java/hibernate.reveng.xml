@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="uniajc"/>
+  <table-filter match-name="facultad"/>
+  <table-filter match-name="pensum"/>
+  <table-filter match-name="horario"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="asignaturas"/>
+  <table-filter match-name="programa"/>
+  <table-filter match-name="recursos"/>
+  <table-filter match-name="sede"/>
+  <table-filter match-name="grupos"/>
+  <table-filter match-name="docente"/>
+  <table-filter match-name="semestre"/>
+</hibernate-reverse-engineering>

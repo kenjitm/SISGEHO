@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-sep-2019 22:29:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Usuario" table="usuario" catalog="uniajc" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="docente" class="model.Docente" fetch="select">
+            <column name="rowid_docente" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="65535" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="65535" />
+        </property>
+        <property name="rol" type="string">
+            <column name="Rol" length="50" />
+        </property>
+        <property name="estado" type="java.lang.Integer">
+            <column name="Estado" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="Usuario" length="50" />
+        </property>
+        <property name="contrase&#195;&#177;a" type="string">
+            <column name="Contrase&#195;&#177;a" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

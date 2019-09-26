@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-sep-2019 22:29:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Semestre" table="semestre" catalog="uniajc" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pensum" class="model.Pensum" fetch="select">
+            <column name="rowid_pensum" />
+        </many-to-one>
+        <property name="nroSemestre" type="java.lang.Integer">
+            <column name="Nro_semestre" />
+        </property>
+        <property name="fechaInicio" type="timestamp">
+            <column name="Fecha_inicio" length="0" />
+        </property>
+        <property name="fechaFinal" type="timestamp">
+            <column name="Fecha_final" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

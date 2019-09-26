@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-sep-2019 22:29:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Asignaturas" table="asignaturas" catalog="uniajc" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="docente" class="model.Docente" fetch="select">
+            <column name="rowid_docente" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="65535" />
+        </property>
+        <property name="jornada" type="string">
+            <column name="Jornada" length="65535" />
+        </property>
+        <property name="rowid" type="string">
+            <column name="rowid" length="50" />
+        </property>
+        <set name="gruposes" table="grupos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rowid_asignatura" />
+            </key>
+            <one-to-many class="model.Grupos" />
+        </set>
+        <set name="pensums" table="pensum" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rowid_asignatura" />
+            </key>
+            <one-to-many class="model.Pensum" />
+        </set>
+        <set name="horarios" table="horario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rowid_asignatura" />
+            </key>
+            <one-to-many class="model.Horario" />
+        </set>
+    </class>
+</hibernate-mapping>

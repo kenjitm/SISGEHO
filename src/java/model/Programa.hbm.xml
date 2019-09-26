@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-sep-2019 22:29:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Programa" table="programa" catalog="uniajc" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pensum" class="model.Pensum" fetch="select">
+            <column name="rowid_pensum" />
+        </many-to-one>
+        <property name="descripcionPrograma" type="string">
+            <column name="Descripcion_programa" length="65535" />
+        </property>
+        <property name="tipo" type="java.lang.Integer">
+            <column name="Tipo" />
+        </property>
+        <property name="descripcionTipo" type="string">
+            <column name="Descripcion_tipo" length="65535" />
+        </property>
+        <property name="modalidad" type="string">
+            <column name="Modalidad" length="65535" />
+        </property>
+        <property name="duracion" type="string">
+            <column name="Duracion" length="50" />
+        </property>
+        <property name="titulo" type="string">
+            <column name="Titulo" length="65535" />
+        </property>
+        <property name="registroCalificado" type="string">
+            <column name="Registro_calificado" length="50" />
+        </property>
+        <property name="snies" type="string">
+            <column name="SNIES" length="50" />
+        </property>
+        <property name="director" type="string">
+            <column name="Director" length="65535" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="65535" />
+        </property>
+        <property name="rowid" type="string">
+            <column name="rowid" length="50" />
+        </property>
+        <set name="facultads" table="facultad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rowid_programa" />
+            </key>
+            <one-to-many class="model.Facultad" />
+        </set>
+    </class>
+</hibernate-mapping>
