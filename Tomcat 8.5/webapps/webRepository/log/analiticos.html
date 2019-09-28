@@ -1,0 +1,1368 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Feb 12 08:42:32 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>150</td>
+<td title="http-nio-8080-exec-2 thread">http-nio-8080-exec-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>205</td>
+<td title="http-nio-8080-exec-2 thread">http-nio-8080-exec-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+
+<tr>
+<td>37042</td>
+<td title="http-nio-8080-exec-10 thread">http-nio-8080-exec-10</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="org.dbforms.util.DbConnection category">org.dbforms.util.DbConnection</td>
+<td title="Message">::getConnectionFromJNDI - cannot retrieve a connection from JNDI:</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">javax.naming.NameNotFoundException: Name [laboratorio_prod] is not bound in this Context. Unable to find [laboratorio_prod].
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:816)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:173)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.SelectorContext.lookup(SelectorContext.java:163)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.naming.InitialContext.lookup(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnectionFromJNDI(DbConnection.java:470)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnection(DbConnection.java:395)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at utils.db.WriteBD.&lt;init&gt;(WriteBD.java:51)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jsp.loadData_jsp._jspService(loadData_jsp.java:210)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:443)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:386)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:330)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.lang.Thread.run(Unknown Source)
+</td></tr>
+
+<tr>
+<td>37047</td>
+<td title="http-nio-8080-exec-10 thread">http-nio-8080-exec-10</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="org.dbforms.util.DbConnection category">org.dbforms.util.DbConnection</td>
+<td title="Message">::getConnectionFromJNDI - cannot retrieve a connection from JNDI:</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">javax.naming.NameNotFoundException: Name [laboratorio_prod] is not bound in this Context. Unable to find [laboratorio_prod].
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:816)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:173)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.SelectorContext.lookup(SelectorContext.java:163)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.naming.InitialContext.lookup(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnectionFromJNDI(DbConnection.java:470)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnection(DbConnection.java:395)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.SqlUtil.getConnection(SqlUtil.java:349)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.taglib.DbGetConnection.doStartTag(DbGetConnection.java:69)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jsp.loadData_jsp._jspService(loadData_jsp.java:227)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:443)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:386)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:330)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.lang.Thread.run(Unknown Source)
+</td></tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Feb 12 08:46:08 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>104</td>
+<td title="localhost-startStop-2 thread">localhost-startStop-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>160</td>
+<td title="localhost-startStop-2 thread">localhost-startStop-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Feb 12 08:46:21 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>137</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>197</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+
+<tr>
+<td>82358</td>
+<td title="http-nio-8080-exec-3 thread">http-nio-8080-exec-3</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="org.dbforms.util.DbConnection category">org.dbforms.util.DbConnection</td>
+<td title="Message">::getConnectionFromJNDI - cannot retrieve a connection from JNDI:</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">javax.naming.NameNotFoundException: Name [laboratorio_prod] is not bound in this Context. Unable to find [laboratorio_prod].
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:816)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:173)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.SelectorContext.lookup(SelectorContext.java:163)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.naming.InitialContext.lookup(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnectionFromJNDI(DbConnection.java:470)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnection(DbConnection.java:395)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at utils.db.WriteBD.&lt;init&gt;(WriteBD.java:51)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jsp.loadData_jsp._jspService(loadData_jsp.java:210)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:443)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:386)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:330)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.lang.Thread.run(Unknown Source)
+</td></tr>
+
+<tr>
+<td>82362</td>
+<td title="http-nio-8080-exec-3 thread">http-nio-8080-exec-3</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="org.dbforms.util.DbConnection category">org.dbforms.util.DbConnection</td>
+<td title="Message">::getConnectionFromJNDI - cannot retrieve a connection from JNDI:</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">javax.naming.NameNotFoundException: Name [laboratorio_prod] is not bound in this Context. Unable to find [laboratorio_prod].
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:816)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:173)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.SelectorContext.lookup(SelectorContext.java:163)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.naming.InitialContext.lookup(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnectionFromJNDI(DbConnection.java:470)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnection(DbConnection.java:395)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.SqlUtil.getConnection(SqlUtil.java:349)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.taglib.DbGetConnection.doStartTag(DbGetConnection.java:69)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jsp.loadData_jsp._jspService(loadData_jsp.java:227)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:443)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:386)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:330)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.lang.Thread.run(Unknown Source)
+</td></tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Feb 12 09:31:48 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>178</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>329</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Feb 12 09:35:38 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>128</td>
+<td title="http-nio-8080-exec-3 thread">http-nio-8080-exec-3</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>181</td>
+<td title="http-nio-8080-exec-3 thread">http-nio-8080-exec-3</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Thu Feb 15 09:36:58 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>205</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>284</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Thu Feb 15 10:14:28 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>132</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>275</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Thu Feb 15 10:23:34 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>117</td>
+<td title="localhost-startStop-2 thread">localhost-startStop-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>167</td>
+<td title="localhost-startStop-2 thread">localhost-startStop-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Tue Feb 20 11:26:30 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>205</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>287</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Tue Feb 20 11:28:05 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>638</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>1001</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Feb 26 09:40:51 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>163</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>256</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Feb 26 11:31:52 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>126</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>183</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Mar 05 07:56:35 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>204</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>349</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Thu May 10 16:21:09 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>135</td>
+<td title="ContainerBackgroundProcessor[StandardEngine[Catalina]] thread">ContainerBackgroundProcessor[StandardEngine[Catalina]]</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>231</td>
+<td title="ContainerBackgroundProcessor[StandardEngine[Catalina]] thread">ContainerBackgroundProcessor[StandardEngine[Catalina]]</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Fri May 11 08:22:22 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>181</td>
+<td title="localhost-startStop-2 thread">localhost-startStop-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>311</td>
+<td title="localhost-startStop-2 thread">localhost-startStop-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Tue May 15 10:10:41 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>189</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>266</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Tue May 15 10:13:15 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>226</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>331</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Tue May 15 10:35:00 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>151</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>203</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Tue May 15 10:43:24 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>183</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>243</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Wed Jun 06 21:22:04 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>190</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>270</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Wed Jun 06 21:31:57 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>160</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>220</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Wed Jun 06 21:38:16 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>161</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>240</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Wed Jun 06 21:39:13 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>221</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>781</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+
+<tr>
+<td>2301167</td>
+<td title="http-nio-8080-exec-2 thread">http-nio-8080-exec-2</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="org.dbforms.util.DbConnection category">org.dbforms.util.DbConnection</td>
+<td title="Message">::getConnectionFromJNDI - cannot retrieve a connection from JNDI:</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">javax.naming.NameNotFoundException: Name [laboratorio_prod] is not bound in this Context. Unable to find [laboratorio_prod].
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:816)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:173)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.SelectorContext.lookup(SelectorContext.java:163)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.naming.InitialContext.lookup(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnectionFromJNDI(DbConnection.java:470)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnection(DbConnection.java:395)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at utils.db.WriteBD.&lt;init&gt;(WriteBD.java:51)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jsp.loadData_jsp._jspService(loadData_jsp.java:210)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:443)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:386)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:330)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.lang.Thread.run(Unknown Source)
+</td></tr>
+
+<tr>
+<td>2301198</td>
+<td title="http-nio-8080-exec-2 thread">http-nio-8080-exec-2</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="org.dbforms.util.DbConnection category">org.dbforms.util.DbConnection</td>
+<td title="Message">::getConnectionFromJNDI - cannot retrieve a connection from JNDI:</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">javax.naming.NameNotFoundException: Name [laboratorio_prod] is not bound in this Context. Unable to find [laboratorio_prod].
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:816)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:159)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:827)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.NamingContext.lookup(NamingContext.java:173)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.naming.SelectorContext.lookup(SelectorContext.java:163)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.naming.InitialContext.lookup(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnectionFromJNDI(DbConnection.java:470)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.DbConnection.getConnection(DbConnection.java:395)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.util.SqlUtil.getConnection(SqlUtil.java:349)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.dbforms.taglib.DbGetConnection.doStartTag(DbGetConnection.java:69)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jsp.loadData_jsp._jspService(loadData_jsp.java:227)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:443)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:386)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:330)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at java.lang.Thread.run(Unknown Source)
+</td></tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Wed Jun 06 22:41:32 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>166</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>263</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Wed Jun 06 22:42:13 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>104</td>
+<td title="localhost-startStop-2 thread">localhost-startStop-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>151</td>
+<td title="localhost-startStop-2 thread">localhost-startStop-2</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Jul 09 11:50:43 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>251</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>408</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Jul 09 13:37:06 COT 2018<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>247</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message">XML Errors file not found, XML error handler disabled!</td>
+</tr>
+
+<tr>
+<td>394</td>
+<td title="localhost-startStop-1 thread">localhost-startStop-1</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="org.dbforms.ConfigServlet category">org.dbforms.ConfigServlet</td>
+<td title="Message"> Locale Key not setted, use "org.dbforms.LOCALE" as key to access the Locale in session scope.</td>
+</tr>

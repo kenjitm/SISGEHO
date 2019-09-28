@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+
+    <!-- Default set of monitored resources. If one of these changes, the    -->
+    <!-- web application will be reloaded.                                   -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+    <Manager pathname="" />
+    -->
+    <Resource username="pastos01" 
+  url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1526:CIATT"
+  type="javax.sql.DataSource" 
+  password="anjela" 
+  name="jdbc/riz_test" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="pastos02" 
+  url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1526:CIATT"
+  type="javax.sql.DataSource" 
+  password="dorotea" 
+  name="jdbc/pastos02_test" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="pastos02" 
+  url="jdbc:oracle:thin:@kappa.ciat.cgiarad.org:1521:CIAT"
+  type="javax.sql.DataSource" 
+  password="dorotea" 
+  name="jdbc/pastos02_prod" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="laboratorio02" 
+  url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+  type="javax.sql.DataSource" 
+  password="laboratorio" 
+  name="jdbc/labSuelos_test" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxIdle="10" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="laboratorio02" 
+  url="jdbc:oracle:thin:@kappa:1521:CIAT" 
+  type="javax.sql.DataSource" 
+  password="laboratorio"
+  name="jdbc/labSuelos_prod" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="frijol01" 
+  url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+  type="javax.sql.DataSource" 
+  password="frijolito01" 
+  name="jdbc/bmsfrijol_test" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxIdle="10" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+  
+   <Resource username="frijol01" 
+  url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+  type="javax.sql.DataSource" 
+  password="frijolito01" 
+  name="jdbc/invfrijol_test" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxIdle="10" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  
+   <Resource username="frijol01" 
+  url="jdbc:oracle:thin:@kappa.ciat.cgiarad.org:1521:CIAT" 
+  type="javax.sql.DataSource" 
+  password="frijolito01" 
+  name="jdbc/invfrijol_prod" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxIdle="10" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  
+  <Resource username="yuca01" 
+  url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+  type="javax.sql.DataSource" 
+  password="cassava01" 
+  name="jdbc/yuca_test" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxIdle="10" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="yuca04" 
+  url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+  type="javax.sql.DataSource" 
+  password="juancho" 
+  name="jdbc/yuca04_test" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxIdle="10" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="yuca01" 
+  url="jdbc:oracle:thin:@kappa.ciat.cgiarad.org:1521:CIAT" 
+  type="javax.sql.DataSource" 
+  password="cassava01" 
+  name="jdbc/yuca_prod" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxIdle="10" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="yuca04" 
+  url="jdbc:oracle:thin:@kappa.ciat.cgiarad.org:1521:CIAT" 
+  type="javax.sql.DataSource" 
+  password="juancho" 
+  name="jdbc/yuca04_prod" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxIdle="10" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+
+  <Resource username="af_dba" 
+  url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+  type="javax.sql.DataSource" 
+  password="anjela1" 
+  name="jdbc/meteoro_test" 
+  logAbandoned="true" 
+  removeAbandonedTimeout="20" 
+  removeAbandoned="true" 
+  maxWait="5000" 
+  maxActive="50" 
+  driverClassName="oracle.jdbc.driver.OracleDriver" 
+  auth="Container"/>
+  
+  	<Resource username="FLAR01" 
+	url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+	type="javax.sql.DataSource" 
+	password="FLAR01" 
+	name="jdbc/invflar_test" 
+	logAbandoned="true" 
+	removeAbandonedTimeout="20" 
+	removeAbandoned="true" 
+	maxWait="5000" 
+	maxIdle="10" 
+	maxActive="50" 
+	driverClassName="oracle.jdbc.driver.OracleDriver" 
+	auth="Container"/> 
+	
+	<Resource auth="Container"
+  driverClassName="com.mysql.jdbc.Driver" 
+        maxActive="20" 
+        maxIdle="3" 
+        maxWait="5000" 
+        removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        logAbandoned="true"
+        name="jdbc/peace_test" 
+        password="frijolito01"
+        type="javax.sql.DataSource" 
+        url="jdbc:mysql://PEACE:43306/ibdbv2_bean_merged"
+        username="frijol01"/>
+		
+	<Resource auth="Container"
+		driverClassName="com.mysql.jdbc.Driver" 
+        maxActive="20" 
+        maxIdle="3" 
+        maxWait="5000" 
+        removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        logAbandoned="true"
+        name="jdbc/dragon_prod" 
+        password="frijolito01"
+        type="javax.sql.DataSource" 
+        url="jdbc:mysql://dragon:43306/ibdbv2_bean_merged"
+        username="frijol01"/>
+		
+			<Resource auth="Container"
+		driverClassName="com.mysql.jdbc.Driver" 
+        maxActive="20" 
+        maxIdle="3" 
+        maxWait="5000" 
+        removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        logAbandoned="true"
+        name="jdbc/marlo-web" 
+        password="1234"
+        type="javax.sql.DataSource" 
+        url="jdbc:mysql://localhost:3306/ccafs_marlo"
+        username="root"/>
+
+
+		<Resource auth="Container"
+  driverClassName="com.mysql.jdbc.Driver" 
+        maxActive="20" 
+        maxIdle="3" 
+        maxWait="5000" 
+        removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        logAbandoned="true"
+        name="jdbc/riceBMS_test" 
+        password="frijolito01"
+        type="javax.sql.DataSource" 
+        url="jdbc:mysql://PEACE:43306/ibdbv2_rice_merged"
+        username="frijol01"/>
+	
+	
+	<Resource username="arroz01" 
+	url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+	type="javax.sql.DataSource" 
+	password="rice01" 
+	name="jdbc/invarroz_test" 
+	logAbandoned="true" 
+	removeAbandonedTimeout="20" 
+	removeAbandoned="true" 
+	maxWait="5000" 
+	maxIdle="10" 
+	maxActive="50" 
+	driverClassName="oracle.jdbc.driver.OracleDriver" 
+	auth="Container"/> 
+  
+   <Resource username="laboratorio01" 
+	url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+	type="javax.sql.DataSource" 
+	password="laboratorio" 
+	name="jdbc/laboratorio_test" 
+	logAbandoned="true" 
+	removeAbandonedTimeout="20" 
+	removeAbandoned="true" 
+	maxWait="5000" 
+	maxIdle="10" 
+	maxActive="50" 
+	driverClassName="oracle.jdbc.driver.OracleDriver" 
+	auth="Container"/> 
+	
+	 <Resource username="laboratorio01" 
+	url="jdbc:oracle:thin:@kappa:1521:CIAT" 
+	type="javax.sql.DataSource" 
+	password="laboratorio"
+	name="jdbc/laboratorio_prod" 
+	logAbandoned="true" 
+	removeAbandonedTimeout="20" 
+	removeAbandoned="true" 
+	maxWait="5000" 
+	maxActive="50" 
+	driverClassName="oracle.jdbc.driver.OracleDriver" 
+	auth="Container"/> 
+	
+	
+	 <Resource username="SMTA01" 
+	url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+	type="javax.sql.DataSource" 
+	password="smta2008" 
+	name="jdbc/smta_test" 
+	logAbandoned="true" 
+	removeAbandonedTimeout="20" 
+	removeAbandoned="true" 
+	maxWait="1800" 
+	maxActive="50" 
+	driverClassName="oracle.jdbc.driver.OracleDriver" 
+	auth="Container"/>
+	
+	
+		<Resource username="sharing01" 
+		url="jdbc:oracle:thin:@research.ciat.cgiarad.org:1521:CIATT" 
+		type="javax.sql.DataSource" 
+		password="sharing" 
+		name="jdbc/dsh_test" 
+		logAbandoned="true" 
+		removeAbandonedTimeout="20" 
+		removeAbandoned="true" 
+		maxWait="5000" 
+		maxActive="50" 
+		driverClassName="oracle.jdbc.driver.OracleDriver" 
+		auth="Container"/> 
+ 
+
+	<Resource username="sharing01" 
+		url="jdbc:oracle:thin:@kappa.ciat.cgiar.org:1521:CIAT" 
+		type="javax.sql.DataSource" 
+		password="sharing" 
+		name="jdbc/dsh_prod" 
+		logAbandoned="true" 
+		removeAbandonedTimeout="20" 
+		removeAbandoned="true" 
+		maxWait="5000" 
+		maxActive="50" 
+		driverClassName="oracle.jdbc.driver.OracleDriver" 
+		auth="Container"/> 
+		
+	
+</Context>
+
+
+
