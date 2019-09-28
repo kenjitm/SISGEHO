@@ -1,2 +1,0 @@
-WARN http-nio-8080-exec-4 org.hibernate.dialect.Oracle9Dialect - The Oracle9Dialect dialect has been deprecated; use either Oracle9iDialect or Oracle10gDialect instead
-WARN http-nio-8080-exec-13 org.hibernate.dialect.Oracle9Dialect - The Oracle9Dialect dialect has been deprecated; use either Oracle9iDialect or Oracle10gDialect instead
