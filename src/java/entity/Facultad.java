@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jhoan david ramirez
+ * @author KTANAKA
  */
 @Entity
 @Table(name = "facultad")
