@@ -1,2 +1,27 @@
-/build/
-/dist/
+#ant specific
+dist/
+build/
+
+#netbeans specific
+core
+nbproject/*
+!nbproject/project.properties
+!nbproject/project.xml
+nbbuild/
+nbactions.xml
+nb-configuration.xml
+
+
+#java specific
+*.class
+
+#general swap/backup files
+*.so
+*.log
+*.out
+*~
+*.swp
+*.DS_Store
+*.lock
+src/conf/persistence.xml
+Tomcat 8.5/logs/*
