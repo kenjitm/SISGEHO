@@ -1,0 +1,33 @@
+
+body{
+    background-color: #818182;
+}
+#barraNav{
+    display: flex;
+    background-color: #00427e;
+}
+.active{
+    background-color: gold;   
+}
+
+.centro{
+    text-align: center;
+}
+
+.azul{
+    background-color: #0050a0;
+    color: white;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    background-color: aliceblue
+}
+.row{
+    justify-content: center;
+}
+
+.layoutUnit{
+    background-color: #00427e;
+}
