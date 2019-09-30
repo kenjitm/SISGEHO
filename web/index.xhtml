@@ -9,7 +9,7 @@
         <h:outputStylesheet name="./css/materialize-icons.css"/>
         <h:outputStylesheet name="resources/css/materialize-icons.css"/>
        
-        <title>Facelet Title</title>
+        <title>Sisgeho</title>
     </h:head>
     <h:body>
       <h:form>
@@ -50,7 +50,7 @@
                                             <i class="material-icons">account_circle</i>
                                         </span>
                                     </div>
-                                    <p:inputText value="#{prueba.usuario}" class="form-control" placeholder="Nombre de Usuario" />  
+                                    <p:inputText value="#{prueba.usuario}" class="form-control" placeholder="Nombre de Usuario"/>  
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -61,8 +61,12 @@
                                     <p:password value="#{prueba.password}" class="form-control" placeholder="Contraseña" />
                                 </div>
                                 <a href="#">¿Olvidaste tu contraseña?</a><br/><br/>
+                                <div class="btn-group" role="group" aria-label="Third group">
                                 <h:commandButton value="Ingresar" action="#{prueba.funciona()}" class="btn btn-primary" />
-                                <h:commandButton value="Registrarse" class="btn btn-primary"/>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="Third group">
+                                <h:commandButton value="Registrarse" action="#{prueba.user()}" class="btn btn-primary"/>
+                                </div>
                             </div>
                         </div>
                     </div>

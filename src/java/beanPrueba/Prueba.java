@@ -41,4 +41,16 @@ public class Prueba {
         }
      return "prueba1.xhtml";
     }
+    
+    
+    
+    
+    public String user(){
+        return "gestionUsuario";
+    }
+    
+    public String home(){
+        return "index.xhtml";
+    }
+    
 }
