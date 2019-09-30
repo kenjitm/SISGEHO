@@ -24,3 +24,5 @@ nb-configuration.xml
 src/conf/persistence.xml
 Tomcat 8.5/logs/*
 web/WEB-INF/glassfish-resources.xml
+nbproject/genfiles.properties
+nbproject/ant-deploy.xml
