@@ -55,23 +55,33 @@ public class LoginBean implements Serializable {
     }
 
     public String login() {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
 
-        TypedQuery<Usuario> consultaUsuarios = em.createNamedQuery("Usuario.findByUsuario", Usuario.class);
-        consultaUsuarios.setParameter("Usuario", usuario);
-        List<Usuario> lista = consultaUsuarios.getResultList();
-        lista = lista.stream().filter(lu -> lu != null && lu.getUsuario() != null && lu.getUsuario().equals(usuario)).collect(Collectors.toList());
-        if (lista == null || lista.size() > 0) {
-            session.add("user", usuario);
-            return "prueba1";
+        if (usuario != null && !usuario.isEmpty()) {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+
+            TypedQuery<Usuario> consultaUsuarios = em.createNamedQuery("Usuario.findByUsuario", Usuario.class);
+            consultaUsuarios.setParameter("usuario", usuario);
+            List<Usuario> lista = consultaUsuarios.getResultList();
+            lista = lista.stream().filter(lu -> lu != null && lu.getUsuario() != null && lu.getUsuario().equals(usuario)).collect(Collectors.toList());
+            System.out.println("lista " + lista.size());
+            if (lista != null) {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.getExternalContext().getSessionMap().put("user", usuario);
+                //session = new SessionUtils();
+                //session.add("user", usuario);
+                return "prueba1.xhtml";
+            } else {
+                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso denegado", "Usuario o contraseña incorrecta");
+                FacesContext.getCurrentInstance().addMessage(null, message);
+                return "";
+            }
         } else {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso denegado", "Usuario o contraseña incorrecta");
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso denegado", "Usuario o contraseña vacios");
             FacesContext.getCurrentInstance().addMessage(null, message);
-            return null;
+            return "";
         }
 
     }
-
 }
