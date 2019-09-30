@@ -67,7 +67,7 @@ public class LoginBean implements Serializable {
             lista = lista.stream().filter(lu -> lu != null && lu.getUsuario() != null && lu.getUsuario().equals(usuario)).collect(Collectors.toList());
             System.out.println("lista " + lista.size());
             if (lista != null) {
-                if (lista.get(0) != null && lista.get(0).getContraseña().equals(password)) {
+                if (!lista.isEmpty() && lista.get(0) != null && lista.get(0).getContraseña().equals(password)) {
 
                     FacesContext context = FacesContext.getCurrentInstance();
                     context.getExternalContext().getSessionMap().put("user", usuario);
@@ -75,16 +75,16 @@ public class LoginBean implements Serializable {
                     //session.add("user", usuario);
 
                     //usuario correcto
-                    return "prueba1.xhtml";
+                    return "gestionUsuario";
                 } else {
                     FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso denegado", "Contraseña incorrecta");
                     FacesContext.getCurrentInstance().addMessage(null, message);
-                    return "";
+                    return null;
                 }
             } else {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso denegado", "Usuario no existe");
                 FacesContext.getCurrentInstance().addMessage(null, message);
-                return "";
+                return null;
             }
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso denegado", "Usuario o contraseña vacios");
