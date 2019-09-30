@@ -5559,3 +5559,1268 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.jstl.core.Config
 29-Sep-2019 21:05:40.632 ADVERTENCIA [http-nio-8080-exec-50] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
 29-Sep-2019 21:05:43.781 ADVERTENCIA [http-nio-8080-exec-52] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
 29-Sep-2019 21:05:43.829 ADVERTENCIA [http-nio-8080-exec-54] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/imagenes/logo-uniajc.png.
+29-Sep-2019 21:24:20.460 INFORMACIÓN [http-nio-8080-exec-57] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/Sisgeho]
+29-Sep-2019 21:24:26.796 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.796 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.797 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.797 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.797 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.798 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.798 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.799 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.799 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.799 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.800 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.800 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.910 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.910 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.910 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.911 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.912 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.912 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.912 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.913 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.913 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.913 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.914 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.914 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "1800" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.961 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.962 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.962 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.962 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.963 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.963 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.964 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.964 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.964 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:26.965 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:26.965 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:26.965 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.013 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.014 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.014 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.014 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.015 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.015 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.015 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.016 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.016 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.016 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.016 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.017 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.067 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.067 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.068 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.068 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.068 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.069 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.069 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.069 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.070 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.070 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.070 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.070 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.120 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.120 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.120 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.121 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.121 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.121 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.122 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.122 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.122 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.123 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:27.123 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:27.123 ADVERTENCIA [http-nio-8080-exec-57] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:27.277 INFORMACIÓN [http-nio-8080-exec-57] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+29-Sep-2019 21:24:27.838 INFORMACIÓN [http-nio-8080-exec-57] com.sun.faces.config.ConfigureListener.contextInitialized Inicializando Mojarra 2.2.7 ( 20140610-1547 https://svn.java.net/svn/mojarra~svn/tags/2.2.7@13362) para el contexto '/Sisgeho'
+29-Sep-2019 21:24:28.098 INFORMACIÓN [http-nio-8080-exec-57] com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048: hay presentes anotaciones PostConstruct/PreDestroy.  Los métodos de beans administrados marcados con estas anotaciones procesarán dichas anotaciones.
+29-Sep-2019 21:24:28.156 GRAVE [http-nio-8080-exec-57] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 18 at position 14
+29-Sep-2019 21:24:28.158 GRAVE [http-nio-8080-exec-57] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 15
+29-Sep-2019 21:24:28.158 GRAVE [http-nio-8080-exec-57] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 16
+29-Sep-2019 21:24:28.158 GRAVE [http-nio-8080-exec-57] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 17
+29-Sep-2019 21:24:28.158 GRAVE [http-nio-8080-exec-57] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 100 at position 18
+29-Sep-2019 21:24:29.498 INFORMACIÓN [http-nio-8080-exec-57] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 5.0
+29-Sep-2019 21:24:29.513 INFORMACIÓN [http-nio-8080-exec-57] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+29-Sep-2019 21:24:29.574 INFORMACIÓN [http-nio-8080-exec-61] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/Sisgeho]
+29-Sep-2019 21:24:33.039 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.040 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.040 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.040 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.040 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.041 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.041 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.041 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.041 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.041 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.042 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.042 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.050 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.050 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.051 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.051 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.051 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.052 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.052 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.052 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.052 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.053 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.053 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.053 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "1800" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.102 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.102 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.103 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.103 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.104 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.104 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.104 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.105 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.105 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.105 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.106 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.106 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.154 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.154 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.155 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.155 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.156 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.156 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.156 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.157 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.157 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.157 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.158 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.158 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.221 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.221 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.221 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.222 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.222 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.222 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.223 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.223 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.223 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.224 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.224 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.225 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.273 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.274 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.274 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.274 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.275 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.275 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.275 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.276 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.276 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.276 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:24:33.276 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:24:33.277 ADVERTENCIA [http-nio-8080-exec-61] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:24:33.409 INFORMACIÓN [http-nio-8080-exec-61] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+29-Sep-2019 21:24:33.701 INFORMACIÓN [http-nio-8080-exec-61] com.sun.faces.config.ConfigureListener.contextInitialized Inicializando Mojarra 2.2.7 ( 20140610-1547 https://svn.java.net/svn/mojarra~svn/tags/2.2.7@13362) para el contexto '/Sisgeho'
+29-Sep-2019 21:24:33.935 INFORMACIÓN [http-nio-8080-exec-61] com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048: hay presentes anotaciones PostConstruct/PreDestroy.  Los métodos de beans administrados marcados con estas anotaciones procesarán dichas anotaciones.
+29-Sep-2019 21:24:33.981 GRAVE [http-nio-8080-exec-61] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 18 at position 14
+29-Sep-2019 21:24:33.981 GRAVE [http-nio-8080-exec-61] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 15
+29-Sep-2019 21:24:33.981 GRAVE [http-nio-8080-exec-61] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 16
+29-Sep-2019 21:24:33.982 GRAVE [http-nio-8080-exec-61] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 17
+29-Sep-2019 21:24:33.982 GRAVE [http-nio-8080-exec-61] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 100 at position 18
+29-Sep-2019 21:24:35.338 INFORMACIÓN [http-nio-8080-exec-61] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 5.0
+29-Sep-2019 21:24:35.352 INFORMACIÓN [http-nio-8080-exec-61] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+29-Sep-2019 21:24:35.985 1100 [http-nio-8080-exec-53] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado javax.faces.view.facelets.FaceletException durante el procesamiento de RESTORE_VIEW 1 : UIComponent-ClientId=, Mensaje=Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+29-Sep-2019 21:24:35.986 1100 [http-nio-8080-exec-53] com.sun.faces.context.ExceptionHandlerImpl.log Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+ javax.faces.view.facelets.FaceletException: Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+	at com.sun.faces.facelets.compiler.SAXCompiler.doCompile(SAXCompiler.java:456)
+	at com.sun.faces.facelets.compiler.SAXCompiler.doMetadataCompile(SAXCompiler.java:439)
+	at com.sun.faces.facelets.compiler.Compiler.metadataCompile(Compiler.java:130)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.createMetadataFacelet(DefaultFaceletFactory.java:503)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.access$200(DefaultFaceletFactory.java:106)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory$2.newInstance(DefaultFaceletFactory.java:205)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory$2.newInstance(DefaultFaceletFactory.java:203)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache$2.newInstance(DefaultFaceletCache.java:97)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache$2.newInstance(DefaultFaceletCache.java:92)
+	at com.sun.faces.util.ExpiringConcurrentCache$1.call(ExpiringConcurrentCache.java:99)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at com.sun.faces.util.ExpiringConcurrentCache.get(ExpiringConcurrentCache.java:114)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache.getViewMetadataFacelet(DefaultFaceletCache.java:146)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache.getViewMetadataFacelet(DefaultFaceletCache.java:63)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.getMetadataFacelet(DefaultFaceletFactory.java:316)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.getMetadataFacelet(DefaultFaceletFactory.java:246)
+	at com.sun.faces.application.view.ViewMetadataImpl.createMetadataView(ViewMetadataImpl.java:138)
+	at com.sun.faces.application.view.FaceletViewHandlingStrategy.restoreView(FaceletViewHandlingStrategy.java:560)
+	at com.sun.faces.application.view.MultiViewHandler.restoreView(MultiViewHandler.java:150)
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:197)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:121)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:24:36.205 1100 [http-nio-8080-exec-55] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado javax.faces.view.facelets.FaceletException durante el procesamiento de RESTORE_VIEW 1 : UIComponent-ClientId=, Mensaje=Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+29-Sep-2019 21:24:36.206 1100 [http-nio-8080-exec-55] com.sun.faces.context.ExceptionHandlerImpl.log Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+ javax.faces.view.facelets.FaceletException: Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+	at com.sun.faces.facelets.compiler.SAXCompiler.doCompile(SAXCompiler.java:456)
+	at com.sun.faces.facelets.compiler.SAXCompiler.doMetadataCompile(SAXCompiler.java:439)
+	at com.sun.faces.facelets.compiler.Compiler.metadataCompile(Compiler.java:130)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.createMetadataFacelet(DefaultFaceletFactory.java:503)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.access$200(DefaultFaceletFactory.java:106)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory$2.newInstance(DefaultFaceletFactory.java:205)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory$2.newInstance(DefaultFaceletFactory.java:203)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache$2.newInstance(DefaultFaceletCache.java:97)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache$2.newInstance(DefaultFaceletCache.java:92)
+	at com.sun.faces.util.ExpiringConcurrentCache$1.call(ExpiringConcurrentCache.java:99)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at com.sun.faces.util.ExpiringConcurrentCache.get(ExpiringConcurrentCache.java:114)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache.getViewMetadataFacelet(DefaultFaceletCache.java:146)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache.getViewMetadataFacelet(DefaultFaceletCache.java:63)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.getMetadataFacelet(DefaultFaceletFactory.java:316)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.getMetadataFacelet(DefaultFaceletFactory.java:246)
+	at com.sun.faces.application.view.ViewMetadataImpl.createMetadataView(ViewMetadataImpl.java:138)
+	at com.sun.faces.application.view.FaceletViewHandlingStrategy.restoreView(FaceletViewHandlingStrategy.java:560)
+	at com.sun.faces.application.view.MultiViewHandler.restoreView(MultiViewHandler.java:150)
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:197)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:121)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:24:36.973 1100 [http-nio-8080-exec-52] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado javax.faces.view.facelets.FaceletException durante el procesamiento de RESTORE_VIEW 1 : UIComponent-ClientId=, Mensaje=Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+29-Sep-2019 21:24:36.973 1100 [http-nio-8080-exec-52] com.sun.faces.context.ExceptionHandlerImpl.log Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+ javax.faces.view.facelets.FaceletException: Error Parsing /index.xhtml: Error Traced[line: 53] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+	at com.sun.faces.facelets.compiler.SAXCompiler.doCompile(SAXCompiler.java:456)
+	at com.sun.faces.facelets.compiler.SAXCompiler.doMetadataCompile(SAXCompiler.java:439)
+	at com.sun.faces.facelets.compiler.Compiler.metadataCompile(Compiler.java:130)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.createMetadataFacelet(DefaultFaceletFactory.java:503)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.access$200(DefaultFaceletFactory.java:106)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory$2.newInstance(DefaultFaceletFactory.java:205)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory$2.newInstance(DefaultFaceletFactory.java:203)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache$2.newInstance(DefaultFaceletCache.java:97)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache$2.newInstance(DefaultFaceletCache.java:92)
+	at com.sun.faces.util.ExpiringConcurrentCache$1.call(ExpiringConcurrentCache.java:99)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at com.sun.faces.util.ExpiringConcurrentCache.get(ExpiringConcurrentCache.java:114)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache.getViewMetadataFacelet(DefaultFaceletCache.java:146)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache.getViewMetadataFacelet(DefaultFaceletCache.java:63)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.getMetadataFacelet(DefaultFaceletFactory.java:316)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.getMetadataFacelet(DefaultFaceletFactory.java:246)
+	at com.sun.faces.application.view.ViewMetadataImpl.createMetadataView(ViewMetadataImpl.java:138)
+	at com.sun.faces.application.view.FaceletViewHandlingStrategy.restoreView(FaceletViewHandlingStrategy.java:560)
+	at com.sun.faces.application.view.MultiViewHandler.restoreView(MultiViewHandler.java:150)
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:197)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:121)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:26:10.543 INFORMACIÓN [http-nio-8080-exec-54] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/Sisgeho]
+29-Sep-2019 21:26:26.691 INFORMACIÓN [http-nio-8080-exec-63] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\xampp\htdocs\Sisgeho\Tomcat 8.5\conf\Catalina\localhost\Sisgeho.xml]
+29-Sep-2019 21:26:29.889 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:29.889 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:29.889 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = bmsfrijol_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:29.889 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:29.890 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:29.890 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:29.890 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:29.890 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:29.890 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riceBMS_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:29.891 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:29.891 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:29.891 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = meteoro_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.066 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.067 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.067 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.069 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.070 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.070 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invflar_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.071 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.072 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.072 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = peace_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.074 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.074 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.074 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = smta_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "1800" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.118 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.118 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.119 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invarroz_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.120 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.120 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.121 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca04_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.121 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.122 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.122 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.123 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.124 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.124 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.171 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.171 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.172 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.173 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.174 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.174 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.176 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.176 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.177 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = laboratorio_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.179 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.180 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.181 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = invfrijol_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.225 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.226 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.226 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = yuca_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.228 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.228 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.228 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = pastos02_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.229 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.230 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.230 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.231 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.231 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.231 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dragon_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.277 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.277 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.278 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = labSuelos_prod Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.279 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.279 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.279 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = riz_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.280 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "20" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.280 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.280 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = marlo-web Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.281 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored.
+29-Sep-2019 21:26:30.281 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property removeAbandoned is not used in DBCP2, use one or both of removeAbandonedOnBorrow or removeAbandonedOnMaintenance instead. Both have default value set to false. You have set value of "true" for "removeAbandoned" property, which is being ignored.
+29-Sep-2019 21:26:30.281 ADVERTENCIA [http-nio-8080-exec-63] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = dsh_test Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+29-Sep-2019 21:26:30.394 INFORMACIÓN [http-nio-8080-exec-63] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+29-Sep-2019 21:26:30.557 INFORMACIÓN [http-nio-8080-exec-63] com.sun.faces.config.ConfigureListener.contextInitialized Inicializando Mojarra 2.2.7 ( 20140610-1547 https://svn.java.net/svn/mojarra~svn/tags/2.2.7@13362) para el contexto '/Sisgeho'
+29-Sep-2019 21:26:30.703 INFORMACIÓN [http-nio-8080-exec-63] com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048: hay presentes anotaciones PostConstruct/PreDestroy.  Los métodos de beans administrados marcados con estas anotaciones procesarán dichas anotaciones.
+29-Sep-2019 21:26:30.740 GRAVE [http-nio-8080-exec-63] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 18 at position 14
+29-Sep-2019 21:26:30.740 GRAVE [http-nio-8080-exec-63] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 15
+29-Sep-2019 21:26:30.740 GRAVE [http-nio-8080-exec-63] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 16
+29-Sep-2019 21:26:30.740 GRAVE [http-nio-8080-exec-63] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 0 at position 17
+29-Sep-2019 21:26:30.741 GRAVE [http-nio-8080-exec-63] com.sun.faces.config.JavaClassScanningAnnotationScanner$ConstantPoolInfo.containsAnnotation Unknow type constant pool 100 at position 18
+29-Sep-2019 21:26:31.968 INFORMACIÓN [http-nio-8080-exec-63] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 5.0
+29-Sep-2019 21:26:31.972 INFORMACIÓN [http-nio-8080-exec-63] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of configuration descriptor [C:\xampp\htdocs\Sisgeho\Tomcat 8.5\conf\Catalina\localhost\Sisgeho.xml] has finished in [5.281] ms
+29-Sep-2019 21:26:31.976 INFORMACIÓN [http-nio-8080-exec-65] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Sisgeho]] after start() had already been called. The second call will be ignored.
+29-Sep-2019 21:26:32.740 1100 [http-nio-8080-exec-70] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado javax.faces.view.facelets.FaceletException durante el procesamiento de RESTORE_VIEW 1 : UIComponent-ClientId=, Mensaje=Error Parsing /index.xhtml: Error Traced[line: 67] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+29-Sep-2019 21:26:32.741 1100 [http-nio-8080-exec-70] com.sun.faces.context.ExceptionHandlerImpl.log Error Parsing /index.xhtml: Error Traced[line: 67] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+ javax.faces.view.facelets.FaceletException: Error Parsing /index.xhtml: Error Traced[line: 67] El contenido de los elementos debe constar de marcadores o datos de carácter con un formato correcto.
+	at com.sun.faces.facelets.compiler.SAXCompiler.doCompile(SAXCompiler.java:456)
+	at com.sun.faces.facelets.compiler.SAXCompiler.doMetadataCompile(SAXCompiler.java:439)
+	at com.sun.faces.facelets.compiler.Compiler.metadataCompile(Compiler.java:130)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.createMetadataFacelet(DefaultFaceletFactory.java:503)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.access$200(DefaultFaceletFactory.java:106)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory$2.newInstance(DefaultFaceletFactory.java:205)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory$2.newInstance(DefaultFaceletFactory.java:203)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache$2.newInstance(DefaultFaceletCache.java:97)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache$2.newInstance(DefaultFaceletCache.java:92)
+	at com.sun.faces.util.ExpiringConcurrentCache$1.call(ExpiringConcurrentCache.java:99)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at com.sun.faces.util.ExpiringConcurrentCache.get(ExpiringConcurrentCache.java:114)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache.getViewMetadataFacelet(DefaultFaceletCache.java:146)
+	at com.sun.faces.facelets.impl.DefaultFaceletCache.getViewMetadataFacelet(DefaultFaceletCache.java:63)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.getMetadataFacelet(DefaultFaceletFactory.java:316)
+	at com.sun.faces.facelets.impl.DefaultFaceletFactory.getMetadataFacelet(DefaultFaceletFactory.java:246)
+	at com.sun.faces.application.view.ViewMetadataImpl.createMetadataView(ViewMetadataImpl.java:138)
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:241)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:121)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:27:39.208 ADVERTENCIA [http-nio-8080-exec-73] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:28:51.915 ADVERTENCIA [http-nio-8080-exec-71] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:28:59.678 ADVERTENCIA [http-nio-8080-exec-76] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:28:59.701 ADVERTENCIA [http-nio-8080-exec-78] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/imagenes/logo-uniajc.png.
+29-Sep-2019 21:29:03.522 ADVERTENCIA [http-nio-8080-exec-79] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:29:03.556 1100 [http-nio-8080-exec-76] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:03.556 1100 [http-nio-8080-exec-76] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.jstl.core.Config
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1291)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1119)
+	... 28 more
+
+29-Sep-2019 21:29:03.557 1100 [http-nio-8080-exec-72] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:03.558 1100 [http-nio-8080-exec-72] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:03.612 1100 [http-nio-8080-exec-77] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:03.612 1100 [http-nio-8080-exec-74] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:03.614 1100 [http-nio-8080-exec-74] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:03.615 1100 [http-nio-8080-exec-77] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:20.100 ADVERTENCIA [http-nio-8080-exec-75] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:29:20.169 1100 [http-nio-8080-exec-72] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:20.169 1100 [http-nio-8080-exec-72] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:20.180 1100 [http-nio-8080-exec-77] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:20.180 1100 [http-nio-8080-exec-77] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:20.354 1100 [http-nio-8080-exec-79] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:20.355 1100 [http-nio-8080-exec-79] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:20.355 1100 [http-nio-8080-exec-74] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:20.355 1100 [http-nio-8080-exec-74] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:43.357 ADVERTENCIA [http-nio-8080-exec-70] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:29:43.426 1100 [http-nio-8080-exec-73] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:43.426 1100 [http-nio-8080-exec-73] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:43.449 1100 [http-nio-8080-exec-78] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:43.449 1100 [http-nio-8080-exec-78] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:43.549 1100 [http-nio-8080-exec-71] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:43.555 1100 [http-nio-8080-exec-70] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:29:43.607 1100 [http-nio-8080-exec-70] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:29:43.607 1100 [http-nio-8080-exec-71] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:30:01.737 ADVERTENCIA [http-nio-8080-exec-75] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:30:01.796 1100 [http-nio-8080-exec-70] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:30:01.796 1100 [http-nio-8080-exec-70] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:30:01.832 1100 [http-nio-8080-exec-71] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:30:01.832 1100 [http-nio-8080-exec-71] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:30:01.955 1100 [http-nio-8080-exec-75] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:30:01.955 1100 [http-nio-8080-exec-75] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:30:01.957 1100 [http-nio-8080-exec-79] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:30:01.958 1100 [http-nio-8080-exec-79] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:31:15.148 ADVERTENCIA [http-nio-8080-exec-76] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:31:15.227 1100 [http-nio-8080-exec-72] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:31:15.227 1100 [http-nio-8080-exec-72] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:31:15.245 1100 [http-nio-8080-exec-70] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:31:15.245 1100 [http-nio-8080-exec-70] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:31:15.390 1100 [http-nio-8080-exec-77] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:31:15.390 1100 [http-nio-8080-exec-78] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:31:15.390 1100 [http-nio-8080-exec-77] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:31:15.390 1100 [http-nio-8080-exec-78] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:32:05.562 1100 [http-nio-8080-exec-73] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:32:05.562 1100 [http-nio-8080-exec-73] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:32:08.330 ADVERTENCIA [http-nio-8080-exec-74] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:32:08.350 ADVERTENCIA [http-nio-8080-exec-70] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/imagenes/logo-uniajc.png.
+29-Sep-2019 21:32:12.331 ADVERTENCIA [http-nio-8080-exec-78] com.sun.faces.application.resource.ResourceHandlerImpl.logMissingResource JSF1064: no se encuentra o sirve el recurso, resources/css/materialize-icons.css.
+29-Sep-2019 21:32:12.355 1100 [http-nio-8080-exec-74] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:32:12.356 1100 [http-nio-8080-exec-74] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:32:12.356 1100 [http-nio-8080-exec-76] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:32:12.356 1100 [http-nio-8080-exec-76] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:32:12.505 1100 [http-nio-8080-exec-78] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:32:12.505 1100 [http-nio-8080-exec-78] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+29-Sep-2019 21:32:12.505 1100 [http-nio-8080-exec-75] com.sun.faces.context.ExceptionHandlerImpl.log JSF1073: se ha interceptado java.lang.NoClassDefFoundError durante el procesamiento de RENDER_RESPONSE 6 : UIComponent-ClientId=, Mensaje=javax/servlet/jsp/jstl/core/Config
+29-Sep-2019 21:32:12.506 1100 [http-nio-8080-exec-75] com.sun.faces.context.ExceptionHandlerImpl.log javax/servlet/jsp/jstl/core/Config
+ java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config
+	at com.sun.faces.application.view.JspViewHandlingStrategy.executePageToBuildView(JspViewHandlingStrategy.java:344)
+	at com.sun.faces.application.view.JspViewHandlingStrategy.buildView(JspViewHandlingStrategy.java:153)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:99)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:647)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+

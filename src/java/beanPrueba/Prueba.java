@@ -39,7 +39,7 @@ public class Prueba {
         for (int i = 0; i < 10; i++) {
             System.out.println(i);
         }
-     return "prueba1.xhtml";
+     return "prueba1";
     }
     
     

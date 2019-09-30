@@ -50,7 +50,10 @@
                                             <i class="material-icons">account_circle</i>
                                         </span>
                                     </div>
-                                    <p:inputText value="#{prueba.usuario}" class="form-control" placeholder="Nombre de Usuario"/>  
+
+                                     
+                                    <p:inputText value="#{loginBean.usuario}" class="form-control" placeholder="Nombre de Usuario" />  
+
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -58,9 +61,10 @@
                                             <i class="material-icons">lock</i>
                                         </span>
                                     </div>
-                                    <p:password value="#{prueba.password}" class="form-control" placeholder="Contraseña" />
+                                    <p:password value="#{loginBean.password}" class="form-control" placeholder="Contraseña" />
                                 </div>
                                 <a href="#">¿Olvidaste tu contraseña?</a><br/><br/>
+
                                 <div class="btn-group" role="group" aria-label="Third group">
                                 <h:commandButton value="Ingresar" action="#{prueba.funciona()}" class="btn btn-primary" />
                                 </div>
