@@ -4,9 +4,7 @@ build/
 
 #netbeans specific
 core
-nbproject/*
-!nbproject/project.properties
-!nbproject/project.xml
+nbproject/private/*
 nbbuild/
 nbactions.xml
 nb-configuration.xml
@@ -25,6 +23,6 @@ nb-configuration.xml
 *.lock
 src/conf/persistence.xml
 Tomcat 8.5/logs/*
-nbproject/project.properties
-nbproject/project.xml
 web/WEB-INF/glassfish-resources.xml
+nbproject/genfiles.properties
+nbproject/ant-deploy.xml
