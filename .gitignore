@@ -29,4 +29,5 @@ nbproject/private/private.xml
 web/WEB-INF/glassfish-resources.xml
 nbproject/genfiles.properties
 nbproject/ant-deploy.xml
+nbproject/*
 
