@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -31,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByRol", query = "SELECT u FROM Usuario u WHERE u.rol = :rol")
     , @NamedQuery(name = "Usuario.findByEstado", query = "SELECT u FROM Usuario u WHERE u.estado = :estado")
     , @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario")
-    , @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a")})
+    , @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,20 +41,35 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "Id")
     private Integer id;
+    @Basic(optional = false)
+    @Column(name = "TipoId")
+    @Enumerated(EnumType.STRING)
+    private TipoId tipoId;
     @Lob
     @Column(name = "Nombre")
     private String nombre;
     @Lob
     @Column(name = "Apellido")
     private String apellido;
-    @Column(name = "Rol")
-    private String rol;
+    @Basic(optional = false)
+    @Column(name = "telefono")
+    private String telefono;
+    @Basic(optional = false)
     @Column(name = "Estado")
-    private Integer estado;
+    private boolean estado;
+    @Column(name = "Rol")
+    @Basic(optional = false)
+    @Enumerated(EnumType.STRING)
+    private TipoRol rol;
+    @Basic(optional = false)
+    @Column(name = "Email")
+    private String email;
     @Column(name = "Usuario")
+    @Basic(optional = false)
     private String usuario;
-    @Column(name = "Contrase\u00f1a")
-    private String contraseña;
+    @Basic(optional = false)
+    @Column(name = "Password")
+    private String password;
     @JoinColumn(name = "rowid_docente", referencedColumnName = "rowid")
     @ManyToOne
     private Docente rowidDocente;
@@ -88,20 +105,12 @@ public class Usuario implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getRol() {
+    public TipoRol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(TipoRol rol) {
         this.rol = rol;
-    }
-
-    public Integer getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Integer estado) {
-        this.estado = estado;
     }
 
     public String getUsuario() {
@@ -110,14 +119,6 @@ public class Usuario implements Serializable {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
     }
 
     public Docente getRowidDocente() {
@@ -152,5 +153,45 @@ public class Usuario implements Serializable {
     public String toString() {
         return "entity.Usuario[ id=" + id + " ]";
     }
-    
+
+    public TipoId getTipoId() {
+        return tipoId;
+    }
+
+    public void setTipoId(TipoId tipoId) {
+        this.tipoId = tipoId;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

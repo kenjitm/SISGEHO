@@ -53,6 +53,10 @@ public class LoginBean implements Serializable {
 
     public LoginBean() {
     }
+        
+    public String home(){
+        return "";
+    }
 
     public String login() {
 
@@ -67,7 +71,7 @@ public class LoginBean implements Serializable {
             lista = lista.stream().filter(lu -> lu != null && lu.getUsuario() != null && lu.getUsuario().equals(usuario)).collect(Collectors.toList());
             System.out.println("lista " + lista.size());
             if (lista != null) {
-                if (!lista.isEmpty() && lista.get(0) != null && lista.get(0).getContraseña().equals(password)) {
+                if (!lista.isEmpty() && lista.get(0) != null && lista.get(0).getPassword().equals(password)) {
 
                     FacesContext context = FacesContext.getCurrentInstance();
                     context.getExternalContext().getSessionMap().put("user", usuario);
