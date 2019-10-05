@@ -2,7 +2,8 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
     
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
@@ -13,35 +14,71 @@
     <div class="row" id="barraNav">
                     <ul class="nav ">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Materia</a>
+                            <a class="nav-link text-white" href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Grupo</a>
+                            <a class="nav-link text-white " href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Salones</a>
+                            <a class="nav-link text-white " href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Horas</a>
+                            <a class="nav-link text-white " href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Jornada</a>
+                            <a class="nav-link text-white " href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Sede</a>
+                            <a class="nav-link text-white " href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Programas</a>
+                            <a class="nav-link text-white " href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Decanatura</a>
+                            <a class="nav-link text-white " href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Roles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Reportes</a>
+                            <a class="nav-link text-white " href="#"></a>
                         </li>
                     </ul>
                 </div>
+        <h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Seguridad" icon="pi pi-file">
+            <p:menuitem value="Usuarios" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Parametrizaciòn" icon="pi pi-pencil">
+            <p:menuitem value="Materia" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Grupo" url="#" icon="pi pi-angle-double-right" />
+            <p:menuitem value="Salones" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Horas" url="#" icon="pi pi-angle-double-right" />
+            <p:menuitem value="Jornada" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Sede" url="#" icon="pi pi-angle-double-right" />
+            <p:menuitem value="Programas" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Decanatura" url="#" icon="pi pi-angle-double-right" />
+        </p:submenu>
+ 
+        <p:submenu label="Reportes" icon="pi pi-question">
+            <p:menuitem value="Reportes" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Actions" icon="pi pi-cog">
+            <p:submenu label="Ajax" icon="pi pi-refresh">
+                <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" update="messages"/>
+                <p:menuitem value="Update" action="#{menuView.update}" icon="pi pi-refresh" update="messages"/>
+            </p:submenu>
+            <p:submenu label="Non-Ajax" icon="pi pi-clone">
+                <p:menuitem value="Delete" action="#{menuView.delete}" icon="pi pi-times" update="messages" ajax="false"/>
+            </p:submenu>
+        </p:submenu>
+ 
+        <f:facet name="options">
+            
+            <p:commandButton type="button" value="Salir" icon="pi pi-home" />
+        </f:facet>
+    </p:menubar>
+</h:form>
 </ui:composition>

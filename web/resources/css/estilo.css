@@ -31,3 +31,11 @@ body{
 .layoutUnit{
     background-color: #00427e;
 }
+
+.ui-menu, .ui-menubar, .ui-widget, .ui-widget-content, .ui-corner-all, .ui-helper-clearfix
+{
+    border: 1px solid #aed0ea !important;
+    background: #00427e;
+    color: white !important;
+    font-weight: bolder !important;
+}

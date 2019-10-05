@@ -55,7 +55,7 @@ public class LoginBean implements Serializable {
     }
         
     public String home(){
-        return "";
+        return "index.xhtml";
     }
 
     public String login() {
@@ -102,7 +102,4 @@ public class LoginBean implements Serializable {
       return "newUser";
     }
     
-    public String home(){
-        return "index.xhtml";
-    }
 }
