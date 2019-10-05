@@ -93,4 +93,12 @@ public class LoginBean implements Serializable {
         }
 
     }
+    
+    public String newUser (){
+      return "newUser";
+    }
+    
+    public String home(){
+        return "index.xhtml";
+    }
 }
