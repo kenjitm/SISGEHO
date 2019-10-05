@@ -75,7 +75,7 @@ public class LoginBean implements Serializable {
                     //session.add("user", usuario);
 
                     //usuario correcto
-                    return "gestionUsuario";
+                    return "Dashboard";
                 } else {
                     FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso denegado", "Contraseña incorrecta");
                     FacesContext.getCurrentInstance().addMessage(null, message);

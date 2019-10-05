@@ -1,0 +1,83 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+        <h:outputStylesheet name="./css/materialize-icons.css"/>
+        <h:outputStylesheet name="resources/css/materialize-icons.css"/>
+       
+        <title>Gestión Usuarios</title>
+    </h:head>
+    <h:body>
+        <div style="background-color: #0050a0">
+            <div class="card-body" style="text-align: center">
+                <h:graphicImage url="../resources/imagenes/logo-uniajc.png" class="img-fluid" alt="Responsive image"/>  
+            </div>                      
+        </div>
+        
+        <!--barra de navegacion-->
+                <div class="row" id="barraNav">
+                    <ul class="nav ">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Pagina Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-secondary " href="#">Login</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--fin barra de navegacion-->
+        
+        <div class="container" style="background-color: white">      
+            <div class="row">
+            <div class="col-sm-1">
+           </div>
+
+            <div class="col-sm-3">
+                <div class="card shadow mt-5" style="background-color: #0050a0">
+                            <div class="card-body">
+                                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                                    <h6 class="card-subtitle mb-2 text-warning">Bienvenido al sistema</h6>                  
+                            </div>            
+                </div> 
+                        
+                </div>
+            </div>
+        </div>
+        <footer>
+                <div class="container" style="background-color: #0050a0; color: white">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Address</h4>
+                            INSTITUCIÓN UNIVERSITARIA<br/>
+                            ANTONIO JOSE CAMACHO
+                        </div>
+                        <div class="col">
+                            <h4>Admnistrador</h4>
+                            Email: jmondragon@admon.uniajc.edu.co<br/>
+                            Phone: 665 28 28 ext 3101 
+                        </div>
+                        <div class="col"><center>
+                                <a href="https://www.facebook.com/UNIAJC" target="_blank"><br/>
+                                    <h:graphicImage url="../resources/imagenes/social/facebook-footer.png" class="img-fluid" alt="Responsive image"/>
+                                </a>
+                                <a href="https://twitter.com/UNIAJC" target="_blank">
+                                    <h:graphicImage url="../resources/imagenes/social/twitter-footer.png" class="img-fluid" alt="Responsive image"/>
+                                </a>
+                                <a href="https://www.youtube.com/user/UNIAJC" target="_blank">
+                                    <h:graphicImage url="../resources/imagenes/social/youtube-footer.png" class="img-fluid" alt="Responsive image"/>
+                                </a>
+                            </center></div>
+                    </div>
+                </div>
+            </footer>
+    </h:body>
+</html>
