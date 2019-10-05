@@ -25,3 +25,4 @@ nb-configuration.xml
 *.lock
 src/conf/persistence.xml
 Tomcat 8.5/logs/*
+nbproject/private/private.xml
