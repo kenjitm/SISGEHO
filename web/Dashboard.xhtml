@@ -13,7 +13,7 @@ and open the template in the editor.
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
         <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="resources/css/materialize-icons.css"/>
+        <h:outputStylesheet name="./resources/css/materialize-icons.css"/>
        
         <title>Gestión Usuarios</title>
     </h:head>
@@ -65,32 +65,8 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-        <footer>
-                <div class="container" style="background-color: #0050a0; color: white">
-                    <div class="row">
-                        <div class="col">
-                            <h4>Address</h4>
-                            INSTITUCIÓN UNIVERSITARIA<br/>
-                            ANTONIO JOSE CAMACHO
-                        </div>
-                        <div class="col">
-                            <h4>Admnistrador</h4>
-                            Email: jmondragon@admon.uniajc.edu.co<br/>
-                            Phone: 665 28 28 ext 3101 
-                        </div>
-                        <div class="col"><center>
-                                <a href="https://www.facebook.com/UNIAJC" target="_blank"><br/>
-                                    <h:graphicImage url="#{resource['imagenes/social/facebook-footer.png']}" class="img-fluid" alt="Responsive image"/>
-                                </a>
-                                <a href="https://twitter.com/UNIAJC" target="_blank">
-                                    <h:graphicImage url="#{resource['imagenes/social/twitter-footer.png']}" class="img-fluid" alt="Responsive image"/>
-                                </a>
-                                <a href="https://www.youtube.com/user/UNIAJC" target="_blank">
-                                    <h:graphicImage url="#{resource['imagenes/social/youtube-footer.png']}" class="img-fluid" alt="Responsive image"/>
-                                </a>
-                            </center></div>
-                    </div>
-                </div>
-            </footer>
+         <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+                <!--fin barra de footer-->
     </h:body>
 </html>
