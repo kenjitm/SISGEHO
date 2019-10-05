@@ -8,105 +8,108 @@
         <h:outputStylesheet name="./css/estilo.css"/>
         <h:outputStylesheet name="./css/materialize-icons.css"/>
         <h:outputStylesheet name="resources/css/materialize-icons.css"/>
-       
+
         <title>Sisgeho</title>
     </h:head>
     <h:body>
-      <h:form>
-        <div class="container">
-            <div class="row" style="background-color: #0050a0">
-                <h:graphicImage url="resources/imagenes/logo-uniajc.png" class="img-fluid" alt="Responsive image"/>
-            </div>
+        <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" />  
+            <div class="container">
+                <div class="row" style="background-color: #0050a0">
+                    <h:graphicImage url="resources/imagenes/logo-uniajc.png" class="img-fluid" alt="Responsive image"/>
+                </div>
 
 
                 <!--barra de navegacion-->
-            <div class="row" id="barraNav">
-                <ul class="nav ">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Pagina Principal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active text-secondary " href="#">Login</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="row" id="barraNav">
+                    <ul class="nav ">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Pagina Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-secondary " href="#">Login</a>
+                        </li>
+                    </ul>
+                </div>
                 <!--fin barra de navegacion-->
 
                 <!--login-->
-            <div class="row">
-                <div class="card mb-3" style="max-width: 600px">
-                    <div class="row no-gutters centro">
-                        <div class="col azul">
-                            <br/>
-                            <h3>BIENVENIDO</h3>
-                            <p>proyecto de gerencia de negocios</p>
-                        </div>
+                <div class="row">
+                    <div class="card mb-3" style="max-width: 600px">
+                        <div class="row no-gutters centro">
+                            <div class="col azul">
+                                <br/>
+                                <h3>BIENVENIDO</h3>
+                                <p>proyecto de gerencia de negocios</p>
+                            </div>
 
-                        <div class="col">
-                            <div class="card-body">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <i class="material-icons">account_circle</i>
-                                        </span>
+                            <div class="col">
+                                <div class="card-body">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="material-icons">account_circle</i>
+                                            </span>
+                                        </div>
+
+
+                                        <p:inputText value="#{loginBean.usuario}" class="form-control" placeholder="Nombre de Usuario" />  
+
                                     </div>
-
-                                     
-                                    <p:inputText value="#{loginBean.usuario}" class="form-control" placeholder="Nombre de Usuario" />  
-
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <i class="material-icons">lock</i>
-                                        </span>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="material-icons">lock</i>
+                                            </span>
+                                        </div>
+                                        <p:password value="#{loginBean.password}" class="form-control" placeholder="Contraseña" />
                                     </div>
-                                    <p:password value="#{loginBean.password}" class="form-control" placeholder="Contraseña" />
-                                </div>
-                                <a href="#">¿Olvidaste tu contraseña?</a><br/><br/>
+                                    <a href="#">¿Olvidaste tu contraseña?</a><br/><br/>
 
-                                <div class="btn-group" role="group" aria-label="Third group">
-                                <h:commandButton value="Ingresar" action="#{prueba.funciona()}" class="btn btn-primary" />
-                                </div>
-                                <div class="btn-group" role="group" aria-label="Third group">
-                                <h:commandButton value="Registrarse" action="#{prueba.user()}" class="btn btn-primary"/>
+                                    <div class="btn-group" role="group" aria-label="Third group">
+                                        <h:commandButton value="Ingresar" action="#{loginBean.login()}" class="btn btn-primary" />
+                                    </div>
+                                    <div class="btn-group" role="group" aria-label="Third group">
+                                        <h:commandButton value="Registrarse" action="#{prueba.user()}" class="btn btn-primary"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!--fin login-->
             </div>
-                    <!--fin login-->
-        </div>
 
-        <footer>
-            <div class="container" style="background-color: #0050a0; color: white">
-                <div class="row">
-                    <div class="col">
-                        <h4>Address</h4>
-                        INSTITUCIÓN UNIVERSITARIA<br/>
-                        ANTONIO JOSE CAMACHO
+            <footer>
+                <div class="container" style="background-color: #0050a0; color: white">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Address</h4>
+                            INSTITUCIÓN UNIVERSITARIA<br/>
+                            ANTONIO JOSE CAMACHO
+                        </div>
+                        <div class="col">
+                            <h4>Admnistrador</h4>
+                            Email: jmondragon@admon.uniajc.edu.co<br/>
+                            Phone: 665 28 28 ext 3101 
+                        </div>
+                        <div class="col"><center>
+                                <a href="https://www.facebook.com/UNIAJC" target="_blank"><br/>
+                                    <h:graphicImage url="resources/imagenes/social/facebook-footer.png" class="img-fluid" alt="Responsive image"/>
+                                </a>
+                                <a href="https://twitter.com/UNIAJC" target="_blank">
+                                    <h:graphicImage url="resources/imagenes/social/twitter-footer.png" class="img-fluid" alt="Responsive image"/>
+                                </a>
+                                <a href="https://www.youtube.com/user/UNIAJC" target="_blank">
+                                    <h:graphicImage url="resources/imagenes/social/youtube-footer.png" class="img-fluid" alt="Responsive image"/>
+                                </a>
+                            </center></div>
                     </div>
-                    <div class="col">
-                        <h4>Admnistrador</h4>
-                        Email: jmondragon@admon.uniajc.edu.co<br/>
-                        Phone: 665 28 28 ext 3101 
-                    </div>
-                    <div class="col"><center>
-                        <a href="https://www.facebook.com/UNIAJC" target="_blank"><br/>
-                            <h:graphicImage url="resources/imagenes/social/facebook-footer.png" class="img-fluid" alt="Responsive image"/>
-                        </a>
-                        <a href="https://twitter.com/UNIAJC" target="_blank">
-                            <h:graphicImage url="resources/imagenes/social/twitter-footer.png" class="img-fluid" alt="Responsive image"/>
-                        </a>
-                        <a href="https://www.youtube.com/user/UNIAJC" target="_blank">
-                            <h:graphicImage url="resources/imagenes/social/youtube-footer.png" class="img-fluid" alt="Responsive image"/>
-                        </a>
-                    </center></div>
                 </div>
-            </div>
-        </footer>
-      </h:form>
+            </footer>
+            <h:messages globalOnly="true" />
+
+        </h:form>
     </h:body>
 </html>
 
