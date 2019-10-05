@@ -9,29 +9,24 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
-        <h:outputStylesheet name="./css/bootstrap.min.css"/>
-        <h:outputStylesheet name="./css/estilo.css"/>
-        <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="resources/css/materialize-icons.css"/>
-<<<<<<< HEAD
 
-=======
-       
->>>>>>> a2050a5ed4c35755cd5e1d65fc79aa373a12b9d2
-        <title>Crear Cuenta</title>
-    
+    <h:outputStylesheet name="./css/bootstrap.min.css"/>
+    <h:outputStylesheet name="./css/estilo.css"/>
+    <h:outputStylesheet name="./css/materialize-icons.css"/>
+    <h:outputStylesheet name="resources/css/materialize-icons.css"/>
+
+
+    <title>Crear Cuenta</title>
+
     <h:body>
         <div style="background-color: #0050a0">
             <div class="card-body" style="text-align: center">
                 <h:graphicImage name="resources/imagenes/logo-uniajc.png"/>           
             </div>                      
         </div>
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> a2050a5ed4c35755cd5e1d65fc79aa373a12b9d2
+
+
         <div style="background-color: #193A84">
             <div class="card-body"> 
                 <ul class="nav justify-content-center">
@@ -41,7 +36,6 @@ and open the template in the editor.
                 </ul>       
             </div>                      
         </div>
-<<<<<<< HEAD
 
 
         <div class="container" style="background-color: white">           
@@ -109,67 +103,65 @@ and open the template in the editor.
         </div>
     </h:body>
 </html>
-=======
-        
-        <div class="container" style="background-color: white">           
-            <div class="row mb-4">
-            
-            <div class="col-sm">
-       
-            </div>
 
-            <div class="col-sm">
-                <div class="card shadow mt-5" style="background-color: #0050a0">
-                            <div class="card-body">
-                                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                                    <h6 class="card-subtitle mb-2 text-warning">Crear Cuenta</h6>                  
-                            </div>            
-                </div> 
-                        <h:form>                                               
-                            <p:selectOneMenu id="console" value="" class="mt-3" style="width: 550px">
-                                    <f:selectItem itemLabel="Tipo de Identificación" itemValue="" />
-                                    <f:selectItem itemLabel="Cédula Ciudadanía" itemValue="CC" />
-                                    <f:selectItem itemLabel="Cédula Extranjería" itemValue="CE" />
-                                    <f:selectItem itemLabel="Sin Identificación" itemValue="NN" />
-                            </p:selectOneMenu>
-                            <div class="form-group mt-3">
-                                <p:inputText value="" class="form-control" placeholder="Identificación" required=""/>
-                            </div>                            
-                            <div class="form-group mt-2">
-                                <p:inputText value="" class="form-control" placeholder="Nombres" required=""/>
-                            </div>
-                            <div class="form-group mt-2">
-                                <p:inputText value="" class="form-control" placeholder="Apellidos" required=""/>
-                            </div>
-                            <div class="form-group mt-2">
-                                <p:inputText value="" class="form-control" placeholder="No. Contacto" required=""/>
-                            </div>
-                            <div class="form-group mt-2">
-                                <p:inputText value="" class="form-control" placeholder="Email" required=""/>
-                            </div>                            
-                            <div class="form-group mt-2">
-                                <p:inputText value="" class="form-control" placeholder="Usuario" required=""/>
-                            </div>
-                            <div class="form-group mt-2">
-                                <p:inputText value="" class="form-control" type="password" placeholder="Contraseña" required=""/>
-                            </div>
-                            <p:separator/>
-                            <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Crear Cuenta" class="btn btn-warning"/>
-                            </div>                                                      
-                        </h:form>
+<div class="container" style="background-color: white">           
+    <div class="row mb-4">
+
+        <div class="col-sm">
+
+        </div>
+
+        <div class="col-sm">
+            <div class="card shadow mt-5" style="background-color: #0050a0">
+                <div class="card-body">
+                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                    <h6 class="card-subtitle mb-2 text-warning">Crear Cuenta</h6>                  
+                </div>            
+            </div> 
+            <h:form>                                               
+                <p:selectOneMenu id="console" value="" class="mt-3" style="width: 550px">
+                    <f:selectItem itemLabel="Tipo de Identificación" itemValue="" />
+                    <f:selectItem itemLabel="Cédula Ciudadanía" itemValue="CC" />
+                    <f:selectItem itemLabel="Cédula Extranjería" itemValue="CE" />
+                    <f:selectItem itemLabel="Sin Identificación" itemValue="NN" />
+                </p:selectOneMenu>
+                <div class="form-group mt-3">
+                    <p:inputText value="" class="form-control" placeholder="Identificación" required=""/>
+                </div>                            
+                <div class="form-group mt-2">
+                    <p:inputText value="" class="form-control" placeholder="Nombres" required=""/>
                 </div>
-                <div class="col-sm">
-       
-            </div>
-            </div>
-            
+                <div class="form-group mt-2">
+                    <p:inputText value="" class="form-control" placeholder="Apellidos" required=""/>
+                </div>
+                <div class="form-group mt-2">
+                    <p:inputText value="" class="form-control" placeholder="No. Contacto" required=""/>
+                </div>
+                <div class="form-group mt-2">
+                    <p:inputText value="" class="form-control" placeholder="Email" required=""/>
+                </div>                            
+                <div class="form-group mt-2">
+                    <p:inputText value="" class="form-control" placeholder="Usuario" required=""/>
+                </div>
+                <div class="form-group mt-2">
+                    <p:inputText value="" class="form-control" type="password" placeholder="Contraseña" required=""/>
+                </div>
+                <p:separator/>
+                <div class="btn-group" role="group" aria-label="Third group">
+                    <h:commandButton value="Crear Cuenta" class="btn btn-warning"/>
+                </div>                                                      
+            </h:form>
         </div>
-        <div style="background-color: #193A84">
-                <div class="card-body text-white" style="text-align: center">
-                    <p>Institución Universitaria Antonio José Camacho.</p>         
-                </div>                               
+        <div class="col-sm">
+
         </div>
-    </h:body>
+    </div>
+
+</div>
+<div style="background-color: #193A84">
+    <div class="card-body text-white" style="text-align: center">
+        <p>Institución Universitaria Antonio José Camacho.</p>         
+    </div>                               
+</div>
+</h:body>
 </html>
->>>>>>> a2050a5ed4c35755cd5e1d65fc79aa373a12b9d2
