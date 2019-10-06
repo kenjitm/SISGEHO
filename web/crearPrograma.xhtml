@@ -15,7 +15,7 @@ and open the template in the editor.
         <h:outputStylesheet name="./css/materialize-icons.css"/>
         <h:outputStylesheet name="resources/css/materialize-icons.css"/>
        
-        <title>Gestión Usuarios</title>
+        <title>Crear Programa</title>
     </h:head>
     <h:body>
         <div style="background-color: #0050a0">
@@ -28,10 +28,7 @@ and open the template in the editor.
             <div class="card-body"> 
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#{prueba.home()}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-warning" href="#">Gestión Usuarios</a>
+                        <a class="nav-link text-white" href="#{loginBean.home()}">Inicio</a>
                     </li>
                 </ul>       
             </div>                      
@@ -48,65 +45,52 @@ and open the template in the editor.
                 <div class="card shadow mt-5" style="background-color: #0050a0">
                             <div class="card-body">
                                     <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Usuarios</h6>                  
+                                    <h6 class="card-subtitle mb-2 text-warning">Crear Cuenta</h6>                  
                             </div>            
                 </div> 
-                        <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación del usuario en el campo!</h6>
-                        <h:form>
-                            <div class="input-group mt-2">                                    
-                                <p:inputText class="form-control" placeholder="Ingrese la Identificación"/>
-                                    <div>                                        
-                                        <h:commandButton value="Consultar" class="btn btn-primary"/>
-                                    </div>
-                            </div>
-                                
-                            <p:separator class="mt-4"/>
-                            
-                            <p:selectOneMenu id="console" class="mt-3" style="width: 550px">
+                        <h:form>                                               
+                            <p:selectOneMenu id="console" value="" class="mt-3" style="width: 550px">
                                     <f:selectItem itemLabel="Tipo de Identificación" itemValue="" />
                                     <f:selectItem itemLabel="Cédula Ciudadanía" itemValue="CC" />
                                     <f:selectItem itemLabel="Cédula Extranjería" itemValue="CE" />
                                     <f:selectItem itemLabel="Sin Identificación" itemValue="NN" />
                             </p:selectOneMenu>
                             <div class="form-group mt-3">
-                                <p:inputText value="#{registroUsuarioBean.id}" class="form-control" placeholder="Identificación" required=""/>
+                                <p:inputText value="" class="form-control" placeholder="Identificación" required=""/>
                             </div>                            
                             <div class="form-group mt-2">
-                                <p:inputText value="#{registroUsuarioBean.nombre}" class="form-control" placeholder="Nombres" required=""/>
+                                <p:inputText value="" class="form-control" placeholder="Nombres" required=""/>
                             </div>
                             <div class="form-group mt-2">
-                                <p:inputText value="#{registroUsuarioBean.apellido}" class="form-control" placeholder="Apellidos" required=""/>
+                                <p:inputText value="" class="form-control" placeholder="Apellidos" required=""/>
                             </div>
                             <div class="form-group mt-2">
-                                <p:inputText class="form-control" placeholder="No. Contacto" required=""/>
+                                <p:inputText value="" class="form-control" placeholder="No. Contacto" required=""/>
                             </div>
                             <div class="form-group mt-2">
-                                <p:inputText value="#{registroUsuarioBean.usuario}" type="text" class="form-control" placeholder="Email" required=""/>
+                                <p:inputText value="" class="form-control" placeholder="Email" required=""/>
                             </div>                            
-                            <p:selectOneMenu value="#{registroUsuarioBean.rol}" style="width: 550px">
-                                <f:selectItem itemLabel="Tipo de Rol" itemDisabled="" />
-                                    <f:selectItem itemLabel="Docente" itemValue="ROLE_DOCENTE" />
-                                    <f:selectItem itemLabel="Coordinación Academica" itemValue="ROLE_COORDINACION" />
-                                    <f:selectItem itemLabel="Administrador" itemValue="ROLE_ADMIN" />
-                            </p:selectOneMenu>                            
+                            <div class="form-group mt-2">
+                                <p:inputText value="" class="form-control" placeholder="Usuario" required=""/>
+                            </div>
+                            <div class="form-group mt-2">
+                                <p:inputText value="" class="form-control" type="password" placeholder="Contraseña" required=""/>
+                            </div>
                             <p:separator/>
                             <div class="btn-group" role="group" aria-label="Third group">
-                                <h:commandButton value="Nuevo Usuario" class="btn btn-dark" action="#{registroUsuarioBean.registrarse()}"/>
-                            </div>
-                            <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Modificar" class="btn btn-dark"/>
-                            </div>
-                            <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Deshabilitar" class="btn btn-danger"/>
-                            </div>
-                            
+                                <h:commandButton value="" action="#{crearProgramaBean.crear()}/>
+                            </div>                                                      
                         </h:form>
                 </div>
+                <div class="col-sm">
+       
             </div>
+            </div>
+            
         </div>
         <div style="background-color: #193A84">
                 <div class="card-body text-white" style="text-align: center">
-                    <p>Institución Universitaria Antonio José Camacho.</p>
+                    <p>Institución Universitaria Antonio José Camacho.</p>         
                 </div>                               
         </div>
     </h:body>

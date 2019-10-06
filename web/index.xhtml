@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
@@ -16,7 +18,7 @@
             <p:growl id="growl" showDetail="true" sticky="true" />  
             <div class="container">
                 <div class="row" style="background-color: #0050a0">
-                    <h:graphicImage url="resources/imagenes/logo-uniajc.png" class="img-fluid" alt="Responsive image"/>
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>
                 </div>
 
 
@@ -70,7 +72,7 @@
                                         <h:commandButton value="Ingresar" action="#{loginBean.login()}" class="btn btn-primary" />
                                     </div>
                                     <div class="btn-group" role="group" aria-label="Third group">
-                                        <h:commandButton value="Registrarse" action="#{prueba.user()}" class="btn btn-primary"/>
+                                        <h:commandButton value="Registrarse" action="#{loginBean.newUser()}" class="btn btn-primary"/>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +82,7 @@
                 <!--fin login-->
             </div>
 
-            <footer>
+          <!--  <footer>
                 <div class="container" style="background-color: #0050a0; color: white">
                     <div class="row">
                         <div class="col">
@@ -106,7 +108,10 @@
                             </center></div>
                     </div>
                 </div>
-            </footer>
+            </footer>-->
+          <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+                <!--fin barra de footer-->
             <h:messages globalOnly="true" />
 
         </h:form>

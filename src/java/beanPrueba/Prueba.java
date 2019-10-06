@@ -46,7 +46,7 @@ public class Prueba {
     
     
     public String user(){
-        return "gestionUsuario";
+        return "newUser";
     }
     
     public String home(){

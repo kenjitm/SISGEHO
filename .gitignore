@@ -23,6 +23,12 @@ nb-configuration.xml
 *.lock
 src/conf/persistence.xml
 Tomcat 8.5/logs/*
+
+nbproject/private/private.xml
+
 web/WEB-INF/glassfish-resources.xml
 nbproject/genfiles.properties
 nbproject/ant-deploy.xml
+nbproject/*
+
+nbproject/project.properties
