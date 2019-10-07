@@ -20,7 +20,7 @@ and open the template in the editor.
     <h:body>
         <div style="background-color: #0050a0">
             <div class="card-body" style="text-align: center">
-                <h:graphicImage name="resources/imagenes/logo-uniajc.png"/>           
+                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>        
             </div>                      
         </div>
         
@@ -78,7 +78,7 @@ and open the template in the editor.
                             </div>
                             <p:separator/>
                             <div class="btn-group" role="group" aria-label="Third group">
-                                <h:commandButton value="" action="#{crearProgramaBean.crear()}/>
+                                <h:commandButton value="" action="#{crearProgramaBean.crear()}"/>
                             </div>                                                      
                         </h:form>
                 </div>
