@@ -16,8 +16,8 @@ and open the template in the editor.
         <h:outputStylesheet name="./css/estilo.css"/>
         <h:outputStylesheet name="./css/materialize-icons.css"/>
         <h:outputStylesheet name="#{resource['css/materialize-icons.css']}"/>
-       
-        <title>Registro Usuarios</title>
+
+        <title>Grupoos</title>
     </h:head>
 
     <h:body>
@@ -56,26 +56,26 @@ and open the template in the editor.
                     </div> 
                     <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación del grupo en el campo!</h6>
                     <h:form>                                               
-             
+
                         <div class="input-group mt-2"> 
                             <p:inputText value="" class="form-control" placeholder="Identificación del Grupo" required=""/>
-                             <div>                                        
-                                        <h:commandButton value="Consultar" class="btn btn-primary"/>
-                             </div>
+                            <div>                                        
+                                <h:commandButton value="Consultar" action="#{grupoBean.consultarGruposById()}" class="btn btn-primary"/>
+                            </div>
                         </div>                            
-                        
+
                         <p:separator class="mt-4"/>
-                         
+
                         <div class="form-group mt-2">
-                            <p:inputText value="" class="form-control" placeholder="Identificacion del grupo" required=""/>
+                            <p:inputText value="#{grupoBean.id}" class="form-control" placeholder="Identificacion del grupo" required=""/>
                         </div>
                         <div class="form-group mt-2">
-                            <p:inputText value="" class="form-control" placeholder="Descripcion" required=""/>
+                            <p:inputText value="#{grupoBean.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
                         </div>
-                        
+
                         <p:separator/>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Crear grupo" class="btn btn-warning" action="#{registroUsuarioBean.registrarse()}"/>
+                            <h:commandButton value="#{grupoBean.guardarGrupo()}" class="btn btn-warning" action="#{registroUsuarioBean.registrarse()}"/>
                         </div>
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Modificar" class="btn btn-dark"/>
@@ -83,6 +83,22 @@ and open the template in the editor.
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="eliminar" class="btn btn-danger"/>
                         </div>
+
+                        <p:dataTable var="grupo" value="#{grupoBean.listaGrupos}">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{grupo.id}" />
+                            </p:column>
+
+                            <p:column headerText="descripcion">
+                                <h:outputText value="#{grupo.descripcion}" />
+                            </p:column>
+
+                            <p:column headerText="descripcion Asginatura">
+                                <h:outputText value="#{grupo.rowidAsignatura.descripcion}" />
+                            </p:column>
+                        </p:dataTable>
+
+
                     </h:form>
                 </div>
                 <div class="col-sm">
@@ -91,8 +107,16 @@ and open the template in the editor.
             </div>
 
         </div>
-       <!--barra de footer-->
+
+
+
+
+
+
+
+
+        <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
-                <!--fin barra de footer-->
+        <!--fin barra de footer-->
     </h:body>
 </html>
