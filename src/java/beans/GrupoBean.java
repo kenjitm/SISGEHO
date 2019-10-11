@@ -120,7 +120,7 @@ public class GrupoBean implements Serializable {
     }
 
     public void guardarGrupo() {
-        if (!descripcion.isEmpty() && asignatura != null) {
+        if (asignatura != null) {
             Grupos grupo = new Grupos();
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
