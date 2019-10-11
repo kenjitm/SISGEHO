@@ -10,20 +10,20 @@
         <h:outputStylesheet name="./css/materialize-icons.css"/>
         <h:outputStylesheet name="resources/css/materialize-icons.css"/>
        
-       
-    
-        <h:form>  
+           
+        <h:form> 
+            
     <p:growl id="messages"/>
  
     <p:menubar>
-        <p:submenu style="color:white" label="Seguridad" icon="pi pi-file">
+        <p:submenu style="background-color: white" label="Seguridad">
             <p:menuitem value="Usuarios" url="#" />
         </p:submenu>
  
-        <p:submenu label="Parametrizaciòn" icon="pi pi-pencil">
+        <p:submenu label="Parametrizaciòn" style="background-color: white">
             <p:menuitem value="Materia" url="#" icon="pi pi-angle-double-left" />
             <p:menuitem value="Grupo" url="#" icon="pi pi-angle-double-right" />
-            <p:menuitem value="Salones" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Salones" url="#{grupoBean.salones()}" icon="pi pi-angle-double-left" />
             <p:menuitem value="Horas" url="#" icon="pi pi-angle-double-right" />
             <p:menuitem value="Jornada" url="#" icon="pi pi-angle-double-left" />
             <p:menuitem value="Sede" url="#" icon="pi pi-angle-double-right" />
@@ -31,11 +31,11 @@
             <p:menuitem value="Decanatura" url="#" icon="pi pi-angle-double-right" />
         </p:submenu>
  
-        <p:submenu label="Reportes" icon="pi pi-question">
+        <p:submenu label="Reportes" style="background-color: white">
             <p:menuitem value="Reportes" url="#" />
         </p:submenu>
  
-        <p:submenu label="Actions" icon="pi pi-cog">
+        <p:submenu label="Actions" style="background-color: white">
             <p:submenu label="Ajax" icon="pi pi-refresh">
                 <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" update="messages"/>
                 <p:menuitem value="Update" action="#{menuView.update}" icon="pi pi-refresh" update="messages"/>
@@ -45,10 +45,10 @@
             </p:submenu>
         </p:submenu>
  
-        <f:facet name="options">
-            
-            <p:commandButton type="button" value="Salir" icon="pi pi-home" />
+        <f:facet name="options">            
+            <p:commandButton value="Salir" action="#{loginBean.home()}" icon="pi pi-home" />
         </f:facet>
     </p:menubar>
 </h:form>
+        
 </ui:composition>
