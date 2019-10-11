@@ -106,7 +106,7 @@ public class Sede implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Sede[ id=" + id + " ]";
+        return ubicacion;
     }
     
 }

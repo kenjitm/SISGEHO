@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -39,14 +41,16 @@ public class Recursos implements Serializable {
     @Column(name = "Id")
     private Integer id;
     @Column(name = "Tipo")
-    private Integer tipo;
+    @Enumerated(value = EnumType.ORDINAL)
+    private TipoRecurso tipo;
     @Lob
     @Column(name = "Descripcion_tipo")
-    private String descripciontipo;
+    @Enumerated(value = EnumType.STRING)
+    private TipoRecurso descripciontipo;
     @Column(name = "Nro")
     private String nro;
     @Column(name = "Disponibilidad")
-    private Integer disponibilidad;
+    private Boolean disponibilidad;
     @JoinColumn(name = "rowid_horarios", referencedColumnName = "rowid")
     @ManyToOne
     private Horario rowidHorarios;
@@ -69,19 +73,19 @@ public class Recursos implements Serializable {
         this.id = id;
     }
 
-    public Integer getTipo() {
+    public TipoRecurso getTipo() {
         return tipo;
     }
 
-    public void setTipo(Integer tipo) {
+    public void setTipo(TipoRecurso tipo) {
         this.tipo = tipo;
     }
 
-    public String getDescripciontipo() {
+    public TipoRecurso getDescripciontipo() {
         return descripciontipo;
     }
 
-    public void setDescripciontipo(String descripciontipo) {
+    public void setDescripciontipo(TipoRecurso descripciontipo) {
         this.descripciontipo = descripciontipo;
     }
 
@@ -93,11 +97,11 @@ public class Recursos implements Serializable {
         this.nro = nro;
     }
 
-    public Integer getDisponibilidad() {
+    public Boolean getDisponibilidad() {
         return disponibilidad;
     }
 
-    public void setDisponibilidad(Integer disponibilidad) {
+    public void setDisponibilidad(Boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
 
@@ -141,5 +145,5 @@ public class Recursos implements Serializable {
     public String toString() {
         return "entity.Recursos[ id=" + id + " ]";
     }
-    
+
 }

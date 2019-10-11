@@ -6,11 +6,14 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -48,10 +51,12 @@ public class Horario implements Serializable {
     private Date hora;
     @Lob
     @Column(name = "Dia")
-    private String dia;
+    @Enumerated(value = EnumType.STRING)
+    private TipoDia dia;
     @Lob
     @Column(name = "Frecuencia")
-    private String frecuencia;
+    @Enumerated(value = EnumType.STRING)
+    private TipoFrecuencia frecuencia;
     @Column(name = "rowid")
     private String rowid;
     @JoinColumn(name = "rowid_asignatura", referencedColumnName = "rowid")
@@ -83,19 +88,19 @@ public class Horario implements Serializable {
         this.hora = hora;
     }
 
-    public String getDia() {
+    public TipoDia getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public void setDia(TipoDia dia) {
         this.dia = dia;
     }
 
-    public String getFrecuencia() {
+    public TipoFrecuencia getFrecuencia() {
         return frecuencia;
     }
 
-    public void setFrecuencia(String frecuencia) {
+    public void setFrecuencia(TipoFrecuencia frecuencia) {
         this.frecuencia = frecuencia;
     }
 
@@ -146,7 +151,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Horario[ id=" + id + " ]";
+        return dia.getLabel() + " | " + (new SimpleDateFormat("HH:mm").format(hora)) + " | " + frecuencia.getLabel() /*+ " | " + rowidAsignatura*/;
     }
-    
+
 }
