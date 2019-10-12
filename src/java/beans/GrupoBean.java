@@ -88,6 +88,9 @@ public class GrupoBean implements Serializable {
     public String home() {
         return "index.xhtml";
     }
+    public String irGrupo() {
+        return "gestionGrupos.xhtml";
+    }
 
     public void consultarGrupos() {
         EntityManagerFactory emf
