@@ -26,9 +26,7 @@ and open the template in the editor.
                 <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}"/>           
             </div>                      
         </div>
-
-
-
+        
         <!--barra de navegacion-->
         <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>
         <!--fin barra de navegacion-->
@@ -36,30 +34,18 @@ and open the template in the editor.
 
         <div class="container" style="background-color: white">           
             <div class="row mb-4">
-
-                <div class="col-sm-4">
+                
+                <div class="col-sm-1">
 
                 </div>
 
-                <div class="col-sm">
+                <div class="col-sm-4">
                     <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
-                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestionar Grupos</h6>                  
+                            <h4 class="card-title text-white">Registro de Grupos</h4>                
                         </div>            
                     </div> 
-                    <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación del grupo en el campo!</h6>
                     <h:form>                                               
-
-                        <div class="input-group mt-2"> 
-                            <p:inputText value="" class="form-control" placeholder="Identificación del Grupo" required=""/>
-                            <div>                                        
-                                <h:commandButton value="Consultar" action="#{grupoBean.consultarGruposById()}" class="btn btn-primary"/>
-                            </div>
-                        </div>                            
-
-                        <p:separator class="mt-4"/>
-
                         <div class="form-group mt-2">
                             <p:inputText value="#{grupoBean.id}" class="form-control" placeholder="Identificacion del grupo" required=""/>
                         </div>
@@ -71,13 +57,16 @@ and open the template in the editor.
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Registrar" class="btn btn-warning" action="#{grupoBean.guardarGrupo()}"/>
                         </div>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Modificar" class="btn btn-dark"/>
-                        </div>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="eliminar" class="btn btn-danger"/>
-                        </div>
+                    </h:form>                    
+                </div>
 
+                <div class="col-sm-4">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Lista de grupos</h4>                 
+                        </div>            
+                    </div> 
+                    <h:form>  
                         <p:dataTable var="grupo" value="#{grupoBean.listaGrupos}">
                             <p:column headerText="Id">
                                 <h:outputText value="#{grupo.id}" />
@@ -86,29 +75,21 @@ and open the template in the editor.
                             <p:column headerText="descripcion">
                                 <h:outputText value="#{grupo.descripcion}" />
                             </p:column>
-
-                            <p:column headerText="descripcion Asginatura">
-                                <h:outputText value="#{grupo.rowidAsignatura.descripcion}" />
+                            <p:column headerText="Opciones">
+                                <h:commandButton value="Editar" class="btn btn-warning" />
+                                <h:commandButton value="Eliminar" class="btn btn-danger"/>
                             </p:column>
                         </p:dataTable>
-
-
                     </h:form>
                 </div>
-                <div class="col-sm-4">
+                
+                <div class="col-sm-1">
 
                 </div>
+                
             </div>
 
         </div>
-
-
-
-
-
-
-
-
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

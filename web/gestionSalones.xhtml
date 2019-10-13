@@ -130,13 +130,7 @@
                         <p:column headerText="Frecuencia">
                             #{r.rowidHorarios.frecuencia}
                         </p:column>
-                        <p:column headerText="Opciones">
-                            <h:form>
-                                <!-- Integrar una ventana modal -->
-                                <h:commandButton value="Editar" class="btn btn-warning" />
-                                <h:commandButton value="Eliminar" class="btn btn-danger" action="#{recursoBean.eliminarRecurso(r.id)}"/>
-                            </h:form>
-                        </p:column>
+                        
                     </p:dataTable>
                 </div>
                 <div class="col-sm">
