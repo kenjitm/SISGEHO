@@ -52,7 +52,9 @@ public class HorarioBean {
     public HorarioBean() {
         horario = new Horario();
     }
-
+    public String irHorario() {
+        return "horarios.xhtml";
+    }
     public List<Horario> obtenerHorarios() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");

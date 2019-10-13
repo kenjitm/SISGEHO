@@ -29,28 +29,70 @@
             <div class="row mb-4">
 
                 <div class="col-sm">
-
+<h2>Listado de salones</h2>
+                    <p:dataTable class="bordered centered highlight" value="#{recursoBean.obtenerRecursos()}" var="r">
+                        <p:column headerText="Id">
+                            #{r.id}
+                        </p:column>
+                        <p:column headerText="Sede">
+                            #{r.rowidSede.ubicacion}
+                        </p:column>
+                        <p:column headerText="Tipo Recurso">
+                            #{r.descripciontipo}
+                        </p:column>
+                        <p:column headerText="Disponibilidad">
+                            #{(r.disponibilidad)? "Disponible" : "No disponible"}
+                        </p:column>
+                        <p:column headerText="Número">
+                            #{r.nro}
+                        </p:column>
+                        <p:column headerText="Frecuencia">
+                            #{r.rowidHorarios.frecuencia}
+                        </p:column>
+                        <p:column headerText="Opciones">
+                            <h:form>
+                                <!-- Integrar una ventana modal -->
+                                <h:commandButton value="Editar" class="btn btn-warning" />
+                                <h:commandButton value="Eliminar" class="btn btn-danger" action="#{recursoBean.eliminarRecurso(r.id)}"/>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
                 </div>
 
                 <div class="col-sm">
                     <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestión Salones</h6>                  
+                            <h6 class="card-subtitle mb-2 text-warning">Gestión Periodos</h6>                  
                         </div>            
                     </div>
 
-                    <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación del salón en el campo!</h6>
-                    <h:form>
-                        <div class="input-group mt-2"> 
-                            <p:inputText value="#{recursoBean.id}" class="form-control" placeholder="Identificación del salón" required=""/>
-                            <div>                                        
-                                <h:commandButton value="Consultar" action="#{recursoBean.buscar(recursoBean.id)}" class="btn btn-primary"/>
-                            </div>
-                        </div>
-                    </h:form>
+                   
 
-                    
+                    <!-- Separar en vista de horario -->
+                    <h2>Ingresar un horario</h2>
+                    <h:form>
+                        <div class="form-group mt-3">
+                            <p:inputText value="#{horarioBean.horario.id}" class="form-control" placeholder="ID" required="true" type="number"/>
+                        </div>
+                        <p:selectOneMenu value="#{horarioBean.horario.dia}" class="mt-3" style="width: 550px">
+                            <f:selectItem itemLabel="Dia" itemDisabled="true"  />
+                            <f:selectItems value="#{horarioBean.tipoDias}" var="tipo"
+                                           itemValue="#{tipo}" itemLabel="#{tipo.label}" />
+                        </p:selectOneMenu>
+                        <div class="form-group mt-3">
+                            <p:calendar id="time" value="#{horarioBean.horario.hora}" timeZone="America/Bogota" pattern="HH:mm" timeOnly="true"  placeholder="Hora">
+                            </p:calendar>
+                        </div>
+                        <p:selectOneMenu value="#{horarioBean.horario.frecuencia}" class="mt-3" style="width: 550px">
+                            <f:selectItem itemLabel="Frecuencia" itemDisabled="true"  />
+                            <f:selectItems value="#{horarioBean.tipoFrecuencias}" var="tipo"
+                                           itemValue="#{tipo}" itemLabel="#{tipo.label}" />
+                        </p:selectOneMenu>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Horario" class="btn btn-warning" action="#{horarioBean.guardarHorario()}"/>
+                        </div>                                                      
+                    </h:form>
                     <p:separator></p:separator>
 
 
@@ -87,34 +129,7 @@
                         </div>                                                      
                         <p:separator></p:separator>
                     </h:form>
-                    <h2>Listado de salones</h2>
-                    <p:dataTable class="bordered centered highlight" value="#{recursoBean.obtenerRecursos()}" var="r">
-                        <p:column headerText="Id">
-                            #{r.id}
-                        </p:column>
-                        <p:column headerText="Sede">
-                            #{r.rowidSede.ubicacion}
-                        </p:column>
-                        <p:column headerText="Tipo Recurso">
-                            #{r.descripciontipo}
-                        </p:column>
-                        <p:column headerText="Disponibilidad">
-                            #{(r.disponibilidad)? "Disponible" : "No disponible"}
-                        </p:column>
-                        <p:column headerText="Número">
-                            #{r.nro}
-                        </p:column>
-                        <p:column headerText="Frecuencia">
-                            #{r.rowidHorarios.frecuencia}
-                        </p:column>
-                        <p:column headerText="Opciones">
-                            <h:form>
-                                <!-- Integrar una ventana modal -->
-                                <h:commandButton value="Editar" class="btn btn-warning" />
-                                <h:commandButton value="Eliminar" class="btn btn-danger" action="#{recursoBean.eliminarRecurso(r.id)}"/>
-                            </h:form>
-                        </p:column>
-                    </p:dataTable>
+                    
                 </div>
                 <div class="col-sm">
 
