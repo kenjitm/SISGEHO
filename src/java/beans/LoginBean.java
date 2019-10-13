@@ -17,7 +17,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import utils.JpaUtil;
 import utils.SessionUtils;
 
 /**
@@ -31,8 +30,9 @@ public class LoginBean implements Serializable {
     /**
      * Creates a new instance of LoginBean
      */
-    String usuario;
-    String password;
+    private String usuario;
+    private String password;    
+    
     private SessionUtils session;
 
     public String getUsuario() {
@@ -53,9 +53,17 @@ public class LoginBean implements Serializable {
 
     public LoginBean() {
     }
-        
-    public String home(){
+
+    public String home() {
         return "index.xhtml";
+    }
+
+    public String recoverPassword() {
+        return "recuperarPassword.xhtml";
+    }
+
+    public String newUser() {
+        return "newUser";
     }
 
     public String login() {
@@ -97,9 +105,5 @@ public class LoginBean implements Serializable {
         }
 
     }
-    
-    public String newUser (){
-      return "newUser";
-    }
-    
+
 }
