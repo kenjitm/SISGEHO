@@ -63,9 +63,101 @@ public class CrearProgramaBean implements Serializable {
         this.password = password;
     }
 
-    public CrearProgramaBean() {
+    public SessionUtils getSession() {
+        return session;
     }
 
+    public void setSession(SessionUtils session) {
+        this.session = session;
+    }
+
+    public String getDescripcionPrograma() {
+        return descripcionPrograma;
+    }
+
+    public void setDescripcionPrograma(String descripcionPrograma) {
+        this.descripcionPrograma = descripcionPrograma;
+    }
+
+    public Pensum getPensum() {
+        return pensum;
+    }
+
+    public void setPensum(Pensum pensum) {
+        this.pensum = pensum;
+    }
+
+    public String getDescripcionTipo() {
+        return descripcionTipo;
+    }
+
+    public void setDescripcionTipo(String descripcionTipo) {
+        this.descripcionTipo = descripcionTipo;
+    }
+
+    public String getModalidad() {
+        return modalidad;
+    }
+
+    public void setModalidad(String modalidad) {
+        this.modalidad = modalidad;
+    }
+
+    public String getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getRegistroCalificado() {
+        return registroCalificado;
+    }
+
+    public void setRegistroCalificado(String registroCalificado) {
+        this.registroCalificado = registroCalificado;
+    }
+
+    public String getSnies() {
+        return snies;
+    }
+
+    public void setSnies(String snies) {
+        this.snies = snies;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
+    public String irPrograma() {
+        return "crearPrograma.xhtml";
+    }
+    
+    
+    
     public void crear() {
         Programa programa = new Programa();
         if (!descripcionPrograma.isEmpty()) {
