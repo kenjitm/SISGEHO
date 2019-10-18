@@ -5,8 +5,7 @@
  */
 package beans;
 
-import entity.Recursos;
-import entity.TipoRecurso;
+import entity.Asignaturas;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -21,71 +20,49 @@ import javax.persistence.TypedQuery;
  */
 @ManagedBean
 @RequestScoped
-public class RecursoBean {
+public class AsignaturaBean {
 
-    private Recursos recurso;
-    private Integer id;
+    private Asignaturas asignatura;
 
-    public TipoRecurso[] getTipoRecursos() {
-        return TipoRecurso.values();
+    public AsignaturaBean() {
+        asignatura = new Asignaturas();
     }
 
-    public Recursos getRecurso() {
-        return recurso;
+    public Asignaturas getAsignatura() {
+        return asignatura;
     }
 
-    public void setRecurso(Recursos recurso) {
-        this.recurso = recurso;
+    public void setAsignatura(Asignaturas asignatura) {
+        this.asignatura = asignatura;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public RecursoBean() {
-        recurso = new Recursos();
-    }
-
-    public String home() {
-        return "index.xhtml";
-    }
-
-    public String salones(){
-        return "gestionSalones.xhtml";
-    }
-
-    public List<Recursos> obtenerRecursos() {
+    public List<Asignaturas> obtenerAsignaturas() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Recursos> q = em.createNamedQuery("Recursos.findAll", Recursos.class);
+        TypedQuery<Asignaturas> q = em.createNamedQuery("Asignaturas.findAll", Asignaturas.class);
         return q.getResultList();
     }
 
-    public Recursos buscarRecursoById(Integer id) {
+    public Asignaturas buscarAsignaturaById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        recurso = em.find(Recursos.class, id);
-        return recurso;
+        asignatura = em.find(Asignaturas.class, id);
+        return asignatura;
     }
 
-    public void guardarRecurso() {
+    public void guardarAsignatura() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        recurso.setDescripciontipo(recurso.getTipo());
         em.getTransaction().begin();
-        em.persist(recurso);
+        em.persist(asignatura);
         em.getTransaction().commit();
-        recurso = new Recursos();
+        asignatura = new Asignaturas();
     }
 
-    public void editarRecurso(Recursos salon) {
+    public void editarAsignatura(Asignaturas salon) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
@@ -94,11 +71,11 @@ public class RecursoBean {
         em.getTransaction().commit();
     }
 
-    public void eliminarRecurso(Integer id) {
+    public void eliminarAsignatura(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        Recursos salon = em.find(Recursos.class, id);
+        Asignaturas salon = em.find(Asignaturas.class, id);
         em.getTransaction().begin();
         em.remove(salon);
         em.getTransaction().commit();

@@ -12,7 +12,11 @@ package entity;
 public enum TipoRecurso {
 
     SALON("SALÓN"),
-    SALA("SALA");
+    SALA("SALA"),
+    AUDITORIO("AUDITORIO"),
+    LABORATORIO_FISICA("LABORATORIO DE FÍSICA"),
+    LABORATORIO_ELECTRONICA("LABORATORIO DE ELECTRÓNICA"),
+    LABORATORIO("LABORATORIO");
 
     private final String label;
 

@@ -16,7 +16,7 @@ public final class SMTPConfiguration {
     
     public static final String SMTP_SERVER = "smtp.gmail.com";
     public static final String EMAIL_FROM = "sisgeho.no.replay@gmail.com";
-    public static final String PASSWORD = "wdmhhvqvupjfgdqv";
+    public static final String PASSWORD = "jhktzjhrarrlmjmv";
     public static final String EMAIL_SUBJECT = "Recuperación de contraseña. No contestar!";
     public static final String REAL_PATH = ((ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext()).getRealPath("/");
     
