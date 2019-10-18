@@ -5,14 +5,17 @@
  */
 package beans;
 
+import entity.Asignaturas;
 import entity.TipoId;
 import entity.TipoRol;
 import entity.Usuario;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -21,7 +24,7 @@ import javax.persistence.Persistence;
 @ManagedBean
 @RequestScoped
 public class RegistroUsuarioBean {
-
+    private Usuario usuarios;
     private Integer id;
     private TipoId tipoId;
     private String nombre;
@@ -143,5 +146,14 @@ public class RegistroUsuarioBean {
         em.getTransaction().commit();
         return "index";
     }
-
+public List<Usuario>Usuarios() {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Usuario> q = em.createNamedQuery("Usuario.findAll", Usuario.class);
+        return q.getResultList();
+    }
+public String irUsuarios(){
+    return "gestionUsuario.xhtml";
+}
 }
