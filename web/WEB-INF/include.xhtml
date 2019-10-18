@@ -3,14 +3,14 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+   >
     
-        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+       <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
         <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="resources/css/materialize-icons.css"/>
+        <h:outputStylesheet name="#{resource['css/materialize-icons.css']}"/>
        
-           
         <h:form> 
             
     <p:growl id="messages"/>
@@ -24,10 +24,11 @@
             <p:menuitem value="Materia" url="#" icon="pi pi-angle-double-left" />
             <p:menuitem value="Grupo" url="#{grupoBean.irGrupo()}" icon="pi pi-angle-double-right" />
             <p:menuitem value="Salones" url="#{recursoBean.salones()}" icon="pi pi-angle-double-left" />
-            <p:menuitem value="Horas" url="#" icon="pi pi-angle-double-right" />
+            <p:menuitem value="Horas" url="#{horarioBean.irHorario()}" icon="pi pi-angle-double-right" />
             <p:menuitem value="Jornada" url="#" icon="pi pi-angle-double-left" />
             <p:menuitem value="Sede" url="#{sedeBean.sedes()}" icon="pi pi-angle-double-right" />
-            <p:menuitem value="Programas" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Programas" url="#{crearProgramaBean.irPrograma()}" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Periodos" url="#{beanPeriodo.irPeriodos()}" icon="pi pi-angle-double-left" />
             <p:menuitem value="Decanatura" url="#" icon="pi pi-angle-double-right" />
         </p:submenu>
  
@@ -48,7 +49,7 @@
         <f:facet name="options">            
             <p:commandButton value="Salir" action="#{loginBean.home()}" icon="pi pi-home" />
         </f:facet>
-    </p:menubar>
+    </p:menubar> 
 </h:form>
         
 </ui:composition>

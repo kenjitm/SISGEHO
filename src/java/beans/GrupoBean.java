@@ -40,7 +40,6 @@ public class GrupoBean implements Serializable {
     private List<Grupos> listaGrupos = new ArrayList<>();
     private List<Asignaturas> listaAsignaturas = new ArrayList<>();
 
-    
     public String getDescripcion() {
         return descripcion;
     }
@@ -83,11 +82,13 @@ public class GrupoBean implements Serializable {
 
     public GrupoBean() {
         id = 0;
+        consultarGrupos();
     }
 
     public String home() {
         return "index.xhtml";
     }
+
     public String irGrupo() {
         return "gestionGrupos.xhtml";
     }
@@ -97,7 +98,7 @@ public class GrupoBean implements Serializable {
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
 
-        TypedQuery<Grupos> consultaGrupos = em.createNamedQuery("Grupo.findAll", Grupos.class);
+        TypedQuery<Grupos> consultaGrupos = em.createNamedQuery("Grupos.findAll", Grupos.class);
         listaGrupos = consultaGrupos.getResultList();
     }
 
@@ -107,7 +108,7 @@ public class GrupoBean implements Serializable {
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
 
-            TypedQuery<Grupos> consultaGrupos = em.createNamedQuery("Grupo.findByID", Grupos.class);
+            TypedQuery<Grupos> consultaGrupos = em.createNamedQuery("Grupos.findByID", Grupos.class);
             consultaGrupos.setParameter("id", id);
             listaGrupos = consultaGrupos.getResultList();
         }
@@ -118,21 +119,20 @@ public class GrupoBean implements Serializable {
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
 
-        TypedQuery<Asignaturas> consultaAsignatura = em.createNamedQuery("Asignatura.findAll", Asignaturas.class);
+        TypedQuery<Asignaturas> consultaAsignatura = em.createNamedQuery("Asignaturas.findAll", Asignaturas.class);
         listaAsignaturas = consultaAsignatura.getResultList();
     }
 
     public void guardarGrupo() {
-        if (asignatura != null) {
-            Grupos grupo = new Grupos();
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
-            EntityManager em = emf.createEntityManager();
-            grupo.setDescripcion(descripcion);
-            grupo.setRowidAsignatura(asignatura);
-            em.getTransaction().begin();
-            em.persist(grupo);
-            em.getTransaction().commit();
-        }
+        Grupos grupo = new Grupos();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        grupo.setId(id);
+        grupo.setDescripcion(descripcion);
+        grupo.setRowidAsignatura(asignatura);
+        em.getTransaction().begin();
+        em.persist(grupo);
+        em.getTransaction().commit();
     }
 
 }

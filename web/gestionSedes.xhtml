@@ -42,7 +42,7 @@ and open the template in the editor.
                     <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestionar Grupos</h6>                  
+                            <h6 class="card-subtitle mb-2 text-warning">Gestionar Sedes</h6>                  
                         </div>            
                     </div> 
                     <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación de la sede en el campo!</h6>
@@ -64,9 +64,11 @@ and open the template in the editor.
                             <p:inputText value="#{sedeBean.sede.ubicacion}" class="form-control" placeholder="Ubicación" required=""/>
                         </div>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar" class="btn btn-warning" action="#{sedeBean.guardar()}"/>
+                            <h:commandButton value="Registrar Sede" class="btn btn-warning" action="#{sedeBean.guardar()}"/>
                         </div>
+                        
                         <p:separator/>
+                        
                         <p:dataTable var="sede" value="#{sedeBean.obtenerSedes()}">
                             <p:column headerText="Id">
                                 <h:outputText value="#{sede.id}" />
