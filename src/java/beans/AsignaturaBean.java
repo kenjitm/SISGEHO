@@ -6,6 +6,7 @@
 package beans;
 
 import entity.Asignaturas;
+import entity.TipoJornada;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -35,6 +36,14 @@ public class AsignaturaBean {
     public void setAsignatura(Asignaturas asignatura) {
         this.asignatura = asignatura;
     }
+    
+    public TipoJornada[] getTipoJornadas() {
+        return TipoJornada.values();
+    }
+    
+    public String irAsignatura(){
+        return "gestionAsignaturas.xhtml";
+    }
 
     public List<Asignaturas> obtenerAsignaturas() {
         EntityManagerFactory emf
@@ -56,6 +65,7 @@ public class AsignaturaBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
+        asignatura.setRowid(asignatura.getId().toString());
         em.getTransaction().begin();
         em.persist(asignatura);
         em.getTransaction().commit();
@@ -75,9 +85,9 @@ public class AsignaturaBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        Asignaturas salon = em.find(Asignaturas.class, id);
+        Asignaturas asignatura = em.find(Asignaturas.class, id);
         em.getTransaction().begin();
-        em.remove(salon);
+        em.remove(asignatura);
         em.getTransaction().commit();
     }
 

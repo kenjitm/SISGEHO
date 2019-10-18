@@ -33,7 +33,7 @@ public class SedeBean {
         return "index.xhtml";
     }
     
-    public String sedes() {
+    public String irSedes() {
         return "gestionSedes.xhtml";
     }
 

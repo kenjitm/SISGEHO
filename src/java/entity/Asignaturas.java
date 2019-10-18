@@ -10,6 +10,8 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -44,7 +46,8 @@ public class Asignaturas implements Serializable {
     private String descripcion;
     @Lob
     @Column(name = "Jornada")
-    private String jornada;
+    @Enumerated(EnumType.STRING)
+    private TipoJornada jornada;
     @Column(name = "rowid")
     private String rowid;
     @OneToMany(mappedBy = "rowidAsignatura")
@@ -80,11 +83,11 @@ public class Asignaturas implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getJornada() {
+    public TipoJornada getJornada() {
         return jornada;
     }
 
-    public void setJornada(String jornada) {
+    public void setJornada(TipoJornada jornada) {
         this.jornada = jornada;
     }
 

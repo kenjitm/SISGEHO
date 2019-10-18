@@ -41,48 +41,49 @@
                     </div>
 
                     <br/>
-                    <h2>Ingresar Salon</h2>
+                    <h2>Ingresar Asignatura</h2>
                     <p:separator></p:separator>
-
-
                     <h:form>
-                        <div class="input-group mt-2"> 
-                            <p:inputText value="" class="form-control" placeholder="Descripcion" required=""/>
-
-                        </div>
-                    </h:form>
-
-
-
-
-
-
-                    <h:form>
-                                                   
-                        <p:selectOneMenu value="" class="mt-3" style="width: 550px">
+                        <div class="form-group mt-3">
+                            <p:inputText value="#{asignaturaBean.asignatura.id}" class="form-control" placeholder="ID" required="true" type="number"/>
+                        </div>       
+                        <p:selectOneMenu value="#{asignaturaBean.asignatura.jornada}" class="mt-3" style="width: 550px">
                             <f:selectItem itemLabel="Jornada" itemDisabled="true"  />
-                            <f:selectItems value=""/>
+                            <f:selectItems value="#{asignaturaBean.getTipoJornadas()}"/>
                         </p:selectOneMenu>
-                        <p:selectOneMenu value="" class="mt-3" style="width: 550px">
-                            <f:selectItem itemLabel="RowId" itemDisabled="true"  />
-                            <f:selectItems value=""/>
+                        <p:selectOneMenu class="mt-3" style="width: 550px">
+                            <f:selectItem itemLabel="Docente (DESHABILITADO TEMPORALMENTE)" itemDisabled="true"  />
                         </p:selectOneMenu>
-                        <p:selectOneMenu value="" class="mt-3" style="width: 550px">
-                            <f:selectItem itemLabel="RowId_Docente" itemDisabled="true"  />
-                            <f:selectItems value="" var="tipo"
-                                           itemValue="" itemLabel="" />
-                        </p:selectOneMenu>
-
-                        
-                         <br/>
-                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Asignatura" class="btn btn-warning" action="#"/>
+                        <div class="input-group mt-2"> 
+                            <p:inputTextarea  rows="10" cols="50" value="#{asignaturaBean.asignatura.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
+                        </div>
+                        <br/>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Asignatura" class="btn btn-warning" action="#{asignaturaBean.guardarAsignatura()}"/>
                         </div>   
-
-                        
                     </h:form>
-                   
-
+                    <h2>Listado de asignaturas</h2>
+                    <p:dataTable class="bordered centered highlight" value="#{asignaturaBean.obtenerAsignaturas()}" var="r">
+                        <p:column headerText="Id">
+                            #{r.id}
+                        </p:column>
+                        <p:column headerText="Jornada">
+                            #{r.jornada}
+                        </p:column>
+                        <p:column headerText="Docente">
+                            #{r.rowidDocente}
+                        </p:column>
+                        <p:column headerText="Descripción">
+                            #{r.descripcion}
+                        </p:column>
+                        <p:column headerText="Opciones">
+                            <!-- Integrar una ventana modal -->
+                            <h:form>
+                                <h:commandButton value="Editar" class="btn btn-warning" />
+                                <h:commandButton value="Eliminar" class="btn btn-danger" action="#{asignaturaBean.eliminarAsignatura(r.id)}"/>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
                 </div>
                 <div class="col-sm">
 

@@ -54,7 +54,7 @@ public class RecursoBean {
         return "index.xhtml";
     }
 
-    public String salones(){
+    public String irSalones(){
         return "gestionSalones.xhtml";
     }
 
