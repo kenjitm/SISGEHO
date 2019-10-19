@@ -8,10 +8,8 @@
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-        <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="./resources/css/materialize-icons.css"/>
 
-        <title>Gestión Asignatura</title>
+        <title>Gestión Docentes</title>
     </h:head>
     <h:body>
 
@@ -32,7 +30,7 @@
             <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestión de asignaturas</h6>                  
+                            <h6 class="card-subtitle mb-2 text-warning">Gestión de docentes</h6>                  
                         </div>            
                     </div>
             </div>
@@ -45,32 +43,30 @@
                 <div class="col-sm-4">
                     <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
-                            <h4 class="card-title text-white">Ingresar Asignatura</h4>                
+                            <h4 class="card-title text-white">Ingresar Docente</h4>                
                         </div>            
                     </div> 
                     <p:separator></p:separator>
                     <h:form>
                         <div class="form-group mt-3">
-                            <p:inputText value="#{asignaturaBean.asignatura.id}" class="form-control" placeholder="ID" required="true" type="number"/>
+                            <p:inputText value="#{docenteBean.id}" class="form-control" placeholder="ID" required="true" type="number"/>
                         </div>       
                         <div class="form-group mt-3">
-                            <p:selectOneMenu value="#{asignaturaBean.asignatura.jornada}" style="width: 100%">
-                            <f:selectItem itemLabel="Jornada" itemDisabled="true"  />
-                            <f:selectItems value="#{asignaturaBean.getTipoJornadas()}"/>
-                        </p:selectOneMenu> 
+                            <p:inputText value="#{docenteBean.nombre}" class="form-control" placeholder="Nombre" required="true" type="text"/>
                         </div>
                         <div class="form-group mt-3">
-                            <p:selectOneMenu style="width: 100%">
-                            <f:selectItem itemLabel="Docente (DESHABILITADO)" itemDisabled="true"  />
-                        </p:selectOneMenu>
+                            <p:inputText value="#{docenteBean.apellido}" class="form-control" placeholder="Apellido" required="true" type="text"/>
                         </div>
                         
-                        <div class="input-group mt-2"> 
-                            <p:inputTextarea  rows="10" cols="50" value="#{asignaturaBean.asignatura.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
+                        <div class="input-group mt-3"> 
+                            <p:inputText value="#{docenteBean.edad}" class="form-control" placeholder="Edad" required="true" type="number"/>
+                        </div>
+                        <div class="input-group mt-3"> 
+                            <p:inputText value="#{docenteBean.email}" class="form-control" placeholder="Email" required="true" type="number"/>
                         </div>
                         <br/>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Asignatura" class="btn btn-warning" action="#{asignaturaBean.guardarAsignatura()}"/>
+                            <h:commandButton value="Registrar Docente" class="btn btn-warning" action="#{docenteBean.registrarDocenteV()}"/>
                         </div>   
                     </h:form>                  
                 </div>
@@ -78,22 +74,25 @@
                 <div class="col-sm-6">
                     <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
-                            <h4 class="card-title text-white">Listado de asignaturas</h4>                 
+                            <h4 class="card-title text-white">Listado de docentes</h4>                 
                         </div>            
                     </div> 
                     
-                    <p:dataTable class="bordered centered highlight" value="#{asignaturaBean.obtenerAsignaturas()}" var="r">
+                    <p:dataTable class="bordered centered highlight" value="#{docenteBean.obtenerDocentes()}" var="docente">
                         <p:column headerText="Id">
-                            #{r.id}
+                            #{docente.id}
                         </p:column>
-                        <p:column headerText="Jornada">
-                            #{r.jornada}
+                        <p:column headerText="Nombre">
+                            #{docente.nombre}
                         </p:column>
-                        <p:column headerText="Docente">
-                            #{r.rowidDocente}
+                        <p:column headerText="Apellido">
+                            #{docente.apellido}
                         </p:column>
-                        <p:column headerText="Descripción">
-                            #{r.descripcion}
+                        <p:column headerText="Edad">
+                            #{docente.edad}
+                        </p:column>
+                        <p:column headerText="Email">
+                            #{docente.email}
                         </p:column>
                         <p:column headerText="Opciones">
                             <!-- Integrar una ventana modal -->

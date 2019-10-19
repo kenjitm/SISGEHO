@@ -21,18 +21,29 @@ and open the template in the editor.
     </h:head>
 
     <h:body>
-        <div style="background-color: #0050a0">
+        
+
+        <div class="container" style="background-color: white"> 
+            <div class="row" id="rowmenu">
+                <div >
             <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}"/>           
+                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
             </div>                      
         </div>
-        
-        <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>
+            </div>
+            <div class="row" id="rowmenu">  
+                <!--barra de navegacion-->
+        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
         <!--fin barra de navegacion-->
-
-
-        <div class="container" style="background-color: white">           
+        </div>  
+            <div class="row mb-6">
+            <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                            <h6 class="card-subtitle mb-2 text-warning">Gestión de Grupos</h6>                  
+                        </div>            
+                    </div>
+            </div>
             <div class="row mb-4">
                 
                 <div class="col-sm-1">

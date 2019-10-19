@@ -37,7 +37,7 @@ public class Docente implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "Id")
-    private Integer id;
+    private String id;
     @Lob
     @Column(name = "Nombre")
     private String nombre;
@@ -59,15 +59,15 @@ public class Docente implements Serializable {
     public Docente() {
     }
 
-    public Docente(Integer id) {
+    public Docente(String id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

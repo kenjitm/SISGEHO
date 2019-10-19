@@ -15,31 +15,40 @@
     </h:head>
     <h:body>
 
-        <div style="background-color: #0050a0">
+        <div class="container" style="background-color: white">         
+            <div class="row" id="rowmenu">
+                <div >
             <div class="card-body" style="text-align: center">
                 <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
             </div>                      
         </div>
-
-        <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>
+            </div>
+            <div class="row" id="rowmenu">  
+                <!--barra de navegacion-->
+        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
         <!--fin barra de navegacion-->
-
-        <div class="container" style="background-color: white">           
-            <div class="row mb-4">
-
-                <div class="col-sm">
-
-                </div>
-
-                <div class="col-sm">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
+        </div>  
+            <div class="row" id="centro">
+            <div class="row mb-6">
+            <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestión Salones</h6>                  
+                            <h6 class="card-subtitle mb-2 text-warning">Gestión de Salones</h6>                  
                         </div>            
                     </div>
+            </div>
+            <div class="row mb-6"></div>
+            </div>
+          
+            <div class="row mb-4">
 
+
+                <div class="col-sm-4">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Registro de salones</h4>                
+                        </div>            
+                    </div> 
                     <h6 class="card-subtitle mt-4">¡Ingrese el numero de salon!</h6>
                     <h:form>
                         <div class="input-group mt-2"> 
@@ -59,11 +68,11 @@
                         <div class="form-group mt-3">
                             <p:inputText value="#{recursoBean.recurso.id}" class="form-control" placeholder="ID" required="true" type="number"/>
                         </div>                            
-                        <p:selectOneMenu value="#{recursoBean.recurso.rowidSede}" class="mt-3" style="width: 550px">
+                        <p:selectOneMenu value="#{recursoBean.recurso.rowidSede}" class="mt-3" style="width: 100%">
                             <f:selectItem itemLabel="Sede" itemDisabled="true"  />
                             <f:selectItems value="#{sedeBean.obtenerSedes()}"/>
                         </p:selectOneMenu>
-                        <p:selectOneMenu value="#{recursoBean.recurso.tipo}" class="mt-3" style="width: 550px">
+                        <p:selectOneMenu value="#{recursoBean.recurso.tipo}" class="mt-3" style="width: 100%">
                             <f:selectItem itemLabel="Tipo" itemDisabled="true"  />
                             <f:selectItems value="#{recursoBean.tipoRecursos}" var="tipo"
                                            itemValue="#{tipo}" itemLabel="#{tipo.label}" />
@@ -77,7 +86,7 @@
                         <!--<div class="form-group mt-2">
                             <p:inputText class="form-control" placeholder="Asignatura" required=""/>
                         </div>-->
-                        <p:selectOneMenu value="#{recursoBean.recurso.rowidHorarios}" class="mt-3" style="width: 550px">
+                        <p:selectOneMenu value="#{recursoBean.recurso.rowidHorarios}" class="mt-3" style="width: 100%">
                             <f:selectItem itemLabel="Horario" itemDisabled="true"  />
                             <f:selectItems value="#{horarioBean.obtenerHorarios()}"/>
                         </p:selectOneMenu>
@@ -87,7 +96,14 @@
                         </div>                                                      
                         <p:separator></p:separator>
                     </h:form>
-                    <h2>Listado de salones</h2>
+                    
+                </div>
+                <div class="col-sm-8">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Listado de salones</h4>                
+                        </div>            
+                    </div> 
                     <p:dataTable class="bordered centered highlight" value="#{recursoBean.obtenerRecursos()}" var="r">
                         <p:column headerText="Id">
                             #{r.id}
@@ -109,9 +125,6 @@
                         </p:column>
                         
                     </p:dataTable>
-                </div>
-                <div class="col-sm">
-
                 </div>
             </div>
 

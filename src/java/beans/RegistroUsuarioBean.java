@@ -6,6 +6,7 @@
 package beans;
 
 import entity.Asignaturas;
+import entity.Docente;
 import entity.TipoId;
 import entity.TipoRol;
 import entity.Usuario;
@@ -35,8 +36,16 @@ public class RegistroUsuarioBean {
     private String email;
     private String usuario;
     private String password;
-
+    private Integer edad;
     public RegistroUsuarioBean() {
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
 
     public Integer getId() {
@@ -144,9 +153,12 @@ public class RegistroUsuarioBean {
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
+        /************* Registro de Docentes **************/
+        docenteBean blDocente = new docenteBean();
+        blDocente.registrarDocente(id.toString(), nombre, apellido, edad, email);
         return "index";
     }
-public List<Usuario>Usuarios() {
+public List<Usuario> getUsuarios() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();

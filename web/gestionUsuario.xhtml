@@ -19,18 +19,21 @@ and open the template in the editor.
         <title>Gestión Usuarios</title>
     </h:head>
     <h:body>
-        <div style="background-color: #0050a0">
+       
+        <div class="container" style="background-color: white">     
+            <div class="row" id="rowmenu">
+                <div >
             <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>          
+                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
             </div>                      
         </div>
-        
-       
-        <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>
+            </div>
+            <div class="row" id="rowmenu">  
+                <!--barra de navegacion-->
+        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
         <!--fin barra de navegacion-->
-        <div class="container" style="background-color: white">           
-            <div class="row">
+        </div>  
+            <div class="row" id="centro">
             <div class="row mb-6">
             <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
@@ -42,8 +45,12 @@ and open the template in the editor.
             <div class="row mb-6"></div>
             </div>
             <div class="row mb-4">
-            <div class="col-sm">
-                
+            <div class="col-sm-4">
+                <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Registro de Usuarios</h4>                
+                        </div>            
+                    </div> 
                         <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación del usuario en el campo!</h6>
                         <h:form>
                             <div class="input-group mt-2">                                    
@@ -55,7 +62,7 @@ and open the template in the editor.
                                 
                             <p:separator class="mt-4"/>
                             
-                            <p:selectOneMenu id="console" class="mt-3" style="width: 550px">
+                            <p:selectOneMenu id="console" class="mt-3" style="width: 100%">
                                     <f:selectItem itemLabel="Tipo de Identificación" itemValue="" />
                                     <f:selectItem itemLabel="Cédula Ciudadanía" itemValue="CC" />
                                     <f:selectItem itemLabel="Cédula Extranjería" itemValue="CE" />
@@ -76,7 +83,7 @@ and open the template in the editor.
                             <div class="form-group mt-2">
                                 <p:inputText value="#{registroUsuarioBean.usuario}" type="text" class="form-control" placeholder="Email" required=""/>
                             </div>                            
-                            <p:selectOneMenu value="#{registroUsuarioBean.rol}" style="width: 550px">
+                            <p:selectOneMenu value="#{registroUsuarioBean.rol}" style="width: 100%">
                                 <f:selectItem itemLabel="Tipo de Rol" itemDisabled="" />
                                     <f:selectItem itemLabel="Docente" itemValue="ROLE_DOCENTE" />
                                     <f:selectItem itemLabel="Coordinación Academica" itemValue="ROLE_COORDINACION" />
@@ -95,19 +102,41 @@ and open the template in the editor.
                             
                         </h:form>
                 </div>
-               <div class="col-sm">
-       
-               </div>
-            </div>
-            <div class="col-sm-4">
-<div class="card shadow mt-5" style="background-color: #0050a0">
+               <div class="col-sm-8">
+       <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">Listado de Usuarios</h4>                
                         </div>            
                     </div> 
-                
-                      
-                </div>
+                   <p:dataTable class="bordered centered highlight" value="#{registroUsuarioBean.getUsuarios    ()}" var="users">
+                        <p:column headerText="Id">
+                            #{users.id}
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            #{users.nombre}
+                        </p:column>
+                       <p:column headerText="Apellido">
+                            #{users.apellido}
+                        </p:column>
+                       <p:column headerText="Rol">
+                            #{users.rol}
+                        </p:column>
+                       <p:column headerText="Email">
+                            #{users.email}
+                        </p:column>
+                       <p:column headerText="Usuario">
+                            #{users.usuario}
+                        </p:column>
+                        <p:column headerText="Opciones">
+                            <h:form>
+                                <!-- Integrar una ventana modal -->
+                                <h:commandButton value="Editar" class="btn btn-warning" />
+                                <h:commandButton value="Eliminar" class="btn btn-danger"/>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
+               </div>
+            </div>
         </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
