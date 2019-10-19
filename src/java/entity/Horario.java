@@ -151,7 +151,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return dia.getLabel() + " | " + (new SimpleDateFormat("HH:mm").format(hora)) + " | " + frecuencia.getLabel() /*+ " | " + rowidAsignatura*/;
+        return dia.getLabel() + " | " + (new SimpleDateFormat("HH:mm").format(hora)) + " | " + frecuencia.getLabel() + " | " + rowidAsignatura;
     }
 
 }

@@ -40,18 +40,18 @@
                     </div>
 
                     <h2>Listado de Horarios</h2>
-                    <p:dataTable class="bordered centered highlight" value="#{horarioBean.obtenerHorarios()}" var="horario">
+                    <p:dataTable class="bordered centered highlight" value="#{horarioBean.obtenerHorarios()}" var="h">
                         <p:column headerText="Id">
-                            #{horario.id}
+                            #{h.id}
                         </p:column>
                         <p:column headerText="Dia">
-                            #{horario.dia}
+                            #{h.dia}
                         </p:column>
                         <p:column headerText="Hora">
-                            #{horario.hora}
+                            #{h.hora}
                         </p:column>
                         <p:column headerText="Frecuencia">
-                            #{horario.frecuencia}
+                            #{h.frecuencia}
                         </p:column>
                         <p:column headerText="Opciones">
                             <h:form>
