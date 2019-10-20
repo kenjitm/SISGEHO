@@ -15,6 +15,7 @@
     </h:head>
     <h:body>
 
+
         <div class="container" style="background-color: white">   
              <div class="row" id="rowmenu">
                 <div >
@@ -33,7 +34,7 @@
             <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestión de Periodos</h6>                  
+                            <h6 class="card-subtitle mb-2 text-warning">Asignaciòn de disponibilidad horaria</h6>                  
                         </div>            
                     </div>
             </div>
@@ -42,39 +43,37 @@
             <div class="row">
              
             <div class="row mb-4">
-<div class="col-sm-4">
+<div class="col-sm-12">
     <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
-                            <h4 class="card-title text-white">Registro de Periodos</h4>                
+                            <h4 class="card-title text-white">Asignaciòn de horas</h4>                
                         </div>            
                     </div> 
                     
                     <h:form>
                         <div class="form-group mt-3">
-                            <p:inputText value="#{beanPeriodo.id}" class="form-control" placeholder="ID" required="true" type="number"/>
+                            <p:outputLabel for="docente" value="Docente " />
+                            <p:selectOneMenu id="docente" value="#{docenteBean.id}" style="width: 100%">
+                <!--<p:ajax listener="#{dropdownView.onCountryChange}" update="city" />-->
+                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{docenteBean.obtenerDocentes()}" />
+            </p:selectOneMenu>
+                            
                         </div>
                         <div class="form-group mt-3">
-                            <p:inputText value="#{beanPeriodo.periodo}" class="form-control" placeholder="Descripcion" required=""/>
+                            
                         </div>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Periodo" class="btn btn-warning" action="#{beanPeriodo.guardarPeriodos()}"/>
+                            
                         </div>                                                      
                     </h:form>
                     <p:separator></p:separator>
-                    
-</div>   
-                   <div class="col-sm-4">
-<div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Listado de Periodos</h4>                
-                        </div>            
-                    </div> 
-                    <p:dataTable class="bordered centered highlight" value="#{beanPeriodo.obtenerPeriodos()}" var="periodos">
-                        <p:column headerText="Id">
-                            #{periodos.id}
+                    <p:dataTable class="bordered centered highlight" value="#{relacionDocenteMateriaHorarioBean.relacionDMH()}" var="relacion">
+                        <p:column headerText="Jornada">
+                            #{relacion.jornada}
                         </p:column>
-                        <p:column headerText="Periodo">
-                            #{periodos.periodo}
+                        <p:column headerText="Lunes">
+                            #{relacion.lunes}
                         </p:column>
                         <p:column headerText="Opciones">
                             <h:form>
@@ -84,8 +83,8 @@
                             </h:form>
                         </p:column>
                     </p:dataTable>
-                      
-                </div>
+</div>   
+                   
   
             </div>
 </div>
