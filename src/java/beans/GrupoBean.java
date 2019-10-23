@@ -5,8 +5,8 @@
  */
 package beans;
 
-import entity.Asignaturas;
-import entity.Grupos;
+import entity.Asignatura;
+import entity.Grupo;
 import entity.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,10 +35,10 @@ public class GrupoBean implements Serializable {
      * Creates a new instance of LoginBean
      */
     private String descripcion;
-    private Asignaturas asignatura;
+    private Asignatura asignatura;
     private int id;
-    private List<Grupos> listaGrupos = new ArrayList<>();
-    private List<Asignaturas> listaAsignaturas = new ArrayList<>();
+    private List<Grupo> listaGrupo = new ArrayList<>();
+    private List<Asignatura> listaAsignatura = new ArrayList<>();
 
     public String getDescripcion() {
         return descripcion;
@@ -52,37 +52,37 @@ public class GrupoBean implements Serializable {
         this.id = id;
     }
 
-    public List<Grupos> getListaGrupos() {
-        return listaGrupos;
+    public List<Grupo> getListaGrupo() {
+        return listaGrupo;
     }
 
-    public void setListaGrupos(List<Grupos> listaGrupos) {
-        this.listaGrupos = listaGrupos;
+    public void setListaGrupo(List<Grupo> listaGrupo) {
+        this.listaGrupo = listaGrupo;
     }
 
-    public List<Asignaturas> getListaAsignaturas() {
-        return listaAsignaturas;
+    public List<Asignatura> getListaAsignatura() {
+        return listaAsignatura;
     }
 
-    public void setListaAsignaturas(List<Asignaturas> listaAsignaturas) {
-        this.listaAsignaturas = listaAsignaturas;
+    public void setListaAsignatura(List<Asignatura> listaAsignatura) {
+        this.listaAsignatura = listaAsignatura;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public Asignaturas getAsignatura() {
+    public Asignatura getAsignatura() {
         return asignatura;
     }
 
-    public void setAsignatura(Asignaturas asignatura) {
+    public void setAsignatura(Asignatura asignatura) {
         this.asignatura = asignatura;
     }
 
     public GrupoBean() {
         id = 0;
-        consultarGrupos();
+        consultarGrupo();
     }
 
     public String home() {
@@ -90,27 +90,27 @@ public class GrupoBean implements Serializable {
     }
 
     public String irGrupo() {
-        return "gestionGrupos.xhtml";
+        return "gestionGrupo.xhtml";
     }
 
-    public void consultarGrupos() {
+    public void consultarGrupo() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
 
-        TypedQuery<Grupos> consultaGrupos = em.createNamedQuery("Grupos.findAll", Grupos.class);
-        listaGrupos = consultaGrupos.getResultList();
+        TypedQuery<Grupo> consultaGrupo = em.createNamedQuery("Grupo.findAll", Grupo.class);
+        listaGrupo = consultaGrupo.getResultList();
     }
 
-    public void consultarGruposById() {
+    public void consultarGrupoById() {
         if (id != 0) {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
 
-            TypedQuery<Grupos> consultaGrupos = em.createNamedQuery("Grupos.findByID", Grupos.class);
-            consultaGrupos.setParameter("id", id);
-            listaGrupos = consultaGrupos.getResultList();
+            TypedQuery<Grupo> consultaGrupo = em.createNamedQuery("Grupo.findByID", Grupo.class);
+            consultaGrupo.setParameter("id", id);
+            listaGrupo = consultaGrupo.getResultList();
         }
     }
 
@@ -119,17 +119,17 @@ public class GrupoBean implements Serializable {
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
 
-        TypedQuery<Asignaturas> consultaAsignatura = em.createNamedQuery("Asignaturas.findAll", Asignaturas.class);
-        listaAsignaturas = consultaAsignatura.getResultList();
+        TypedQuery<Asignatura> consultaAsignatura = em.createNamedQuery("Asignatura.findAll", Asignatura.class);
+        listaAsignatura = consultaAsignatura.getResultList();
     }
 
     public void guardarGrupo() {
-        Grupos grupo = new Grupos();
+        Grupo grupo = new Grupo();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
         grupo.setId(id);
         grupo.setDescripcion(descripcion);
-        grupo.setRowidAsignatura(asignatura);
+        //grupo.setRowidAsignatura(asignatura);
         em.getTransaction().begin();
         em.persist(grupo);
         em.getTransaction().commit();

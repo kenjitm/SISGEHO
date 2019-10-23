@@ -6,7 +6,7 @@
 package beans;
 
 import entity.Horario;
-import entity.Periodos;
+import entity.Periodo;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -26,24 +26,24 @@ import org.primefaces.event.RowEditEvent;
 @ManagedBean
 @RequestScoped
 public class beanPeriodo {
-    private Periodos Periodos;
+    private Periodo Periodo;
     private int id;
-    private String periodo;
-    private List<Periodos> filteredPeriodos;  
-    public Periodos getPeriodos() {
-        return Periodos;
+    private String descripcion;
+    private List<Periodo> filteredPeriodo;  
+    public Periodo getPeriodo() {
+        return Periodo;
     }
 
-    public void setPeriodos(Periodos Periodos) {
-        this.Periodos = Periodos;
+    public void setPeriodo(Periodo Periodo) {
+        this.Periodo = Periodo;
     }
 
-    public String getPeriodo() {
-        return periodo;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getId() {
@@ -58,27 +58,27 @@ public class beanPeriodo {
 
   
     public beanPeriodo() {
-        Periodos = new Periodos();
+        Periodo = new Periodo();
     }
     public String irPeriodos() {
         return "periodos.xhtml";
     }
-    public List<Periodos> obtenerPeriodos() {
+    public List<Periodo> obtenerPeriodo() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Periodos> q = em.createNamedQuery("Periodos.findAll", Periodos.class);
+        TypedQuery<Periodo> q = em.createNamedQuery("Periodo.findAll", Periodo.class);
         return q.getResultList();
     }
-    public List<Periodos> getFilteredPeriodos() {  
-        return filteredPeriodos;  
+    public List<Periodo> getFilteredPeriodo() {  
+        return filteredPeriodo;  
     }  
-    public void guardarPeriodos() {
-        Periodos periodo = new Periodos();
+    public void guardarPeriodo() {
+        Periodo periodo = new Periodo();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
         periodo.setId(id);
-        periodo.setPeriodo(this.periodo);
+        periodo.setDescripcion(this.descripcion);
         
         em.getTransaction().begin();
         em.persist(periodo);

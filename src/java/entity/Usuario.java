@@ -9,12 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,64 +19,62 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author KTANAKA
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "usuario")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
-    , @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id")
-    , @NamedQuery(name = "Usuario.findByRol", query = "SELECT u FROM Usuario u WHERE u.rol = :rol")
-    , @NamedQuery(name = "Usuario.findByEstado", query = "SELECT u FROM Usuario u WHERE u.estado = :estado")
-    , @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")
-    , @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario")
-    , @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")})
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
+    @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
+    @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
+    @NamedQuery(name = "Usuario.findByApellido", query = "SELECT u FROM Usuario u WHERE u.apellido = :apellido"),
+    @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario"),
+    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
+    @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a"),
+    @NamedQuery(name = "Usuario.findByActivo", query = "SELECT u FROM Usuario u WHERE u.activo = :activo")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "TipoId")
-    @Enumerated(EnumType.STRING)
-    private TipoId tipoId;
-    @Lob
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String nombre;
-    @Lob
-    @Column(name = "Apellido")
+    @Basic(optional = false)
+    @Column(name = "apellido")
     private String apellido;
     @Basic(optional = false)
-    @Column(name = "telefono")
-    private String telefono;
-    @Basic(optional = false)
-    @Column(name = "Estado")
-    private boolean estado;
-    @Column(name = "Rol")
-    @Basic(optional = false)
-    @Enumerated(EnumType.STRING)
-    private TipoRol rol;
-    @Basic(optional = false)
-    @Column(name = "Email")
-    private String email;
-    @Column(name = "Usuario")
-    @Basic(optional = false)
+    @Column(name = "usuario")
     private String usuario;
     @Basic(optional = false)
-    @Column(name = "Password")
-    private String password;
-    @JoinColumn(name = "rowid_docente", referencedColumnName = "rowid")
-    @ManyToOne
-    private Docente rowidDocente;
+    @Column(name = "email")
+    private String email;
+    @Basic(optional = false)
+    @Column(name = "contrase\u00f1a")
+    private String contraseña;
+    @Basic(optional = false)
+    @Column(name = "activo")
+    private boolean activo;
 
     public Usuario() {
     }
 
     public Usuario(Integer id) {
         this.id = id;
+    }
+
+    public Usuario(Integer id, String nombre, String apellido, String usuario, String email, String contraseña, boolean activo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.email = email;
+        this.contraseña = contraseña;
+        this.activo = activo;
     }
 
     public Integer getId() {
@@ -106,14 +101,6 @@ public class Usuario implements Serializable {
         this.apellido = apellido;
     }
 
-    public TipoRol getRol() {
-        return rol;
-    }
-
-    public void setRol(TipoRol rol) {
-        this.rol = rol;
-    }
-
     public String getUsuario() {
         return usuario;
     }
@@ -122,12 +109,28 @@ public class Usuario implements Serializable {
         this.usuario = usuario;
     }
 
-    public Docente getRowidDocente() {
-        return rowidDocente;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRowidDocente(Docente rowidDocente) {
-        this.rowidDocente = rowidDocente;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @Override
@@ -154,45 +157,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "entity.Usuario[ id=" + id + " ]";
     }
-
-    public TipoId getTipoId() {
-        return tipoId;
-    }
-
-    public void setTipoId(TipoId tipoId) {
-        this.tipoId = tipoId;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    
 }

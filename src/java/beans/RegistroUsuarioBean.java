@@ -5,7 +5,7 @@
  */
 package beans;
 
-import entity.Asignaturas;
+import entity.Asignatura;
 import entity.Docente;
 import entity.TipoId;
 import entity.TipoRol;
@@ -30,7 +30,7 @@ public class RegistroUsuarioBean {
     private TipoId tipoId;
     private String nombre;
     private String apellido;
-    private String telefono;
+    private String tipo_contrato;
     private boolean estado;
     private TipoRol rol;
     private String email;
@@ -80,13 +80,15 @@ public class RegistroUsuarioBean {
         this.apellido = apellido;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTipo_contrato() {
+        return tipo_contrato;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTipo_contrato(String tipo_contrato) {
+        this.tipo_contrato = tipo_contrato;
     }
+
+    
 
     public boolean isEstado() {
         return estado;
@@ -141,21 +143,21 @@ public class RegistroUsuarioBean {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
         user.setId(id);
-        user.setTipoId(tipoId);
+        //user.setTipo(tipoId);
         user.setNombre(nombre);
         user.setApellido(apellido);
-        user.setTelefono(telefono);
-        user.setEstado(true);
-        user.setRol(rol);
+        //user.setTelefono(telefono);
+        //user.setEstado(true);
+        //user.set(rol);
         user.setEmail(email);
         user.setUsuario(usuario);
-        user.setPassword(password);
+        user.setContraseña(password);
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
         /************* Registro de Docentes **************/
         docenteBean blDocente = new docenteBean();
-        blDocente.registrarDocente(id.toString(), nombre, apellido, edad, email);
+        blDocente.registrarDocente(id, nombre, apellido, edad, email,tipo_contrato);
         return "index";
     }
 public List<Usuario> getUsuarios() {

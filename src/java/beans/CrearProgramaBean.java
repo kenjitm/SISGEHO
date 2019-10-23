@@ -161,31 +161,31 @@ public class CrearProgramaBean implements Serializable {
     public void crear() {
         Programa programa = new Programa();
         if (!descripcionPrograma.isEmpty()) {
-            programa.setDescripcionprograma(descripcionPrograma);
+            programa.setDescripcion(descripcionPrograma);
         }
-        if (!descripcionTipo.isEmpty()) {
+        /*if (!descripcionTipo.isEmpty()) {
             programa.setDescripciontipo(descripcionTipo);
         }
         if (!modalidad.isEmpty()) {
             programa.setModalidad(modalidad);
-        }
+        }*/
         if (!duracion.isEmpty()) {
             programa.setDuracion(duracion);
         }
         if (!titulo.isEmpty()) {
-            programa.setTitulo(titulo);
+            programa.setNombre(titulo);
         }
         if (!registroCalificado.isEmpty()) {
-            programa.setRegistrocalificado(registroCalificado);
+            programa.setRegistroCalificado(registroCalificado);
         }
         if (!snies.isEmpty()) {
-            programa.setRegistrocalificado(snies);
+            programa.setSnies(snies);
         }
         if (!director.isEmpty()) {
-            programa.setRegistrocalificado(director);
+            programa.setDirector(director);
         }
         if (!email.isEmpty()) {
-            programa.setRegistrocalificado(email);
+            programa.setEmail(email);
         }
 
     }

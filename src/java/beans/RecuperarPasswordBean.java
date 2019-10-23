@@ -92,7 +92,7 @@ public class RecuperarPasswordBean {
                     lineas[i] = ((String) lineas[i]).replace("{{username}}", usuario.getUsuario());
                 }
                 if (((String) lineas[i]).contains("{{password}}")) {
-                    lineas[i] = ((String) lineas[i]).replace("{{password}}", usuario.getPassword());
+                    lineas[i] = ((String) lineas[i]).replace("{{password}}", usuario.getContraseña());
                 }
                 mensaje.append(lineas[i]);
             }

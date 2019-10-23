@@ -26,15 +26,15 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "pensum")
+@Table(name = "grupo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pensum.findAll", query = "SELECT p FROM Pensum p"),
-    @NamedQuery(name = "Pensum.findById", query = "SELECT p FROM Pensum p WHERE p.id = :id"),
-    @NamedQuery(name = "Pensum.findByDescripcion", query = "SELECT p FROM Pensum p WHERE p.descripcion = :descripcion"),
-    @NamedQuery(name = "Pensum.findByCodigo", query = "SELECT p FROM Pensum p WHERE p.codigo = :codigo"),
-    @NamedQuery(name = "Pensum.findByActivo", query = "SELECT p FROM Pensum p WHERE p.activo = :activo")})
-public class Pensum implements Serializable {
+    @NamedQuery(name = "Grupo.findAll", query = "SELECT g FROM Grupo g"),
+    @NamedQuery(name = "Grupo.findById", query = "SELECT g FROM Grupo g WHERE g.id = :id"),
+    @NamedQuery(name = "Grupo.findByNomenclatura", query = "SELECT g FROM Grupo g WHERE g.nomenclatura = :nomenclatura"),
+    @NamedQuery(name = "Grupo.findByDescripcion", query = "SELECT g FROM Grupo g WHERE g.descripcion = :descripcion"),
+    @NamedQuery(name = "Grupo.findByActivo", query = "SELECT g FROM Grupo g WHERE g.activo = :activo")})
+public class Grupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,28 +43,28 @@ public class Pensum implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "Nomenclatura")
+    private String nomenclatura;
+    @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
-    @Column(name = "codigo")
-    private String codigo;
-    @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidPensum")
-    private Collection<Asignatura> asignaturaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidGrupo")
+    private Collection<GrupoAsignaturaP> grupoAsignaturaPCollection;
 
-    public Pensum() {
+    public Grupo() {
     }
 
-    public Pensum(Integer id) {
+    public Grupo(Integer id) {
         this.id = id;
     }
 
-    public Pensum(Integer id, String descripcion, String codigo, boolean activo) {
+    public Grupo(Integer id, String nomenclatura, String descripcion, boolean activo) {
         this.id = id;
+        this.nomenclatura = nomenclatura;
         this.descripcion = descripcion;
-        this.codigo = codigo;
         this.activo = activo;
     }
 
@@ -76,20 +76,20 @@ public class Pensum implements Serializable {
         this.id = id;
     }
 
+    public String getNomenclatura() {
+        return nomenclatura;
+    }
+
+    public void setNomenclatura(String nomenclatura) {
+        this.nomenclatura = nomenclatura;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public boolean getActivo() {
@@ -101,12 +101,12 @@ public class Pensum implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Asignatura> getAsignaturaCollection() {
-        return asignaturaCollection;
+    public Collection<GrupoAsignaturaP> getGrupoAsignaturaPCollection() {
+        return grupoAsignaturaPCollection;
     }
 
-    public void setAsignaturaCollection(Collection<Asignatura> asignaturaCollection) {
-        this.asignaturaCollection = asignaturaCollection;
+    public void setGrupoAsignaturaPCollection(Collection<GrupoAsignaturaP> grupoAsignaturaPCollection) {
+        this.grupoAsignaturaPCollection = grupoAsignaturaPCollection;
     }
 
     @Override
@@ -119,10 +119,10 @@ public class Pensum implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pensum)) {
+        if (!(object instanceof Grupo)) {
             return false;
         }
-        Pensum other = (Pensum) object;
+        Grupo other = (Grupo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -131,7 +131,7 @@ public class Pensum implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Pensum[ id=" + id + " ]";
+        return "entity.Grupo[ id=" + id + " ]";
     }
     
 }

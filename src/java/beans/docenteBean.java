@@ -25,12 +25,12 @@ import javax.persistence.TypedQuery;
 @RequestScoped
 public class docenteBean {
     private Docente docentes = new Docente();
-    private String id;
+    private Integer id;
     private String nombre;
     private String apellido;
     private Integer edad;
     private String email;
-
+    private String tipo_contrato;
     public Docente getDocentes() {
         return docentes;
     }
@@ -39,13 +39,23 @@ public class docenteBean {
         this.docentes = docentes;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getTipo_contrato() {
+        return tipo_contrato;
+    }
+
+    public void setTipo_contrato(String tipo_contrato) {
+        this.tipo_contrato = tipo_contrato;
+    }
+
+    
 
     public String getNombre() {
         return nombre;
@@ -78,8 +88,8 @@ public class docenteBean {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void registrarDocente(String id, String nombre, String apellido, Integer edad,
-            String email) {
+    public void registrarDocente(Integer id, String nombre, String apellido, Integer edad,
+            String email, String tipo_contrato) {
         Docente doce = new Docente();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
@@ -88,7 +98,7 @@ public class docenteBean {
         doce.setApellido(apellido);
         doce.setEdad(edad);
         doce.setEmail(email);
-        
+        doce.setTipoContrato(tipo_contrato);
         em.getTransaction().begin();
         em.persist(doce);
         em.getTransaction().commit();

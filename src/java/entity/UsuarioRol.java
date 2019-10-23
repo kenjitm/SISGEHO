@@ -6,35 +6,31 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "sede")
+@Table(name = "usuario_rol")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Sede.findAll", query = "SELECT s FROM Sede s"),
-    @NamedQuery(name = "Sede.findById", query = "SELECT s FROM Sede s WHERE s.id = :id"),
-    @NamedQuery(name = "Sede.findByUbicacion", query = "SELECT s FROM Sede s WHERE s.ubicacion = :ubicacion"),
-    @NamedQuery(name = "Sede.findBySubsede", query = "SELECT s FROM Sede s WHERE s.subsede = :subsede"),
-    @NamedQuery(name = "Sede.findByActivo", query = "SELECT s FROM Sede s WHERE s.activo = :activo")})
-public class Sede implements Serializable {
+    @NamedQuery(name = "UsuarioRol.findAll", query = "SELECT u FROM UsuarioRol u"),
+    @NamedQuery(name = "UsuarioRol.findById", query = "SELECT u FROM UsuarioRol u WHERE u.id = :id"),
+    @NamedQuery(name = "UsuarioRol.findByActivo", query = "SELECT u FROM UsuarioRol u WHERE u.activo = :activo")})
+public class UsuarioRol implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,28 +39,24 @@ public class Sede implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "ubicacion")
-    private String ubicacion;
-    @Basic(optional = false)
-    @Column(name = "subsede")
-    private String subsede;
-    @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidSede")
-    private Collection<Recurso> recursoCollection;
+    @JoinColumn(name = "rowid_rol", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Rol rowidRol;
+    @JoinColumn(name = "rowid_usuario", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Usuario rowidUsuario;
 
-    public Sede() {
+    public UsuarioRol() {
     }
 
-    public Sede(Integer id) {
+    public UsuarioRol(Integer id) {
         this.id = id;
     }
 
-    public Sede(Integer id, String ubicacion, String subsede, boolean activo) {
+    public UsuarioRol(Integer id, boolean activo) {
         this.id = id;
-        this.ubicacion = ubicacion;
-        this.subsede = subsede;
         this.activo = activo;
     }
 
@@ -76,22 +68,6 @@ public class Sede implements Serializable {
         this.id = id;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-    public String getSubsede() {
-        return subsede;
-    }
-
-    public void setSubsede(String subsede) {
-        this.subsede = subsede;
-    }
-
     public boolean getActivo() {
         return activo;
     }
@@ -100,13 +76,20 @@ public class Sede implements Serializable {
         this.activo = activo;
     }
 
-    @XmlTransient
-    public Collection<Recurso> getRecursoCollection() {
-        return recursoCollection;
+    public Rol getRowidRol() {
+        return rowidRol;
     }
 
-    public void setRecursoCollection(Collection<Recurso> recursoCollection) {
-        this.recursoCollection = recursoCollection;
+    public void setRowidRol(Rol rowidRol) {
+        this.rowidRol = rowidRol;
+    }
+
+    public Usuario getRowidUsuario() {
+        return rowidUsuario;
+    }
+
+    public void setRowidUsuario(Usuario rowidUsuario) {
+        this.rowidUsuario = rowidUsuario;
     }
 
     @Override
@@ -119,10 +102,10 @@ public class Sede implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Sede)) {
+        if (!(object instanceof UsuarioRol)) {
             return false;
         }
-        Sede other = (Sede) object;
+        UsuarioRol other = (UsuarioRol) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -131,7 +114,7 @@ public class Sede implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Sede[ id=" + id + " ]";
+        return "entity.UsuarioRol[ id=" + id + " ]";
     }
     
 }

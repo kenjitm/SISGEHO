@@ -5,8 +5,8 @@
  */
 package beans;
 
-import entity.Asignaturas;
-import entity.Grupos;
+import entity.Asignatura;
+import entity.Grupo;
 import entity.Programa;
 import entity.Usuario;
 import java.io.Serializable;
@@ -194,13 +194,13 @@ public class ProgramaBean implements Serializable {
         Programa programa = new Programa();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        programa.setDescripcionprograma(descripcion);
-        programa.setTipo(id);
-        programa.setDescripciontipo(descripcionTipo);
-        programa.setModalidad(modalidad);
+        programa.setDescripcion(descripcion);
+        programa.setId(id);
+        //programa.setDescripciontipo(descripcionTipo);
+        //programa.setRowidModalidad(modalidad);
         programa.setDuracion(duracion);
-        programa.setTitulo(titulo);
-        programa.setRegistrocalificado(registroCalificado);
+        programa.setNombre(titulo);
+        programa.setRegistroCalificado(registroCalificado);
         programa.setSnies(snies);
         programa.setDirector(director);
         programa.setEmail(email);

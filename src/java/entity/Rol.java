@@ -26,15 +26,15 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "pensum")
+@Table(name = "rol")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pensum.findAll", query = "SELECT p FROM Pensum p"),
-    @NamedQuery(name = "Pensum.findById", query = "SELECT p FROM Pensum p WHERE p.id = :id"),
-    @NamedQuery(name = "Pensum.findByDescripcion", query = "SELECT p FROM Pensum p WHERE p.descripcion = :descripcion"),
-    @NamedQuery(name = "Pensum.findByCodigo", query = "SELECT p FROM Pensum p WHERE p.codigo = :codigo"),
-    @NamedQuery(name = "Pensum.findByActivo", query = "SELECT p FROM Pensum p WHERE p.activo = :activo")})
-public class Pensum implements Serializable {
+    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r"),
+    @NamedQuery(name = "Rol.findById", query = "SELECT r FROM Rol r WHERE r.id = :id"),
+    @NamedQuery(name = "Rol.findByNombre", query = "SELECT r FROM Rol r WHERE r.nombre = :nombre"),
+    @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT r FROM Rol r WHERE r.descripcion = :descripcion"),
+    @NamedQuery(name = "Rol.findByActivo", query = "SELECT r FROM Rol r WHERE r.activo = :activo")})
+public class Rol implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,28 +43,28 @@ public class Pensum implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "nombre")
+    private String nombre;
+    @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
-    @Column(name = "codigo")
-    private String codigo;
-    @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidPensum")
-    private Collection<Asignatura> asignaturaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidRol")
+    private Collection<UsuarioRol> usuarioRolCollection;
 
-    public Pensum() {
+    public Rol() {
     }
 
-    public Pensum(Integer id) {
+    public Rol(Integer id) {
         this.id = id;
     }
 
-    public Pensum(Integer id, String descripcion, String codigo, boolean activo) {
+    public Rol(Integer id, String nombre, String descripcion, boolean activo) {
         this.id = id;
+        this.nombre = nombre;
         this.descripcion = descripcion;
-        this.codigo = codigo;
         this.activo = activo;
     }
 
@@ -76,20 +76,20 @@ public class Pensum implements Serializable {
         this.id = id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public boolean getActivo() {
@@ -101,12 +101,12 @@ public class Pensum implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Asignatura> getAsignaturaCollection() {
-        return asignaturaCollection;
+    public Collection<UsuarioRol> getUsuarioRolCollection() {
+        return usuarioRolCollection;
     }
 
-    public void setAsignaturaCollection(Collection<Asignatura> asignaturaCollection) {
-        this.asignaturaCollection = asignaturaCollection;
+    public void setUsuarioRolCollection(Collection<UsuarioRol> usuarioRolCollection) {
+        this.usuarioRolCollection = usuarioRolCollection;
     }
 
     @Override
@@ -119,10 +119,10 @@ public class Pensum implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pensum)) {
+        if (!(object instanceof Rol)) {
             return false;
         }
-        Pensum other = (Pensum) object;
+        Rol other = (Rol) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -131,7 +131,7 @@ public class Pensum implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Pensum[ id=" + id + " ]";
+        return "entity.Rol[ id=" + id + " ]";
     }
     
 }

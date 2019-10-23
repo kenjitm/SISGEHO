@@ -7,7 +7,6 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,12 +14,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -29,17 +28,16 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "horario")
+@Table(name = "recurso")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h"),
-    @NamedQuery(name = "Horario.findById", query = "SELECT h FROM Horario h WHERE h.id = :id"),
-    @NamedQuery(name = "Horario.findByHoraInicio", query = "SELECT h FROM Horario h WHERE h.horaInicio = :horaInicio"),
-    @NamedQuery(name = "Horario.findByHoraFin", query = "SELECT h FROM Horario h WHERE h.horaFin = :horaFin"),
-    @NamedQuery(name = "Horario.findByDia", query = "SELECT h FROM Horario h WHERE h.dia = :dia"),
-    @NamedQuery(name = "Horario.findByFrecuencia", query = "SELECT h FROM Horario h WHERE h.frecuencia = :frecuencia"),
-    @NamedQuery(name = "Horario.findByActivo", query = "SELECT h FROM Horario h WHERE h.activo = :activo")})
-public class Horario implements Serializable {
+    @NamedQuery(name = "Recurso.findAll", query = "SELECT r FROM Recurso r"),
+    @NamedQuery(name = "Recurso.findById", query = "SELECT r FROM Recurso r WHERE r.id = :id"),
+    @NamedQuery(name = "Recurso.findByDescripcion", query = "SELECT r FROM Recurso r WHERE r.descripcion = :descripcion"),
+    @NamedQuery(name = "Recurso.findByNomenclatura", query = "SELECT r FROM Recurso r WHERE r.nomenclatura = :nomenclatura"),
+    @NamedQuery(name = "Recurso.findByCapacidad", query = "SELECT r FROM Recurso r WHERE r.capacidad = :capacidad"),
+    @NamedQuery(name = "Recurso.findByActivo", query = "SELECT r FROM Recurso r WHERE r.activo = :activo")})
+public class Recurso implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,38 +46,38 @@ public class Horario implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "hora_inicio")
-    @Temporal(TemporalType.TIME)
-    private Date horaInicio;
+    @Column(name = "descripcion")
+    private String descripcion;
     @Basic(optional = false)
-    @Column(name = "hora_fin")
-    @Temporal(TemporalType.TIME)
-    private Date horaFin;
+    @Column(name = "nomenclatura")
+    private String nomenclatura;
     @Basic(optional = false)
-    @Column(name = "dia")
-    private String dia;
-    @Basic(optional = false)
-    @Column(name = "frecuencia")
-    private String frecuencia;
+    @Column(name = "capacidad")
+    private int capacidad;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidHorario")
+    @JoinColumn(name = "rowid_tipo", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private TipoRecurso_1 rowidTipo;
+    @JoinColumn(name = "rowid_sede", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Sede rowidSede;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidRecurso")
     private Collection<HorarioAsignado> horarioAsignadoCollection;
 
-    public Horario() {
+    public Recurso() {
     }
 
-    public Horario(Integer id) {
+    public Recurso(Integer id) {
         this.id = id;
     }
 
-    public Horario(Integer id, Date horaInicio, Date horaFin, String dia, String frecuencia, boolean activo) {
+    public Recurso(Integer id, String descripcion, String nomenclatura, int capacidad, boolean activo) {
         this.id = id;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
-        this.dia = dia;
-        this.frecuencia = frecuencia;
+        this.descripcion = descripcion;
+        this.nomenclatura = nomenclatura;
+        this.capacidad = capacidad;
         this.activo = activo;
     }
 
@@ -91,36 +89,28 @@ public class Horario implements Serializable {
         this.id = id;
     }
 
-    public Date getHoraInicio() {
-        return horaInicio;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setHoraInicio(Date horaInicio) {
-        this.horaInicio = horaInicio;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public Date getHoraFin() {
-        return horaFin;
+    public String getNomenclatura() {
+        return nomenclatura;
     }
 
-    public void setHoraFin(Date horaFin) {
-        this.horaFin = horaFin;
+    public void setNomenclatura(String nomenclatura) {
+        this.nomenclatura = nomenclatura;
     }
 
-    public String getDia() {
-        return dia;
+    public int getCapacidad() {
+        return capacidad;
     }
 
-    public void setDia(String dia) {
-        this.dia = dia;
-    }
-
-    public String getFrecuencia() {
-        return frecuencia;
-    }
-
-    public void setFrecuencia(String frecuencia) {
-        this.frecuencia = frecuencia;
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 
     public boolean getActivo() {
@@ -129,6 +119,22 @@ public class Horario implements Serializable {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public TipoRecurso_1 getRowidTipo() {
+        return rowidTipo;
+    }
+
+    public void setRowidTipo(TipoRecurso_1 rowidTipo) {
+        this.rowidTipo = rowidTipo;
+    }
+
+    public Sede getRowidSede() {
+        return rowidSede;
+    }
+
+    public void setRowidSede(Sede rowidSede) {
+        this.rowidSede = rowidSede;
     }
 
     @XmlTransient
@@ -150,10 +156,10 @@ public class Horario implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Horario)) {
+        if (!(object instanceof Recurso)) {
             return false;
         }
-        Horario other = (Horario) object;
+        Recurso other = (Recurso) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -162,7 +168,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Horario[ id=" + id + " ]";
+        return "entity.Recurso[ id=" + id + " ]";
     }
     
 }

@@ -26,15 +26,15 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "pensum")
+@Table(name = "modalidad_programa")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pensum.findAll", query = "SELECT p FROM Pensum p"),
-    @NamedQuery(name = "Pensum.findById", query = "SELECT p FROM Pensum p WHERE p.id = :id"),
-    @NamedQuery(name = "Pensum.findByDescripcion", query = "SELECT p FROM Pensum p WHERE p.descripcion = :descripcion"),
-    @NamedQuery(name = "Pensum.findByCodigo", query = "SELECT p FROM Pensum p WHERE p.codigo = :codigo"),
-    @NamedQuery(name = "Pensum.findByActivo", query = "SELECT p FROM Pensum p WHERE p.activo = :activo")})
-public class Pensum implements Serializable {
+    @NamedQuery(name = "ModalidadPrograma.findAll", query = "SELECT m FROM ModalidadPrograma m"),
+    @NamedQuery(name = "ModalidadPrograma.findById", query = "SELECT m FROM ModalidadPrograma m WHERE m.id = :id"),
+    @NamedQuery(name = "ModalidadPrograma.findByIdModalidad", query = "SELECT m FROM ModalidadPrograma m WHERE m.idModalidad = :idModalidad"),
+    @NamedQuery(name = "ModalidadPrograma.findByDescripcion", query = "SELECT m FROM ModalidadPrograma m WHERE m.descripcion = :descripcion"),
+    @NamedQuery(name = "ModalidadPrograma.findByActivo", query = "SELECT m FROM ModalidadPrograma m WHERE m.activo = :activo")})
+public class ModalidadPrograma implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,28 +43,28 @@ public class Pensum implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "id_modalidad")
+    private int idModalidad;
+    @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
-    @Column(name = "codigo")
-    private String codigo;
-    @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidPensum")
-    private Collection<Asignatura> asignaturaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidModalidad")
+    private Collection<Programa> programaCollection;
 
-    public Pensum() {
+    public ModalidadPrograma() {
     }
 
-    public Pensum(Integer id) {
+    public ModalidadPrograma(Integer id) {
         this.id = id;
     }
 
-    public Pensum(Integer id, String descripcion, String codigo, boolean activo) {
+    public ModalidadPrograma(Integer id, int idModalidad, String descripcion, boolean activo) {
         this.id = id;
+        this.idModalidad = idModalidad;
         this.descripcion = descripcion;
-        this.codigo = codigo;
         this.activo = activo;
     }
 
@@ -76,20 +76,20 @@ public class Pensum implements Serializable {
         this.id = id;
     }
 
+    public int getIdModalidad() {
+        return idModalidad;
+    }
+
+    public void setIdModalidad(int idModalidad) {
+        this.idModalidad = idModalidad;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public boolean getActivo() {
@@ -101,12 +101,12 @@ public class Pensum implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Asignatura> getAsignaturaCollection() {
-        return asignaturaCollection;
+    public Collection<Programa> getProgramaCollection() {
+        return programaCollection;
     }
 
-    public void setAsignaturaCollection(Collection<Asignatura> asignaturaCollection) {
-        this.asignaturaCollection = asignaturaCollection;
+    public void setProgramaCollection(Collection<Programa> programaCollection) {
+        this.programaCollection = programaCollection;
     }
 
     @Override
@@ -119,10 +119,10 @@ public class Pensum implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pensum)) {
+        if (!(object instanceof ModalidadPrograma)) {
             return false;
         }
-        Pensum other = (Pensum) object;
+        ModalidadPrograma other = (ModalidadPrograma) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -131,7 +131,7 @@ public class Pensum implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Pensum[ id=" + id + " ]";
+        return "entity.ModalidadPrograma[ id=" + id + " ]";
     }
     
 }

@@ -85,7 +85,7 @@ public class HorarioBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        horario.setRowid(horario.getId().toString());
+        //horario.setRowid(horario.getId().toString());
         em.getTransaction().begin();
         em.persist(horario);
         em.getTransaction().commit();

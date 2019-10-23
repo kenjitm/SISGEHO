@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,15 +28,15 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "pensum")
+@Table(name = "asignatura")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pensum.findAll", query = "SELECT p FROM Pensum p"),
-    @NamedQuery(name = "Pensum.findById", query = "SELECT p FROM Pensum p WHERE p.id = :id"),
-    @NamedQuery(name = "Pensum.findByDescripcion", query = "SELECT p FROM Pensum p WHERE p.descripcion = :descripcion"),
-    @NamedQuery(name = "Pensum.findByCodigo", query = "SELECT p FROM Pensum p WHERE p.codigo = :codigo"),
-    @NamedQuery(name = "Pensum.findByActivo", query = "SELECT p FROM Pensum p WHERE p.activo = :activo")})
-public class Pensum implements Serializable {
+    @NamedQuery(name = "Asignatura.findAll", query = "SELECT a FROM Asignatura a"),
+    @NamedQuery(name = "Asignatura.findById", query = "SELECT a FROM Asignatura a WHERE a.id = :id"),
+    @NamedQuery(name = "Asignatura.findByDescripcion", query = "SELECT a FROM Asignatura a WHERE a.descripcion = :descripcion"),
+    @NamedQuery(name = "Asignatura.findBySemestre", query = "SELECT a FROM Asignatura a WHERE a.semestre = :semestre"),
+    @NamedQuery(name = "Asignatura.findByActivo", query = "SELECT a FROM Asignatura a WHERE a.activo = :activo")})
+public class Asignatura implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,25 +48,31 @@ public class Pensum implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
-    @Column(name = "codigo")
-    private String codigo;
+    @Column(name = "semestre")
+    private int semestre;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidPensum")
-    private Collection<Asignatura> asignaturaCollection;
+    @JoinColumn(name = "rowid_programa", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Programa rowidPrograma;
+    @JoinColumn(name = "rowid_pensum", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Pensum rowidPensum;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidAsignatura")
+    private Collection<AsignaturaDocente> asignaturaDocenteCollection;
 
-    public Pensum() {
+    public Asignatura() {
     }
 
-    public Pensum(Integer id) {
+    public Asignatura(Integer id) {
         this.id = id;
     }
 
-    public Pensum(Integer id, String descripcion, String codigo, boolean activo) {
+    public Asignatura(Integer id, String descripcion, int semestre, boolean activo) {
         this.id = id;
         this.descripcion = descripcion;
-        this.codigo = codigo;
+        this.semestre = semestre;
         this.activo = activo;
     }
 
@@ -84,12 +92,12 @@ public class Pensum implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public int getSemestre() {
+        return semestre;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setSemestre(int semestre) {
+        this.semestre = semestre;
     }
 
     public boolean getActivo() {
@@ -100,13 +108,29 @@ public class Pensum implements Serializable {
         this.activo = activo;
     }
 
-    @XmlTransient
-    public Collection<Asignatura> getAsignaturaCollection() {
-        return asignaturaCollection;
+    public Programa getRowidPrograma() {
+        return rowidPrograma;
     }
 
-    public void setAsignaturaCollection(Collection<Asignatura> asignaturaCollection) {
-        this.asignaturaCollection = asignaturaCollection;
+    public void setRowidPrograma(Programa rowidPrograma) {
+        this.rowidPrograma = rowidPrograma;
+    }
+
+    public Pensum getRowidPensum() {
+        return rowidPensum;
+    }
+
+    public void setRowidPensum(Pensum rowidPensum) {
+        this.rowidPensum = rowidPensum;
+    }
+
+    @XmlTransient
+    public Collection<AsignaturaDocente> getAsignaturaDocenteCollection() {
+        return asignaturaDocenteCollection;
+    }
+
+    public void setAsignaturaDocenteCollection(Collection<AsignaturaDocente> asignaturaDocenteCollection) {
+        this.asignaturaDocenteCollection = asignaturaDocenteCollection;
     }
 
     @Override
@@ -119,10 +143,10 @@ public class Pensum implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pensum)) {
+        if (!(object instanceof Asignatura)) {
             return false;
         }
-        Pensum other = (Pensum) object;
+        Asignatura other = (Asignatura) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -131,7 +155,7 @@ public class Pensum implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Pensum[ id=" + id + " ]";
+        return "entity.Asignatura[ id=" + id + " ]";
     }
     
 }

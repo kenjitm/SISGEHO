@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,6 +19,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -26,15 +29,16 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "pensum")
+@Table(name = "periodo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pensum.findAll", query = "SELECT p FROM Pensum p"),
-    @NamedQuery(name = "Pensum.findById", query = "SELECT p FROM Pensum p WHERE p.id = :id"),
-    @NamedQuery(name = "Pensum.findByDescripcion", query = "SELECT p FROM Pensum p WHERE p.descripcion = :descripcion"),
-    @NamedQuery(name = "Pensum.findByCodigo", query = "SELECT p FROM Pensum p WHERE p.codigo = :codigo"),
-    @NamedQuery(name = "Pensum.findByActivo", query = "SELECT p FROM Pensum p WHERE p.activo = :activo")})
-public class Pensum implements Serializable {
+    @NamedQuery(name = "Periodo.findAll", query = "SELECT p FROM Periodo p"),
+    @NamedQuery(name = "Periodo.findById", query = "SELECT p FROM Periodo p WHERE p.id = :id"),
+    @NamedQuery(name = "Periodo.findByDescripcion", query = "SELECT p FROM Periodo p WHERE p.descripcion = :descripcion"),
+    @NamedQuery(name = "Periodo.findByFechainicio", query = "SELECT p FROM Periodo p WHERE p.fechainicio = :fechainicio"),
+    @NamedQuery(name = "Periodo.findByFechafin", query = "SELECT p FROM Periodo p WHERE p.fechafin = :fechafin"),
+    @NamedQuery(name = "Periodo.findByActivo", query = "SELECT p FROM Periodo p WHERE p.activo = :activo")})
+public class Periodo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,25 +50,31 @@ public class Pensum implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
-    @Column(name = "codigo")
-    private String codigo;
+    @Column(name = "Fecha_inicio")
+    @Temporal(TemporalType.DATE)
+    private Date fechainicio;
+    @Basic(optional = false)
+    @Column(name = "Fecha_fin")
+    @Temporal(TemporalType.DATE)
+    private Date fechafin;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidPensum")
-    private Collection<Asignatura> asignaturaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidPeriodo")
+    private Collection<GrupoAsignaturaP> grupoAsignaturaPCollection;
 
-    public Pensum() {
+    public Periodo() {
     }
 
-    public Pensum(Integer id) {
+    public Periodo(Integer id) {
         this.id = id;
     }
 
-    public Pensum(Integer id, String descripcion, String codigo, boolean activo) {
+    public Periodo(Integer id, String descripcion, Date fechainicio, Date fechafin, boolean activo) {
         this.id = id;
         this.descripcion = descripcion;
-        this.codigo = codigo;
+        this.fechainicio = fechainicio;
+        this.fechafin = fechafin;
         this.activo = activo;
     }
 
@@ -84,12 +94,20 @@ public class Pensum implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public Date getFechainicio() {
+        return fechainicio;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setFechainicio(Date fechainicio) {
+        this.fechainicio = fechainicio;
+    }
+
+    public Date getFechafin() {
+        return fechafin;
+    }
+
+    public void setFechafin(Date fechafin) {
+        this.fechafin = fechafin;
     }
 
     public boolean getActivo() {
@@ -101,12 +119,12 @@ public class Pensum implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Asignatura> getAsignaturaCollection() {
-        return asignaturaCollection;
+    public Collection<GrupoAsignaturaP> getGrupoAsignaturaPCollection() {
+        return grupoAsignaturaPCollection;
     }
 
-    public void setAsignaturaCollection(Collection<Asignatura> asignaturaCollection) {
-        this.asignaturaCollection = asignaturaCollection;
+    public void setGrupoAsignaturaPCollection(Collection<GrupoAsignaturaP> grupoAsignaturaPCollection) {
+        this.grupoAsignaturaPCollection = grupoAsignaturaPCollection;
     }
 
     @Override
@@ -119,10 +137,10 @@ public class Pensum implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pensum)) {
+        if (!(object instanceof Periodo)) {
             return false;
         }
-        Pensum other = (Pensum) object;
+        Periodo other = (Periodo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -131,7 +149,7 @@ public class Pensum implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Pensum[ id=" + id + " ]";
+        return "entity.Periodo[ id=" + id + " ]";
     }
     
 }

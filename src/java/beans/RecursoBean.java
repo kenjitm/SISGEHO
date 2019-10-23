@@ -5,7 +5,7 @@
  */
 package beans;
 
-import entity.Recursos;
+import entity.Recurso;
 import entity.TipoRecurso;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -23,18 +23,18 @@ import javax.persistence.TypedQuery;
 @RequestScoped
 public class RecursoBean {
 
-    private Recursos recurso;
+    private Recurso recurso;
     private Integer id;
 
-    public TipoRecurso[] getTipoRecursos() {
+    public TipoRecurso[] getTipoRecurso() {
         return TipoRecurso.values();
     }
 
-    public Recursos getRecurso() {
+    public Recurso getRecurso() {
         return recurso;
     }
 
-    public void setRecurso(Recursos recurso) {
+    public void setRecurso(Recurso recurso) {
         this.recurso = recurso;
     }
 
@@ -47,7 +47,7 @@ public class RecursoBean {
     }
 
     public RecursoBean() {
-        recurso = new Recursos();
+        recurso = new Recurso();
     }
 
     public String home() {
@@ -58,19 +58,19 @@ public class RecursoBean {
         return "gestionSalones.xhtml";
     }
 
-    public List<Recursos> obtenerRecursos() {
+    public List<Recurso> obtenerRecurso() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Recursos> q = em.createNamedQuery("Recursos.findAll", Recursos.class);
+        TypedQuery<Recurso> q = em.createNamedQuery("Recurso.findAll", Recurso.class);
         return q.getResultList();
     }
 
-    public Recursos buscarRecursoById(Integer id) {
+    public Recurso buscarRecursoById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        recurso = em.find(Recursos.class, id);
+        recurso = em.find(Recurso.class, id);
         return recurso;
     }
 
@@ -78,14 +78,14 @@ public class RecursoBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        recurso.setDescripciontipo(recurso.getTipo());
+        //recurso.setDescripciontipo(recurso.getTipo());
         em.getTransaction().begin();
         em.persist(recurso);
         em.getTransaction().commit();
-        recurso = new Recursos();
+        recurso = new Recurso();
     }
 
-    public void editarRecurso(Recursos salon) {
+    public void editarRecurso(Recurso salon) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
@@ -98,7 +98,7 @@ public class RecursoBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        Recursos salon = em.find(Recursos.class, id);
+        Recurso salon = em.find(Recurso.class, id);
         em.getTransaction().begin();
         em.remove(salon);
         em.getTransaction().commit();

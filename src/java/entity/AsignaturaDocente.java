@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,14 +28,12 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "facultad")
+@Table(name = "asignatura_docente")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Facultad.findAll", query = "SELECT f FROM Facultad f"),
-    @NamedQuery(name = "Facultad.findById", query = "SELECT f FROM Facultad f WHERE f.id = :id"),
-    @NamedQuery(name = "Facultad.findByDescripcion", query = "SELECT f FROM Facultad f WHERE f.descripcion = :descripcion"),
-    @NamedQuery(name = "Facultad.findByActivo", query = "SELECT f FROM Facultad f WHERE f.activo = :activo")})
-public class Facultad implements Serializable {
+    @NamedQuery(name = "AsignaturaDocente.findAll", query = "SELECT a FROM AsignaturaDocente a"),
+    @NamedQuery(name = "AsignaturaDocente.findById", query = "SELECT a FROM AsignaturaDocente a WHERE a.id = :id")})
+public class AsignaturaDocente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,26 +41,20 @@ public class Facultad implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "descripcion")
-    private String descripcion;
-    @Basic(optional = false)
-    @Column(name = "activo")
-    private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidFacultad")
-    private Collection<Programa> programaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidAsignaturaDocente")
+    private Collection<GrupoAsignaturaP> grupoAsignaturaPCollection;
+    @JoinColumn(name = "rowid_docente", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Docente rowidDocente;
+    @JoinColumn(name = "rowid_asignatura", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Asignatura rowidAsignatura;
 
-    public Facultad() {
+    public AsignaturaDocente() {
     }
 
-    public Facultad(Integer id) {
+    public AsignaturaDocente(Integer id) {
         this.id = id;
-    }
-
-    public Facultad(Integer id, String descripcion, boolean activo) {
-        this.id = id;
-        this.descripcion = descripcion;
-        this.activo = activo;
     }
 
     public Integer getId() {
@@ -71,29 +65,29 @@ public class Facultad implements Serializable {
         this.id = id;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
     @XmlTransient
-    public Collection<Programa> getProgramaCollection() {
-        return programaCollection;
+    public Collection<GrupoAsignaturaP> getGrupoAsignaturaPCollection() {
+        return grupoAsignaturaPCollection;
     }
 
-    public void setProgramaCollection(Collection<Programa> programaCollection) {
-        this.programaCollection = programaCollection;
+    public void setGrupoAsignaturaPCollection(Collection<GrupoAsignaturaP> grupoAsignaturaPCollection) {
+        this.grupoAsignaturaPCollection = grupoAsignaturaPCollection;
+    }
+
+    public Docente getRowidDocente() {
+        return rowidDocente;
+    }
+
+    public void setRowidDocente(Docente rowidDocente) {
+        this.rowidDocente = rowidDocente;
+    }
+
+    public Asignatura getRowidAsignatura() {
+        return rowidAsignatura;
+    }
+
+    public void setRowidAsignatura(Asignatura rowidAsignatura) {
+        this.rowidAsignatura = rowidAsignatura;
     }
 
     @Override
@@ -106,10 +100,10 @@ public class Facultad implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Facultad)) {
+        if (!(object instanceof AsignaturaDocente)) {
             return false;
         }
-        Facultad other = (Facultad) object;
+        AsignaturaDocente other = (AsignaturaDocente) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -118,7 +112,7 @@ public class Facultad implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Facultad[ id=" + id + " ]";
+        return "entity.AsignaturaDocente[ id=" + id + " ]";
     }
     
 }

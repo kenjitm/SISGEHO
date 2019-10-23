@@ -83,7 +83,7 @@ public class SedeBean {
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
         
-        sede.setRowid(sede.getId().toString());
+        //sede.setRowid(sede.getId().toString());
         em.getTransaction().begin();
         em.persist(sede);
         em.getTransaction().commit();

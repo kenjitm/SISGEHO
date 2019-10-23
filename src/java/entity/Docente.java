@@ -6,12 +6,14 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -21,53 +23,76 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author KTANAKA
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "docente")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Docente.findAll", query = "SELECT d FROM Docente d")
-    , @NamedQuery(name = "Docente.findById", query = "SELECT d FROM Docente d WHERE d.id = :id")
-    , @NamedQuery(name = "Docente.findByEdad", query = "SELECT d FROM Docente d WHERE d.edad = :edad")
-    , @NamedQuery(name = "Docente.findByRowid", query = "SELECT d FROM Docente d WHERE d.rowid = :rowid")})
+    @NamedQuery(name = "Docente.findAll", query = "SELECT d FROM Docente d"),
+    @NamedQuery(name = "Docente.findById", query = "SELECT d FROM Docente d WHERE d.id = :id"),
+    @NamedQuery(name = "Docente.findByNombre", query = "SELECT d FROM Docente d WHERE d.nombre = :nombre"),
+    @NamedQuery(name = "Docente.findByApellido", query = "SELECT d FROM Docente d WHERE d.apellido = :apellido"),
+    @NamedQuery(name = "Docente.findByEdad", query = "SELECT d FROM Docente d WHERE d.edad = :edad"),
+    @NamedQuery(name = "Docente.findByIdentificacion", query = "SELECT d FROM Docente d WHERE d.identificacion = :identificacion"),
+    @NamedQuery(name = "Docente.findByEmail", query = "SELECT d FROM Docente d WHERE d.email = :email"),
+    @NamedQuery(name = "Docente.findByTipoContrato", query = "SELECT d FROM Docente d WHERE d.tipoContrato = :tipoContrato"),
+    @NamedQuery(name = "Docente.findByActivo", query = "SELECT d FROM Docente d WHERE d.activo = :activo")})
 public class Docente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Id")
-    private String id;
-    @Lob
-    @Column(name = "Nombre")
+    @Column(name = "id")
+    private Integer id;
+    @Basic(optional = false)
+    @Column(name = "nombre")
     private String nombre;
-    @Lob
-    @Column(name = "Apellido")
+    @Basic(optional = false)
+    @Column(name = "apellido")
     private String apellido;
-    @Column(name = "Edad")
-    private Integer edad;
-    @Lob
+    @Basic(optional = false)
+    @Column(name = "edad")
+    private int edad;
+    @Basic(optional = false)
+    @Column(name = "identificacion")
+    private int identificacion;
+    @Basic(optional = false)
     @Column(name = "email")
     private String email;
-    @Column(name = "rowid")
-    private String rowid;
-    @OneToMany(mappedBy = "rowidDocente")
-    private List<Usuario> usuarioList;
-    @OneToMany(mappedBy = "rowidDocente")
-    private List<Asignaturas> asignaturasList;
+    @Basic(optional = false)
+    @Column(name = "tipo_contrato")
+    private String tipoContrato;
+    @Basic(optional = false)
+    @Column(name = "activo")
+    private boolean activo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidDocente")
+    private Collection<AsignaturaDocente> asignaturaDocenteCollection;
 
     public Docente() {
     }
 
-    public Docente(String id) {
+    public Docente(Integer id) {
         this.id = id;
     }
 
-    public String getId() {
+    public Docente(Integer id, String nombre, String apellido, int edad, int identificacion, String email, String tipoContrato, boolean activo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.identificacion = identificacion;
+        this.email = email;
+        this.tipoContrato = tipoContrato;
+        this.activo = activo;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -87,12 +112,20 @@ public class Docente implements Serializable {
         this.apellido = apellido;
     }
 
-    public Integer getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public int getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
     }
 
     public String getEmail() {
@@ -103,30 +136,29 @@ public class Docente implements Serializable {
         this.email = email;
     }
 
-    public String getRowid() {
-        return rowid;
+    public String getTipoContrato() {
+        return tipoContrato;
     }
 
-    public void setRowid(String rowid) {
-        this.rowid = rowid;
+    public void setTipoContrato(String tipoContrato) {
+        this.tipoContrato = tipoContrato;
+    }
+
+    public boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @XmlTransient
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
+    public Collection<AsignaturaDocente> getAsignaturaDocenteCollection() {
+        return asignaturaDocenteCollection;
     }
 
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
-    }
-
-    @XmlTransient
-    public List<Asignaturas> getAsignaturasList() {
-        return asignaturasList;
-    }
-
-    public void setAsignaturasList(List<Asignaturas> asignaturasList) {
-        this.asignaturasList = asignaturasList;
+    public void setAsignaturaDocenteCollection(Collection<AsignaturaDocente> asignaturaDocenteCollection) {
+        this.asignaturaDocenteCollection = asignaturaDocenteCollection;
     }
 
     @Override
@@ -151,7 +183,7 @@ public class Docente implements Serializable {
 
     @Override
     public String toString() {
-        return nombre+" "+apellido;
+        return "entity.Docente[ id=" + id + " ]";
     }
     
 }
