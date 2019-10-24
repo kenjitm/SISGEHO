@@ -10,12 +10,18 @@ import entity.Docente;
 import entity.TipoId;
 import entity.TipoRol;
 import entity.Usuario;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -167,6 +173,56 @@ public List<Usuario> getUsuarios() {
         TypedQuery<Usuario> q = em.createNamedQuery("Usuario.findAll", Usuario.class);
         return q.getResultList();
     }
+public Usuario getUsuarioUser(String userName) throws SQLException, ClassNotFoundException
+{
+    EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        
+        //Query q = em.createQuery("SELECT * FROM usuario where usuario=\'"+userName+"\'");
+        //user = (Usuario)q.getSingleResult();
+        
+        Connection connect = null;
+
+		String url = "jdbc:mysql://localhost:3306/uniajc";
+
+		String username = "root";
+		String password = "";
+
+		try {
+
+			Class.forName("com.mysql.jdbc.Driver");
+
+			connect = DriverManager.getConnection(url, username, password);
+			// System.out.println("Connection established"+connect);
+
+		} catch (SQLException ex) {
+			System.out.println("in exec");
+			System.out.println(ex.getMessage());
+		}
+
+		PreparedStatement pstmt = connect
+				.prepareStatement("SELECT * FROM usuario where usuario=\'"+userName+"\'");
+		ResultSet rs = pstmt.executeQuery();
+                Usuario user = new Usuario();
+		while (rs.next()) {
+
+			user.setId(rs.getInt("id"));
+			user.setNombre(rs.getNString("nombre"));
+                        user.setApellido(rs.getNString("apellido"));
+                        user.setUsuario(rs.getNString("usuario"));
+                        user.setEmail(rs.getNString("email"));
+                        user.setContraseña(rs.getNString("contraseña"));
+                        user.setActivo(rs.getBoolean("activo"));
+		}
+
+		// close resources
+		rs.close();
+		pstmt.close();
+		connect.close();
+        
+        return user;
+}
 public String irUsuarios(){
     return "gestionUsuario.xhtml";
 }

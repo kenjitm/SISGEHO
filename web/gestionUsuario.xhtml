@@ -83,12 +83,12 @@ and open the template in the editor.
                             <div class="form-group mt-2">
                                 <p:inputText value="#{registroUsuarioBean.usuario}" type="text" class="form-control" placeholder="Email" required=""/>
                             </div>                            
-                            <p:selectOneMenu value="#{registroUsuarioBean.rol}" style="width: 100%">
+                           <!-- <p:selectOneMenu value="#{registroUsuarioBean.rol}" style="width: 100%">
                                 <f:selectItem itemLabel="Tipo de Rol" itemDisabled="" />
                                     <f:selectItem itemLabel="Docente" itemValue="ROLE_DOCENTE" />
                                     <f:selectItem itemLabel="Coordinación Academica" itemValue="ROLE_COORDINACION" />
                                     <f:selectItem itemLabel="Administrador" itemValue="ROLE_ADMIN" />
-                            </p:selectOneMenu>                            
+                            </p:selectOneMenu>   -->                         
                             <p:separator/>
                             <div class="btn-group" role="group" aria-label="Third group">
                                 <h:commandButton value="Nuevo Usuario" class="btn btn-dark" action="#{registroUsuarioBean.registrarse()}"/>
@@ -118,9 +118,9 @@ and open the template in the editor.
                        <p:column headerText="Apellido">
                             #{users.apellido}
                         </p:column>
-                       <p:column headerText="Rol">
+                      <!-- <p:column headerText="Rol">
                             #{users.rol}
-                        </p:column>
+                        </p:column>-->
                        <p:column headerText="Email">
                             #{users.email}
                         </p:column>

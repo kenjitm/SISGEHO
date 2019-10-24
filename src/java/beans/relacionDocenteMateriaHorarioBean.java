@@ -14,8 +14,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.AjaxBehaviorEvent;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -46,8 +49,19 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 		}
 
 		List<RelacionDocenteHorarioMateria> relaciones = new ArrayList<RelacionDocenteHorarioMateria>();
-		PreparedStatement pstmt = connect
-				.prepareStatement("SELECT CONCAT(Dia, \" \", Hora) AS jornada, (SELECT 'MATERIA' FROM horario WHERE Dia = 'Lunes') AS Lunes FROM horario");
+		/*PreparedStatement pstmt = connect
+				.prepareStatement("SELECT CONCAT( CONCAT(Dia, \" \", hora_inicio), \" a \", hora_fin) AS jornada"+
+                                        ", (SELECT 'MATERIA' FROM horario WHERE Dia = 'Lunes') AS Lunes FROM horario");*/
+                PreparedStatement pstmt = connect
+				.prepareStatement("SELECT CONCAT(hora_inicio, \" a \", hora_fin) AS jornada"+
+                                        ", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h\n" +
+"INNER JOIN horario_asignado as hasig on hasig.rowid_horario = h.id\n" +
+"INNER JOIN grupo as g on g.id = hasig.rowid_grupo_asignatura\n" +
+"INNER JOIN grupo_asignatura_p gasig on gasig.rowid_grupo = g.id\n" +
+"INNER JOIN asignatura_docente dasig on dasig.rowid_docente = gasig.id\n" +
+"INNER JOIN asignatura a on a.id = dasig.rowid_asignatura\n" +
+"INNER JOIN recurso r on r.id = hasig.rowid_recurso\n" +
+"WHERE Dia = 'Lunes') AS Lunes FROM horario");
 		ResultSet rs = pstmt.executeQuery();
 
 		while (rs.next()) {
@@ -69,4 +83,6 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 		return relaciones;
 
 	}
+    
+ 
 }

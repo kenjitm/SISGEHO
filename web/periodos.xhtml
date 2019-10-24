@@ -54,8 +54,16 @@
                             <p:inputText value="#{beanPeriodo.id}" class="form-control" placeholder="ID" required="true" type="number"/>
                         </div>
                         <div class="form-group mt-3">
-                            <p:inputText value="#{beanPeriodo.periodo}" class="form-control" placeholder="Descripcion" required=""/>
+                            <p:inputText value="#{beanPeriodo.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
                         </div>
+                        <div class="form-group mt-3">
+                            <p:outputLabel for="fechainicial" value="Fecha Inicial" />
+                            <p:calendar id="#{beanPeriodo.fecha_inicio}" value="#{calendarView.date2}" />
+                        </div>
+                       <!-- <div class="form-group mt-3">
+                            <p:outputLabel for="fechaFinal" value="Fecha Final" />
+                             <p:calendar id="#{beanPeriodo.fecha_fin}" value="#{calendarView.date2}" />
+                        </div>-->
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Registrar Periodo" class="btn btn-warning" action="#{beanPeriodo.guardarPeriodos()}"/>
                         </div>                                                      
@@ -74,7 +82,13 @@
                             #{periodos.id}
                         </p:column>
                         <p:column headerText="Periodo">
-                            #{periodos.periodo}
+                            #{periodos.descripcion}
+                        </p:column>
+                        <p:column headerText="Fecha Inicial">
+                            #{periodos.fechainicio}
+                        </p:column>
+                       <p:column headerText="Fecha Final">
+                            #{periodos.fechafin}
                         </p:column>
                         <p:column headerText="Opciones">
                             <h:form>

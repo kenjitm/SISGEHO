@@ -20,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import org.primefaces.context.RequestContext;
 import utils.JpaUtil;
 import utils.SessionUtils;
 
@@ -37,7 +38,17 @@ public class GrupoBean implements Serializable {
     private String descripcion;
     private Asignatura asignatura;
     private int id;
-    private List<Grupo> listaGrupo = new ArrayList<>();
+    private boolean activo;
+    private String nomenclatura;
+
+    public String getNomenclatura() {
+        return nomenclatura;
+    }
+
+    public void setNomenclatura(String nomenclatura) {
+        this.nomenclatura = nomenclatura;
+    }
+    private List<Grupo> listaGrupos = new ArrayList<>();
     private List<Asignatura> listaAsignatura = new ArrayList<>();
 
     public String getDescripcion() {
@@ -52,12 +63,12 @@ public class GrupoBean implements Serializable {
         this.id = id;
     }
 
-    public List<Grupo> getListaGrupo() {
-        return listaGrupo;
+    public List<Grupo> getListaGrupos() {
+        return listaGrupos;
     }
 
-    public void setListaGrupo(List<Grupo> listaGrupo) {
-        this.listaGrupo = listaGrupo;
+    public void setListaGrupos(List<Grupo> listaGrupos) {
+        this.listaGrupos = listaGrupos;
     }
 
     public List<Asignatura> getListaAsignatura() {
@@ -90,7 +101,7 @@ public class GrupoBean implements Serializable {
     }
 
     public String irGrupo() {
-        return "gestionGrupo.xhtml";
+        return "gestionGrupos.xhtml";
     }
 
     public void consultarGrupo() {
@@ -99,7 +110,7 @@ public class GrupoBean implements Serializable {
         EntityManager em = emf.createEntityManager();
 
         TypedQuery<Grupo> consultaGrupo = em.createNamedQuery("Grupo.findAll", Grupo.class);
-        listaGrupo = consultaGrupo.getResultList();
+        listaGrupos = consultaGrupo.getResultList();
     }
 
     public void consultarGrupoById() {
@@ -110,7 +121,7 @@ public class GrupoBean implements Serializable {
 
             TypedQuery<Grupo> consultaGrupo = em.createNamedQuery("Grupo.findByID", Grupo.class);
             consultaGrupo.setParameter("id", id);
-            listaGrupo = consultaGrupo.getResultList();
+            listaGrupos = consultaGrupo.getResultList();
         }
     }
 
@@ -129,10 +140,28 @@ public class GrupoBean implements Serializable {
         EntityManager em = emf.createEntityManager();
         grupo.setId(id);
         grupo.setDescripcion(descripcion);
+        grupo.setNomenclatura(nomenclatura);
+        grupo.setActivo(true);
         //grupo.setRowidAsignatura(asignatura);
         em.getTransaction().begin();
         em.persist(grupo);
         em.getTransaction().commit();
+        
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "ÈXITO", "Registro realizado satisfactoriamente");
+            // For PrimeFaces < 6.2
+            RequestContext.getCurrentInstance().showMessageInDialog(message);  
+           this.consultarGrupo();
+           this.id = 0;
+           this.descripcion = null;
+           this.nomenclatura = null;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
 }

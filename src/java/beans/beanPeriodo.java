@@ -5,8 +5,9 @@
  */
 package beans;
 
-import entity.Horario;
+
 import entity.Periodo;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -29,6 +30,26 @@ public class beanPeriodo {
     private Periodo Periodo;
     private int id;
     private String descripcion;
+    private Date Fecha_inicio;
+    private Date Fecha_fin;
+
+    public Date getFecha_inicio() {
+        return Fecha_inicio;
+    }
+
+    public void setFecha_inicio(Date Fecha_inicio) {
+        this.Fecha_inicio = Fecha_inicio;
+    }
+
+    public Date getFecha_fin() {
+        return Fecha_fin;
+    }
+
+    public void setFecha_fin(Date Fecha_fin) {
+        this.Fecha_fin = Fecha_fin;
+    }
+
+   
     private List<Periodo> filteredPeriodo;  
     public Periodo getPeriodo() {
         return Periodo;
@@ -63,23 +84,24 @@ public class beanPeriodo {
     public String irPeriodos() {
         return "periodos.xhtml";
     }
-    public List<Periodo> obtenerPeriodo() {
+    public List<Periodo> obtenerPeriodos() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
         TypedQuery<Periodo> q = em.createNamedQuery("Periodo.findAll", Periodo.class);
         return q.getResultList();
     }
-    public List<Periodo> getFilteredPeriodo() {  
+    public List<Periodo> getFilteredPeriodos() {  
         return filteredPeriodo;  
     }  
-    public void guardarPeriodo() {
+    public void guardarPeriodos() {
         Periodo periodo = new Periodo();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
         periodo.setId(id);
         periodo.setDescripcion(this.descripcion);
-        
+        periodo.setFechainicio(Fecha_inicio);
+        periodo.setFechafin(Fecha_fin);
         em.getTransaction().begin();
         em.persist(periodo);
         em.getTransaction().commit();
@@ -89,5 +111,7 @@ public class beanPeriodo {
         RequestContext.getCurrentInstance().showMessageInDialog(message);
 
     }
+
+    
     
 }

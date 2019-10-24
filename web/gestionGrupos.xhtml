@@ -58,7 +58,10 @@ and open the template in the editor.
                     </div> 
                     <h:form>                                               
                         <div class="form-group mt-2">
-                            <p:inputText value="#{grupoBean.id}" class="form-control" placeholder="Identificacion del grupo" required=""/>
+                            <p:inputText value="#{grupoBean.id}" class="form-control" placeholder="Identificacion del grupo" required="true" type="number"/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{grupoBean.nomenclatura}" class="form-control" placeholder="Nomenclatura" required=""/>
                         </div>
                         <div class="form-group mt-2">
                             <p:inputText value="#{grupoBean.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
@@ -82,7 +85,9 @@ and open the template in the editor.
                             <p:column headerText="Id">
                                 <h:outputText value="#{grupo.id}" />
                             </p:column>
-
+<p:column headerText="Nomenclatura">
+                                <h:outputText value="#{grupo.nomenclatura}" />
+                            </p:column>
                             <p:column headerText="descripcion">
                                 <h:outputText value="#{grupo.descripcion}" />
                             </p:column>

@@ -10,12 +10,14 @@ import entity.TipoId;
 import entity.TipoRol;
 import entity.Usuario;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -113,11 +115,14 @@ public class docenteBean {
         doce.setApellido(apellido);
         doce.setEdad(edad);
         doce.setEmail(email);
-        
+        doce.setTipoContrato(tipo_contrato);
         em.getTransaction().begin();
         em.persist(doce);
         em.getTransaction().commit();
         
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "ÈXITO", "Registro realizado satisfactoriamente");
+            // For PrimeFaces < 6.2
+            RequestContext.getCurrentInstance().showMessageInDialog(message);  
     }
     public List<Docente> obtenerDocentes() {
         EntityManagerFactory emf
