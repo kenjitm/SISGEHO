@@ -5,14 +5,23 @@
  */
 package beans;
 
+import entity.Asignatura;
 import entity.Docente;
+import entity.RelacionDocenteHorarioMateria;
 import entity.TipoId;
 import entity.TipoRol;
 import entity.Usuario;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -33,6 +42,8 @@ public class docenteBean {
     private Integer edad;
     private String email;
     private String tipo_contrato;
+    private Asignatura asignatura;
+    private List<Asignatura> lstAsignaturas;
     public Docente getDocentes() {
         return docentes;
     }
@@ -43,6 +54,22 @@ public class docenteBean {
 
     public Integer getId() {
         return id;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public List<Asignatura> getLstAsignaturas() {
+        return lstAsignaturas;
+    }
+
+    public void setLstAsignaturas(List<Asignatura> lstAsignaturas) {
+        this.lstAsignaturas = lstAsignaturas;
     }
 
     public void setId(Integer id) {
@@ -134,4 +161,68 @@ public class docenteBean {
     public String irDocente(){
         return "gestionDocente.xhtml";
     }
+    
+    public void handleChange(ValueChangeEvent event) throws SQLException, ClassNotFoundException{  
+        List<Asignatura> lstAsignaturas = new ArrayList<Asignatura>();
+        int IdDocente = Integer.parseInt(event.getNewValue().toString());
+        System.out.println("New value: " + event.getNewValue());
+        Connection connect = null;
+
+		String url = "jdbc:mysql://localhost:3306/uniajc";
+
+		String username = "root";
+		String password = "";
+
+		try {
+
+			Class.forName("com.mysql.jdbc.Driver");
+
+			connect = DriverManager.getConnection(url, username, password);
+			// System.out.println("Connection established"+connect);
+
+		} catch (SQLException ex) {
+			System.out.println("in exec");
+			System.out.println(ex.getMessage());
+		}
+
+		//List<Asignatura> asignaturas = new ArrayList<Asignatura>();
+		/*PreparedStatement pstmt = connect
+				.prepareStatement("SELECT CONCAT( CONCAT(Dia, \" \", hora_inicio), \" a \", hora_fin) AS jornada"+
+                                        ", (SELECT 'MATERIA' FROM horario WHERE Dia = 'Lunes') AS Lunes FROM horario");*/
+                try
+                {
+                    String query = "SELECT a.descripcion,a.id,a.semestre,a.rowid_pensum,a.rowid_programa,a.activo FROM asignatura_docente as adocs " +
+"INNER JOIN asignatura a on a.id = adocs.rowid_asignatura " +
+"WHERE adocs.rowid_docente = "+IdDocente;
+                    System.out.println("**********Consulta: " + query);
+                  PreparedStatement pstmt = connect
+				.prepareStatement(query);
+		ResultSet rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+
+			Asignatura objAsignatura = new Asignatura();
+			//objRelacion.setId(rs.getInt("id"));
+			objAsignatura.setId(Integer.parseInt(rs.getString("id")));
+			objAsignatura.setDescripcion(rs.getString("descripcion"));
+                        System.out.println("**********Descripcion: " + rs.getString("descripcion"));
+                        objAsignatura.setSemestre(rs.getInt("semestre"));
+                        
+			lstAsignaturas.add(objAsignatura);
+
+		} 
+                // close resources
+		rs.close();
+		pstmt.close();
+		connect.close();
+                
+                }catch(Exception ex)
+                {
+                    System.out.println("******************* Error cargado Asignaturas *******************************");
+			System.out.println(ex.getMessage());
+                }
+                
+
+		
+}
 }

@@ -65,7 +65,10 @@ and open the template in the editor.
                 <div class="col-sm-1"></div>
                 <div class="col-sm-6">
                     <div class="row mt-2">
-                        <h:button class="btn btn-danger mb-4" value="Disponibilidad horaria"></h:button>
+                        <h:form>
+                            <h:commandButton class="btn btn-danger mb-4" value="Disponibilidad horaria" action="#{asignarHorarioBean.irAsignar()}"></h:commandButton>
+                        </h:form>
+                        
                         <h:button class="btn btn-primary mb-4" value="Consulta"></h:button>
                     </div>
                 </div>
