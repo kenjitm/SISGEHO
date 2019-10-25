@@ -14,7 +14,10 @@ import java.util.stream.Collectors;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -150,14 +153,11 @@ public class CrearProgramaBean implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
+
     public String irPrograma() {
         return "crearPrograma.xhtml";
     }
-    
-    
-    
+
     public void crear() {
         Programa programa = new Programa();
         if (!descripcionPrograma.isEmpty()) {
@@ -190,7 +190,7 @@ public class CrearProgramaBean implements Serializable {
 
     }
 
-    public void getAllPrograms() {
+    public List<Programa> getAllPrograms() {
 
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
@@ -201,7 +201,7 @@ public class CrearProgramaBean implements Serializable {
         List<Programa> lista = consultaPrograma.getResultList();
         if (lista != null) {
             if (!lista.isEmpty() && lista.get(0) != null) {
-
+                return lista;
                 //
             } else {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No existen programas creados", "No existen programas");
@@ -211,10 +211,50 @@ public class CrearProgramaBean implements Serializable {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No existen programas creados", "No existen programas");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
+        return lista;
+    }
 
+    public Programa consultarProgramaById(Integer id) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+
+        return em.find(Programa.class, id);
     }
 
     public String home() {
         return "index.xhtml";
+    }
+
+    @FacesConverter(forClass = Programa.class)
+    public static class PensumBeanConverter implements Converter {
+
+        Integer getKey(String value) {
+            return Integer.valueOf(value);
+        }
+
+        String getStringKey(Integer value) {
+            return new StringBuilder().append(value).toString();
+        }
+
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            return ((CrearProgramaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "crearProgramaBean" + "}", CrearProgramaBean.class)).consultarProgramaById(getKey(value));
+        }
+
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            if (value == null) {
+                return null;
+            } else if (value instanceof Programa) {
+                return getStringKey(((Programa) value).getId());
+            } else {
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Programa.class.getName());
+            }
+        }
+
     }
 }

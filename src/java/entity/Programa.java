@@ -227,7 +227,7 @@ public class Programa implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Programa[ id=" + id + " ]";
+        return nombre;
     }
     
 }
