@@ -70,6 +70,9 @@ and open the template in the editor.
                         <div class="form-group mt-2">
                             <p:inputText value="#{sedeBean.sede.ubicacion}" class="form-control" placeholder="Ubicación" required=""/>
                         </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{sedeBean.sede.subsede}" class="form-control" placeholder="Subsede" required=""/>
+                        </div>
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Registrar Sede" class="btn btn-warning" action="#{sedeBean.guardar()}"/>
                         </div>
@@ -92,6 +95,9 @@ and open the template in the editor.
 
                             <p:column headerText="Ubicación">
                                 <h:outputText value="#{sede.ubicacion}" />
+                            </p:column>
+    <p:column headerText="Ubicación">
+                                <h:outputText value="#{sede.subsede}" />
                             </p:column>
                             <p:column headerText="Opciones">
                                 <!-- Integrar una ventana modal -->

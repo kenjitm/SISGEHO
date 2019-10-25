@@ -53,16 +53,16 @@
                         <div class="form-group mt-3">
                             <p:inputText value="#{asignaturaBean.asignatura.id}" class="form-control" placeholder="ID" required="true" type="number"/>
                         </div>       
+                     
                         <div class="form-group mt-3">
-                            <p:selectOneMenu value="#{asignaturaBean.asignatura.jornada}" style="width: 100%">
-                            <f:selectItem itemLabel="Jornada" itemDisabled="true"  />
-                            <f:selectItems value="#{asignaturaBean.getTipoJornadas()}"/>
-                        </p:selectOneMenu> 
-                        </div>
-                        <div class="form-group mt-3">
-                            <p:selectOneMenu style="width: 100%">
-                            <f:selectItem itemLabel="Docente (DESHABILITADO)" itemDisabled="true"  />
-                        </p:selectOneMenu>
+                            <p:outputLabel for="docente" value="Docente " />
+                            <p:selectOneMenu id="docente" value="#{docenteBean.nombre}" style="width: 100%"
+                                             onchange="submit()" valueChangeListener="#{docenteBean.handleChange}" 
+                                             >
+                                             
+                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{docenteBean.obtenerDocentes()}" var="doc" itemValue="#{doc.id}" />
+            </p:selectOneMenu>
                         </div>
                         
                         <div class="input-group mt-2"> 
@@ -86,11 +86,9 @@
                         <p:column headerText="Id">
                             #{r.id}
                         </p:column>
-                        <p:column headerText="Jornada">
-                            #{r.jornada}
-                        </p:column>
+                        
                         <p:column headerText="Docente">
-                            #{r.rowidDocente}
+                            
                         </p:column>
                         <p:column headerText="Descripción">
                             #{r.descripcion}

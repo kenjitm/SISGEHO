@@ -49,7 +49,7 @@ public class AsignaturaBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Asignatura> q = em.createNamedQuery("Asignaturas.findAll", Asignatura.class);
+        TypedQuery<Asignatura> q = em.createNamedQuery("Asignatura.findAll", Asignatura.class);
         return q.getResultList();
     }
 
