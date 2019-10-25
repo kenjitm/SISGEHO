@@ -5,24 +5,19 @@
  */
 package beans;
 
-import entity.Asignatura;
-import entity.Grupo;
 import entity.Programa;
-import entity.Usuario;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import utils.JpaUtil;
-import utils.SessionUtils;
 
 /**
  *
@@ -35,130 +30,18 @@ public class ProgramaBean implements Serializable {
     /**
      * Creates a new instance of LoginBean
      */
-    private String descripcion;
-    private int tipo;
-    private String descripcionTipo;
-    private String modalidad;
-    private String duracion;
-    private String titulo;
-    private String registroCalificado;
-    private String snies;
-    private String director;
-    private String email;
-    private String pensum;
-    private int id;
-    private List<Programa> listaProgramas = new ArrayList<>();
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getDescripcionTipo() {
-        return descripcionTipo;
-    }
-
-    public void setDescripcionTipo(String descripcionTipo) {
-        this.descripcionTipo = descripcionTipo;
-    }
-
-    public String getModalidad() {
-        return modalidad;
-    }
-
-    public void setModalidad(String modalidad) {
-        this.modalidad = modalidad;
-    }
-
-    public String getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(String duracion) {
-        this.duracion = duracion;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getRegistroCalificado() {
-        return registroCalificado;
-    }
-
-    public void setRegistroCalificado(String registroCalificado) {
-        this.registroCalificado = registroCalificado;
-    }
-
-    public String getSnies() {
-        return snies;
-    }
-
-    public void setSnies(String snies) {
-        this.snies = snies;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPensum() {
-        return pensum;
-    }
-
-    public void setPensum(String pensum) {
-        this.pensum = pensum;
-    }
-
-    public List<Programa> getListaProgramas() {
-        return listaProgramas;
-    }
-
-    public void setListaProgramas(List<Programa> listaProgramas) {
-        this.listaProgramas = listaProgramas;
-    }
-
-
-
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    private Programa programa;
 
     public ProgramaBean() {
-        id = 0;
-        consultarProgramas();
+
+    }
+
+    public Programa getPrograma() {
+        return programa;
+    }
+
+    public void setPrograma(Programa programa) {
+        this.programa = programa;
     }
 
     public String home() {
@@ -169,45 +52,32 @@ public class ProgramaBean implements Serializable {
         return "gestionGrupos.xhtml";
     }
 
-    public void consultarProgramas() {
+    public List<Programa> consultarProgramas() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
 
-        TypedQuery<Programa> consultaProgramas = em.createNamedQuery("ProgramasfindAll", Programa.class);
-        listaProgramas = consultaProgramas.getResultList();
+        TypedQuery<Programa> consultaProgramas = em.createNamedQuery("Programa.findAll", Programa.class);
+        return consultaProgramas.getResultList();
     }
 
-    public void consultarGruposById() {
-        if (id != 0) {
-            EntityManagerFactory emf
-                    = Persistence.createEntityManagerFactory("SisgehoPU");
-            EntityManager em = emf.createEntityManager();
+    public Programa consultarProgramaById(Integer id) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
 
-            TypedQuery<Programa> consultaProgramas = em.createNamedQuery("Programa.findByID", Programa.class);
-            consultaProgramas.setParameter("id", id);
-            listaProgramas = consultaProgramas.getResultList();
-        }
+        return em.find(Programa.class, id);
     }
 
     public void guardarPrograma() {
         Programa programa = new Programa();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        programa.setDescripcion(descripcion);
-        programa.setId(id);
-        //programa.setDescripciontipo(descripcionTipo);
-        //programa.setRowidModalidad(modalidad);
-        programa.setDuracion(duracion);
-        programa.setNombre(titulo);
-        programa.setRegistroCalificado(registroCalificado);
-        programa.setSnies(snies);
-        programa.setDirector(director);
-        programa.setEmail(email);
-
         em.getTransaction().begin();
         em.persist(programa);
         em.getTransaction().commit();
     }
+
+    
 
 }

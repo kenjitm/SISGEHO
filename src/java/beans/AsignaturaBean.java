@@ -7,6 +7,7 @@ package beans;
 
 import entity.Asignatura;
 import entity.TipoJornada;
+import entity.TipoSemestre;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -24,6 +25,7 @@ import javax.persistence.TypedQuery;
 public class AsignaturaBean {
 
     private Asignatura asignatura;
+    private TipoSemestre semestre;
 
     public AsignaturaBean() {
         asignatura = new Asignatura();
@@ -36,9 +38,17 @@ public class AsignaturaBean {
     public void setAsignatura(Asignatura asignatura) {
         this.asignatura = asignatura;
     }
+
+    public TipoSemestre getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(TipoSemestre semestre) {
+        this.semestre = semestre;
+    }
     
-    public TipoJornada[] getTipoJornadas() {
-        return TipoJornada.values();
+    public TipoSemestre[] getTipoSemestres() {
+        return TipoSemestre.values();
     }
     
     public String irAsignatura(){
@@ -66,6 +76,7 @@ public class AsignaturaBean {
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
         //asignatura.setRowid(asignatura.getId().toString());
+        asignatura.setSemestre(semestre.getLabel());
         em.getTransaction().begin();
         em.persist(asignatura);
         em.getTransaction().commit();

@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +51,7 @@ public class Asignatura implements Serializable {
     private String descripcion;
     @Basic(optional = false)
     @Column(name = "semestre")
-    private int semestre;
+    private Integer semestre;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
@@ -69,7 +71,7 @@ public class Asignatura implements Serializable {
         this.id = id;
     }
 
-    public Asignatura(Integer id, String descripcion, int semestre, boolean activo) {
+    public Asignatura(Integer id, String descripcion, Integer semestre, boolean activo) {
         this.id = id;
         this.descripcion = descripcion;
         this.semestre = semestre;
@@ -92,11 +94,11 @@ public class Asignatura implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public int getSemestre() {
+    public Integer getSemestre() {
         return semestre;
     }
 
-    public void setSemestre(int semestre) {
+    public void setSemestre(Integer semestre) {
         this.semestre = semestre;
     }
 
