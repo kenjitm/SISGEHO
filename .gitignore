@@ -1,38 +1,13 @@
-#ant specific
-dist/
+### NetBeans ###
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
 build/
-
-#netbeans specific
-core
-nbproject/private/*
 nbbuild/
-nbactions.xml
-nb-configuration.xml
+dist/
+nbdist/
+.nb-gradle/
+Tomcat 8.5/
 
-
-#java specific
-*.class
-
-#general swap/backup files
-*.so
-*.log
-*.out
-*~
-*.swp
-*.DS_Store
-*.lock
+# End of https://www.gitignore.io/api/netbeans
 src/conf/persistence.xml
-Tomcat 8.5/logs/*
-
-nbproject/private/private.xml
-
-web/WEB-INF/glassfish-resources.xml
-nbproject/genfiles.properties
-nbproject/ant-deploy.xml
-nbproject/*
-
-nbproject/project.properties
-nbproject/project.xml
-nbproject/project.properties
-nbproject/build-impl.xml
-nbproject/private/private.xml
