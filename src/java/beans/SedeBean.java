@@ -125,7 +125,7 @@ public class SedeBean {
 
     public void updateDataActionListener(ActionEvent e) {
         Sede o = (Sede) sedesDataTable.getRowData();
-        Logger.getLogger(SedeBean.class).log(Level.INFO, o.toString());
+        //Logger.getLogger(SedeBean.class).log(Level.INFO, o.toString());
         sede = buscarPorId(o.getId());
     }
 
