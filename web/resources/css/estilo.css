@@ -1,7 +1,4 @@
 
-body{
-    background-color: #818182;
-}
 #barraNav{
     display: flex;
     background-color: #00427e;
@@ -48,4 +45,6 @@ body{
     
 }
 
-
+p{
+    font-size: 14px;
+}

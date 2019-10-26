@@ -31,10 +31,10 @@
         </div>  
             <div class="row">
             <div class="row mb-6">
-            <div class="card shadow mt-5" style="background-color: #0050a0">
+            <div class="card shadow mt-3" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Asignaciòn de disponibilidad horaria</h6>                  
+                            <h6 class="card-subtitle mb-2 text-warning">Reportes de disponibilidad horaria</h6>                  
                         </div>            
                     </div>
             </div>
@@ -43,46 +43,8 @@
             <div class="row">
              
             <div class="row mb-4">
-<div class="col-sm-4">
-    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Asignaciòn de horas</h4>                
-                        </div>            
-                    </div> 
-                    
-                    <h:form>
-                        <div class="form-group mt-3">
-                            <p:outputLabel for="docente" value="Docente " />
-                            <p:selectOneMenu id="docente" value="#{docenteBean.nombre}" style="width: 100%"
-                                             onchange="submit()" valueChangeListener="#{docenteBean.handleChange}" 
-                                             >
-                                             
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{docenteBean.obtenerDocentes()}" var="doc" itemValue="#{doc.id}" />
-            </p:selectOneMenu>
-                        </div>
-                        <div class="form-group mt-3">
-                            <p:outputLabel for="asignatura" value="Asignatura " />
-                            <p:selectOneMenu id="asignatura" value="#{asignaturaBean.asignatura.descripcion}" style="width: 100%" >
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{docenteBean.lstAsignaturas}" var="asig" itemValue="#{asig.id}" itemLabel="#{asig.descripcion}" />
-            </p:selectOneMenu>
-                        </div>
-                        <div class="form-group mt-3">
-                            <p:outputLabel for="recursos" value="Recurso " />
-                            <p:selectOneMenu id="recursos" value="#{recursoBean.id}" style="width: 100%" >
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{recursoBean.obtenerRecurso()}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
-            </p:selectOneMenu>
-                        </div>     
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Asignar" class="btn btn-warning"/>
-                            </div>
-                    </h:form>
-</div>
-                <div class="col-sm-8">
+
+                <div class="col-sm-12">
                     <p:separator></p:separator>
                     <p:dataTable class="bordered centered highlight" value="#{relacionDocenteMateriaHorarioBean.relacionDMH()}" var="relacion">
                         <p:column headerText="Jornada">

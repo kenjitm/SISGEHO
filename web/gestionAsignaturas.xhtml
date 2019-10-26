@@ -18,26 +18,26 @@
         <div class="container" style="background-color: white">    
             <div class="row" id="rowmenu">
                 <div >
-            <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-            </div>                      
-        </div>
+                    <div class="card-body" style="text-align: center">
+                        <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                    </div>                      
+                </div>
             </div>
             <div class="row" id="rowmenu">  
                 <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
-        <!--fin barra de navegacion-->
-        </div>  
+                <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+                <!--fin barra de navegacion-->
+            </div>  
             <div class="row mb-6">
-            <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestión de asignaturas</h6>                  
-                        </div>            
-                    </div>
+                <div class="card shadow mt-3" style="background-color: #0050a0">
+                    <div class="card-body">
+                        <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                        <h6 class="card-subtitle mb-2 text-warning">Gestión de asignaturas</h6>                  
+                    </div>            
+                </div>
             </div>
             <div class="row mb-4">
-                
+
                 <div class="col-sm-1">
 
                 </div>
@@ -51,20 +51,28 @@
                     <p:separator></p:separator>
                     <h:form>
                         <div class="form-group mt-3">
-                            <p:inputText value="#{asignaturaBean.asignatura.id}" class="form-control" placeholder="ID" required="true" type="number"/>
-                        </div>       
-                        <div class="form-group mt-3">
-                            <p:selectOneMenu value="#{asignaturaBean.asignatura.jornada}" style="width: 100%">
-                            <f:selectItem itemLabel="Jornada" itemDisabled="true"  />
-                            <f:selectItems value="#{asignaturaBean.getTipoJornadas()}"/>
-                        </p:selectOneMenu> 
+
+                            <p:selectOneMenu value="#{asignaturaBean.semestre}" style="width: 100%">
+                                <f:selectItem itemLabel="Semestre" itemDisabled="true"/>
+                                <f:selectItems value="#{asignaturaBean.getTipoSemestres()}"/>
+                            </p:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
-                            <p:selectOneMenu style="width: 100%">
-                            <f:selectItem itemLabel="Docente (DESHABILITADO)" itemDisabled="true"  />
-                        </p:selectOneMenu>
+                            <p:selectOneMenu value="#{asignaturaBean.asignatura.rowidPensum}" style="width: 100%">
+                                <f:selectItem itemLabel="Pensum" itemDisabled="true"  />
+                                <f:selectItems value="#{pensumBean.consultarPensums()}"/>
+                            </p:selectOneMenu>
                         </div>
-                        
+                        <div class="form-group mt-3">
+                            <p:selectOneMenu value="#{asignaturaBean.asignatura.rowidPrograma}" style="width: 100%">
+                                <f:selectItem itemLabel="Programa" itemDisabled="true"  />
+                                <f:selectItems value="#{crearProgramaBean.getAllPrograms()}"/>
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="input-group mt-2"> 
+                            <p:selectBooleanCheckbox value="#{asignaturaBean.asignatura.activo}" itemLabel="Poner la asignatura como activa."/>
+
+                        </div>
                         <div class="input-group mt-2"> 
                             <p:inputTextarea  rows="10" cols="50" value="#{asignaturaBean.asignatura.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
                         </div>
@@ -81,16 +89,23 @@
                             <h4 class="card-title text-white">Listado de asignaturas</h4>                 
                         </div>            
                     </div> 
-                    
+
                     <p:dataTable class="bordered centered highlight" value="#{asignaturaBean.obtenerAsignaturas()}" var="r">
                         <p:column headerText="Id">
                             #{r.id}
                         </p:column>
-                        <p:column headerText="Jornada">
-                            #{r.jornada}
+
+                        <p:column headerText="Semestre">
+                            #{r.semestre}
                         </p:column>
-                        <p:column headerText="Docente">
-                            #{r.rowidDocente}
+                        <p:column headerText="No. Pensum">
+                            #{r.rowidPensum.codigo}
+                        </p:column>
+                        <p:column headerText="Programa académico">
+                            #{r.rowidPrograma.nombre}
+                        </p:column>
+                        <p:column headerText="Estado">
+                            #{(r.activo)? "Activa":"Inactiva" }
                         </p:column>
                         <p:column headerText="Descripción">
                             #{r.descripcion}
@@ -104,11 +119,11 @@
                         </p:column>
                     </p:dataTable>
                 </div>
-                
+
                 <div class="col-sm-1">
 
                 </div>
-                
+
             </div>
         </div>
         <!--barra de footer-->

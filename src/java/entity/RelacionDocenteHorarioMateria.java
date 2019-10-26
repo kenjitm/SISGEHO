@@ -109,6 +109,8 @@ public class RelacionDocenteHorarioMateria {
         this.Sabado = Sabado;
     }
 
+    
+
     public RelacionDocenteHorarioMateria(Integer Id, Integer IdDocente, Integer IdMateria, Integer IdHorario) {
         this.Id = Id;
         this.IdDocente = IdDocente;
