@@ -43,7 +43,7 @@ and open the template in the editor.
                     </div>            
                 </div>
             </div>
-            <div class="row mb-4 ml-1">
+            <div class="row mb-4 ml-1 mr-1">
                 <div class="col-sm-4 mt-5">
 
                     <h:form>
@@ -75,46 +75,48 @@ and open the template in the editor.
                             <p:inputText value="#{crearProgramaBean.email}" class="form-control" placeholder="Email" required=""/>
                         </div>
 
-                        <p:separator/>
+                        <p:separator/> <center>
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Registrar Programa" class="btn btn-warning" action="#{crearProgramaBean.crear()}"/>
-                        </div>
+                        </div></center>
                     </h:form>                 
                 </div>
                 <div class="col-sm-8">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Lista de Programas</h4>                 
-                        </div>            
+                    <div class="row" style="">
+                            <h4>Lista de Programas</h4>                 
                     </div> 
                     <h:form>  
-                        <p:dataTable var="programa"  value="#{programaBean.consultarProgramas}" >
-                            <p:column headerText="Id">
-                                #{r.id}
-                            </p:column>
-                            <p:column headerText="Título">
-                                #{r.nombre}
-                            </p:column>
-                            <p:column headerText="Descripción">
-                                #{r.descripcion}
-                            </p:column>
-                            <p:column headerText="Tipo">
-                                #{r.id}
-                            </p:column>
-                            <p:column headerText="Modalidad">
-                                #{r.id}
-                            </p:column>
-                            <p:column headerText="Duración">
-                                #{r.id}
-                            </p:column>
-                            <p:column headerText="Director">
-                                #{r.id}
-                            </p:column>
-                            <p:column headerText="Opciones">
-                                <h:commandButton value="Editar" class="btn btn-warning" />
-                                <h:commandButton value="Eliminar" class="btn btn-danger"/>
-                            </p:column>
-                        </p:dataTable>
+                        <table class="table" value="">
+                            <thead class="thead azul" style="background-color: #00427e">
+                              <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Modalidad</th>
+                                <th scope="col">Duracion</th>
+                                <th scope="col">Director</th>
+                                <th scope="col">Opciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">id</th>
+                                <td>nombre</td>
+                                <td>descripcion</td>
+                                <td>Tipo</td>
+                                <td>Modalidad</td>
+                                <td>Duracion</td>
+                                <td>Director</td>
+                                <td>
+                                    <h:commandLink class="btn btn-warning btn-sm" styleClass="btn btn-warning btn-sm" accion="#"><i class="material-icons">create</i></h:commandLink>
+                                    <h:commandLink class="btn btn-warning btn-sm" styleClass="btn btn-danger btn-sm" accion="#"><i class="material-icons">delete</i></h:commandLink>
+                                </td>
+                              </tr>
+                            </tbody>
+                            
+                          </table>
+
                     </h:form>
                 </div>
             </div>        
