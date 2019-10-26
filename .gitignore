@@ -8,6 +8,7 @@ dist/
 nbdist/
 .nb-gradle/
 Tomcat 8.5/
+nbproject/
 
 # End of https://www.gitignore.io/api/netbeans
 src/conf/persistence.xml
