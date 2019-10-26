@@ -221,7 +221,7 @@
 	auth="Container"/> 
 	
 	<Resource auth="Container"
-  driverClassName="com.mysql.jdbc.Driver" 
+  driverClassName="com.mysql.cj.jdbc.Driver" 
         maxActive="20" 
         maxIdle="3" 
         maxWait="5000" 
