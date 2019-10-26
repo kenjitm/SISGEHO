@@ -23,7 +23,7 @@ and open the template in the editor.
         
         
         
-        <div class="container" style="background-color: white">  
+       
             <div class="row" id="rowmenu">
                 <div >
             <div class="card-body" style="text-align: center">
@@ -37,21 +37,20 @@ and open the template in the editor.
         <!--fin barra de navegacion-->
         </div>  
             <div class="row" id="centro">
-            <div class="col-sm-1">
-           </div>
+            
 
-            <div class="col-sm-3">
+            <div class="col-sm-6">
                 <div class="card shadow mt-3" style="background-color: #0050a0">
                             <div class="card-body">
                                     <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                                    <h6 class="card-subtitle mb-2 text-warning">Bienvenido al sistema</h6>                  
+                                    <h6 class="card-subtitle mb-2 text-warning">Bienvenido</h6>                  
                             </div>            
                 </div> 
                         
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-1"></div>
+                
                 <div class="col-sm-3">
                     <div class="row mt-2">
                         <h5>Nombre docente</h5>
@@ -62,18 +61,32 @@ and open the template in the editor.
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-1"></div>
+                
                 <div class="col-sm-6">
                     <div class="row mt-2">
                         <h:form>
-                            <h:commandButton class="btn btn-danger mb-4" value="Disponibilidad horaria" action="#{asignarHorarioBean.irAsignar()}"></h:commandButton>
+                            <div class="input-group mb-1">
+                                <div>
+                                    <span class="input-group-text" id="basic-addon1">
+                                          <i class="material-icons">date_range</i>
+                                    </span>
+                                </div>
+                                <h:commandButton class="btn azul mb-1" value="Disponibilidad horaria" action="#{asignarHorarioBean.irAsignar()}"></h:commandButton>  
+                            </div>
+                           <div class="input-group mb-3">
+                                <div>
+                                    <span class="input-group-text" id="basic-addon1">
+                                          <i class="material-icons">search</i>
+                                    </span>
+                                </div>
+                                <h:commandButton class="btn azul mb-1" value="Consulta" action="#{asignarHorarioBean.irAsignar()}"></h:commandButton>  
+                            </div>
                         </h:form>
                         
-                        <h:button class="btn btn-primary mb-4" value="Consulta"></h:button>
                     </div>
                 </div>
             </div>
-        </div>
+        
          <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
                 <!--fin barra de footer-->
