@@ -6,7 +6,6 @@
 package beans;
 
 import entity.Asignatura;
-import entity.TipoJornada;
 import entity.TipoSemestre;
 import java.util.List;
 import javax.faces.bean.ManagedBean;

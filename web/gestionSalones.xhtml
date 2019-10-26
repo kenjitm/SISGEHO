@@ -18,28 +18,28 @@
         <div class="container" style="background-color: white">         
             <div class="row" id="rowmenu">
                 <div >
-            <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-            </div>                      
-        </div>
+                    <div class="card-body" style="text-align: center">
+                        <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                    </div>                      
+                </div>
             </div>
             <div class="row" id="rowmenu">  
                 <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
-        <!--fin barra de navegacion-->
-        </div>  
+                <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+                <!--fin barra de navegacion-->
+            </div>  
             <div class="row" id="centro">
-            <div class="row mb-6">
-            <div class="card shadow mt-3" style="background-color: #0050a0">
+                <div class="row mb-6">
+                    <div class="card shadow mt-3" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
                             <h6 class="card-subtitle mb-2 text-warning">Gestión de Salones</h6>                  
                         </div>            
                     </div>
+                </div>
+                <div class="row mb-6"></div>
             </div>
-            <div class="row mb-6"></div>
-            </div>
-          
+
             <div class="row mb-4">
 
 
@@ -54,51 +54,45 @@
                         <div class="input-group mt-2"> 
                             <p:inputText value="#{recursoBean.id}" class="form-control" placeholder="Identificación del salón" required=""/>
                             <div>                                        
-                                <h:commandButton value="Consultar" action="#{recursoBean.buscar(recursoBean.id)}" class="btn btn-primary"/>
+                                <h:commandButton value="Consultar" action="#{recursoBean.buscarRecursoById(recursoBean.id)}" class="btn btn-primary"/>
                             </div>
                         </div>
                     </h:form>
 
-                    
+
                     <p:separator></p:separator>
 
 
                     <h2>Ingresar un recurso</h2>
                     <h:form>
                         <div class="form-group mt-3">
-                            <p:inputText value="#{recursoBean.recurso.id}" class="form-control" placeholder="ID" required="true" type="number"/>
-                        </div>                            
-                        <p:selectOneMenu value="#{recursoBean.recurso.rowidSede}" class="mt-3" style="width: 100%">
-                            <f:selectItem itemLabel="Sede" itemDisabled="true"  />
-                            <f:selectItems value="#{sedeBean.obtenerSedes()}"/>
-                        </p:selectOneMenu>
-                        
-                        <p:outputLabel for="recursos" value="Recurso " />
-                            <p:selectOneMenu id="recursos" value="#{recursoBean.id}" style="width: 100%" >
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{recursoBean.obtenerRecurso()}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
-            </p:selectOneMenu>
-                        <!--<div class="form-group mt-2">
-                            <p:inputText value="" class="form-control" placeholder="Salón" required=""/>
-                        </div>-->
-                        <div class="form-group mt-2">
-                            <p:selectBooleanCheckbox value="" itemLabel="Disponible?"/>
+                            <p:selectOneMenu value="#{recursoBean.recurso.rowidSede}" class="mt-3" style="width: 100%">
+                                <f:selectItem itemLabel="Sede" itemDisabled="true"  />
+                                <f:selectItems value="#{sedeBean.obtenerSedes()}"/>
+                            </p:selectOneMenu>
                         </div>
-                        <!--<div class="form-group mt-2">
-                            <p:inputText class="form-control" placeholder="Asignatura" required=""/>
-                        </div>-->
-                        <p:selectOneMenu value="#{recursoBean.recurso.descripcion}" class="mt-3" style="width: 100%">
-                            <f:selectItem itemLabel="Horario" itemDisabled="true"  />
-                            <f:selectItems value="#{horarioBean.obtenerHorarios()}"/>
-                        </p:selectOneMenu>
+                        <div class="form-group mt-3">
+                            <p:selectOneMenu value="#{recursoBean.recurso.rowidTipo}" class="mt-3" style="width: 100%">
+                                <f:selectItem itemLabel="Tipo de recurso" itemDisabled="true"  />
+                                <f:selectItems value="#{tipoRecursoBean.obtenerTiposRecurso()}"/>
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{recursoBean.recurso.nomenclatura}" class="form-control" placeholder="Nomenclatura" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:selectBooleanCheckbox value="#{recursoBean.recurso.activo}" itemLabel="Disponible?"/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputTextarea rows="6" cols="40" value="#{recursoBean.recurso.descripcion}" placeholder="Descripción"/>
+                        </div>
                         <p:separator/>
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Registrar Salón" class="btn btn-warning" action="#{recursoBean.guardarRecurso()}"/>
                         </div>                                                      
                         <p:separator></p:separator>
                     </h:form>
-                    
+
                 </div>
                 <div class="col-sm-8">
                     <div class="card shadow mt-5" style="background-color: #0050a0">
@@ -114,18 +108,14 @@
                             #{r.rowidSede.ubicacion}
                         </p:column>
                         <p:column headerText="Tipo Recurso">
-                            
+                            #{r.rowidTipo.descripcion}
                         </p:column>
                         <p:column headerText="Disponibilidad">
-                            
+                            #{(r.activo) ? "Disponible": "No disponible"}
                         </p:column>
                         <p:column headerText="Número">
-                            
+                            #{r.nomenclatura}
                         </p:column>
-                        <p:column headerText="Frecuencia">
-                           
-                        </p:column>
-                        
                     </p:dataTable>
                 </div>
             </div>
