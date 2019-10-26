@@ -14,7 +14,7 @@ and open the template in the editor.
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-       
+
 
         <title>Programas</title>
     </h:head>
@@ -23,29 +23,29 @@ and open the template in the editor.
 
 
         <div style="background-color: white">           
-           <div class="row" id="rowmenu">
+            <div class="row" id="rowmenu">
                 <div >
-            <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-            </div>                      
-        </div>
+                    <div class="card-body" style="text-align: center">
+                        <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                    </div>                      
+                </div>
             </div>
             <div class="row" id="rowmenu">  
                 <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
-        <!--fin barra de navegacion-->
-        </div>  
-         <div>
-            <div  style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestión de Programas</h6>                  
-                        </div>            
-                    </div>
+                <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+                <!--fin barra de navegacion-->
+            </div>  
+            <div>
+                <div  style="background-color: #0050a0">
+                    <div class="card-body">
+                        <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                        <h6 class="card-subtitle mb-2 text-warning">Gestión de Programas</h6>                  
+                    </div>            
+                </div>
             </div>
             <div class="row mb-4 ml-1">
                 <div class="col-sm-4 mt-5">
-                    
+
                     <h:form>
                         <div class="form-group mt-2">
                             <p:inputText value="#{crearProgramaBean.titulo}" class="form-control" placeholder="Título" required=""/>
@@ -74,41 +74,41 @@ and open the template in the editor.
                         <div class="form-group mt-2">
                             <p:inputText value="#{crearProgramaBean.email}" class="form-control" placeholder="Email" required=""/>
                         </div>
-                        
+
                         <p:separator/>
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Registrar Programa" class="btn btn-warning" action="#{crearProgramaBean.crear()}"/>
                         </div>
                     </h:form>                 
                 </div>
-            <div class="col-sm-8">
-            <div class="card shadow mt-5" style="background-color: #0050a0">
+                <div class="col-sm-8">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">Lista de Programas</h4>                 
                         </div>            
                     </div> 
                     <h:form>  
-                        <p:dataTable var="programa"      >
+                        <p:dataTable var="programa"  value="#{programaBean.consultarProgramas}" >
                             <p:column headerText="Id">
-                                <h:outputText    />
+                                #{r.id}
                             </p:column>
                             <p:column headerText="Título">
-                                <h:outputText     />
+                                #{r.nombre}
                             </p:column>
                             <p:column headerText="Descripción">
-                                <h:outputText     />
+                                #{r.descripcion}
                             </p:column>
                             <p:column headerText="Tipo">
-                                <h:outputText     />
+                                #{r.id}
                             </p:column>
                             <p:column headerText="Modalidad">
-                                <h:outputText     />
+                                #{r.id}
                             </p:column>
-                             <p:column headerText="Duración">
-                                <h:outputText     />
+                            <p:column headerText="Duración">
+                                #{r.id}
                             </p:column>
                             <p:column headerText="Director">
-                                <h:outputText     />
+                                #{r.id}
                             </p:column>
                             <p:column headerText="Opciones">
                                 <h:commandButton value="Editar" class="btn btn-warning" />
@@ -116,8 +116,8 @@ and open the template in the editor.
                             </p:column>
                         </p:dataTable>
                     </h:form>
-            </div>
-        </div>        
+                </div>
+            </div>        
         </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>

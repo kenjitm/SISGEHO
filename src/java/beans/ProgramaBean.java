@@ -33,7 +33,7 @@ public class ProgramaBean implements Serializable {
     private Programa programa;
 
     public ProgramaBean() {
-
+        this.consultarProgramas();
     }
 
     public Programa getPrograma() {
@@ -77,7 +77,4 @@ public class ProgramaBean implements Serializable {
         em.persist(programa);
         em.getTransaction().commit();
     }
-
-    
-
 }
