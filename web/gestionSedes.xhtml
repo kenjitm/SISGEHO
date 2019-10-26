@@ -24,30 +24,30 @@ and open the template in the editor.
         <div class="container" style="background-color: white">     
             <div class="row" id="rowmenu">
                 <div >
-            <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-            </div>                      
-        </div>
+                    <div class="card-body" style="text-align: center">
+                        <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                    </div>                      
+                </div>
             </div>
             <div class="row" id="rowmenu">  
                 <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>   
+                <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>   
             </div>
-        <!--fin barra de navegacion-->
-        <div class="row" id="centro">
-            <div class="row mb-6">
-            <div class="card shadow mt-3" style="background-color: #0050a0">
+            <!--fin barra de navegacion-->
+            <div class="row" id="centro">
+                <div class="row mb-6">
+                    <div class="card shadow mt-3" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
                             <h6 class="card-subtitle mb-2 text-warning">Gestión de Sedes</h6>                  
                         </div>            
                     </div>
-            </div>
-            <div class="row mb-6"></div>
+                </div>
+                <div class="row mb-6"></div>
             </div>
             <div class="row mb-4">
                 <div class="col-sm-4">
-                     <div class="card shadow mt-5" style="background-color: #0050a0">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">Registro de Sedes</h4>                
                         </div>            
@@ -76,35 +76,37 @@ and open the template in the editor.
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Registrar Sede" class="btn btn-warning" action="#{sedeBean.guardar()}"/>
                         </div>
-                        
+
                         <p:separator/>
-                        
-                        
+
+
                     </h:form>
                 </div>
                 <div class="col-sm-8">
-                     <div class="card shadow mt-5" style="background-color: #0050a0">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">Litado de Sedes</h4>                
                         </div>            
                     </div> 
-<p:dataTable var="sede" value="#{sedeBean.obtenerSedes()}">
-                            <p:column headerText="Id">
-                                <h:outputText value="#{sede.id}" />
-                            </p:column>
+                    <p:dataTable binding="#{sedeBean.sedesDataTable}" var="sede" value="#{sedeBean.obtenerSedes()}">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{sede.id}" />
+                        </p:column>
 
-                            <p:column headerText="Sede">
-                                <h:outputText value="#{sede.ubicacion}" />
-                            </p:column>
-                            <p:column headerText="SubSede">
-                                <h:outputText value="#{sede.subsede}" />
-                            </p:column>
-                            <p:column headerText="Opciones">
-                                <!-- Integrar una ventana modal -->
-                                <h:commandButton value="Editar" class="btn btn-warning" />
+                        <p:column headerText="Sede">
+                            <h:outputText value="#{sede.ubicacion}" />
+                        </p:column>
+                        <p:column headerText="SubSede">
+                            <h:outputText value="#{sede.subsede}" />
+                        </p:column>
+                        <p:column headerText="Opciones">
+                            <!-- Integrar una ventana modal -->
+                            <h:form>
+                                <h:commandButton value="Editar" class="btn btn-warning" actionListener="#{sedeBean.updateDataActionListener}"/>
                                 <h:commandButton value="Eliminar" class="btn btn-danger" action="#{sedeBean.eliminar(sede.id)}"/>
-                            </p:column>
-                        </p:dataTable>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
                 </div>
             </div>
 

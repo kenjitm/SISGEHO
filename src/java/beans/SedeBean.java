@@ -5,14 +5,18 @@
  */
 package beans;
 
+import com.sun.istack.internal.logging.Logger;
 import entity.Sede;
 import java.util.List;
+import java.util.logging.Level;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -28,11 +32,12 @@ public class SedeBean {
 
     private Integer id;
     private Sede sede;
+    private UIData sedesDataTable;
 
     public String home() {
         return "index.xhtml";
     }
-    
+
     public String irSedes() {
         return "gestionSedes.xhtml";
     }
@@ -52,12 +57,20 @@ public class SedeBean {
     public void setId(Integer id) {
         this.id = id;
     }
-        
+
     /**
      * Creates a new instance of SedeBean
      */
     public SedeBean() {
         sede = new Sede();
+    }
+
+    public void setSedesDataTable(UIData sedesDataTable) {
+        this.sedesDataTable = sedesDataTable;
+    }
+
+    public UIData getSedesDataTable() {
+        return sedesDataTable;
     }
 
     public List<Sede> obtenerSedes() {
@@ -82,7 +95,7 @@ public class SedeBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        
+
         //sede.setRowid(sede.getId().toString());
         em.getTransaction().begin();
         em.persist(sede);
@@ -108,6 +121,12 @@ public class SedeBean {
         em.getTransaction().begin();
         em.remove(sede);
         em.getTransaction().commit();
+    }
+
+    public void updateDataActionListener(ActionEvent e) {
+        Sede o = (Sede) sedesDataTable.getRowData();
+        Logger.getLogger(SedeBean.class).log(Level.INFO, o.toString());
+        sede = buscarPorId(o.getId());
     }
 
     @FacesConverter(forClass = Sede.class)
