@@ -6,7 +6,6 @@
 package beans;
 
 import entity.Recurso;
-import entity.TipoRecurso;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -25,10 +24,6 @@ public class RecursoBean {
 
     private Recurso recurso;
     private Integer id;
-
-    public TipoRecurso[] getTipoRecurso() {
-        return TipoRecurso.values();
-    }
 
     public Recurso getRecurso() {
         return recurso;

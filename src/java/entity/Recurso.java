@@ -59,7 +59,7 @@ public class Recurso implements Serializable {
     private boolean activo;
     @JoinColumn(name = "rowid_tipo", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private TipoRecurso_1 rowidTipo;
+    private TipoRecurso rowidTipo;
     @JoinColumn(name = "rowid_sede", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Sede rowidSede;
@@ -121,11 +121,11 @@ public class Recurso implements Serializable {
         this.activo = activo;
     }
 
-    public TipoRecurso_1 getRowidTipo() {
+    public TipoRecurso getRowidTipo() {
         return rowidTipo;
     }
 
-    public void setRowidTipo(TipoRecurso_1 rowidTipo) {
+    public void setRowidTipo(TipoRecurso rowidTipo) {
         this.rowidTipo = rowidTipo;
     }
 

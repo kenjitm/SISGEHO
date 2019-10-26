@@ -29,10 +29,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "sede")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Sede.findAll", query = "SELECT s FROM Sede s"),
-    @NamedQuery(name = "Sede.findById", query = "SELECT s FROM Sede s WHERE s.id = :id"),
-    @NamedQuery(name = "Sede.findByUbicacion", query = "SELECT s FROM Sede s WHERE s.ubicacion = :ubicacion"),
-    @NamedQuery(name = "Sede.findBySubsede", query = "SELECT s FROM Sede s WHERE s.subsede = :subsede"),
+    @NamedQuery(name = "Sede.findAll", query = "SELECT s FROM Sede s")
+    ,
+    @NamedQuery(name = "Sede.findById", query = "SELECT s FROM Sede s WHERE s.id = :id")
+    ,
+    @NamedQuery(name = "Sede.findByUbicacion", query = "SELECT s FROM Sede s WHERE s.ubicacion = :ubicacion")
+    ,
+    @NamedQuery(name = "Sede.findBySubsede", query = "SELECT s FROM Sede s WHERE s.subsede = :subsede")
+    ,
     @NamedQuery(name = "Sede.findByActivo", query = "SELECT s FROM Sede s WHERE s.activo = :activo")})
 public class Sede implements Serializable {
 
@@ -131,7 +135,7 @@ public class Sede implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Sede[ id=" + id + " ]";
+        return ubicacion + " | " + subsede;
     }
-    
+
 }
