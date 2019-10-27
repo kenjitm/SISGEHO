@@ -8,15 +8,13 @@
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-        <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="./resources/css/materialize-icons.css"/>
 
-        <title>Gestión Salones</title>
+        <title>Creacion horarios</title>
     </h:head>
     <h:body>
 
 
-        <div class="container" style="background-color: white">   
+          
              <div class="row" id="rowmenu">
                 <div >
             <div class="card-body" style="text-align: center">
@@ -29,24 +27,21 @@
         <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
         <!--fin barra de navegacion-->
         </div>  
-            <div class="row">
-            <div class="row mb-6">
-            <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Asignaciòn de disponibilidad horaria</h6>                  
-                        </div>            
-                    </div>
+            <div>
+            <div  style="background-color: #0050a0">
+                <div class="card-body">
+                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                    <h6 class="card-subtitle mb-2 text-warning">Creaciòn de Horarios</h6>                  
+                </div>            
             </div>
-            <div class="row mb-6"></div>
-            </div>
+        </div>
             <div class="row">
              
             <div class="row mb-4">
 <div class="col-sm-4">
     <div class="card shadow mt-5" style="background-color: #0050a0">
                         <div class="card-body">
-                            <h4 class="card-title text-white">Asignaciòn de horas</h4>                
+                            <h4 class="card-title text-white">Registros de horarios</h4>                
                         </div>            
                     </div> 
                     
@@ -84,35 +79,42 @@
 </div>
                 <div class="col-sm-8">
                     <p:separator></p:separator>
-                    <p:dataTable class="bordered centered highlight" value="#{relacionDocenteMateriaHorarioBean.relacionDMH()}" var="relacion">
-                        <p:column headerText="Jornada">
-                            #{relacion.jornada}
+                    <h:form>
+                    <p:dataTable class="table table-hover text-center" id="tablaAsignaciones" value="#{relacionDocenteMateriaHorarioBean.relacionDMH()}" var="relacion">
+                        <p:column>
+                            <f:facet name="header">Jornada</f:facet>
+                            <h:outputText value="#{relacion.jornada}"/>
                         </p:column>
-                        <p:column headerText="Lunes">
-                            #{relacion.lunes}
+                        <p:column>
+                            <f:facet name="header">Lunes</f:facet>
+                            <h:outputText value="#{relacion.lunes}"/>
                         </p:column>
-                        <p:column headerText="Martes">
-                            #{relacion.martes}
+                        <p:column>
+                            <f:facet name="header">Martes</f:facet>
+                            <h:outputText value="#{relacion.martes}"/>
                         </p:column>
-                        <p:column headerText="Miercoles">
-                            #{relacion.miercoles}
+                        <p:column>
+                            <f:facet name="header">Miercoles</f:facet>
+                            <h:outputText value="#{relacion.miercoles}"/>
                         </p:column>
-                        <p:column headerText="Jueves">
-                            #{relacion.jueves}
+                        <p:column>
+                            <f:facet name="header">Jueves</f:facet>
+                            <h:outputText value="#{relacion.jueves}"/>
                         </p:column>
-                        <p:column headerText="Viernes">
-                            #{relacion.viernes}
+                        <p:column>
+                            <f:facet name="header">Viernes</f:facet>
+                            <h:outputText value="#{relacion.viernes}"/>
                         </p:column>
                         <!--<p:column headerText="Sabado">
                             #{relacion.Sabado}
                         </p:column>-->
                     </p:dataTable>
-</div>   
+                        </h:form>
+                </div>              
                    
   
             </div>
 </div>
-        </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

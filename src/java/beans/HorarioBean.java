@@ -13,6 +13,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -27,7 +28,7 @@ import javax.persistence.TypedQuery;
  * @author Raul A. Hernandez
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class HorarioBean {
 
     private Horario horario; //Falta llenar

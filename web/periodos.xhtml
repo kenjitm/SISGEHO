@@ -15,7 +15,7 @@
     </h:head>
     <h:body>
 
-        <div class="container" style="background-color: white">   
+        
              <div class="row" id="rowmenu">
                 <div >
             <div class="card-body" style="text-align: center">
@@ -28,82 +28,161 @@
         <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
         <!--fin barra de navegacion-->
         </div>  
-            <div class="row">
-            <div class="row mb-6">
-            <div class="card shadow mt-3" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestión de Periodos</h6>                  
-                        </div>            
-                    </div>
+        <div>
+            <div  style="background-color: #0050a0">
+                <div class="card-body">
+                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Periodos</h6>                  
+                </div>            
             </div>
-            <div class="row mb-6"></div>
-            </div>
-            <div class="row">
-             
-            <div class="row mb-4">
-<div class="col-sm-4">
-    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Registro de Periodos</h4>                
-                        </div>            
-                    </div> 
-                    
-                    <h:form>
-                        <div class="form-group mt-3">
-                            <p:inputText value="#{beanPeriodo.id}" class="form-control" placeholder="ID" required="true" type="number"/>
-                        </div>
-                        <div class="form-group mt-3">
-                            <p:inputText value="#{beanPeriodo.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
-                        </div>
-                        <div class="form-group mt-3">
-                            <p:outputLabel for="fechainicial" value="Fecha Inicial" />
-                            <p:calendar id="#{beanPeriodo.fecha_inicio}" value="#{calendarView.date2}" />
-                        </div>
-                       <!-- <div class="form-group mt-3">
-                            <p:outputLabel for="fechaFinal" value="Fecha Final" />
-                             <p:calendar id="#{beanPeriodo.fecha_fin}" value="#{calendarView.date2}" />
-                        </div>-->
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Periodo" class="btn btn-warning" action="#{beanPeriodo.guardarPeriodos()}"/>
-                        </div>                                                      
-                    </h:form>
-                    <p:separator></p:separator>
-                    
-</div>   
-                   <div class="col-sm-4">
-<div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Listado de Periodos</h4>                
-                        </div>            
-                    </div> 
-                    <p:dataTable class="bordered centered highlight" value="#{beanPeriodo.obtenerPeriodos()}" var="periodos">
-                        <p:column headerText="Id">
-                            #{periodos.id}
-                        </p:column>
-                        <p:column headerText="Periodo">
-                            #{periodos.descripcion}
-                        </p:column>
-                        <p:column headerText="Fecha Inicial">
-                            #{periodos.fechainicio}
-                        </p:column>
-                       <p:column headerText="Fecha Final">
-                            #{periodos.fechafin}
-                        </p:column>
-                        <p:column headerText="Opciones">
-                            <h:form>
-                                <!-- Integrar una ventana modal -->
-                                <h:commandButton value="Editar" class="btn btn-warning" />
-                                <h:commandButton value="Eliminar" class="btn btn-danger"/>
-                            </h:form>
-                        </p:column>
-                    </p:dataTable>
-                      
-                </div>
-  
-            </div>
-</div>
         </div>
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row">
+                    <h4>Buscar Periodo</h4>                 
+                </div>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{beanPeriodo.periodo.id}" type="number" class="form-control" placeholder="Identificación del Periodo" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{beanPeriodo.buscarPeriodoPorId(beanPeriodo.periodo.id)}" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <div class="row">
+                    <h4>Registrar Periodo</h4>                 
+                </div>
+                <h:form>
+                    <div class="form-group mt-2">
+                        <p:inputText id="descripcion" style="text-transform: uppercase" value="#{beanPeriodo.periodo.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <div class="input-group mb-1">
+                                <div>
+                                    <span class="input-group-text" id="basic-addon1">
+                                          <i class="material-icons">date_rage</i>
+                                    </span>
+                                </div>
+                            <p:calendar id="fechaInicio" value="#{beanPeriodo.periodo.fechainicio}" timeZone="America/Bogota" 
+                                        pattern="yyyy-MM-dd" placeholder="Fecha Inicial" style="width: 50%">
+                            </p:calendar>
+                            </div>
+                    </div>
+                    <div class="form-group mt-2">
+                        <div class="input-group mb-1">
+                                <div>
+                                    <span class="input-group-text" id="basic-addon1">
+                                          <i class="material-icons">date_rage</i>
+                                    </span>
+                                </div>
+                            <p:calendar id="fechaFinal" value="#{beanPeriodo.periodo.fechafin}" timeZone="America/Bogota" 
+                                        pattern="yyyy-MM-dd" placeholder="Fercha Final" style="width: 50%">
+                            </p:calendar>  
+                            </div>
+                    </div>
+                    <center>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Periodo" class="btn btn-success" action="#{beanPeriodo.guardarPeriodo()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró el periodo buscado" rendered="#{beanPeriodo.periodoSearch == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{beanPeriodo.periodoSearch.id}" rendered="#{beanPeriodo.periodoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripciòn: #{beanPeriodo.periodoSearch.descripcion}" rendered="#{beanPeriodo.periodoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Fecha Inicial: #{beanPeriodo.periodoSearch.fechainicio}" rendered="#{beanPeriodo.periodoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Fecha Final: #{beanPeriodo.periodoSearch.fechafin}" rendered="#{beanPeriodo.periodoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{beanPeriodo.transformActivo(beanPeriodo.periodoSearch.activo)}" rendered="#{beanPeriodo.periodoSearch != null}"/>
+                </div>
+                <p:separator/>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <h4>Lista de Periodos</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaPeriodo" value="#{beanPeriodo.periodoList}" var="periodo">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{periodo.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripciòn</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{periodo.descripcion}" class="form-control" rendered="#{periodo.descripcion}"/>
+                            <h:outputText value="#{periodo.descripcion}" rendered="#{not periodo.descripcion}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Fecha Inicial</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{periodo.fechainicio}" class="form-control" rendered="#{periodo.fechainicio}"/>
+                            <h:outputText value="#{periodo.fechainicio}" rendered="#{not periodo.fechainicio}" />
+                            
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Fecha Final</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{periodo.fechafin}" class="form-control" rendered="#{periodo.fechafin}"/>
+                            <h:outputText value="#{periodo.fechafin}" rendered="#{not periodo.fechafin}" />
+                            
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{h.activo}" class="form-control" rendered="#{h.editable}"/>
+                            <h:outputText value="#{beanPeriodo.transformActivo(h.activo)}" rendered="#{not h.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{beanPeriodo.enableEditarOption(periodo, true)}"
+                                               rendered="#{not periodo.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{beanPeriodo.editarPeriodo(periodo)}"
+                                               rendered="#{periodo.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{beanPeriodo.periodo}" value="#{periodo}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{beanPeriodo.enableEditarOption(periodo, true)}"
+                                               rendered="#{periodo.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{beanPeriodo.eliminarPeriodo()}"
+                                               rendered="#{not periodo.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{beanPeriodo.periodo}" value="#{periodo}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+            
+            
+        
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

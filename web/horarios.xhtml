@@ -42,7 +42,7 @@
                 </div>
                 <h:form>
                     <div class="input-group mt-2"> 
-                        <p:inputText value="#{horarioBean.horario.id}" type="number" class="form-control" placeholder="Identificación de la sede" required=""/>
+                        <p:inputText value="#{horarioBean.horario.id}" type="number" class="form-control" placeholder="Identificación del horario" required=""/>
                         <div>                                        
                             <h:commandButton value="Consultar" action="#{horarioBean.buscarHorario(horarioBean.horario.id)}" class="btn btn-primary"/>
                         </div>
@@ -102,7 +102,7 @@
                     <h4>Resultado búsqueda</h4>                 
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="No se encontró la sede buscada" rendered="#{horarioBean.horarioSearch == null}"/>
+                    <h:outputText value="No se encontró el horario buscado" rendered="#{horarioBean.horarioSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="ID: #{horarioBean.horarioSearch.id}" rendered="#{horarioBean.horarioSearch != null}"/>
@@ -173,7 +173,7 @@
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
                                                action="#{horarioBean.editarHorario(h)}"
-                                               rendered="#{sede.editable}">
+                                               rendered="#{horario.editable}">
                                     <i class="material-icons">check</i>
                                     <f:setPropertyActionListener 
                                         target="#{horarioBean.horario}" value="#{h}" />

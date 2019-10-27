@@ -8,6 +8,7 @@ package beans;
 import entity.Asignatura;
 import entity.Docente;
 import entity.RelacionDocenteHorarioMateria;
+import entity.Sede;
 import entity.TipoId;
 import entity.TipoRol;
 import entity.Usuario;
@@ -21,6 +22,8 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -33,17 +36,18 @@ import org.primefaces.context.RequestContext;
  * @author SougiroHylian
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class docenteBean {
-    private Docente docentes = new Docente();
     private Integer id;
-    private String nombre;
-    private String apellido;
-    private Integer edad;
-    private String email;
-    private String tipo_contrato;
-    private Asignatura asignatura;
-    private List<Asignatura> lstAsignaturas;
+    private Docente docentes;
+    private Docente docenteSearch;
+    //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
+    private static List<Docente> docenteList;
+
+    public static List<Docente> getDocenteList() {
+        return docenteList;
+    }
+    
     public Docente getDocentes() {
         return docentes;
     }
@@ -56,66 +60,41 @@ public class docenteBean {
         return id;
     }
 
-    public Asignatura getAsignatura() {
-        return asignatura;
-    }
-
-    public void setAsignatura(Asignatura asignatura) {
-        this.asignatura = asignatura;
-    }
-
-    public List<Asignatura> getLstAsignaturas() {
-        return lstAsignaturas;
-    }
-
-    public void setLstAsignaturas(List<Asignatura> lstAsignaturas) {
-        this.lstAsignaturas = lstAsignaturas;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getTipo_contrato() {
-        return tipo_contrato;
+    public Docente getDocenteSearch() {
+        return docenteSearch;
     }
 
-    public void setTipo_contrato(String tipo_contrato) {
-        this.tipo_contrato = tipo_contrato;
+    public void setDocenteSearch(Docente docenteSearch) {
+        this.docenteSearch = docenteSearch;
     }
-
     
-
-    public String getNombre() {
-        return nombre;
+    public docenteBean(){
+        docentes = new Docente();
+        docenteSearch = new Docente();
+        obtenerDocentes();
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    private void obtenerDocentes() {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Docente> q = em.createNamedQuery("Docente.findAll", Docente.class);
+        docenteList = q.getResultList();
     }
-
-    public String getApellido() {
-        return apellido;
+    public void buscarDocentePorId(Integer id) {
+        docenteSearch = buscarById(id);
     }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public Integer getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public Docente buscarById(Integer id) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Docente> docente = em.createNamedQuery("Docente.findById", Docente.class);
+        docente.setParameter("id", id);
+        return (docente.getResultList().isEmpty())?  null : docente.getResultList().get(0);
     }
     public void registrarDocente(Integer id, String nombre, String apellido, Integer edad,
             String email, String tipo_contrato) {
@@ -133,31 +112,26 @@ public class docenteBean {
         em.getTransaction().commit();
         
     }
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
     public void registrarDocenteV() {
-        Docente doce = new Docente();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-        doce.setId(id);
-        doce.setNombre(nombre);
-        doce.setApellido(apellido);
-        doce.setEdad(edad);
-        doce.setEmail(email);
-        doce.setTipoContrato(tipo_contrato);
-        em.getTransaction().begin();
-        em.persist(doce);
-        em.getTransaction().commit();
-        
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "ÈXITO", "Registro realizado satisfactoriamente");
-            // For PrimeFaces < 6.2
-            RequestContext.getCurrentInstance().showMessageInDialog(message);  
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.persist(docentes);
+            em.getTransaction().commit();
+            em.close();
+            docentes = new Docente();
+            obtenerDocentes(); //Actualiza lista
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo guardar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
-    public List<Docente> obtenerDocentes() {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-        TypedQuery<Docente> q = em.createNamedQuery("Docente.findAll", Docente.class);
-        return q.getResultList();
-    }
+    
     public String irDocente(){
         return "gestionDocente.xhtml";
     }
@@ -225,4 +199,55 @@ public class docenteBean {
 
 		
 }
+    //Agregar este método para campos booleanos, como "activo"
+    public String transformActivo(Boolean activo) {
+        return (activo) ? "ACTIVA" : "INACTIVA";
+    }
+
+    //INDISPENSABLE tener este método
+    public void enableEditarOption(Docente docentes, boolean estado) {
+        docentes.setEditable(estado);
+    }
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void editarDocente(Docente d) {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.merge(docentes);
+            em.getTransaction().commit();
+            em.close();
+            obtenerDocentes(); //Actualiza lista
+            d.setEditable(false);
+            docentes = new Docente();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo editar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void eliminarDocente() {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            if (!em.contains(docentes)) {
+                docentes = em.merge(docentes);
+            }
+            em.remove(docentes);
+            em.getTransaction().commit();
+            obtenerDocentes(); //Actualiza lista
+            docentes = new Docente();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo eliminar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
 }
