@@ -6,9 +6,11 @@
 package beans;
 
 import entity.Horario;
+import entity.Sede;
 import entity.TipoDia;
 import entity.TipoFrecuencia;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
@@ -29,7 +31,20 @@ import javax.persistence.TypedQuery;
 public class HorarioBean {
 
     private Horario horario; //Falta llenar
+    private Horario horarioSearch;
+    //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
+    private static List<Horario> horarioList;
+    //INDISPENSABLE EL MÉTODO GET. SÓLO EL GET
+    public List<Horario> getHorarioList() {
+        return horarioList;
+    }
+    public Horario getHorarioSearch() {
+        return horarioSearch;
+    }
 
+    public void setHorarioSearch(Horario horarioSearch) {
+        this.horarioSearch = horarioSearch;
+    }
     public TipoDia[] getTipoDias() {
         return TipoDia.values();
     }
@@ -51,9 +66,22 @@ public class HorarioBean {
      */
     public HorarioBean() {
         horario = new Horario();
+        horarioSearch = new Horario();
+        obtenerHorariosList();
+    }
+    //Agregar este método para campos booleanos, como "activo"
+    public String transformActivo(Boolean activo) {
+        return (activo) ? "ACTIVA" : "INACTIVA";
+    }
+    //INDISPENSABLE tener este método
+    public void enableEditarOption(Horario horario, boolean estado) {
+        horario.setEditable(estado);
     }
     public String irHorario() {
         return "horarios.xhtml";
+    }
+    public java.sql.Date convertir(java.util.Date fechaUtilDate){
+        return new java.sql.Date(fechaUtilDate.getTime());
     }
     public List<Horario> obtenerHorarios() {
         EntityManagerFactory emf
@@ -62,7 +90,14 @@ public class HorarioBean {
         TypedQuery<Horario> q = em.createNamedQuery("Horario.findAll", Horario.class);
         return q.getResultList();
     }
-
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    private void obtenerHorariosList() {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Horario> q = em.createNamedQuery("Horario.findAll", Horario.class);
+        horarioList = q.getResultList();
+    }
     public Horario buscarHorario(Long id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
@@ -82,16 +117,64 @@ public class HorarioBean {
     }
 
     public void guardarHorario() {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-        //horario.setRowid(horario.getId().toString());
-        em.getTransaction().begin();
-        em.persist(horario);
-        em.getTransaction().commit();
-        horario = new Horario();
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.persist(horario);
+            em.getTransaction().commit();
+            em.close();
+            horario = new Horario();
+            obtenerHorarios(); //Actualiza lista
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo guardar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
- 
+ //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void editarHorario(Horario h) {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.merge(horario);
+            em.getTransaction().commit();
+            em.close();
+            obtenerHorarios(); //Actualiza lista
+            h.setEditable(false);
+            horario = new Horario();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo editar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void eliminarHorario() {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            if (!em.contains(horario)) {
+                horario = em.merge(horario);
+            }
+            em.remove(horario);
+            em.getTransaction().commit();
+            obtenerHorarios(); //Actualiza lista
+            horario = new Horario();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo eliminar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
     @FacesConverter(forClass = Horario.class)
     public static class HorarioBeanConverter implements Converter {
 
