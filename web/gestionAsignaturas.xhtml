@@ -8,122 +8,185 @@
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-        <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="./resources/css/materialize-icons.css"/>
-
         <title>Gestión Asignatura</title>
     </h:head>
     <h:body>
-
-        <div class="container" style="background-color: white">    
-            <div class="row" id="rowmenu">
-                <div >
-                    <div class="card-body" style="text-align: center">
-                        <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-                    </div>                      
-                </div>
+        <div class="row" id="rowmenu">
+            <div >
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
             </div>
-            <div class="row" id="rowmenu">  
-                <!--barra de navegacion-->
-                <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
-                <!--fin barra de navegacion-->
-            </div>  
-            <div class="row mb-6">
-                <div class="card shadow mt-3" style="background-color: #0050a0">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                        <h6 class="card-subtitle mb-2 text-warning">Gestión de asignaturas</h6>                  
-                    </div>            
-                </div>
+        </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+            <!--fin barra de navegacion-->
+        </div>  
+        <div>
+            <div  style="background-color: #0050a0">
+                <div class="card-body">
+                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Asignaturas</h6>                  
+                </div>            
             </div>
-            <div class="row mb-4">
-
-                <div class="col-sm-1">
-
+        </div>
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row">
+                    <h4>Buscar Asignatura</h4>                 
                 </div>
-
-                <div class="col-sm-4">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Ingresar Asignatura</h4>                
-                        </div>            
-                    </div> 
-                    <p:separator></p:separator>
-                    <h:form>
-                        <div class="form-group mt-3">
-
-                            <p:selectOneMenu value="#{asignaturaBean.semestre}" style="width: 100%">
-                                <f:selectItem itemLabel="Semestre" itemDisabled="true"/>
-                                <f:selectItems value="#{asignaturaBean.getTipoSemestres()}"/>
-                            </p:selectOneMenu>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{asignaturaBean.id}" type="number" class="form-control" placeholder="ID de la asignatura"/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{asignaturaBean.buscarAsignaturaPorId(asignaturaBean.id)}" class="btn btn-primary"/>
                         </div>
-                        <div class="form-group mt-3">
-                            <p:selectOneMenu value="#{asignaturaBean.asignatura.rowidPensum}" style="width: 100%">
-                                <f:selectItem itemLabel="Pensum" itemDisabled="true"  />
-                                <f:selectItems value="#{pensumBean.consultarPensums()}"/>
-                            </p:selectOneMenu>
-                        </div>
-                        <div class="form-group mt-3">
-                            <p:selectOneMenu value="#{asignaturaBean.asignatura.rowidPrograma}" style="width: 100%">
-                                <f:selectItem itemLabel="Programa" itemDisabled="true"  />
-                                <f:selectItems value="#{crearProgramaBean.getAllPrograms()}"/>
-                            </p:selectOneMenu>
-                        </div>
-                        <div class="input-group mt-2"> 
-                            <p:selectBooleanCheckbox value="#{asignaturaBean.asignatura.activo}" itemLabel="Poner la asignatura como activa."/>
-
-                        </div>
-                        <div class="input-group mt-2"> 
-                            <p:inputTextarea  rows="10" cols="50" value="#{asignaturaBean.asignatura.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
-                        </div>
-                        <br/>
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <div class="row">
+                    <h4>Registrar Asignaturas</h4>                 
+                </div>
+                <h:form>
+                    <div class="form-group mt-3">
+                        <h:selectOneMenu class="form-control" value="#{asignaturaBean.semestre}" style="width: 100%">
+                            <f:selectItem itemLabel="SEMESTRE" itemDisabled="true"/>
+                            <f:selectItems value="#{asignaturaBean.getTipoSemestres()}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="form-group mt-3">
+                        <h:selectOneMenu class="form-control" value="#{asignaturaBean.asignatura.rowidPensum}" style="width: 100%">
+                            <f:selectItem itemLabel="PENSUM" itemDisabled="true"  />
+                            <f:selectItems value="#{pensumBean.consultarPensums()}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="form-group mt-3">
+                        <h:selectOneMenu class="form-control" value="#{asignaturaBean.asignatura.rowidPrograma}" style="width: 100%">
+                            <f:selectItem itemLabel="PROGRAMA" itemDisabled="true"  />
+                            <f:selectItems value="#{crearProgramaBean.getAllPrograms()}"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="checkbox mt-2">
+                        <h:selectBooleanCheckbox id="check" value="#{asignaturaBean.asignatura.activo}"/>
+                        <h:outputLabel value="Poner la asignatura como activa" for="check" />
+                    </div>
+                    <div class="input-group mt-2"> 
+                        <p:inputTextarea style="text-transform: uppercase" rows="5" cols="50" value="#{asignaturaBean.asignatura.descripcion}" placeholder="Descripción" class="form-control" required="true"/>
+                    </div>
+                    <br/>
+                    <center>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Asignatura" class="btn btn-warning" action="#{asignaturaBean.guardarAsignatura()}"/>
-                        </div>   
-                    </h:form>                  
+                            <h:commandButton value="Registrar Asignatura" class="btn btn-success" action="#{asignaturaBean.guardarAsignatura()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
                 </div>
-
-                <div class="col-sm-6">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Listado de asignaturas</h4>                 
-                        </div>            
-                    </div> 
-
-                    <p:dataTable class="bordered centered highlight" value="#{asignaturaBean.obtenerAsignaturas()}" var="r">
-                        <p:column headerText="Id">
-                            #{r.id}
-                        </p:column>
-
-                        <p:column headerText="Semestre">
-                            #{r.semestre}
-                        </p:column>
-                        <p:column headerText="No. Pensum">
-                            #{r.rowidPensum.codigo}
-                        </p:column>
-                        <p:column headerText="Programa académico">
-                            #{r.rowidPrograma.nombre}
-                        </p:column>
-                        <p:column headerText="Estado">
-                            #{(r.activo)? "Activa":"Inactiva" }
-                        </p:column>
-                        <p:column headerText="Descripción">
-                            #{r.descripcion}
-                        </p:column>
-                        <p:column headerText="Opciones">
-                            <!-- Integrar una ventana modal -->
-                            <h:form>
-                                <h:commandButton value="Editar" class="btn btn-warning" />
-                                <h:commandButton value="Eliminar" class="btn btn-danger" action="#{asignaturaBean.eliminarAsignatura(r.id)}"/>
-                            </h:form>
-                        </p:column>
-                    </p:dataTable>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró la asignatura buscada" rendered="#{asignaturaBean.asignaturaBusqueda == null}"/>
                 </div>
-
-                <div class="col-sm-1">
-
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{asignaturaBean.asignaturaBusqueda.id}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
                 </div>
-
+                <div class="form-group mt-2">
+                    <h:outputText value="Semestre: #{asignaturaBean.asignaturaBusqueda.semestre}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No. Pensum: #{asignaturaBean.asignaturaBusqueda.rowidPensum.codigo}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Programa académico: #{asignaturaBean.asignaturaBusqueda.rowidPrograma.nombre}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{asignaturaBean.transformActivo(asignaturaBean.asignaturaBusqueda.activo)}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripción: #{asignaturaBean.asignaturaBusqueda.descripcion}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
+                </div>
+                <p:separator/>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <h4>Lista de Asignaturas</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaSedes" value="#{asignaturaBean.asignaturasList}" var="asignatura">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{asignatura.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Semestre</f:facet>
+                            <h:selectOneMenu class="form-control"  value="#{asignaturaBean.semestre}" style="width: 100%" rendered="#{asignatura.editable}">
+                                <f:selectItem itemLabel="SEMESTRE" itemDisabled="true"/>
+                                <f:selectItems value="#{asignaturaBean.getTipoSemestres()}"/>
+                            </h:selectOneMenu>
+                            <h:outputText value="#{asignatura.semestre}" rendered="#{not asignatura.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">No. Pensum</f:facet>
+                            <h:selectOneMenu class="form-control"  value="#{asignatura.rowidPensum}" style="width: 100%" rendered="#{asignatura.editable}">
+                                <f:selectItem itemLabel="PENSUM" itemDisabled="true"  />
+                                <f:selectItems value="#{pensumBean.consultarPensums()}"/>
+                            </h:selectOneMenu>
+                            <h:outputText value="#{asignatura.rowidPensum.codigo}" rendered="#{not asignatura.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Programa académico</f:facet>
+                            <h:selectOneMenu class="form-control" value="#{asignaturaBean.asignatura.rowidPrograma}" style="width: 100%" rendered="#{asignatura.editable}">
+                                <f:selectItem itemLabel="PROGRAMA" itemDisabled="true"  />
+                                <f:selectItems value="#{crearProgramaBean.getAllPrograms()}"/>
+                            </h:selectOneMenu>
+                            <h:outputText value="#{asignatura.rowidPrograma.nombre}" rendered="#{not asignatura.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" id="check2" value="#{asignatura.activo}" class="form-control" rendered="#{asignatura.editable}"/>
+                            <h:outputText value="#{asignaturaBean.transformActivo(asignatura.activo)}" rendered="#{not asignatura.editable}" />
+                        </p:column>                       
+                        <p:column>    				
+                            <f:facet name="header">Descripción</f:facet>
+                            <p:inputTextarea style="text-transform: uppercase" rows="5" cols="50" value="#{asignatura.descripcion}" class="form-control" rendered="#{asignatura.editable}"/>
+                            <h:outputText value="#{asignatura.descripcion}" rendered="#{not asignatura.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{asignaturaBean.enableEditarOption(asignatura, true)}"
+                                               rendered="#{not asignatura.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{asignaturaBean.editarAsignatura(asignatura)}"
+                                               rendered="#{asignatura.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{asignaturaBean.asignatura}" value="#{asignatura}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{asignaturaBean.enableEditarOption(asignatura, false)}"
+                                               rendered="#{asignatura.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{asignaturaBean.eliminarAsignatura()}"
+                                               rendered="#{not asignatura.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{asignaturaBean.asignatura}" value="#{asignatura}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
             </div>
         </div>
         <!--barra de footer-->

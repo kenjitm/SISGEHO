@@ -16,6 +16,11 @@
     color: white;
 }
 
+.table > thead th{
+    background-color: #0050a0;
+    color: white;
+}
+
 .container{
     display:flex;
     flex-direction: column;
