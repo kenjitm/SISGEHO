@@ -74,8 +74,8 @@ public class Sede implements Serializable {
 
     public Sede(Integer id, String ubicacion, String subsede, boolean activo) {
         this.id = id;
-        this.ubicacion = ubicacion;
-        this.subsede = subsede;
+        this.ubicacion = ubicacion.toUpperCase();
+        this.subsede = subsede.toUpperCase();
         this.activo = activo;
     }
 
@@ -88,7 +88,7 @@ public class Sede implements Serializable {
     }
 
     public String getUbicacion() {
-        return ubicacion;
+        return ubicacion.toUpperCase();
     }
 
     public void setUbicacion(String ubicacion) {
@@ -96,7 +96,7 @@ public class Sede implements Serializable {
     }
 
     public String getSubsede() {
-        return subsede;
+        return subsede.toUpperCase();
     }
 
     public void setSubsede(String subsede) {

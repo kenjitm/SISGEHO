@@ -22,6 +22,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -33,10 +34,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "asignatura")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Asignatura.findAll", query = "SELECT a FROM Asignatura a"),
-    @NamedQuery(name = "Asignatura.findById", query = "SELECT a FROM Asignatura a WHERE a.id = :id"),
-    @NamedQuery(name = "Asignatura.findByDescripcion", query = "SELECT a FROM Asignatura a WHERE a.descripcion = :descripcion"),
-    @NamedQuery(name = "Asignatura.findBySemestre", query = "SELECT a FROM Asignatura a WHERE a.semestre = :semestre"),
+    @NamedQuery(name = "Asignatura.findAll", query = "SELECT a FROM Asignatura a")
+    ,
+    @NamedQuery(name = "Asignatura.findById", query = "SELECT a FROM Asignatura a WHERE a.id = :id")
+    ,
+    @NamedQuery(name = "Asignatura.findByDescripcion", query = "SELECT a FROM Asignatura a WHERE a.descripcion = :descripcion")
+    ,
+    @NamedQuery(name = "Asignatura.findBySemestre", query = "SELECT a FROM Asignatura a WHERE a.semestre = :semestre")
+    ,
     @NamedQuery(name = "Asignatura.findByActivo", query = "SELECT a FROM Asignatura a WHERE a.activo = :activo")})
 public class Asignatura implements Serializable {
 
@@ -64,7 +69,11 @@ public class Asignatura implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidAsignatura")
     private Collection<AsignaturaDocente> asignaturaDocenteCollection;
 
+    @Transient
+    private boolean editable;
+
     public Asignatura() {
+        editable = false;
     }
 
     public Asignatura(Integer id) {
@@ -73,7 +82,7 @@ public class Asignatura implements Serializable {
 
     public Asignatura(Integer id, String descripcion, Integer semestre, boolean activo) {
         this.id = id;
-        this.descripcion = descripcion;
+        this.descripcion = descripcion.toUpperCase();
         this.semestre = semestre;
         this.activo = activo;
     }
@@ -91,7 +100,7 @@ public class Asignatura implements Serializable {
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.descripcion = descripcion.toUpperCase();
     }
 
     public Integer getSemestre() {
@@ -135,6 +144,14 @@ public class Asignatura implements Serializable {
         this.asignaturaDocenteCollection = asignaturaDocenteCollection;
     }
 
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -159,5 +176,5 @@ public class Asignatura implements Serializable {
     public String toString() {
         return "entity.Asignatura[ id=" + id + " ]";
     }
-    
+
 }

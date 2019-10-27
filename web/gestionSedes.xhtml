@@ -55,10 +55,10 @@ and open the template in the editor.
                 <h:form>
                     <p:separator class="mt-4"/>
                     <div class="form-group mt-2">
-                        <p:inputText value="#{sedeBean.sede.ubicacion}" class="form-control" placeholder="Ubicación" required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{sedeBean.sede.ubicacion}" class="form-control" placeholder="Ubicación" required=""/>
                     </div>
                     <div class="form-group mt-2">
-                        <p:inputText value="#{sedeBean.sede.subsede}" class="form-control" placeholder="Subsede" required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{sedeBean.sede.subsede}" class="form-control" placeholder="Subsede" required=""/>
                     </div>
                     <div class="form-group mt-2">
                         <p:selectBooleanCheckbox value="#{sedeBean.sede.activo}" class="form-control" itemLabel="Está activa?"/>
@@ -103,13 +103,13 @@ and open the template in the editor.
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Ubicación</f:facet>
-                            <p:inputText value="#{sede.ubicacion}" class="form-control" rendered="#{sede.editable}"/>
+                            <p:inputText style="text-transform: uppercase" value="#{sede.ubicacion}" class="form-control" rendered="#{sede.editable}"/>
 
                             <h:outputText value="#{sede.ubicacion}" rendered="#{not sede.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Subsede</f:facet>
-                            <p:inputText value="#{sede.subsede}" class="form-control" rendered="#{sede.editable}"/>
+                            <p:inputText style="text-transform: uppercase" value="#{sede.subsede}" class="form-control" rendered="#{sede.editable}"/>
                             <h:outputText value="#{sede.subsede}" rendered="#{not sede.editable}" />
                         </p:column>
 
