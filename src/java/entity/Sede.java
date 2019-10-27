@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -58,7 +59,13 @@ public class Sede implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidSede")
     private Collection<Recurso> recursoCollection;
 
+    //Atributo para poder renderizar los campos de editar en la tabla
+    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
+    @Transient
+    private boolean editable;
+    
     public Sede() {
+        editable = false;
     }
 
     public Sede(Integer id) {
@@ -103,7 +110,7 @@ public class Sede implements Serializable {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
+    
     @XmlTransient
     public Collection<Recurso> getRecursoCollection() {
         return recursoCollection;
@@ -111,6 +118,15 @@ public class Sede implements Serializable {
 
     public void setRecursoCollection(Collection<Recurso> recursoCollection) {
         this.recursoCollection = recursoCollection;
+    }
+    
+    //Indispensable poner los set y get del atributo "editable"
+    public boolean getEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     @Override

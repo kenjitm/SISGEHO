@@ -14,104 +14,147 @@ and open the template in the editor.
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-        <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="#{resource['css/materialize-icons.css']}"/>
 
         <title>Sedes</title>
     </h:head>
 
     <h:body>
-        <div class="container" style="background-color: white">     
-            <div class="row" id="rowmenu">
-                <div >
-                    <div class="card-body" style="text-align: center">
-                        <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-                    </div>                      
-                </div>
+        <div class="row" id="rowmenu">
+            <div >
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
             </div>
-            <div class="row" id="rowmenu">  
-                <!--barra de navegacion-->
-                <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>   
-            </div>
-            <!--fin barra de navegacion-->
-            <div class="row" id="centro">
-                <div class="row mb-6">
-                    <div class="card shadow mt-3" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                            <h6 class="card-subtitle mb-2 text-warning">Gestión de Sedes</h6>                  
-                        </div>            
-                    </div>
-                </div>
-                <div class="row mb-6"></div>
-            </div>
-            <div class="row mb-4">
-                <div class="col-sm-4">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Registro de Sedes</h4>                
-                        </div>            
-                    </div> 
-                    <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación de la sede en el campo!</h6>
-                    <h:form>                                              
-
-                        <div class="input-group mt-2"> 
-                            <p:inputText value="#{sedeBean.id}" class="form-control" placeholder="Identificación de la sede" required=""/>
-                            <div>                                        
-                                <h:commandButton value="Consultar" action="#{sedeBean.buscarPorId(sedeBean.id)}" class="btn btn-primary"/>
-                            </div>
-                        </div>
-
-                        <p:separator class="mt-4"/>
-
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{sedeBean.sede.id}" class="form-control" placeholder="ID" required="true" type="number"/>
-                        </div>
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{sedeBean.sede.ubicacion}" class="form-control" placeholder="Ubicación" required=""/>
-                        </div>
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{sedeBean.sede.subsede}" class="form-control" placeholder="Subsede" required=""/>
-                        </div>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Sede" class="btn btn-warning" action="#{sedeBean.guardar()}"/>
-                        </div>
-
-                        <p:separator/>
-
-
-                    </h:form>
-                </div>
-                <div class="col-sm-8">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Litado de Sedes</h4>                
-                        </div>            
-                    </div> 
-                    <p:dataTable binding="#{sedeBean.sedesDataTable}" var="sede" value="#{sedeBean.obtenerSedes()}">
-                        <p:column headerText="Id">
-                            <h:outputText value="#{sede.id}" />
-                        </p:column>
-
-                        <p:column headerText="Sede">
-                            <h:outputText value="#{sede.ubicacion}" />
-                        </p:column>
-                        <p:column headerText="SubSede">
-                            <h:outputText value="#{sede.subsede}" />
-                        </p:column>
-                        <p:column headerText="Opciones">
-                            <!-- Integrar una ventana modal -->
-                            <h:form>
-                                <h:commandButton value="Editar" class="btn btn-warning" actionListener="#{sedeBean.updateDataActionListener}"/>
-                                <h:commandButton value="Eliminar" class="btn btn-danger" action="#{sedeBean.eliminar(sede.id)}"/>
-                            </h:form>
-                        </p:column>
-                    </p:dataTable>
-                </div>
-            </div>
-
         </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>   
+        </div>
+        <!--fin barra de navegacion-->
+        <div>
+            <div  style="background-color: #0050a0">
+                <div class="card-body">
+                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Sedes</h6>                  
+                </div>            
+            </div>
+        </div>
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row">
+                    <h4>Registrar Sedes</h4>                 
+                </div>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{sedeBean.id}" class="form-control" placeholder="Identificación de la sede" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{sedeBean.buscarSedePorId(sedeBean.id)}" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </h:form>
+                <h:form>
+                    <p:separator class="mt-4"/>
+                    <div class="form-group mt-2">
+                        <p:inputText value="#{sedeBean.sede.ubicacion}" class="form-control" placeholder="Ubicación" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:inputText value="#{sedeBean.sede.subsede}" class="form-control" placeholder="Subsede" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:selectBooleanCheckbox value="#{sedeBean.sede.activo}" class="form-control" itemLabel="Está activa?"/>
+                    </div>
+                    <p:separator/>
+                    <center>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Sede" class="btn btn-success" action="#{sedeBean.guardarSede()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró la sede buscada" rendered="#{sedeBean.sedeBusqueda == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{sedeBean.sedeBusqueda.id}" rendered="#{sedeBean.sedeBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Ubicación: #{sedeBean.sedeBusqueda.ubicacion}" rendered="#{sedeBean.sedeBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Subsede: #{sedeBean.sedeBusqueda.subsede}" rendered="#{sedeBean.sedeBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{sedeBean.transformActivo(sedeBean.sedeBusqueda.activo)}" rendered="#{sedeBean.sedeBusqueda != null}"/>
+                </div>
+                <p:separator/>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <h4>Lista de Sedes</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaSedes" value="#{sedeBean.sedesList}" var="sede">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{sede.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Ubicación</f:facet>
+                            <p:inputText value="#{sede.ubicacion}" class="form-control" rendered="#{sede.editable}"/>
 
+                            <h:outputText value="#{sede.ubicacion}" rendered="#{not sede.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Subsede</f:facet>
+                            <p:inputText value="#{sede.subsede}" class="form-control" rendered="#{sede.editable}"/>
+                            <h:outputText value="#{sede.subsede}" rendered="#{not sede.editable}" />
+                        </p:column>
+
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{sede.activo}" class="form-control" rendered="#{sede.editable}"/>
+                            <h:outputText value="#{sedeBean.transformActivo(sede.activo)}" rendered="#{not sede.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{sedeBean.enableEditarOption(sede, true)}"
+                                               rendered="#{not sede.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{sedeBean.editarSede(sede)}"
+                                               rendered="#{sede.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{sedeBean.sede}" value="#{sede}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{sedeBean.enableEditarOption(sede, false)}"
+                                               rendered="#{sede.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{sedeBean.eliminarSede()}"
+                                               rendered="#{not sede.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{sedeBean.sede}" value="#{sede}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

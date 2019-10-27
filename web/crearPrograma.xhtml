@@ -20,8 +20,6 @@ and open the template in the editor.
     </h:head>
 
     <h:body>
-
-
         <div style="background-color: white">           
             <div class="row" id="rowmenu">
                 <div >
@@ -43,10 +41,11 @@ and open the template in the editor.
                     </div>            
                 </div>
             </div>
+            
             <div class="row mb-4 ml-1 mr-1">
                 <div class="col-sm-4">
                     <div class="row">
-                            <h4>Registrar Programas</h4>                 
+                        <h4>Registrar Programas</h4>                 
                     </div>
                     <h:form>
                         <div class="form-group mt-2">
@@ -78,50 +77,51 @@ and open the template in the editor.
                         </div>
 
                         <p:separator/> <center>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Programa" class="btn btn-warning" action="#{crearProgramaBean.crear()}"/>
-                        </div></center>
+                            <div class="btn-group" role="group" aria-label="Third group">
+                                <h:commandButton value="Registrar Programa" class="btn btn-warning" action="#{crearProgramaBean.crear()}"/>
+                            </div></center>
                     </h:form>                 
                 </div>
                 <div class="col-sm-8">
                     <div class="row">
-                            <h4>Lista de Programas</h4>                 
+                        <h4>Lista de Programas</h4>                 
                     </div> 
                     <h:form>  
                         <table class="table" value="">
                             <thead class="thead azul" style="background-color: #00427e">
-                              <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Titulo</th>
-                                <th scope="col">Descripcion</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Modalidad</th>
-                                <th scope="col">Duracion</th>
-                                <th scope="col">Director</th>
-                                <th scope="col">Opciones</th>
-                              </tr>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Titulo</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Modalidad</th>
+                                    <th scope="col">Duracion</th>
+                                    <th scope="col">Director</th>
+                                    <th scope="col">Opciones</th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row">id</th>
-                                <td>nombre</td>
-                                <td>descripcion</td>
-                                <td>Tipo</td>
-                                <td>Modalidad</td>
-                                <td>Duracion</td>
-                                <td>Director</td>
-                                <td>
-                                    <h:commandLink class="btn btn-warning btn-sm" styleClass="btn btn-warning btn-sm" accion="#"><i class="material-icons">create</i></h:commandLink>
-                                    <h:commandLink class="btn btn-warning btn-sm" styleClass="btn btn-danger btn-sm" accion="#"><i class="material-icons">delete</i></h:commandLink>
-                                </td>
-                              </tr>
+                                <tr>
+                                    <th scope="row">id</th>
+                                    <td>nombre</td>
+                                    <td>descripcion</td>
+                                    <td>Tipo</td>
+                                    <td>Modalidad</td>
+                                    <td>Duracion</td>
+                                    <td>Director</td>
+                                    <td>
+                                        <h:commandLink class="btn btn-warning btn-sm" styleClass="btn btn-warning btn-sm" action="#"><i class="material-icons">create</i></h:commandLink>
+                                        <h:commandLink class="btn btn-warning btn-sm" styleClass="btn btn-danger btn-sm" action="#"><i class="material-icons">delete</i></h:commandLink>
+                                    </td>
+                                </tr>
                             </tbody>
-                            
-                          </table>
+
+                        </table>
 
                     </h:form>
                 </div>
             </div>        
+        
         </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
