@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,10 +60,12 @@ public class Horario implements Serializable {
     private Date horaFin;
     @Basic(optional = false)
     @Column(name = "dia")
-    private String dia;
+    @Enumerated(EnumType.STRING)
+    private TipoDia dia;
     @Basic(optional = false)
     @Column(name = "frecuencia")
-    private String frecuencia;
+    @Enumerated(EnumType.STRING)
+    private TipoFrecuencia frecuencia;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
@@ -80,7 +84,7 @@ public class Horario implements Serializable {
         this.id = id;
     }
 
-    public Horario(Integer id, Date horaInicio, Date horaFin, String dia, String frecuencia, boolean activo) {
+    public Horario(Integer id, Date horaInicio, Date horaFin, TipoDia dia, TipoFrecuencia frecuencia, boolean activo) {
         this.id = id;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -113,19 +117,19 @@ public class Horario implements Serializable {
         this.horaFin = horaFin;
     }
 
-    public String getDia() {
+    public TipoDia getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public void setDia(TipoDia dia) {
         this.dia = dia;
     }
 
-    public String getFrecuencia() {
+    public TipoFrecuencia getFrecuencia() {
         return frecuencia;
     }
 
-    public void setFrecuencia(String frecuencia) {
+    public void setFrecuencia(TipoFrecuencia frecuencia) {
         this.frecuencia = frecuencia;
     }
 

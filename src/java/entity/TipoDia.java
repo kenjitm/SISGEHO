@@ -11,13 +11,13 @@ package entity;
  */
 public enum TipoDia {
     
-    LUNES("Lunes"),
-    MARTES("Martes"),
-    MIERCOLES("Miércoles"),
-    JUEVES("Jueves"),
-    VIERNES("Viernes"),
-    SABADO("Sábado"),
-    DOMINGO("Domingo");
+    LUNES("LUNES"),
+    MARTES("MARTES"),
+    MIERCOLES("MIERCOLES"),
+    JUEVES("JUEVES"),
+    VIERNES("VIERNES"),
+    SABADO("SABADO"),
+    DOMINGO("DOMINGO");
     
     private final String label;
     

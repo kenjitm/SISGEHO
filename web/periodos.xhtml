@@ -58,28 +58,22 @@
                         <p:inputText id="descripcion" style="text-transform: uppercase" value="#{beanPeriodo.periodo.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
                     </div>
                     <div class="form-group mt-2">
-                        <div class="input-group mb-1">
-                                <div>
-                                    <span class="input-group-text" id="basic-addon1">
-                                          <i class="material-icons">date_rage</i>
-                                    </span>
-                                </div>
+                        
                             <p:calendar id="fechaInicio" value="#{beanPeriodo.periodo.fechainicio}" timeZone="America/Bogota" 
                                         pattern="yyyy-MM-dd" placeholder="Fecha Inicial" style="width: 50%">
                             </p:calendar>
-                            </div>
+                            
                     </div>
                     <div class="form-group mt-2">
-                        <div class="input-group mb-1">
-                                <div>
-                                    <span class="input-group-text" id="basic-addon1">
-                                          <i class="material-icons">date_rage</i>
-                                    </span>
-                                </div>
+                        
                             <p:calendar id="fechaFinal" value="#{beanPeriodo.periodo.fechafin}" timeZone="America/Bogota" 
                                         pattern="yyyy-MM-dd" placeholder="Fercha Final" style="width: 50%">
                             </p:calendar>  
-                            </div>
+                           
+                    </div>
+                    <div class="checkbox mt-2">
+                        <h:selectBooleanCheckbox id="check" value="#{beanPeriodo.periodo.activo}"/>
+                        <h:outputLabel value="Poner el periodo como activo" for="check" />
                     </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">
@@ -98,10 +92,14 @@
                     <h:outputText value="ID: #{beanPeriodo.periodoSearch.id}" rendered="#{beanPeriodo.periodoSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Descripciòn: #{beanPeriodo.periodoSearch.descripcion}" rendered="#{beanPeriodo.periodoSearch != null}"/>
+                    <h:outputText value="Descripciòn: #{beanPeriodo.periodoSearch.descripcion}" rendered="#{beanPeriodo.periodoSearch != null}">
+                    <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd"/>  
+                    </h:outputText>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Fecha Inicial: #{beanPeriodo.periodoSearch.fechainicio}" rendered="#{beanPeriodo.periodoSearch != null}"/>
+                    <h:outputText value="Fecha Inicial: #{beanPeriodo.periodoSearch.fechainicio}" rendered="#{beanPeriodo.periodoSearch != null}">
+                    <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd"/>  
+                    </h:outputText>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Fecha Final: #{beanPeriodo.periodoSearch.fechafin}" rendered="#{beanPeriodo.periodoSearch != null}"/>
@@ -116,32 +114,42 @@
                     <h4>Lista de Periodos</h4>                 
                 </div> 
                 <h:form>
-                    <h:dataTable class="table table-hover text-center" id="tablaPeriodo" value="#{beanPeriodo.periodoList}" var="periodo">
+                    <h:dataTable class="table table-hover text-center" id="tablaPeriodo" value="#{beanPeriodo.periodoList}" var="periodo"
+                                 
+                                 >
                         <p:column>
                             <f:facet name="header">ID</f:facet>
                             <h:outputText value="#{periodo.id}"/>
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Descripciòn</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{periodo.descripcion}" class="form-control" rendered="#{periodo.descripcion}"/>
-                            <h:outputText value="#{periodo.descripcion}" rendered="#{not periodo.descripcion}" />
+                            <p:inputText style="text-transform: uppercase" value="#{periodo.descripcion}" class="form-control" rendered="#{periodo.editable}"/>
+                            <h:outputText value="#{periodo.descripcion}" rendered="#{not periodo.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Fecha Inicial</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{periodo.fechainicio}" class="form-control" rendered="#{periodo.fechainicio}"/>
-                            <h:outputText value="#{periodo.fechainicio}" rendered="#{not periodo.fechainicio}" />
+                            <p:calendar id="fechaInicio" value="#{periodo.fechainicio}" timeZone="America/Bogota" 
+                                        pattern="yyyy-MM-dd" rendered="#{periodo.editable}">
+                            </p:calendar>
+                            <h:outputText value="#{beanPeriodo.convertir(periodo.fechainicio)}" rendered="#{not periodo.editable}">
+                                <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd"/>  
+                            </h:outputText>
                             
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Fecha Final</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{periodo.fechafin}" class="form-control" rendered="#{periodo.fechafin}"/>
-                            <h:outputText value="#{periodo.fechafin}" rendered="#{not periodo.fechafin}" />
+                            <p:calendar id="fechaFinal" value="#{periodo.fechafin}" timeZone="America/Bogota" 
+                                        pattern="yyyy-MM-dd" rendered="#{periodo.editable}">
+                            </p:calendar>  
+                            <h:outputText value="#{beanPeriodo.convertir(periodo.fechafin)}" rendered="#{not periodo.editable}">
+                            <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd"/>  
+                            </h:outputText>
                             
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Estado</f:facet>
-                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{h.activo}" class="form-control" rendered="#{h.editable}"/>
-                            <h:outputText value="#{beanPeriodo.transformActivo(h.activo)}" rendered="#{not h.editable}" />
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{periodo.activo}" class="form-control" rendered="#{periodo.editable}"/>
+                            <h:outputText value="#{beanPeriodo.transformActivo(periodo.activo)}" rendered="#{not periodo.editable}" />
                         </p:column>
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>

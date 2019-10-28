@@ -11,10 +11,9 @@ package entity;
  */
 public enum TipoFrecuencia {
 
-    DIARIA("Diaria"),
-    SEMANAL("Semanal"),
-    QUINCENAL("Quincenal"),
-    MENSUAL("Mensual");
+    
+    SEMANAL("SEMANAL"),
+    QUINCENAL("QUINCENAL");
 
     private final String label;
 

@@ -117,13 +117,16 @@ public class beanPeriodo {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+    public java.sql.Date convertir(java.util.Date fechaUtilDate){
+        return new java.sql.Date(fechaUtilDate.getTime());
+    }
     //Agregar este método para campos booleanos, como "activo"
     public String transformActivo(Boolean activo) {
         return (activo) ? "ACTIVA" : "INACTIVA";
     }
     //INDISPENSABLE tener este método
-    public void enableEditarOption(Sede sede, boolean estado) {
-        sede.setEditable(estado);
+    public void enableEditarOption(Periodo periodo, boolean estado) {
+        periodo.setEditable(estado);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
     public void editarPeriodo(Periodo p) {

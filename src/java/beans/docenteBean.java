@@ -7,6 +7,7 @@ package beans;
 
 import entity.Asignatura;
 import entity.Docente;
+import entity.Horario;
 import entity.RelacionDocenteHorarioMateria;
 import entity.Sede;
 import entity.TipoId;
@@ -23,7 +24,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.faces.event.ValueChangeEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,10 +45,10 @@ public class docenteBean {
     private Integer id;
     private Docente docentes;
     private Docente docenteSearch;
-    //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
+   //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<Docente> docenteList;
-
-    public static List<Docente> getDocenteList() {
+    //INDISPENSABLE EL MÉTODO GET. SÓLO EL GET
+    public List<Docente> getDocenteList() {
         return docenteList;
     }
     
@@ -92,9 +96,17 @@ public class docenteBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Docente> docente = em.createNamedQuery("Docente.findById", Docente.class);
-        docente.setParameter("id", id);
+        TypedQuery<Docente> docente = em.createNamedQuery("Docente.findByIdentificacion", Docente.class);
+        docente.setParameter("identificacion", id);
         return (docente.getResultList().isEmpty())?  null : docente.getResultList().get(0);
+    }
+    public Docente buscarPorId(Integer id) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Docente> docen = em.createNamedQuery("Docente.findById", Docente.class);
+        docen.setParameter("id", id);
+        return docen.getResultList().get(0);
     }
     public void registrarDocente(Integer id, String nombre, String apellido, Integer edad,
             String email, String tipo_contrato) {
@@ -249,5 +261,36 @@ public class docenteBean {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo eliminar los datos. Inténtelo más tarde");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+    }
+    @FacesConverter(forClass = Horario.class)
+    public static class docenteBeanConverter implements Converter {
+
+        Integer getKey(String value) {
+            return Integer.valueOf(value);
+        }
+
+        String getStringKey(Integer value) {
+            return new StringBuilder().append(value).toString();
+        }
+
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            return ((docenteBean) context.getApplication().evaluateExpressionGet(context, "#{" + "docenteBean" + "}", docenteBean.class)).buscarPorId(getKey(value));
+        }
+
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            if (value == null) {
+                return null;
+            } else if (value instanceof Horario) {
+                return getStringKey(((Horario) value).getId());
+            } else {
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Horario.class.getName());
+            }
+        }
+
     }
 }
