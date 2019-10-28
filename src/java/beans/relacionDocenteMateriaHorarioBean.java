@@ -17,6 +17,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import org.primefaces.context.RequestContext;
 
@@ -25,9 +26,30 @@ import org.primefaces.context.RequestContext;
  * @author SougiroHylian
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class relacionDocenteMateriaHorarioBean implements Serializable {
-    public List<RelacionDocenteHorarioMateria> relacionDMH() throws ClassNotFoundException, SQLException {
+    private RelacionDocenteHorarioMateria relacion;
+    //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
+    private static List<RelacionDocenteHorarioMateria> relacionesList;
+
+    public RelacionDocenteHorarioMateria getRelacion() {
+        return relacion;
+    }
+
+    public void setRelacion(RelacionDocenteHorarioMateria relacion) {
+        this.relacion = relacion;
+    }
+
+    public static List<RelacionDocenteHorarioMateria> getRelacionesList() {
+        return relacionesList;
+    }
+    
+    public relacionDocenteMateriaHorarioBean() throws ClassNotFoundException, SQLException{
+        relacion = new RelacionDocenteHorarioMateria();
+        relacionDMH();
+        
+    }
+    public void relacionDMH() throws ClassNotFoundException, SQLException {
 
 		Connection connect = null;
 
@@ -48,12 +70,12 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 			System.out.println(ex.getMessage());
 		}
 
-		List<RelacionDocenteHorarioMateria> relaciones = new ArrayList<RelacionDocenteHorarioMateria>();
+		//List<RelacionDocenteHorarioMateria> relaciones = new ArrayList<RelacionDocenteHorarioMateria>();
 		/*PreparedStatement pstmt = connect
 				.prepareStatement("SELECT CONCAT( CONCAT(Dia, \" \", hora_inicio), \" a \", hora_fin) AS jornada"+
                                         ", (SELECT 'MATERIA' FROM horario WHERE Dia = 'Lunes') AS Lunes FROM horario");*/
-                PreparedStatement pstmt = connect
-				.prepareStatement("SELECT CONCAT(hora_inicio, \" a \", hora_fin) AS jornada"+
+                try {
+                    String Query = "SELECT CONCAT(hora_inicio, \" a \", hora_fin) AS jornada"+
                                         ", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
 "INNER JOIN horario_asignado as hasig on hasig.rowid_horario = h.id " +
 "INNER JOIN grupo as g on g.id = hasig.rowid_grupo_asignatura " +
@@ -98,21 +120,24 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 "INNER JOIN asignatura a on a.id = dasig.rowid_asignatura " +
 "INNER JOIN recurso r on r.id = hasig.rowid_recurso " +
 "WHERE Dia = 'Sabado') AS Sabado"
-                                        + " FROM horario");
+                                        + " FROM horario";
+                PreparedStatement pstmt = connect
+				.prepareStatement(Query);
+                System.out.println("***********Consulta: "+Query);
 		ResultSet rs = pstmt.executeQuery();
-
+                System.out.println("***********Inicia recorrido");
 		while (rs.next()) {
-
-			RelacionDocenteHorarioMateria objRelacion = new RelacionDocenteHorarioMateria();
+                        
+			relacion = new RelacionDocenteHorarioMateria();
 			//objRelacion.setId(rs.getInt("id"));
-			objRelacion.setJornada(rs.getString("jornada"));
-			objRelacion.setLunes(rs.getString("Lunes"));
-                        objRelacion.setMartes(rs.getString("Martes"));
-                        objRelacion.setMiercoles(rs.getString("Miercoles"));
-                        objRelacion.setJueves(rs.getString("Jueves"));
-                        objRelacion.setViernes(rs.getString("Viernes"));
+			relacion.setJornada(rs.getString("jornada"));
+			relacion.setLunes(rs.getString("Lunes"));
+                        relacion.setMartes(rs.getString("Martes"));
+                        relacion.setMiercoles(rs.getString("Miercoles"));
+                        relacion.setJueves(rs.getString("Jueves"));
+                        relacion.setViernes(rs.getString("Viernes"));
                         //objRelacion.setSabado(rs.getString("Sabado"));
-			relaciones.add(objRelacion);
+			relacionesList.add(relacion);
 
 		}
 
@@ -120,8 +145,11 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 		rs.close();
 		pstmt.close();
 		connect.close();
-
-		return relaciones;
+}               catch (Exception ex) {
+			System.out.println("in Sql consult");
+			System.out.println(ex.getMessage());
+		}
+		//return relaciones;
 
 	}
     

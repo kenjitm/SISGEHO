@@ -48,29 +48,29 @@
                     <h:form>
                         <div class="form-group mt-3">
                             <p:outputLabel for="docente" value="Docente " />
-                            <p:selectOneMenu id="docente" value="#{docenteBean.nombre}" style="width: 100%"
+                            <h:selectOneMenu class="form-control" id="docente" value="#{docenteBean.docentes.nombre}" style="width: 100%"
                                              onchange="submit()" valueChangeListener="#{docenteBean.handleChange}" 
                                              >
                                              
                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{docenteBean.obtenerDocentes()}" var="doc" itemValue="#{doc.id}" />
-            </p:selectOneMenu>
+                <f:selectItems  var="doc" itemValue="#{doc.id}" />
+            </h:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
                             <p:outputLabel for="asignatura" value="Asignatura " />
-                            <p:selectOneMenu id="asignatura" value="#{asignaturaBean.asignatura.descripcion}" style="width: 100%" >
+                            <h:selectOneMenu class="form-control" id="asignatura" value="#{asignaturaBean.asignatura.descripcion}" style="width: 100%" >
                                              >
                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{docenteBean.lstAsignaturas}" var="asig" itemValue="#{asig.id}" itemLabel="#{asig.descripcion}" />
-            </p:selectOneMenu>
+                <f:selectItems  var="asig" itemValue="#{asig.id}" itemLabel="#{asig.descripcion}" />
+            </h:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
                             <p:outputLabel for="recursos" value="Recurso " />
-                            <p:selectOneMenu id="recursos" value="#{recursoBean.id}" style="width: 100%" >
+                            <h:selectOneMenu class="form-control" id="recursos" value="#{recursoBean.id}" style="width: 100%" >
                                              >
                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{recursoBean.obtenerRecurso()}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
-            </p:selectOneMenu>
+            </h:selectOneMenu>
                         </div>     
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Asignar" class="btn btn-warning"/>
@@ -80,7 +80,7 @@
                 <div class="col-sm-8">
                     <p:separator></p:separator>
                     <h:form>
-                    <p:dataTable class="table table-hover text-center" id="tablaAsignaciones" value="#{relacionDocenteMateriaHorarioBean.relacionDMH()}" var="relacion">
+                        <h:dataTable class="table table-hover text-center" id="tablaAsignaciones" value="#{relacionDocenteMateriaHorarioBean}" var="relacion">
                         <p:column>
                             <f:facet name="header">Jornada</f:facet>
                             <h:outputText value="#{relacion.jornada}"/>
@@ -108,7 +108,7 @@
                         <!--<p:column headerText="Sabado">
                             #{relacion.Sabado}
                         </p:column>-->
-                    </p:dataTable>
+                    </h:dataTable>
                         </h:form>
                 </div>              
                    
