@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -59,8 +60,13 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
+    //Atributo para poder renderizar los campos de editar en la tabla
+    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
+    @Transient
+    private boolean editable;
 
     public Usuario() {
+        editable = false;
     }
 
     public Usuario(Integer id) {
@@ -75,6 +81,14 @@ public class Usuario implements Serializable {
         this.email = email;
         this.contraseña = contraseña;
         this.activo = activo;
+    }
+//Indispensable poner los set y get del atributo "editable"
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public Integer getId() {

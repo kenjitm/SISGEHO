@@ -93,7 +93,6 @@
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Descripciòn: #{beanPeriodo.periodoSearch.descripcion}" rendered="#{beanPeriodo.periodoSearch != null}">
-                    <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd"/>  
                     </h:outputText>
                 </div>
                 <div class="form-group mt-2">
@@ -102,7 +101,9 @@
                     </h:outputText>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Fecha Final: #{beanPeriodo.periodoSearch.fechafin}" rendered="#{beanPeriodo.periodoSearch != null}"/>
+                    <h:outputText value="Fecha Final: #{beanPeriodo.periodoSearch.fechafin}" rendered="#{beanPeriodo.periodoSearch != null}">
+                    <f:convertDateTime dateStyle="full" pattern="yyyy-MM-dd"/>  
+                    </h:outputText>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Estado: #{beanPeriodo.transformActivo(beanPeriodo.periodoSearch.activo)}" rendered="#{beanPeriodo.periodoSearch != null}"/>

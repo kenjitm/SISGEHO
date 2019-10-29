@@ -39,98 +39,157 @@ and open the template in the editor.
                             <h6 class="card-subtitle mb-2 text-warning">Gestión de Usuarios</h6>                  
                         </div>            
             </div>
-        <div class="row mb-4" style="padding: 20px">
+        <div class="row mb-4 ml-1 mr-1">
             <div class="col-sm-4">
-               
-                        <div class="row">
-                            <h4>Registro de Usuarios</h4>                
-                        </div>            
-                     
-                        <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación del usuario en el campo!</h6>
-                        <h:form>
-                            <div class="input-group mt-2">                                    
-                                <p:inputText class="form-control" placeholder="Ingrese la Identificación"/>
-                                    <div>                                        
-                                        <h:commandButton value="Consultar" class="btn btn-warning"/>
-                                    </div>
-                            </div>
-                                
-                            <p:separator class="mt-4"/>
-                            
-                            <p:selectOneMenu id="console" class="mt-3" style="width: 100%">
-                                    <f:selectItem itemLabel="Tipo de Identificación" itemValue="" />
-                                    <f:selectItem itemLabel="Cédula Ciudadanía" itemValue="CC" />
-                                    <f:selectItem itemLabel="Cédula Extranjería" itemValue="CE" />
-                                    <f:selectItem itemLabel="Sin Identificación" itemValue="NN" />
-                            </p:selectOneMenu>
-                            <div class="form-group mt-3">
-                                <p:inputText value="#{registroUsuarioBean.id}" class="form-control" placeholder="Identificación" required=""/>
-                            </div>                            
-                            <div class="form-group mt-2">
-                                <p:inputText value="#{registroUsuarioBean.nombre}" class="form-control" placeholder="Nombres" required=""/>
-                            </div>
-                            <div class="form-group mt-2">
-                                <p:inputText value="#{registroUsuarioBean.apellido}" class="form-control" placeholder="Apellidos" required=""/>
-                            </div>
-                            <div class="form-group mt-2">
-                                <p:inputText class="form-control" placeholder="No. Contacto" required=""/>
-                            </div>
-                            <div class="form-group mt-2">
-                                <p:inputText value="#{registroUsuarioBean.usuario}" type="text" class="form-control" placeholder="Email" required=""/>
-                            </div>                            
-                           <!-- <p:selectOneMenu value="#{registroUsuarioBean.rol}" style="width: 100%">
-                                <f:selectItem itemLabel="Tipo de Rol" itemDisabled="" />
-                                    <f:selectItem itemLabel="Docente" itemValue="ROLE_DOCENTE" />
-                                    <f:selectItem itemLabel="Coordinación Academica" itemValue="ROLE_COORDINACION" />
-                                    <f:selectItem itemLabel="Administrador" itemValue="ROLE_ADMIN" />
-                            </p:selectOneMenu>   -->                         
-                            <p:separator/>
-                            <div class="btn-group" role="group" aria-label="Third group">
-                                <h:commandButton value="Nuevo Usuario" class="btn btn-dark" action="#{registroUsuarioBean.registrarse()}"/>
-                            </div>
-                            <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Modificar" class="btn btn-dark"/>
-                            </div>
-                            <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Deshabilitar" class="btn btn-danger"/>
-                            </div>
-                            
-                        </h:form>
+                <div class="row mt-3">
+                    <h4>Buscar Periodo</h4>                 
                 </div>
-               <div class="col-sm-8">
-                        <div class="row mb-4">
-                            <h4>Listado de Usuarios</h4>                
-                        </div>            
-                    
-                   <p:dataTable class="bordered centered highlight" value="#{registroUsuarioBean.getUsuarios    ()}" var="users">
-                        <p:column headerText="Id">
-                            #{users.id}
-                        </p:column>
-                        <p:column headerText="Nombre">
-                            #{users.nombre}
-                        </p:column>
-                       <p:column headerText="Apellido">
-                            #{users.apellido}
-                        </p:column>
-                      <!-- <p:column headerText="Rol">
-                            #{users.rol}
-                        </p:column>-->
-                       <p:column headerText="Email">
-                            #{users.email}
-                        </p:column>
-                       <p:column headerText="Usuario">
-                            #{users.usuario}
-                        </p:column>
-                        <p:column headerText="Opciones">
-                            <h:form>
-                                <!-- Integrar una ventana modal -->
-                                <h:commandButton value="Editar" class="btn btn-warning" />
-                                <h:commandButton value="Eliminar" class="btn btn-danger"/>
-                            </h:form>
-                        </p:column>
-                    </p:dataTable>
-               </div>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{registroUsuarioBean.user.id}" type="number" class="form-control" placeholder="Identificación del Usuario" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{registroUsuarioBean.buscarById(registroUsuarioBean.user.id)}" class="btn btn-warning"/>
+                        </div>
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <div class="row">
+                    <h4>Registrar Periodo</h4>                 
+                </div>
+                <h:form>
+                    <div class="form-group mt-2">
+                        <p:inputText id="nombre" style="text-transform: uppercase" value="#{registroUsuarioBean.user.nombre}" class="form-control" placeholder="Nombre" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:inputText id="apellido" style="text-transform: uppercase" value="#{registroUsuarioBean.user.apellido}" class="form-control" placeholder="Apellido" required=""/>    
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:inputText id="usuario" style="text-transform: uppercase" value="#{registroUsuarioBean.user.usuario}" class="form-control" placeholder="Usuario" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:inputText id="password" style="text-transform: uppercase" value="#{registroUsuarioBean.user.contraseña}" class="form-control" placeholder="Contraseña" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:inputText id="email" value="#{registroUsuarioBean.user.email}" class="form-control" placeholder="Email" required=""/>
+                    </div>
+                    <div class="checkbox mt-2">
+                        <h:selectBooleanCheckbox id="check" value="#{registroUsuarioBean.user.activo}"/>
+                        <h:outputLabel value="Poner el usuario como activo" for="check" />
+                    </div>
+                    <center>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Usuario" class="btn azul" action="#{registroUsuarioBean.guardarUsuarios()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró el usuario buscado" rendered="#{registroUsuarioBean.userSearch == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{registroUsuarioBean.userSearch.id}" rendered="#{registroUsuarioBean.userSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Nombre: #{registroUsuarioBean.userSearch.nombre}" rendered="#{registroUsuarioBean.userSearch != null}">
+                    </h:outputText>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Apellido: #{registroUsuarioBean.userSearch.apellido}" rendered="#{registroUsuarioBean.userSearch != null}">
+                    </h:outputText>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Usuario: #{registroUsuarioBean.userSearch.usuario}" rendered="#{registroUsuarioBean.userSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Email: #{registroUsuarioBean.userSearch.email}" rendered="#{registroUsuarioBean.userSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{registroUsuarioBean.transformActivo(registroUsuarioBean.userSearch.activo)}" rendered="#{registroUsuarioBean.userSearch != null}"/>
+                </div>
+                <p:separator/>
             </div>
+            <div class="col-sm-8">
+                <div class="row mt-3">
+                    <h4>Lista de Usuario</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaPeriodo" value="#{registroUsuarioBean.usersList}" var="user"
+                                 
+                                 >
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{user.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Nombre</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{user.nombre}" class="form-control" rendered="#{user.editable}"/>
+                            <h:outputText value="#{user.nombre}" rendered="#{not user.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Apellido</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{user.apellido}" class="form-control" rendered="#{user.editable}"/>
+                            <h:outputText value="#{user.apellido}" rendered="#{not user.editable}">
+                            </h:outputText>
+                            
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Usuario</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{user.usuario}" class="form-control" rendered="#{user.editable}"/>
+                            <h:outputText value="#{user.usuario}" rendered="#{not user.editable}">
+                            </h:outputText>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Email</f:facet>
+                            <p:inputText value="#{user.email}" class="form-control" rendered="#{user.editable}"/>
+                            <h:outputText value="#{user.email}" rendered="#{not user.editable}">
+                            </h:outputText>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{user.activo}" class="form-control" rendered="#{user.editable}"/>
+                            <h:outputText value="#{registroUsuarioBean.transformActivo(user.activo)}" rendered="#{not user.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{registroUsuarioBean.enableEditarOption(user, true)}"
+                                               rendered="#{not user.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{registroUsuarioBean.editarUsuario(user)}"
+                                               rendered="#{user.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{registroUsuarioBean.user}" value="#{user}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{registroUsuarioBean.enableEditarOption(user, true)}"
+                                               rendered="#{user.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{registroUsuarioBean.eliminarPeriodo()}"
+                                               rendered="#{not user.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{registroUsuarioBean.user}" value="#{user}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+        
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->
