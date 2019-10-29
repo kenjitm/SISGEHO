@@ -40,7 +40,7 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
         this.relacion = relacion;
     }
 
-    public static List<RelacionDocenteHorarioMateria> getRelacionesList() {
+    public List<RelacionDocenteHorarioMateria> getRelacionesList() {
         return relacionesList;
     }
     
@@ -136,6 +136,7 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
                         relacion.setMiercoles(rs.getString("Miercoles"));
                         relacion.setJueves(rs.getString("Jueves"));
                         relacion.setViernes(rs.getString("Viernes"));
+                        relacion.setViernes(rs.getString("Sabado"));
                         //objRelacion.setSabado(rs.getString("Sabado"));
 			relacionesList.add(relacion);
 

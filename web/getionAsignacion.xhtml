@@ -80,7 +80,7 @@
                 <div class="col-sm-8">
                     <p:separator></p:separator>
                     <h:form>
-                        <h:dataTable class="table table-hover text-center" id="tablaAsignaciones" value="#{relacionDocenteMateriaHorarioBean}" var="relacion">
+                        <h:dataTable class="table table-hover text-center" id="tablaAsignaciones" value="#{relacionDocenteMateriaHorarioBean.relacionesList}" var="relacion">
                         <p:column>
                             <f:facet name="header">Jornada</f:facet>
                             <h:outputText value="#{relacion.jornada}"/>
@@ -105,9 +105,10 @@
                             <f:facet name="header">Viernes</f:facet>
                             <h:outputText value="#{relacion.viernes}"/>
                         </p:column>
-                        <!--<p:column headerText="Sabado">
-                            #{relacion.Sabado}
-                        </p:column>-->
+                        <p:column>
+                            <f:facet name="header">Sabado</f:facet>
+                            <h:outputText value="#{relacion.sabado}"/>
+                        </p:column>
                     </h:dataTable>
                         </h:form>
                 </div>              
