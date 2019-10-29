@@ -23,7 +23,7 @@ and open the template in the editor.
     <h:body>
         
 
-        <div class="container" style="background-color: white"> 
+     
             <div class="row" id="rowmenu">
                 <div >
             <div class="card-body" style="text-align: center">
@@ -35,23 +35,19 @@ and open the template in the editor.
                 <!--barra de navegacion-->
         <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
         <!--fin barra de navegacion-->
-        </div>  
-            <div class="row mb-6">
-            <div class="card shadow mt-3" style="background-color: #0050a0">
+        </div>
+                    <div style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
                             <h6 class="card-subtitle mb-2 text-warning">Gestión de Facultad</h6>                  
                         </div>            
                     </div>
-            </div>
-            <div class="row mb-4">
+        <div class="row mb-4" style="padding: 20px">
                 
-                <div class="col-sm-4">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Registro de Facultad</h4>                
-                        </div>            
-                    </div> 
+                <div class="col-sm-4">                    
+                        <div class="row mt-3">
+                            <h4>Registro de Facultad</h4>                
+                        </div>  
                     <h:form>                                               
                         <div class="form-group mt-2">
                             <p:inputText value="#{facultadBean.id}" class="form-control" placeholder="Identificacion de la facultad" required="true" type="number"/>
@@ -68,12 +64,10 @@ and open the template in the editor.
                     </h:form>                    
                 </div>
 
-                <div class="col-sm-8">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Lista de Facultades</h4>                 
-                        </div>            
-                    </div> 
+                <div class="col-sm-8">                    
+                        <div class="row mt-3">
+                            <h4>Lista de Facultades</h4>                 
+                        </div> 
                     <h:form>  
                         <p:dataTable var="Facultad" value="#{facultadBean.obtenerFacultades()}">
                             <p:column headerText="Id">
@@ -88,15 +82,8 @@ and open the template in the editor.
                             </p:column>
                         </p:dataTable>
                     </h:form>
-                </div>
-                
-                <div class="col-sm-1">
-
-                </div>
-                
+                </div>                             
             </div>
-
-        </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

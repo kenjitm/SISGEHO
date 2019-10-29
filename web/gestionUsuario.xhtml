@@ -20,7 +20,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
        
-        <div class="container" style="background-color: white">     
+            
             <div class="row" id="rowmenu">
                 <div >
             <div class="card-body" style="text-align: center">
@@ -33,30 +33,25 @@ and open the template in the editor.
         <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
         <!--fin barra de navegacion-->
         </div>  
-            <div class="row" id="centro">
-            <div class="row mb-6">
-            <div class="card shadow mt-3" style="background-color: #0050a0">
+            <div style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
                             <h6 class="card-subtitle mb-2 text-warning">Gestión de Usuarios</h6>                  
                         </div>            
-                    </div>
             </div>
-            <div class="row mb-6"></div>
-            </div>
-            <div class="row mb-4">
+        <div class="row mb-4" style="padding: 20px">
             <div class="col-sm-4">
-                <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Registro de Usuarios</h4>                
+               
+                        <div class="row">
+                            <h4>Registro de Usuarios</h4>                
                         </div>            
-                    </div> 
+                     
                         <h6 class="card-subtitle mt-4">¡Para consultar ingrese la Identificación del usuario en el campo!</h6>
                         <h:form>
                             <div class="input-group mt-2">                                    
                                 <p:inputText class="form-control" placeholder="Ingrese la Identificación"/>
                                     <div>                                        
-                                        <h:commandButton value="Consultar" class="btn btn-primary"/>
+                                        <h:commandButton value="Consultar" class="btn btn-warning"/>
                                     </div>
                             </div>
                                 
@@ -103,11 +98,10 @@ and open the template in the editor.
                         </h:form>
                 </div>
                <div class="col-sm-8">
-       <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Listado de Usuarios</h4>                
+                        <div class="row mb-4">
+                            <h4>Listado de Usuarios</h4>                
                         </div>            
-                    </div> 
+                    
                    <p:dataTable class="bordered centered highlight" value="#{registroUsuarioBean.getUsuarios    ()}" var="users">
                         <p:column headerText="Id">
                             #{users.id}
@@ -137,7 +131,6 @@ and open the template in the editor.
                     </p:dataTable>
                </div>
             </div>
-        </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

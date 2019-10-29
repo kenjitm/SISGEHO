@@ -16,7 +16,7 @@
     <h:body>
 
 
-        <div class="container" style="background-color: white">   
+          
              <div class="row" id="rowmenu">
                 <div >
             <div class="card-body" style="text-align: center">
@@ -28,21 +28,16 @@
                 <!--barra de navegacion-->
         <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
         <!--fin barra de navegacion-->
-        </div>  
-            <div class="row">
-            <div class="row mb-6">
-            <div class="card shadow mt-3" style="background-color: #0050a0">
+        </div>
+            <div style="background-color: #0050a0">
                         <div class="card-body">
                             <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
                             <h6 class="card-subtitle mb-2 text-warning">Reportes de disponibilidad horaria</h6>                  
                         </div>            
                     </div>
-            </div>
-            <div class="row mb-6"></div>
-            </div>
             <div class="row">
              
-            <div class="row mb-4">
+            <div class="row mb-4" style="padding: 24px">
 
                 <div class="col-sm-12">
                     <p:separator></p:separator>
@@ -69,12 +64,10 @@
                             #{relacion.Sabado}
                         </p:column>-->
                     </p:dataTable>
-</div>   
-                   
-  
+                </div>     
             </div>
-</div>
         </div>
+
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

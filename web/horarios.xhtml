@@ -37,14 +37,14 @@
         </div>
         <div class="row mb-4 ml-1 mr-1">
             <div class="col-sm-4">
-                <div class="row">
-                    <h4>Buscar horario</h4>                 
+                <div class="row mt-3">
+                    <h4>Buscar Horario</h4>                 
                 </div>
                 <h:form>
                     <div class="input-group mt-2"> 
                         <p:inputText value="#{horarioBean.horario.id}" type="number" class="form-control" placeholder="Identificación del horario" required=""/>
                         <div>                                        
-                            <h:commandButton value="Consultar" action="#{horarioBean.buscarHorario(horarioBean.horario.id)}" class="btn btn-primary"/>
+                            <h:commandButton value="Consultar" action="#{horarioBean.buscarHorario(horarioBean.horario.id)}" class="btn btn-warning"/>
                         </div>
                     </div>
                     <p:separator class="mt-4"/>
@@ -97,7 +97,7 @@
                     </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Horario" class="btn btn-success" action="#{horarioBean.guardarHorario()}"/>
+                            <h:commandButton value="Registrar Horario" class="btn azul" action="#{horarioBean.guardarHorario()}"/>
                         </div>
                     </center>
                 </h:form>
@@ -129,7 +129,7 @@
                 <p:separator/>
             </div>
             <div class="col-sm-8">
-                <div class="row">
+                <div class="row mt-3">
                     <h4>Lista de Horarios</h4>                 
                 </div> 
                 <h:form>

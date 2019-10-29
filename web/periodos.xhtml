@@ -38,14 +38,14 @@
         </div>
         <div class="row mb-4 ml-1 mr-1">
             <div class="col-sm-4">
-                <div class="row">
+                <div class="row mt-3">
                     <h4>Buscar Periodo</h4>                 
                 </div>
                 <h:form>
                     <div class="input-group mt-2"> 
                         <p:inputText value="#{beanPeriodo.periodo.id}" type="number" class="form-control" placeholder="Identificación del Periodo" required=""/>
                         <div>                                        
-                            <h:commandButton value="Consultar" action="#{beanPeriodo.buscarPeriodoPorId(beanPeriodo.periodo.id)}" class="btn btn-primary"/>
+                            <h:commandButton value="Consultar" action="#{beanPeriodo.buscarPeriodoPorId(beanPeriodo.periodo.id)}" class="btn btn-warning"/>
                         </div>
                     </div>
                     <p:separator class="mt-4"/>
@@ -77,7 +77,7 @@
                     </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Periodo" class="btn btn-success" action="#{beanPeriodo.guardarPeriodo()}"/>
+                            <h:commandButton value="Registrar Periodo" class="btn azul" action="#{beanPeriodo.guardarPeriodo()}"/>
                         </div>
                     </center>
                 </h:form>
@@ -110,7 +110,7 @@
                 <p:separator/>
             </div>
             <div class="col-sm-8">
-                <div class="row">
+                <div class="row mt-3">
                     <h4>Lista de Periodos</h4>                 
                 </div> 
                 <h:form>
