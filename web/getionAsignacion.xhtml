@@ -57,6 +57,16 @@
             </h:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
+                            <p:outputLabel for="grupo" value="Grupo " />
+                            <h:selectOneMenu class="form-control" id="grupo" value="#{grupoBean.grupos.id}" style="width: 100%"
+                                             
+                                             >
+                                             
+                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{grupoBean.gruposList}" var="grupo" itemLabel="#{grupo.nomenclatura}" itemValue="#{grupo.id}" />
+            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group mt-3">
                             <p:outputLabel for="asignatura" value="Asignatura " />
                             <h:selectOneMenu class="form-control" id="asignatura" value="#{asignaturaBean.asignatura.id}" style="width: 100%" >
                                              >
@@ -72,14 +82,17 @@
                 <f:selectItems value="#{horarioBean.horarioList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.toString()}" />
             </h:selectOneMenu>
                         </div> 
-                        <div class="form-group mt-3">
+                        <h:panelGroup layout="block" rendered="#{relacionDocenteMateriaHorarioBean.relacion.show}">
+    <div class="form-group mt-3">
                             <p:outputLabel for="recursos" value="Recurso " />
-                            <h:selectOneMenu class="form-control" id="recursos" value="#{recursoBean.id}" style="width: 100%" >
+                            <h:selectOneMenu class="form-control" id="recursos" value="#{recursoBean.recurso.id}" style="width: 100%" >
                                              >
                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{recursoBean.obtenerRecurso()}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
+                <f:selectItems value="#{recursoBean.recursoList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
             </h:selectOneMenu>
-                        </div>     
+                        </div>    
+</h:panelGroup>
+                         
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Asignar" class="btn btn-warning"/>
                             </div>

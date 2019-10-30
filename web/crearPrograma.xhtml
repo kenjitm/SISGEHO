@@ -37,7 +37,7 @@
                 </div>
                 <h:form>
                     <div class="input-group mt-2"> 
-                        <p:inputText  type="number" class="form-control" placeholder="ID del Programa" required=""/>
+                        <p:inputText value="#{crearProgramaBean.program.id}" type="number" class="form-control" placeholder="ID del Programa" required=""/>
                         <div>                                        
                             <h:commandButton value="Consultar"  class="btn btn-warning"/>
                         </div>
@@ -48,44 +48,44 @@
                     <h4>Registrar Programa</h4>                 
                 </div>
                 <h:form>
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="ID" value="ID:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" class="form-control" required=""/>
-                    </div>
+                    
                     <div class="form-group mt-2">
                         <p:outputLabel id="Nombre" value="Nombre:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" class="form-control" required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.nombre}" class="form-control" required=""/>
                     </div>
                     <div class="input-group mt-2"> 
-                        <p:inputTextarea style="text-transform: uppercase" rows="5" cols="50"  placeholder="Descripción" class="form-control" required="true"/>
+                        <p:outputLabel id="descripcion" value="Descripción:"></p:outputLabel>
+                        <p:inputTextarea style="text-transform: uppercase" value="#{crearProgramaBean.program.descripcion}" 
+                                         rows="5" cols="50"  placeholder="Descripción" class="form-control" required="true"/>
                     </div>
                     <div class="form-group mt-2">
                         <p:outputLabel id="Duracion" value="Duración: (Semestre)"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.duracion}" class="form-control"  required=""/>
                     </div>
                     <div class="form-group mt-2">
                         <p:outputLabel id="Registro_Calificado" value="Registro Calificado:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.registroCalificado}"  class="form-control"  required=""/>
                     </div>
                     <div class="form-group mt-2">
                         <p:outputLabel id="SNIES" value="SNIES:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.snies}"  class="form-control"  required=""/>
                     </div>
                     <div class="form-group mt-2">
                         <p:outputLabel id="Director" value="Director:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.director}"  class="form-control"  required=""/>
                     </div>
                     <div class="form-group mt-2">
                         <p:outputLabel id="Email" value="Email:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                        <p:inputText value="#{crearProgramaBean.program.email}"  class="form-control"  required=""/>
                     </div>
                     <div class="form-group mt-2">
                         <p:outputLabel id="Jornada" value="Jornada:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.jornada}"  class="form-control"  required=""/>
                     </div>
+                    
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Programa" class="btn azul"/>
+                            <h:commandButton value="Registrar Programa" action="#{crearProgramaBean.guardarPrograma()}" class="btn azul"/>
                         </div>
                     </center>
                 </h:form>
@@ -94,35 +94,36 @@
                     <h4>Resultado búsqueda</h4>                 
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="No se encontró el programa buscado" rendered=""/>
+                    <h:outputText value="No se encontró el programa buscado" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="ID: " rendered=""/>
+                    <h:outputText value="ID: #{crearProgramaBean.programSearch.id}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Nombre: " rendered=""/>
+                    <h:outputText value="Nombre: #{crearProgramaBean.programSearch.nombre}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Descripción: " rendered=""/>
+                    <h:outputText value="Descripción: #{crearProgramaBean.programSearch.descripcion}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Duración: " rendered=""/>
+                    <h:outputText value="Duración: #{crearProgramaBean.programSearch.duracion}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Registro Calificado: " rendered=""/>
+                    <h:outputText value="Registro Calificado: #{crearProgramaBean.programSearch.registroCalificado}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="SNIES: " rendered=""/>
+                    <h:outputText value="SNIES: #{crearProgramaBean.programSearch.snies}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Director: " rendered=""/>
+                    <h:outputText value="Director: #{crearProgramaBean.programSearch.director}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Email: " rendered=""/>
+                    <h:outputText value="Email: #{crearProgramaBean.programSearch.email}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Jornada: " rendered=""/>
+                    <h:outputText value="Jornada: #{crearProgramaBean.programSearch.jornada}" rendered="#{crearProgramaBean.programSearch == null}"/>
                 </div>
+                 
                 <p:separator/>
             </div>
             <div class="col-sm-8">
@@ -130,72 +131,78 @@
                     <h4>Lista de Programas</h4>                 
                 </div> 
                 <h:form>
-                    <h:dataTable class="table table-hover text-center" id="tablaProgramas"  var="programas">
+                    <h:dataTable class="table table-hover text-center" id="tablaProgramas" value="#{crearProgramaBean.programList}"  var="programas">
                         <p:column>
                             <f:facet name="header">ID</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{docentes.identificacion}" class="form-control" rendered="#{docentes.editable}"/>
-                            <h:outputText value="#{docentes.identificacion}" rendered="#{not docentes.editable}"/>
+                            <p:inputText style="text-transform: uppercase" value="#{programas.id}" class="form-control" rendered="#{programas.editable}"/>
+                            <h:outputText value="#{programas.id}" rendered="#{not programas.editable}"/>
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Nombre</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{docentes.nombre}" class="form-control" rendered="#{docentes.editable}"/>
-                            <h:outputText value="#{docentes.nombre}" rendered="#{not docentes.editable}" />
+                            <p:inputText style="text-transform: uppercase" value="#{programas.nombre}" class="form-control" rendered="#{programas.editable}"/>
+                            <h:outputText value="#{programas.nombre}" rendered="#{not programas.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripción</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{programas.descripcion}" class="form-control" rendered="#{programas.editable}"/>
+                            <h:outputText value="#{programas.descripcion}" rendered="#{not programas.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Duración</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{docentes.apellido}" class="form-control" rendered="#{docentes.editable}"/>
-                            <h:outputText value="#{docentes.apellido}" rendered="#{not docentes.editable}" />
+                            <p:inputText style="text-transform: uppercase" value="#{programas.duracion}" class="form-control" rendered="#{programas.editable}"/>
+                            <h:outputText value="#{programas.duracion}" rendered="#{not programas.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">SNIES</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{docentes.tipoContrato}" class="form-control" rendered="#{docentes.editable}"/>
-                            <h:outputText value="#{docentes.tipoContrato}" rendered="#{not docentes.editable}" />
+                            <p:inputText style="text-transform: uppercase" value="#{programas.snies}" class="form-control" rendered="#{programas.editable}"/>
+                            <h:outputText value="#{programas.snies}" rendered="#{not programas.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Director</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{docentes.edad}" class="form-control" rendered="#{docentes.editable}"/>
-                            <h:outputText value="#{docentes.edad}" rendered="#{not docentes.editable}" />
+                            <p:inputText style="text-transform: uppercase" value="#{programas.descripcion}" class="form-control" rendered="#{programas.editable}"/>
+                            <h:outputText value="#{programas.descripcion}" rendered="#{not programas.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Email</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{docentes.email}" class="form-control" rendered="#{docentes.editable}"/>
-                            <h:outputText value="#{docentes.email}" rendered="#{not docentes.editable}" />
+                            <p:inputText style="text-transform: uppercase" value="#{programas.email}" class="form-control" rendered="#{programas.editable}"/>
+                            <h:outputText value="#{programas.email}" rendered="#{not programas.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Jornada</f:facet>
-                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{docentes.activo}" class="form-control" rendered="#{docentes.editable}"/>
-                            <h:outputText value="#{docenteBean.transformActivo(docentes.activo)}" rendered="#{not docentes.editable}" />
+                            <p:inputText style="text-transform: uppercase" value="#{programas.jornada}" class="form-control" rendered="#{programas.editable}"/>
+                            <h:outputText value="#{programas.jornada}" rendered="#{not programas.editable}" />
                         </p:column>
+                        
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>
                             <center>
                                 <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
-                                               action="#{docenteBean.enableEditarOption(docentes, true)}"
-                                               rendered="#{not docentes.editable}">
+                                               action="#{crearProgramaBean.enableEditarOption(programas, true)}"
+                                               rendered="#{not programas.editable}">
                                     <i class="material-icons">create</i>
                                 </h:commandLink>
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
-                                               action="#{docenteBean.editarDocente(docentes)}"
-                                               rendered="#{docentes.editable}">
+                                               action="#{crearProgramaBean.editarPrograma(programas)}"
+                                               rendered="#{programas.editable}">
                                     <i class="material-icons">check</i>
                                     <f:setPropertyActionListener 
-                                        target="#{docenteBean.docentes}" value="#{docentes}" />
+                                        target="#{crearProgramaBean.program}" value="#{programas}" />
                                 </h:commandLink>
                                 <h:commandLink class="btn btn-warning btn-sm"
                                                style="color: #fff"
-                                               action="#{docenteBean.enableEditarOption(docentes, false)}"
-                                               rendered="#{docentes.editable}">
+                                               action="#{crearProgramaBean.enableEditarOption(programas, false)}"
+                                               rendered="#{programas.editable}">
                                     <i class="material-icons">close</i>
                                 </h:commandLink>
                                 <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
-                                               action="#{docenteBean.eliminarDocente()}"
-                                               rendered="#{not docentes.editable}">
+                                               action="#{crearProgramaBean.eliminarDocente()}"
+                                               rendered="#{not programas.editable}">
                                     <i class="material-icons">delete</i>
                                     <f:setPropertyActionListener 
-                                        target="#{docenteBean.docentes}" value="#{docentes}" />
+                                        target="#{crearProgramaBean.program}" value="#{programas}" />
                                 </h:commandLink>
                             </center>
                         </h:column>

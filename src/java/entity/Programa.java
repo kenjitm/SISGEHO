@@ -20,6 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -82,8 +83,21 @@ public class Programa implements Serializable {
     @JoinColumn(name = "rowid_modalidad", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private ModalidadPrograma rowidModalidad;
+    //Atributo para poder renderizar los campos de editar en la tabla
+    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
+    @Transient
+    private boolean editable;
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
 
     public Programa() {
+        editable = false;
     }
 
     public Programa(Integer id) {

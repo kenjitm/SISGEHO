@@ -6,6 +6,7 @@
 package beans;
 
 import entity.RelacionDocenteHorarioMateria;
+import entity.Usuario;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +19,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
 /**

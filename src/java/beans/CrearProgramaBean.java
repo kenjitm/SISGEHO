@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -30,40 +31,41 @@ import utils.SessionUtils;
  * @author KTANAKA
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class CrearProgramaBean implements Serializable {
 
     /**
      * Creates a new instance of LoginBean
      */
-    String usuario;
-    String password;
+    
     private SessionUtils session;
-    private String descripcionPrograma;
+    
     private Pensum pensum;
-    private String descripcionTipo;
-    private String modalidad;
-    private String duracion;
-    private String titulo;
-    private String registroCalificado;
-    private String snies;
-    private String director;
-    private String email;
+    
+    
+    private Programa program;
+    private Programa programSearch;
+    //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
+    private static List<Programa> programList;
 
-    public String getUsuario() {
-        return usuario;
+    public Programa getProgram() {
+        return program;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setProgram(Programa program) {
+        this.program = program;
     }
 
-    public String getPassword() {
-        return password;
+    public Programa getProgramSearch() {
+        return programSearch;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setProgramSearch(Programa programSearch) {
+        this.programSearch = programSearch;
+    }
+
+    public List<Programa> getProgramList() {
+        return programList;
     }
 
     public SessionUtils getSession() {
@@ -74,13 +76,6 @@ public class CrearProgramaBean implements Serializable {
         this.session = session;
     }
 
-    public String getDescripcionPrograma() {
-        return descripcionPrograma;
-    }
-
-    public void setDescripcionPrograma(String descripcionPrograma) {
-        this.descripcionPrograma = descripcionPrograma;
-    }
 
     public Pensum getPensum() {
         return pensum;
@@ -90,138 +85,105 @@ public class CrearProgramaBean implements Serializable {
         this.pensum = pensum;
     }
 
-    public String getDescripcionTipo() {
-        return descripcionTipo;
-    }
-
-    public void setDescripcionTipo(String descripcionTipo) {
-        this.descripcionTipo = descripcionTipo;
-    }
-
-    public String getModalidad() {
-        return modalidad;
-    }
-
-    public void setModalidad(String modalidad) {
-        this.modalidad = modalidad;
-    }
-
-    public String getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(String duracion) {
-        this.duracion = duracion;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getRegistroCalificado() {
-        return registroCalificado;
-    }
-
-    public void setRegistroCalificado(String registroCalificado) {
-        this.registroCalificado = registroCalificado;
-    }
-
-    public String getSnies() {
-        return snies;
-    }
-
-    public void setSnies(String snies) {
-        this.snies = snies;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String irPrograma() {
         return "crearPrograma.xhtml";
     }
 
-    public void crear() {
-        Programa programa = new Programa();
-        if (!descripcionPrograma.isEmpty()) {
-            programa.setDescripcion(descripcionPrograma);
-        }
-        /*if (!descripcionTipo.isEmpty()) {
-            programa.setDescripciontipo(descripcionTipo);
-        }
-        if (!modalidad.isEmpty()) {
-            programa.setModalidad(modalidad);
-        }*/
-        if (!duracion.isEmpty()) {
-            programa.setDuracion(duracion);
-        }
-        if (!titulo.isEmpty()) {
-            programa.setNombre(titulo);
-        }
-        if (!registroCalificado.isEmpty()) {
-            programa.setRegistroCalificado(registroCalificado);
-        }
-        if (!snies.isEmpty()) {
-            programa.setSnies(snies);
-        }
-        if (!director.isEmpty()) {
-            programa.setDirector(director);
-        }
-        if (!email.isEmpty()) {
-            programa.setEmail(email);
-        }
-
+    public CrearProgramaBean(){
+        program = new Programa();
+        programSearch = new Programa();
+        obtenerProgramas();
     }
-
-    public List<Programa> getAllPrograms() {
-
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    private void obtenerProgramas() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
+        TypedQuery<Programa> q = em.createNamedQuery("Programa.findAll", Programa.class);
+        programList = q.getResultList();
+    }
+    public void buscarProgramaPorId(Integer id) {
+        programSearch = buscarById(id);
+    }
 
-        TypedQuery<Programa> consultaPrograma = em.createNamedQuery("Programa.findAll", Programa.class);
-        //consultaPrograma.setParameter("programa", programa);
-        List<Programa> lista = consultaPrograma.getResultList();
-        if (lista != null) {
-            if (!lista.isEmpty() && lista.get(0) != null) {
-                return lista;
-                //
-            } else {
-                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No existen programas creados", "No existen programas");
-                FacesContext.getCurrentInstance().addMessage(null, message);
+    public Programa buscarById(Integer id) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Programa> Programa = em.createNamedQuery("Programa.findById", Programa.class);
+        Programa.setParameter("id", id);
+        return (Programa.getResultList().isEmpty())?  null : Programa.getResultList().get(0);
+    }
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void guardarPrograma() {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.persist(program);
+            em.getTransaction().commit();
+            em.close();
+            program = new Programa();
+            obtenerProgramas(); //Actualiza lista
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo guardar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+    //Agregar este método para campos booleanos, como "activo"
+    public String transformActivo(Boolean activo) {
+        return (activo) ? "ACTIVA" : "INACTIVA";
+    }
+
+    //INDISPENSABLE tener este método
+    public void enableEditarOption(Programa program, boolean estado) {
+        program.setEditable(estado);
+    }
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void editarPrograma(Programa p) {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.merge(program);
+            em.getTransaction().commit();
+            em.close();
+            obtenerProgramas(); //Actualiza lista
+            p.setEditable(false);
+            program = new Programa();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo editar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void eliminarPrograma() {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            if (!em.contains(program)) {
+                program = em.merge(program);
             }
-        } else {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No existen programas creados", "No existen programas");
-            FacesContext.getCurrentInstance().addMessage(null, message);
+            em.remove(program);
+            em.getTransaction().commit();
+            obtenerProgramas(); //Actualiza lista
+            program = new Programa();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo eliminar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
-        return lista;
     }
-
-    public Programa consultarProgramaById(Integer id) {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-
-        return em.find(Programa.class, id);
-    }
-
     public String home() {
         return "index.xhtml";
     }
@@ -242,7 +204,7 @@ public class CrearProgramaBean implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((CrearProgramaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "crearProgramaBean" + "}", CrearProgramaBean.class)).consultarProgramaById(getKey(value));
+            return ((CrearProgramaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "crearProgramaBean" + "}", CrearProgramaBean.class)).buscarById(getKey(value));
         }
 
         @Override

@@ -18,6 +18,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.servlet.http.HttpSession;
 import utils.SessionUtils;
 
 /**
@@ -79,6 +80,7 @@ public class LoginBean implements Serializable {
             TypedQuery<Usuario> consultaUsuarios = em.createNamedQuery("Usuario.findByUsuario", Usuario.class);
             consultaUsuarios.setParameter("usuario", usuario);
             List<Usuario> lista = consultaUsuarios.getResultList();
+            Usuario user = consultaUsuarios.getResultList().get(0);
             lista = lista.stream().filter(lu -> lu != null && lu.getUsuario() != null && lu.getUsuario().equals(usuario)).collect(Collectors.toList());
             System.out.println("lista " + lista.size());
             if (lista != null) {

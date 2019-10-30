@@ -5,6 +5,10 @@
  */
 package entity;
 
+import javax.faces.context.FacesContext;
+import javax.persistence.Transient;
+import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author SougiroHylian
@@ -20,7 +24,18 @@ public class RelacionDocenteHorarioMateria {
     private String Jueves;
     private String Viernes;
     private String Sabado;
-    
+    //Atributo para poder renderizar los campos de editar en la tabla
+    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
+    @Transient
+    private boolean show;
+
+    public boolean isShow() {
+        return show;
+    }
+
+    public void setShow(boolean show) {
+        this.show = show;
+    }
 
     public Integer getIdDocente() {
         return IdDocente;
