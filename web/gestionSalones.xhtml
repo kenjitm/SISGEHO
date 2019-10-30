@@ -37,10 +37,10 @@
 
             <div class="row mb-4">
 
-<div class="row mb-4 ml-1 mr-1 overflow-auto">
+        <div class="row mb-4 ml-1 mr-1 overflow-auto">
             <div class="col-sm-4">
-                <div class="row">
-                    <h4>Buscar Salon</h4>                 
+                <div class="row mt-3">
+                    <h4>Buscar Salón</h4>                 
                 </div>
                 <h:form>
                     <div class="input-group mt-2"> 
@@ -81,9 +81,9 @@
                         <p:outputLabel id="Edad" value="Capacidad:"></p:outputLabel>
                         <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.capacidad}" class="form-control" placeholder="Edad" required="" type="number"/>
                     </div>
-                    <div class="checkbox mt-2">
+                    <div class="checkbox mt-2 mb-2">
                         <h:selectBooleanCheckbox id="check" value="#{recursoBean.recurso.activo}"/>
-                        <h:outputLabel value="Poner el recurso como activo" for="check" />
+                        <h:outputLabel class="ml-2" value="¿Poner el recurso como activo?" for="check" />
                     </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">
@@ -119,7 +119,7 @@
                 <p:separator/>
             </div>
             <div class="col-sm-8">
-                <div class="row">
+                <div class="row mt-3">
                     <h4>Lista de Recursos</h4>                 
                 </div> 
                 <h:form>

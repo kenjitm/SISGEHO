@@ -54,7 +54,7 @@ and open the template in the editor.
                     <p:separator class="mt-4"/>
                 </h:form>
                 <div class="row">
-                    <h4>Registrar Sedes</h4>                 
+                    <h4>Registrar Sede</h4>                 
                 </div>
                 <h:form>
                     <div class="form-group mt-2">
@@ -64,9 +64,9 @@ and open the template in the editor.
                         <p:inputText style="text-transform: uppercase" value="#{sedeBean.sede.subsede}" class="form-control" placeholder="Subsede" required=""/>
                     </div>
                     
-                    <div class="checkbox mt-2">
+                    <div class="checkbox mt-2 mb-2">
                         <h:selectBooleanCheckbox id="check" value="#{sedeBean.sede.activo}"/>
-                        <h:outputLabel value="Poner la sede como activa" for="check" />
+                        <h:outputLabel class="ml-2" value="¿Poner la sede como activa?" for="check" />
                     </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">

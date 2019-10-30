@@ -54,7 +54,7 @@ and open the template in the editor.
                     <p:separator class="mt-4"/>
                 </h:form>
                 <div class="row">
-                    <h4>Registrar Grupos</h4>                 
+                    <h4>Registrar Grupo</h4>                 
                 </div>
                 <h:form>
                     <div class="form-group mt-2">
@@ -64,9 +64,9 @@ and open the template in the editor.
                         <p:inputText style="text-transform: uppercase" value="#{grupoBean.grupos.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
                     </div>
                     
-                    <div class="checkbox mt-2">
+                    <div class="checkbox mt-2 mb-2">
                         <h:selectBooleanCheckbox id="check" value="#{grupoBean.grupos.activo}"/>
-                        <h:outputLabel value="Poner el grupo como activo" for="check" />
+                        <h:outputLabel class="ml-2" value="¿Poner el grupo como activo?" for="check" />
                     </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">

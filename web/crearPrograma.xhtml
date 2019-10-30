@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -8,77 +7,85 @@
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-
-        <title>Gestión Docentes</title>
+        <title>Gestión Programas</title>
     </h:head>
     <h:body>
-
-        
-            <div class="row" id="rowmenu">
-                <div >
-            <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-            </div>                      
-        </div>
+        <div class="row" id="rowmenu">
+            <div>
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
             </div>
-            <div class="row" id="rowmenu">  
-                <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
-        <!--fin barra de navegacion-->
-        </div>  
+        </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+            <!--fin barra de navegacion-->
+        </div>
         <div>
             <div  style="background-color: #0050a0">
                 <div class="card-body">
                     <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Docentes</h6>                  
+                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Programas</h6>                  
                 </div>            
             </div>
         </div>
-            <div class="row mb-4 ml-1 mr-1 overflow-auto">
+        <div class="row mb-4 ml-1 mr-1 overflow-auto">
             <div class="col-sm-4">
                 <div class="row mt-3">
-                    <h4>Buscar Docente</h4>                 
+                    <h4>Buscar Programa</h4>                 
                 </div>
                 <h:form>
                     <div class="input-group mt-2"> 
-                        <p:inputText value="#{docenteBean.docentes.identificacion}" type="number" class="form-control" placeholder="Identificación del Docente" required=""/>
+                        <p:inputText  type="number" class="form-control" placeholder="ID del Programa" required=""/>
                         <div>                                        
-                            <h:commandButton value="Consultar" action="#{docenteBean.buscarDocentePorId(docenteBean.docentes.identificacion)}" class="btn btn-warning"/>
+                            <h:commandButton value="Consultar"  class="btn btn-warning"/>
                         </div>
                     </div>
                     <p:separator class="mt-4"/>
                 </h:form>
-                <div class="row">
-                    <h4>Registrar Docentes</h4>                 
+                <div class="row mt-3">
+                    <h4>Registrar Programa</h4>                 
                 </div>
                 <h:form>
                     <div class="form-group mt-2">
-                        <p:outputLabel id="doc" value="No. Identificación:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.identificacion}" class="form-control" placeholder="Documento de Identificación" required=""/>
-                    </div>
-                    <div class="form-group mt-2">                       
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.nombre}" class="form-control" placeholder="Nombres" required=""/>
+                        <p:outputLabel id="ID" value="ID:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase" class="form-control" required=""/>
                     </div>
                     <div class="form-group mt-2">
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.apellido}" class="form-control" placeholder="Apellidos" required=""/>
+                        <p:outputLabel id="Nombre" value="Nombre:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase" class="form-control" required=""/>
                     </div>
-                    <div class="checkbox mt-2">
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.tipoContrato}" class="form-control" placeholder="Tipo de Contrato" required=""/>
+                    <div class="input-group mt-2"> 
+                        <p:inputTextarea style="text-transform: uppercase" rows="5" cols="50"  placeholder="Descripción" class="form-control" required="true"/>
                     </div>
-                    <div class="checkbox mt-2">
-                        <p:outputLabel id="Edad" value="Edad:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.edad}" class="form-control" placeholder="Edad" required="" type="number"/>
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="Duracion" value="Duración: (Semestre)"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
                     </div>
-                    <div class="checkbox mt-2">
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.email}" class="form-control" placeholder="Email" required="" type="text"/>
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="Registro_Calificado" value="Registro Calificado:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
                     </div>
-                    <div class="checkbox mt-3 mb-3">
-                        <h:selectBooleanCheckbox id="check" value="#{docenteBean.docentes.activo}"/>
-                        <h:outputLabel class="ml-2" value="¿Poner el docente como activo?" for="check" />
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="SNIES" value="SNIES:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="Director" value="Director:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="Email" value="Email:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="Jornada" value="Jornada:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase"  class="form-control"  required=""/>
                     </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Docente" class="btn azul" action="#{docenteBean.registrarDocenteV()}"/>
+                            <h:commandButton value="Registrar Programa" class="btn azul"/>
                         </div>
                     </center>
                 </h:form>
@@ -87,59 +94,65 @@
                     <h4>Resultado búsqueda</h4>                 
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="No se encontró el docente buscado" rendered="#{docenteBean.docenteSearch == null}"/>
+                    <h:outputText value="No se encontró el programa buscado" rendered=""/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Documento Identificación: #{docenteBean.docenteSearch.identificacion}" rendered="#{docenteBean.docenteSearch != null}"/>
+                    <h:outputText value="ID: " rendered=""/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Nombre: #{docenteBean.docenteSearch.nombre}" rendered="#{docenteBean.docenteSearch != null}"/>
+                    <h:outputText value="Nombre: " rendered=""/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Apellido: #{docenteBean.docenteSearch.apellido}" rendered="#{docenteBean.docenteSearch != null}"/>
+                    <h:outputText value="Descripción: " rendered=""/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Tipo de Contrato: #{docenteBean.docenteSearch.tipoContrato}" rendered="#{docenteBean.docenteSearch != null}"/>
+                    <h:outputText value="Duración: " rendered=""/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Edad: #{docenteBean.docenteSearch.edad}" rendered="#{docenteBean.docenteSearch != null}"/>
+                    <h:outputText value="Registro Calificado: " rendered=""/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Email: #{docenteBean.docenteSearch.email}" rendered="#{docenteBean.docenteSearch != null}"/>
+                    <h:outputText value="SNIES: " rendered=""/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Estado: #{docenteBean.transformActivo(docenteBean.docenteSearch.activo)}" rendered="#{docenteBean.docenteSearch != null}"/>
+                    <h:outputText value="Director: " rendered=""/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Email: " rendered=""/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Jornada: " rendered=""/>
                 </div>
                 <p:separator/>
             </div>
             <div class="col-sm-8">
-                <div class="row mt-3">
-                    <h4>Lista de Docentes</h4>                 
+                <div class="row mt-3 mb-2">
+                    <h4>Lista de Programas</h4>                 
                 </div> 
                 <h:form>
-                    <h:dataTable class="table table-hover text-center" id="tablaDocentes" value="#{docenteBean.docenteList}" var="docentes">
+                    <h:dataTable class="table table-hover text-center" id="tablaProgramas"  var="programas">
                         <p:column>
-                            <f:facet name="header">Documento Identificación</f:facet>
+                            <f:facet name="header">ID</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{docentes.identificacion}" class="form-control" rendered="#{docentes.editable}"/>
                             <h:outputText value="#{docentes.identificacion}" rendered="#{not docentes.editable}"/>
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Nombres</f:facet>
+                            <f:facet name="header">Nombre</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{docentes.nombre}" class="form-control" rendered="#{docentes.editable}"/>
                             <h:outputText value="#{docentes.nombre}" rendered="#{not docentes.editable}" />
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Apelllidos</f:facet>
+                            <f:facet name="header">Duración</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{docentes.apellido}" class="form-control" rendered="#{docentes.editable}"/>
                             <h:outputText value="#{docentes.apellido}" rendered="#{not docentes.editable}" />
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Tipo de Contrato</f:facet>
+                            <f:facet name="header">SNIES</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{docentes.tipoContrato}" class="form-control" rendered="#{docentes.editable}"/>
                             <h:outputText value="#{docentes.tipoContrato}" rendered="#{not docentes.editable}" />
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Edad</f:facet>
+                            <f:facet name="header">Director</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{docentes.edad}" class="form-control" rendered="#{docentes.editable}"/>
                             <h:outputText value="#{docentes.edad}" rendered="#{not docentes.editable}" />
                         </p:column>
@@ -149,7 +162,7 @@
                             <h:outputText value="#{docentes.email}" rendered="#{not docentes.editable}" />
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Estado</f:facet>
+                            <f:facet name="header">Jornada</f:facet>
                             <p:selectBooleanCheckbox itemLabel="Activa?" value="#{docentes.activo}" class="form-control" rendered="#{docentes.editable}"/>
                             <h:outputText value="#{docenteBean.transformActivo(docentes.activo)}" rendered="#{not docentes.editable}" />
                         </p:column>
@@ -189,8 +202,7 @@
                     </h:dataTable>
                 </h:form>
             </div>
-        </div>
-            
+        </div>        
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->
