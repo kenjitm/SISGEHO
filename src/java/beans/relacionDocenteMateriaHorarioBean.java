@@ -83,7 +83,7 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 "INNER JOIN asignatura_docente dasig on dasig.rowid_docente = gasig.id " +
 "INNER JOIN asignatura a on a.id = dasig.rowid_asignatura " +
 "INNER JOIN recurso r on r.id = hasig.rowid_recurso " +
-"WHERE Dia = 'Lunes') AS Lunes "+
+"WHERE Dia = 'LUNES') AS Lunes "+
                                         ", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
 "INNER JOIN horario_asignado as hasig on hasig.rowid_horario = h.id " +
 "INNER JOIN grupo as g on g.id = hasig.rowid_grupo_asignatura " +
@@ -91,52 +91,74 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 "INNER JOIN asignatura_docente dasig on dasig.rowid_docente = gasig.id " +
 "INNER JOIN asignatura a on a.id = dasig.rowid_asignatura " +
 "INNER JOIN recurso r on r.id = hasig.rowid_recurso " +
-"WHERE Dia = 'Martes') AS Martes"+", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
+"WHERE Dia = 'MARTES') AS Martes"+", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
 "INNER JOIN horario_asignado as hasig on hasig.rowid_horario = h.id " +
 "INNER JOIN grupo as g on g.id = hasig.rowid_grupo_asignatura " +
 "INNER JOIN grupo_asignatura_p gasig on gasig.rowid_grupo = g.id " +
 "INNER JOIN asignatura_docente dasig on dasig.rowid_docente = gasig.id " +
 "INNER JOIN asignatura a on a.id = dasig.rowid_asignatura " +
 "INNER JOIN recurso r on r.id = hasig.rowid_recurso " +
-"WHERE Dia = 'Miercoles') AS Miercoles"+", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
+"WHERE Dia = 'MIERCOLES') AS Miercoles"+", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
 "INNER JOIN horario_asignado as hasig on hasig.rowid_horario = h.id " +
 "INNER JOIN grupo as g on g.id = hasig.rowid_grupo_asignatura " +
 "INNER JOIN grupo_asignatura_p gasig on gasig.rowid_grupo = g.id " +
 "INNER JOIN asignatura_docente dasig on dasig.rowid_docente = gasig.id " +
 "INNER JOIN asignatura a on a.id = dasig.rowid_asignatura " +
 "INNER JOIN recurso r on r.id = hasig.rowid_recurso " +
-"WHERE Dia = 'Jueves') AS Jueves"+", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
+"WHERE Dia = 'JUEVES') AS Jueves"+", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
 "INNER JOIN horario_asignado as hasig on hasig.rowid_horario = h.id " +
 "INNER JOIN grupo as g on g.id = hasig.rowid_grupo_asignatura " +
 "INNER JOIN grupo_asignatura_p gasig on gasig.rowid_grupo = g.id " +
 "INNER JOIN asignatura_docente dasig on dasig.rowid_docente = gasig.id " +
 "INNER JOIN asignatura a on a.id = dasig.rowid_asignatura " +
 "INNER JOIN recurso r on r.id = hasig.rowid_recurso " +
-"WHERE Dia = 'Viernes') AS Viernes"+", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
+"WHERE Dia = 'VIERNES') AS Viernes"+", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h " +
 "INNER JOIN horario_asignado as hasig on hasig.rowid_horario = h.id " +
 "INNER JOIN grupo as g on g.id = hasig.rowid_grupo_asignatura " +
 "INNER JOIN grupo_asignatura_p gasig on gasig.rowid_grupo = g.id " +
 "INNER JOIN asignatura_docente dasig on dasig.rowid_docente = gasig.id " +
 "INNER JOIN asignatura a on a.id = dasig.rowid_asignatura " +
 "INNER JOIN recurso r on r.id = hasig.rowid_recurso " +
-"WHERE Dia = 'Sabado') AS Sabado"
+"WHERE Dia = 'SABADO') AS Sabado"
                                         + " FROM horario";
                 PreparedStatement pstmt = connect
 				.prepareStatement(Query);
                 System.out.println("***********Consulta: "+Query);
 		ResultSet rs = pstmt.executeQuery();
                 System.out.println("***********Inicia recorrido");
+                relacionesList = new ArrayList<RelacionDocenteHorarioMateria>();
 		while (rs.next()) {
                         
 			relacion = new RelacionDocenteHorarioMateria();
 			//objRelacion.setId(rs.getInt("id"));
+                        relacion.setIdDocente(0);
+                        relacion.setIdHorario(0);
+                        relacion.setIdMateria(0);
 			relacion.setJornada(rs.getString("jornada"));
+                        if(rs.getString("Lunes") != null)
 			relacion.setLunes(rs.getString("Lunes"));
+                        else
+                            relacion.setLunes("");
+                        if(rs.getString("Martes") != null)
                         relacion.setMartes(rs.getString("Martes"));
+                        else
+                            relacion.setMartes("");
+                        if(rs.getString("Miercoles") != null)
                         relacion.setMiercoles(rs.getString("Miercoles"));
+                        else
+                            relacion.setMiercoles("");
+                        if(rs.getString("Jueves") != null)
                         relacion.setJueves(rs.getString("Jueves"));
+                        else
+                            relacion.setJueves("");
+                        if(rs.getString("Viernes") != null)
                         relacion.setViernes(rs.getString("Viernes"));
+                        else
+                            relacion.setViernes("");
+                        if(rs.getString("Sabado") != null)
                         relacion.setViernes(rs.getString("Sabado"));
+                        else
+                            relacion.setSabado("");
                         //objRelacion.setSabado(rs.getString("Sabado"));
 			relacionesList.add(relacion);
 

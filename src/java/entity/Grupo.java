@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -53,8 +54,20 @@ public class Grupo implements Serializable {
     private boolean activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidGrupo")
     private Collection<GrupoAsignaturaP> grupoAsignaturaPCollection;
-
+    //Atributo para poder renderizar los campos de editar en la tabla
+    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
+    @Transient
+    private boolean editable;
     public Grupo() {
+        editable = false;
+    }
+    //Indispensable poner los set y get del atributo "editable"
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public Grupo(Integer id) {

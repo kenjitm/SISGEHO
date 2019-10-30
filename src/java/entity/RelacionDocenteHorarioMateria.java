@@ -10,7 +10,6 @@ package entity;
  * @author SougiroHylian
  */
 public class RelacionDocenteHorarioMateria {
-    private Integer Id;
     private Integer IdDocente;
     private Integer IdMateria;
     private Integer IdHorario;
@@ -21,13 +20,7 @@ public class RelacionDocenteHorarioMateria {
     private String Jueves;
     private String Viernes;
     private String Sabado;
-    public Integer getId() {
-        return Id;
-    }
-
-    public void setId(Integer Id) {
-        this.Id = Id;
-    }
+    
 
     public Integer getIdDocente() {
         return IdDocente;
@@ -111,8 +104,7 @@ public class RelacionDocenteHorarioMateria {
 
     
 
-    public RelacionDocenteHorarioMateria(Integer Id, Integer IdDocente, Integer IdMateria, Integer IdHorario) {
-        this.Id = Id;
+    public RelacionDocenteHorarioMateria(Integer IdDocente, Integer IdMateria, Integer IdHorario) {
         this.IdDocente = IdDocente;
         this.IdMateria = IdMateria;
         this.IdHorario = IdHorario;

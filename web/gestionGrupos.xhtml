@@ -39,52 +39,126 @@ and open the template in the editor.
                             <h6 class="card-subtitle mb-2 text-warning">Gestión de Grupos</h6>                  
                         </div>            
                     </div>
-            <div class="row mb-4">
-                <div class="col-sm-4">                    
-                    <div class="row mt-3">
-                            <h4>Registro de Grupos</h4>                
-                    </div> 
-                    <h:form>                                               
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{grupoBean.id}" class="form-control" placeholder="Identificacion del grupo" required="true" type="number"/>
-                        </div>
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{grupoBean.nomenclatura}" class="form-control" placeholder="Nomenclatura" required=""/>
-                        </div>
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{grupoBean.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
-                        </div>
-
-                        <p:separator/>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Grupo" class="btn btn-warning" action="#{grupoBean.guardarGrupo()}"/>
-                        </div>
-                    </h:form>                    
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row mt-3">
+                    <h4>Buscar Grupo</h4>                 
                 </div>
-
-                <div class="col-sm-4">
-                        <div class="row mt-3">
-                            <h4>Lista de grupos</h4>                 
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{grupoBean.grupos.id}" type="number" class="form-control" placeholder="Identificación del Grupo" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{grupoBean.buscarGrupoPorId(grupoBean.grupos.id)}" class="btn btn-warning"/>
                         </div>
-                    <h:form>  
-                        <p:dataTable var="grupo" value="#{grupoBean.listaGrupos}">
-                            <p:column headerText="Id">
-                                <h:outputText value="#{grupo.id}" />
-                            </p:column>
-                            <p:column headerText="Nomenclatura">
-                                <h:outputText value="#{grupo.nomenclatura}" />
-                            </p:column>
-                            <p:column headerText="descripcion">
-                                <h:outputText value="#{grupo.descripcion}" />
-                            </p:column>
-                            <p:column headerText="Opciones">
-                                <h:commandButton value="Editar" class="btn btn-warning" />
-                                <h:commandButton value="Eliminar" class="btn btn-danger"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </div>                             
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <div class="row">
+                    <h4>Registrar Grupos</h4>                 
+                </div>
+                <h:form>
+                    <div class="form-group mt-2">
+                        <p:inputText style="text-transform: uppercase" value="#{grupoBean.grupos.nomenclatura}" class="form-control" placeholder="Nomenclatura" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:inputText style="text-transform: uppercase" value="#{grupoBean.grupos.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                    </div>
+                    
+                    <div class="checkbox mt-2">
+                        <h:selectBooleanCheckbox id="check" value="#{grupoBean.grupos.activo}"/>
+                        <h:outputLabel value="Poner el grupo como activo" for="check" />
+                    </div>
+                    <center>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Grupo" class="btn azul" action="#{grupoBean.guardarGrupo()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró el grupo buscado" rendered="#{grupoBean.gruposSearch == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{grupoBean.gruposSearch.id}" rendered="#{grupoBean.gruposSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Nomenclatura: #{grupoBean.gruposSearch.nomenclatura}" rendered="#{grupoBean.gruposSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripciòn: #{grupoBean.gruposSearch.descripcion}" rendered="#{grupoBean.gruposSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{grupoBean.transformActivo(grupoBean.gruposSearch.activo)}" rendered="#{grupoBean.gruposSearch != null}"/>
+                </div>
+                <p:separator/>
             </div>
+            <div class="col-sm-8">
+                <div class="row mt-3">
+                    <h4>Lista de Grupos</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaSedes" value="#{grupoBean.gruposList}" var="grupo">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{grupo.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Nomenclatura</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{grupo.nomenclatura}" class="form-control" rendered="#{grupo.editable}"/>
+                            <h:outputText value="#{grupo.nomenclatura}" rendered="#{not grupo.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripciòn</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{grupo.descripcion}" class="form-control" rendered="#{grupo.editable}"/>
+                            <h:outputText value="#{grupo.descripcion}" rendered="#{not grupo.editable}" />
+                        </p:column>
+
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{grupo.activo}" class="form-control" rendered="#{grupo.editable}"/>
+                            <h:outputText value="#{grupoBean.transformActivo(grupo.activo)}" rendered="#{not grupo.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{grupoBean.enableEditarOption(grupo, true)}"
+                                               rendered="#{not grupo.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{grupoBean.editarGrupo(grupo)}"
+                                               rendered="#{grupo.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{grupoBean.grupos}" value="#{grupo}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{grupoBean.enableEditarOption(grupo, false)}"
+                                               rendered="#{grupo.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{grupoBean.eliminarGrupo()}"
+                                               rendered="#{not grupo.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{grupoBean.grupos}" value="#{grupo}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+            
 
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>

@@ -6,6 +6,8 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -178,7 +180,8 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Horario[ id=" + id + " ]";
+        Format format = new SimpleDateFormat("HH:mm"); 
+        return "De "+format.format(horaInicio)+" a "+format.format(horaFin);
     }
     
 }

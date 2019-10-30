@@ -37,82 +37,173 @@
 
             <div class="row mb-4">
 
-
-                <div class="col-sm-4">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Registro de salones</h4>                
-                        </div>            
-                    </div> 
-                    <h6 class="card-subtitle mt-4">¡Ingrese el numero de salon!</h6>
-                    <h:form>
-                        <div class="input-group mt-2"> 
-                            <p:inputText value="#{recursoBean.id}" class="form-control" placeholder="Identificación del salón" required=""/>
-                            <div>                                        
-                                <h:commandButton value="Consultar" action="#{recursoBean.buscarRecursoById(recursoBean.id)}" class="btn btn-primary"/>
-                            </div>
+<div class="row mb-4 ml-1 mr-1 overflow-auto">
+            <div class="col-sm-4">
+                <div class="row">
+                    <h4>Buscar Salon</h4>                 
+                </div>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{recursoBean.recurso.id}" type="number" class="form-control" placeholder="Identificación del Recurso" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{recursoBean.buscarRecursoPorId(recursoBean.recurso.id)}" class="btn btn-warning"/>
                         </div>
-                    </h:form>
-
-
-                    <p:separator></p:separator>
-
-
-                    <h2>Ingresar un recurso</h2>
-                    <h:form>
-                        <div class="form-group mt-3">
-                            <p:selectOneMenu value="#{recursoBean.recurso.rowidSede}" class="mt-3" style="width: 100%">
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <div class="row">
+                    <h4>Registrar Recurso</h4>                 
+                </div>
+                <h:form>
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="doc" value="Sede:"></p:outputLabel>
+                        <h:selectOneMenu value="#{recursoBean.recurso.rowidSede}" class="form-control" style="width: 100%">
                                 <f:selectItem itemLabel="Sede" itemDisabled="true"  />
-                                <f:selectItems value="#{sedeBean.obtenerSedes()}"/>
-                            </p:selectOneMenu>
-                        </div>
-                        <div class="form-group mt-3">
-                            <p:selectOneMenu value="#{recursoBean.recurso.rowidTipo}" class="mt-3" style="width: 100%">
+                                <f:selectItems value="#{sedeBean.sedesList}"/>
+                            </h:selectOneMenu>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="Nombre" value="Tipo de recurso:"></p:outputLabel>
+                        <h:selectOneMenu value="#{recursoBean.recurso.rowidTipo}" class="form-control" style="width: 100%">
                                 <f:selectItem itemLabel="Tipo de recurso" itemDisabled="true"  />
                                 <f:selectItems value="#{tipoRecursoBean.obtenerTiposRecurso()}"/>
-                            </p:selectOneMenu>
-                        </div>
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{recursoBean.recurso.nomenclatura}" class="form-control" placeholder="Nomenclatura" required=""/>
-                        </div>
-                        <div class="form-group mt-2">
-                            <p:selectBooleanCheckbox value="#{recursoBean.recurso.activo}" itemLabel="Disponible?"/>
-                        </div>
-                        <div class="form-group mt-2">
-                            <p:inputTextarea rows="6" cols="40" value="#{recursoBean.recurso.descripcion}" placeholder="Descripción"/>
-                        </div>
-                        <p:separator/>
+                            </h:selectOneMenu>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:outputLabel id="Apellido" value="Nomenclatura:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.nomenclatura}" class="form-control" placeholder="Nomenclatura" required=""/>
+                    </div>
+                    <div class="checkbox mt-2">
+                        <p:outputLabel id="TipoContrato" value="Descripciòn:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                    </div>
+                    <div class="checkbox mt-2">
+                        <p:outputLabel id="Edad" value="Capacidad:"></p:outputLabel>
+                        <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.capacidad}" class="form-control" placeholder="Edad" required="" type="number"/>
+                    </div>
+                    <div class="checkbox mt-2">
+                        <h:selectBooleanCheckbox id="check" value="#{recursoBean.recurso.activo}"/>
+                        <h:outputLabel value="Poner el recurso como activo" for="check" />
+                    </div>
+                    <center>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Salón" class="btn btn-warning" action="#{recursoBean.guardarRecurso()}"/>
-                        </div>                                                      
-                        <p:separator/>
-                    </h:form>
-
+                            <h:commandButton value="Registrar Recurso" class="btn azul" action="#{recursoBean.guardarRecurso()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
                 </div>
-                <div class="col-sm-8">
-                    <div class="card shadow mt-5" style="background-color: #0050a0">
-                        <div class="card-body">
-                            <h4 class="card-title text-white">Listado de salones</h4>                
-                        </div>            
-                    </div> 
-                    <p:dataTable class="bordered centered highlight" value="#{recursoBean.obtenerRecurso()}" var="r">
-                        <p:column headerText="Id">
-                            #{r.id}
-                        </p:column>
-                        <p:column headerText="Sede">
-                            #{r.rowidSede.ubicacion}
-                        </p:column>
-                        <p:column headerText="Tipo Recurso">
-                            #{r.rowidTipo.descripcion}
-                        </p:column>
-                        <p:column headerText="Disponibilidad">
-                            #{(r.activo) ? "Disponible": "No disponible"}
-                        </p:column>
-                        <p:column headerText="Número">
-                            #{r.nomenclatura}
-                        </p:column>
-                    </p:dataTable>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró el recurso buscado" rendered="#{recursoBean.recursoSearch == null}"/>
                 </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Sede: #{recursoBean.recursoSearch.rowidSede.ubicacion}" rendered="#{recursoBean.recursoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Tipo Recurso: #{recursoBean.recursoSearch.rowidTipo.descripcion}" rendered="#{recursoBean.recursoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Nomenclatura: #{recursoBean.recursoSearch.nomenclatura}" rendered="#{recursoBean.recursoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripciòn: #{recursoBean.recursoSearch.descripcion}" rendered="#{recursoBean.recursoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Capacidad: #{recursoBean.recursoSearch.capacidad}" rendered="#{recursoBean.recursoSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{recursoBean.transformActivo(recursoBean.recursoSearch.activo)}" rendered="#{recursoBean.recursoSearch != null}"/>
+                </div>
+                <p:separator/>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <h4>Lista de Recursos</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaDocentes" value="#{recursoBean.recursoList}" var="recurso">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{recurso.id}" rendered="#{not docentes.editable}"/>
+                            
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Sede</f:facet>
+                            <h:outputText value="#{recurso.rowidSede.ubicacion}" rendered="#{not recurso.editable}" />
+                            <h:outputText value="| #{recurso.rowidSede.subsede}" rendered="#{not recurso.editable}" />
+                            <h:selectOneMenu value="#{recurso.rowidSede}" class="form-control" style="width: 100%" rendered="#{recurso.editable}">
+                                <f:selectItem itemLabel="Sede" itemDisabled="true"  />
+                                <f:selectItems value="#{sedeBean.sedesList}"/>
+                            </h:selectOneMenu>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Tipo Recurso</f:facet>
+                            <h:outputText value="#{recurso.rowidTipo.descripcion}" rendered="#{not recurso.editable}" />
+                            <h:selectOneMenu value="#{recurso.rowidTipo}" class="form-control" style="width: 100%" rendered="#{recurso.editable}">
+                                <f:selectItem itemLabel="Tipo de recurso" itemDisabled="true"  />
+                                <f:selectItems value="#{tipoRecursoBean.obtenerTiposRecurso()}"/>
+                            </h:selectOneMenu>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Nomenclatura</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{recurso.nomenclatura}" class="form-control" rendered="#{recurso.editable}"/>
+                            <h:outputText value="#{recurso.nomenclatura}" rendered="#{not recurso.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripciòn</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{recurso.descripcion}" class="form-control" rendered="#{recurso.editable}"/>
+                            <h:outputText value="#{recurso.descripcion}" rendered="#{not recurso.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Capacidad</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{recurso.capacidad}" class="form-control" rendered="#{recurso.editable}"/>
+                            <h:outputText value="#{recurso.capacidad}" rendered="#{not recurso.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{recurso.activo}" class="form-control" rendered="#{recurso.editable}"/>
+                            <h:outputText value="#{recursoBean.transformActivo(recurso.activo)}" rendered="#{not recurso.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{recursoBean.enableEditarOption(recurso, true)}"
+                                               rendered="#{not recurso.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{recursoBean.editarRecurso(recurso)}"
+                                               rendered="#{recurso.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{recursoBean.recurso}" value="#{recurso}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{recursoBean.enableEditarOption(recurso, false)}"
+                                               rendered="#{recurso.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{recursoBean.eliminarRecurso()}"
+                                               rendered="#{not recurso.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{recursoBean.recurso}" value="#{recurso}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+                
             </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>

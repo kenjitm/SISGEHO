@@ -44,7 +44,7 @@
                     <div class="input-group mt-2"> 
                         <p:inputText value="#{horarioBean.horario.id}" type="number" class="form-control" placeholder="Identificación del horario" required=""/>
                         <div>                                        
-                            <h:commandButton value="Consultar" action="#{horarioBean.buscarHorario(horarioBean.horario.id)}" class="btn btn-warning"/>
+                            <h:commandButton value="Consultar" action="#{horarioBean.buscarHorarioPorId(horarioBean.horario.id)}" class="btn btn-warning"/>
                         </div>
                     </div>
                     <p:separator class="mt-4"/>
@@ -115,10 +115,14 @@
                     <h:outputText value="Dia: #{horarioBean.horarioSearch.dia}" rendered="#{horarioBean.horarioSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Hora Inicial: #{horarioBean.horarioSearch.horaInicio}" rendered="#{horarioBean.horarioSearch != null}"/>
+                    <h:outputText value="Hora Inicial: #{horarioBean.horarioSearch.horaInicio}" rendered="#{horarioBean.horarioSearch != null}">
+                        <f:convertDateTime dateStyle="full" pattern="HH:mm"/>  
+                    </h:outputText>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Hora Final: #{horarioBean.horarioSearch.horaFin}" rendered="#{horarioBean.horarioSearch != null}"/>
+                    <h:outputText value="Hora Final: #{horarioBean.horarioSearch.horaFin}" rendered="#{horarioBean.horarioSearch != null}">
+                    <f:convertDateTime dateStyle="full" pattern="HH:mm"/>  
+                    </h:outputText>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Frecuencia: #{horarioBean.horarioSearch.frecuencia}" rendered="#{horarioBean.horarioSearch != null}"/>

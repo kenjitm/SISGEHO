@@ -99,13 +99,16 @@ public class HorarioBean {
         TypedQuery<Horario> q = em.createNamedQuery("Horario.findAll", Horario.class);
         horarioList = q.getResultList();
     }
-    public Horario buscarHorario(Long id) {
+    public void buscarHorarioPorId(Integer id) {
+        horarioSearch = buscarById(id);
+    }
+    public Horario buscarById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Horario> q = em.createNamedQuery("Horario.findById", Horario.class);
-        q.setParameter("id", id);
-        return q.getResultList().get(0);
+        TypedQuery<Horario> hora = em.createNamedQuery("Horario.findById", Horario.class);
+        hora.setParameter("id", id);
+        return (hora.getResultList().isEmpty())?  null : hora.getResultList().get(0);
     }
     
     public Horario buscarPorId(Integer id) {

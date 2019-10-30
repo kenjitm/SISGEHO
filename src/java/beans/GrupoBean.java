@@ -7,6 +7,7 @@ package beans;
 
 import entity.Asignatura;
 import entity.Grupo;
+import entity.Sede;
 import entity.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,7 +16,11 @@ import java.util.stream.Collectors;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -29,7 +34,7 @@ import utils.SessionUtils;
  * @author KTANAKA
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class GrupoBean implements Serializable {
 
     /**
@@ -40,7 +45,31 @@ public class GrupoBean implements Serializable {
     private int id;
     private boolean activo;
     private String nomenclatura;
+    private Grupo grupos;
+    private Grupo gruposSearch;
+    //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
+    private static List<Grupo> gruposList;
 
+    public List<Grupo> getGruposList() {
+        return gruposList;
+    }
+
+    public Grupo getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(Grupo grupos) {
+        this.grupos = grupos;
+    }
+
+    public Grupo getGruposSearch() {
+        return gruposSearch;
+    }
+
+    public void setGruposSearch(Grupo gruposSearch) {
+        this.gruposSearch = gruposSearch;
+    }
+    
     public String getNomenclatura() {
         return nomenclatura;
     }
@@ -92,8 +121,9 @@ public class GrupoBean implements Serializable {
     }
 
     public GrupoBean() {
-        id = 0;
-        consultarGrupo();
+        grupos = new Grupo();
+        gruposSearch = new Grupo();
+        obtenerGrupo();
     }
 
     public String home() {
@@ -103,7 +133,96 @@ public class GrupoBean implements Serializable {
     public String irGrupo() {
         return "gestionGrupos.xhtml";
     }
+//EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    private void obtenerGrupo() {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Grupo> q = em.createNamedQuery("Grupo.findAll", Grupo.class);
+        gruposList = q.getResultList();
+    }
+    public void buscarGrupoPorId(Integer id) {
+        gruposSearch = buscarById(id);
+    }
 
+    public Grupo buscarById(Integer id) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Grupo> group = em.createNamedQuery("Grupo.findById", Grupo.class);
+        group.setParameter("id", id);
+        return (group.getResultList().isEmpty())?  null : group.getResultList().get(0);
+    }
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void guardarGrupo() {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.persist(grupos);
+            em.getTransaction().commit();
+            em.close();
+            grupos = new Grupo();
+            obtenerGrupo(); //Actualiza lista
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo guardar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+    //Agregar este método para campos booleanos, como "activo"
+    public String transformActivo(Boolean activo) {
+        return (activo) ? "ACTIVA" : "INACTIVA";
+    }
+
+    //INDISPENSABLE tener este método
+    public void enableEditarOption(Grupo group, boolean estado) {
+        group.setEditable(estado);
+    }
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void editarGrupo(Grupo group) {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.merge(grupos);
+            em.getTransaction().commit();
+            em.close();
+            obtenerGrupo(); //Actualiza lista
+            group.setEditable(false);
+            grupos = new Grupo();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo editar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
+    public void eliminarGrupo() {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            if (!em.contains(grupos)) {
+                grupos = em.merge(grupos);
+            }
+            em.remove(grupos);
+            em.getTransaction().commit();
+            obtenerGrupo(); //Actualiza lista
+            grupos = new Grupo();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo eliminar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
     public void consultarGrupo() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
@@ -134,27 +253,6 @@ public class GrupoBean implements Serializable {
         listaAsignatura = consultaAsignatura.getResultList();
     }
 
-    public void guardarGrupo() {
-        Grupo grupo = new Grupo();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-        grupo.setId(id);
-        grupo.setDescripcion(descripcion);
-        grupo.setNomenclatura(nomenclatura);
-        grupo.setActivo(true);
-        //grupo.setRowidAsignatura(asignatura);
-        em.getTransaction().begin();
-        em.persist(grupo);
-        em.getTransaction().commit();
-        
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "ÈXITO", "Registro realizado satisfactoriamente");
-            // For PrimeFaces < 6.2
-            RequestContext.getCurrentInstance().showMessageInDialog(message);  
-           this.consultarGrupo();
-           this.id = 0;
-           this.descripcion = null;
-           this.nomenclatura = null;
-    }
 
     public boolean isActivo() {
         return activo;
@@ -163,5 +261,35 @@ public class GrupoBean implements Serializable {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+@FacesConverter(forClass = Sede.class)
+    public static class SedeBeanConverter implements Converter {
 
+        Integer getKey(String value) {
+            return Integer.valueOf(value);
+        }
+
+        String getStringKey(Integer value) {
+            return new StringBuilder().append(value).toString();
+        }
+
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            return ((GrupoBean) context.getApplication().evaluateExpressionGet(context, "#{" + "GrupoBean" + "}", GrupoBean.class)).buscarById(getKey(value));
+        }
+
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            if (value == null) {
+                return null;
+            } else if (value instanceof Sede) {
+                return getStringKey(((Sede) value).getId());
+            } else {
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+            }
+        }
+
+    }
 }
