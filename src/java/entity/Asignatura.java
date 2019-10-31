@@ -61,10 +61,10 @@ public class Asignatura implements Serializable {
     @Column(name = "activo")
     private boolean activo;
     @JoinColumn(name = "rowid_programa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Programa rowidPrograma;
     @JoinColumn(name = "rowid_pensum", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Pensum rowidPensum;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidAsignatura")
     private Collection<AsignaturaDocente> asignaturaDocenteCollection;
