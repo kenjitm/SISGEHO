@@ -5,14 +5,12 @@
  */
 package beans;
 
-import entity.Facultad;
-import entity.Recurso;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import entity.Rol;
 import entity.Sede;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -21,98 +19,77 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.primefaces.context.RequestContext;
-
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class facultadBean {
-    private int id;
-    private String descripcion;
-    private Facultad facultad;
-    private Facultad facultadSearch;
+public class rolBean {
+    private Rol rol;
+    private Rol rolSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
-    private static List<Facultad> facultadList;
-
-    public Facultad getFacultad() {
-        return facultad;
+    private static List<Rol> rolList;
+    public rolBean()
+    {
+        rol = new Rol();
+        rolSearch = new Rol();
+        obtenerRol();
+    }
+    public String irRol() {
+        return "gestionRol.xhtml";
+    }
+    public List<Rol> getRolList() {
+        return rolList;
     }
 
-    public void setFacultad(Facultad facultad) {
-        this.facultad = facultad;
+    public Rol getRol() {
+        return rol;
     }
 
-    public Facultad getFacultadSearch() {
-        return facultadSearch;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
-    public void setFacultadSearch(Facultad facultadSearch) {
-        this.facultadSearch = facultadSearch;
+    public Rol getRolSearch() {
+        return rolSearch;
     }
 
-    public List<Facultad> getFacultadList() {
-        return facultadList;
+    public void setRolSearch(Rol rolSearch) {
+        this.rolSearch = rolSearch;
     }
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-    public String irFacultad(){
-        return "gestionFacultad.xhtml";
-    }
-    public facultadBean(){
-        facultad = new Facultad();
-        facultadSearch = new Facultad();
-        obtenerFacultades();
-    }
-    
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    private void obtenerFacultades() {
+    private void obtenerRol() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> q = em.createNamedQuery("Facultad.findAll", Facultad.class);
-        facultadList = q.getResultList();
+        TypedQuery<Rol> q = em.createNamedQuery("Rol.findAll", Rol.class);
+        rolList = q.getResultList();
     }
-    public void buscarFacultadPorId(Integer id) {
-        facultadSearch = buscarById(id);
+    public void buscarRolPorId(Integer id) {
+        rolSearch = buscarById(id);
     }
 
-    public Facultad buscarById(Integer id) {
+    public Rol buscarById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> facultad = em.createNamedQuery("Facultad.findById", Facultad.class);
-        facultad.setParameter("id", id);
-        return (facultad.getResultList().isEmpty())?  null : facultad.getResultList().get(0);
+        TypedQuery<Rol> rol = em.createNamedQuery("Rol.findById", Rol.class);
+        rol.setParameter("id", id);
+        return (rol.getResultList().isEmpty())?  null : rol.getResultList().get(0);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void guardarFacultad() {
+    public void guardarRol() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.persist(facultad);
+            em.persist(rol);
             em.getTransaction().commit();
             em.close();
-            facultad = new Facultad();
-            obtenerFacultades(); //Actualiza lista
+            rol = new Rol();
+            obtenerRol(); //Actualiza lista
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -126,22 +103,22 @@ public class facultadBean {
     }
 
     //INDISPENSABLE tener este método
-    public void enableEditarOption(Facultad facultad, boolean estado) {
-        facultad.setEditable(estado);
+    public void enableEditarOption(Rol rol, boolean estado) {
+        rol.setEditable(estado);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void editarFacultad(Facultad f) {
+    public void editarRol(Rol r) {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.merge(facultad);
+            em.merge(rol);
             em.getTransaction().commit();
             em.close();
-            obtenerFacultades(); //Actualiza lista
-            f.setEditable(false);
-            facultad = new Facultad();
+            obtenerRol(); //Actualiza lista
+            r.setEditable(false);
+            rol = new Rol();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -150,19 +127,19 @@ public class facultadBean {
         }
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void eliminarFacultad() {
+    public void eliminarRol() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            if (!em.contains(facultad)) {
-                facultad = em.merge(facultad);
+            if (!em.contains(rol)) {
+                rol = em.merge(rol);
             }
-            em.remove(facultad);
+            em.remove(rol);
             em.getTransaction().commit();
-            obtenerFacultades(); //Actualiza lista
-            facultad = new Facultad();
+            obtenerRol(); //Actualiza lista
+            rol = new Rol();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -186,7 +163,7 @@ public class facultadBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((facultadBean) context.getApplication().evaluateExpressionGet(context, "#{" + "facultadBean" + "}", facultadBean.class)).buscarById(getKey(value));
+            return ((rolBean) context.getApplication().evaluateExpressionGet(context, "#{" + "rolBean" + "}", rolBean.class)).buscarById(getKey(value));
         }
 
         @Override

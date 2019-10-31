@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+
+        <title>Sedes</title>
+    </h:head>
+
+    <h:body>
+        <div class="row" id="rowmenu">
+            <div >
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
+            </div>
+        </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>   
+        </div>
+        <!--fin barra de navegacion-->
+        <div>
+            <div  style="background-color: #0050a0">
+                <div class="card-body">
+                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Tipo Programa</h6>                  
+                </div>            
+            </div>
+        </div>
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row mt-3">
+                    <h4>Buscar Tipo Programa</h4>                 
+                </div>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{tipoProgramaBean.tipoProgram.id}" type="number" class="form-control" placeholder="Identificación del Tipo de Programa" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{tipoProgramaBean.buscarTipoPorId(tipoProgramaBean.tipoProgram.id)}" class="btn btn-warning"/>
+                        </div>
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <div class="row">
+                    <h4>Registrar Tipo Programa</h4>                 
+                </div>
+                <h:form>
+                    <div class="form-group mt-2">
+                        <p:outputLabel for="codigo" value="Còdigo " />
+                        <p:inputText id="codigo" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.codigo}" class="form-control" placeholder="Còdigo" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:outputLabel for="descripcion" value="Descripciòn " />
+                        <p:inputText id="descripcion" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                    </div>
+                    
+                    <div class="checkbox mt-2 mb-2">
+                        <h:selectBooleanCheckbox id="check" value="#{tipoProgramaBean.tipoProgram.activo}"/>
+                        <h:outputLabel class="ml-2" value="¿Poner el tipo de programa como activo?" for="check" />
+                    </div>
+                    <center>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Tipo Programa" class="btn azul" action="#{tipoProgramaBean.guardarTipo()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró el tipo de programa buscado" rendered="#{tipoProgramaBean.tipoProgramSearch == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{tipoProgramaBean.tipoProgramSearch.id}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Còdigo: #{tipoProgramaBean.tipoProgramSearch.codigo}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripciòn: #{tipoProgramaBean.tipoProgramSearch.descripcion}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{tipoProgramaBean.transformActivo(tipoProgramaBean.tipoProgramSearch.activo)}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
+                </div>
+                <p:separator/>
+            </div>
+            <div class="col-sm-8">
+                <div class="row mt-3">
+                    <h4>Lista de Tipos de Programas</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaSedes" value="#{tipoProgramaBean.tipoProgramList}" var="tipos">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{tipos.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Còdigo</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{tipos.codigo}" class="form-control" rendered="#{tipos.editable}"/>
+                            <h:outputText value="#{tipos.codigo}" rendered="#{not tipos.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripciòn</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{tipos.descripcion}" class="form-control" rendered="#{tipos.editable}"/>
+                            <h:outputText style="text-transform: uppercase" value="#{tipos.descripcion}" rendered="#{not tipos.editable}" />
+                        </p:column>
+
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{tipos.activo}" class="form-control" rendered="#{tipos.editable}"/>
+                            <h:outputText value="#{tipoProgramaBean.transformActivo(tipos.activo)}" rendered="#{not tipos.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{tipoProgramaBean.enableEditarOption(tipos, true)}"
+                                               rendered="#{not tipos.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{tipoProgramaBean.editarTipo(tipos)}"
+                                               rendered="#{tipos.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{tipoProgramaBean.tipoProgram}" value="#{tipos}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{tipoProgramaBean.enableEditarOption(tipos, false)}"
+                                               rendered="#{tipos.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{tipoProgramaBean.eliminarTipo()}"
+                                               rendered="#{not tipos.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{tipoProgramaBean.tipoProgram}" value="#{tipos}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+        <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+        <!--fin barra de footer-->
+    </h:body>
+</html>

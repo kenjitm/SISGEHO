@@ -42,48 +42,114 @@ and open the template in the editor.
                             <h6 class="card-subtitle mb-2 text-warning">Gestión de Facultad</h6>                  
                         </div>            
                     </div>
-        <div class="row mb-4" style="padding: 20px">
-                
-                <div class="col-sm-4">                    
-                        <div class="row mt-3">
-                            <h4>Registro de Facultad</h4>                
-                        </div>  
-                    <h:form>                                               
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{facultadBean.id}" class="form-control" placeholder="Identificacion de la facultad" required="true" type="number"/>
-                        </div>
-                     
-                        <div class="form-group mt-2">
-                            <p:inputText value="#{facultadBean.descripcion}" class="form-control" placeholder="Descripcion" required=""/>
-                        </div>
-
-                        <p:separator/>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Facultad" class="btn btn-warning" action="#{facultadBean.registrarFacultad()}" />
-                        </div>
-                    </h:form>                    
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row mt-3">
+                    <h4>Buscar Facultad</h4>                 
                 </div>
-
-                <div class="col-sm-8">                    
-                        <div class="row mt-3">
-                            <h4>Lista de Facultades</h4>                 
-                        </div> 
-                    <h:form>  
-                        <p:dataTable var="Facultad" value="#{facultadBean.obtenerFacultades()}">
-                            <p:column headerText="Id">
-                                <h:outputText value="#{Facultad.id}" />
-                            </p:column>
-                            <p:column headerText="descripcion">
-                                <h:outputText value="#{Facultad.descripcion}" />
-                            </p:column>
-                            <p:column headerText="Opciones">
-                                <h:commandButton value="Editar" class="btn btn-warning" />
-                                <h:commandButton value="Eliminar" class="btn btn-danger"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </div>                             
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{facultadBean.facultad.id}" type="number" class="form-control" placeholder="Identificación de la facultad" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{facultadBean.buscarFacultadPorId(facultadBean.facultad.id)}" class="btn btn-warning"/>
+                        </div>
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <div class="row">
+                    <h4>Registrar Facultad</h4>                 
+                </div>
+                <h:form>
+                    <div class="form-group mt-2">
+                        <p:inputText style="text-transform: uppercase" value="#{facultadBean.facultad.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                    </div>
+                    
+                    <div class="checkbox mt-2 mb-2">
+                        <h:selectBooleanCheckbox id="check" value="#{facultadBean.facultad.activo}"/>
+                        <h:outputLabel class="ml-2" value="¿Poner la facultad como activa?" for="check" />
+                    </div>
+                    <center>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Facultad" class="btn azul" action="#{facultadBean.guardarFacultad()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró la facultad buscada" rendered="#{facultadBean.facultadSearch == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{facultadBean.facultadSearch.id}" rendered="#{facultadBean.facultadSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripciòn: #{facultadBean.facultadSearch.descripcion}" rendered="#{facultadBean.facultadSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{facultadBean.transformActivo(facultadBean.facultadSearch.activo)}" rendered="#{facultadBean.facultadSearch != null}"/>
+                </div>
+                <p:separator/>
             </div>
+            <div class="col-sm-8">
+                <div class="row mt-3">
+                    <h4>Lista de Facultades</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaSedes" value="#{facultadBean.facultadList}" var="facultad">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{facultad.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripciòn</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{facultad.descripcion}" class="form-control" rendered="#{facultad.editable}"/>
+                            <h:outputText value="#{facultad.descripcion}" rendered="#{not facultad.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{facultad.activo}" class="form-control" rendered="#{facultad.editable}"/>
+                            <h:outputText value="#{facultadBean.transformActivo(facultad.activo)}" rendered="#{not facultad.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{facultadBean.enableEditarOption(facultad, true)}"
+                                               rendered="#{not facultad.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{facultadBean.editarFacultad(facultad)}"
+                                               rendered="#{facultad.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{facultadBean.facultad}" value="#{facultad}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{facultadBean.enableEditarOption(facultad, false)}"
+                                               rendered="#{facultad.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{facultadBean.eliminarFacultad()}"
+                                               rendered="#{not facultad.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{facultadBean.facultad}" value="#{facultad}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+        
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

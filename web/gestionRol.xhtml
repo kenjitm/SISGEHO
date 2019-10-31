@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+
+        <title>Sedes</title>
+    </h:head>
+
+    <h:body>
+        <div class="row" id="rowmenu">
+            <div >
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
+            </div>
+        </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>   
+        </div>
+        <!--fin barra de navegacion-->
+        <div>
+            <div  style="background-color: #0050a0">
+                <div class="card-body">
+                    <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Roles</h6>                  
+                </div>            
+            </div>
+        </div>
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row mt-3">
+                    <h4>Buscar Rol</h4>                 
+                </div>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{rolBean.rol.id}" type="number" class="form-control" placeholder="Identificación del Rol" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{rolBean.buscarRolPorId(rolBean.rol.id)}" class="btn btn-warning"/>
+                        </div>
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <div class="row">
+                    <h4>Registrar Rol</h4>                 
+                </div>
+                <h:form>
+                    <div class="form-group mt-2">
+                        <p:inputText style="text-transform: uppercase" value="#{rolBean.rol.nombre}" class="form-control" placeholder="Nombre" required=""/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <p:inputText style="text-transform: uppercase" value="#{rolBean.rol.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                    </div>
+                    
+                    <div class="checkbox mt-2 mb-2">
+                        <h:selectBooleanCheckbox id="check" value="#{rolBean.rol.activo}"/>
+                        <h:outputLabel class="ml-2" value="¿Poner el rol como activo?" for="check" />
+                    </div>
+                    <center>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Sede" class="btn azul" action="#{rolBean.guardarRol()}"/>
+                        </div>
+                    </center>
+                </h:form>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado Rol</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró el rol buscado" rendered="#{rolBean.rolSearch == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{rolBean.rolSearch.id}" rendered="#{rolBean.rolSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Nombre: #{rolBean.rolSearch.nombre}" rendered="#{rolBean.rolSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripciòn: #{rolBean.rolSearch.descripcion}" rendered="#{rolBean.rolSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{rolBean.transformActivo(rolBean.rolSearch.activo)}" rendered="#{rolBean.rolSearch != null}"/>
+                </div>
+                <p:separator/>
+            </div>
+            <div class="col-sm-8">
+                <div class="row mt-3">
+                    <h4>Lista de Roles</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaSedes" value="#{rolBean.rolList}" var="rol">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{rol.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Nombre</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{rol.nombre}" class="form-control" rendered="#{rol.editable}"/>
+                            <h:outputText value="#{rol.nombre}" rendered="#{not rol.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripciòn</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{rol.descripcion}" class="form-control" rendered="#{rol.editable}"/>
+                            <h:outputText value="#{rol.descripcion}" rendered="#{not rol.editable}" />
+                        </p:column>
+
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{rol.activo}" class="form-control" rendered="#{rol.editable}"/>
+                            <h:outputText value="#{rolBean.transformActivo(rol.activo)}" rendered="#{not rol.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{rolBean.enableEditarOption(rol, true)}"
+                                               rendered="#{not rol.editable}">
+                                    <i class="material-icons">create</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{rolBean.editarRol(rol)}"
+                                               rendered="#{rol.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{rolBean.rol}" value="#{rol}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{rolBean.enableEditarOption(rol, false)}"
+                                               rendered="#{rol.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{rolBean.eliminarRol()}"
+                                               rendered="#{not rol.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{rolBean.rol}" value="#{rol}" />
+                                </h:commandLink>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+        <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+        <!--fin barra de footer-->
+    </h:body>
+</html>

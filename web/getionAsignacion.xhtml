@@ -57,6 +57,14 @@
             </h:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
+                            <p:outputLabel for="facultad" value="Facultad " />
+                            <h:selectOneMenu class="form-control" id="facultad" value="#{facultadBean.facultad.id}" style="width: 100%"
+                                             >
+                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{facultadBean.facultadList}" var="facultad" itemLabel="#{facultad.descripcion}" itemValue="#{facultad.id}" />
+            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group mt-3">
                             <p:outputLabel for="grupo" value="Grupo " />
                             <h:selectOneMenu class="form-control" id="grupo" value="#{grupoBean.grupos.id}" style="width: 100%"
                                              

@@ -5,14 +5,16 @@
  */
 package beans;
 
-import entity.Facultad;
-import entity.Recurso;
 import entity.Sede;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import entity.TipoPrograma;
+/**
+ *
+ * @author SougiroHylian
+ */
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -21,98 +23,74 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.primefaces.context.RequestContext;
-
-/**
- *
- * @author IngenieroDesarrollo
- */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class facultadBean {
-    private int id;
-    private String descripcion;
-    private Facultad facultad;
-    private Facultad facultadSearch;
+public class tipoProgramaBean {
+    private TipoPrograma tipoProgram;
+    private TipoPrograma tipoProgramSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
-    private static List<Facultad> facultadList;
-
-    public Facultad getFacultad() {
-        return facultad;
+    private static List<TipoPrograma> tipoProgramList;
+    public tipoProgramaBean()
+    {
+        tipoProgram = new TipoPrograma();
+        tipoProgramSearch = new TipoPrograma();
+        obtenerTipoPrograma();
+    }
+    public String irTipoPrograma() {
+        return "gestionTipoPrograma.xhtml";
     }
 
-    public void setFacultad(Facultad facultad) {
-        this.facultad = facultad;
+    public TipoPrograma getTipoProgram() {
+        return tipoProgram;
     }
 
-    public Facultad getFacultadSearch() {
-        return facultadSearch;
+    public void setTipoProgram(TipoPrograma tipoProgram) {
+        this.tipoProgram = tipoProgram;
     }
 
-    public void setFacultadSearch(Facultad facultadSearch) {
-        this.facultadSearch = facultadSearch;
+    public TipoPrograma getTipoProgramSearch() {
+        return tipoProgramSearch;
     }
 
-    public List<Facultad> getFacultadList() {
-        return facultadList;
-    }
-    
-    public int getId() {
-        return id;
+    public void setTipoProgramSearch(TipoPrograma tipoProgramSearch) {
+        this.tipoProgramSearch = tipoProgramSearch;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public List<TipoPrograma> getTipoProgramList() {
+        return tipoProgramList;
     }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-    public String irFacultad(){
-        return "gestionFacultad.xhtml";
-    }
-    public facultadBean(){
-        facultad = new Facultad();
-        facultadSearch = new Facultad();
-        obtenerFacultades();
-    }
-    
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    private void obtenerFacultades() {
+    private void obtenerTipoPrograma() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> q = em.createNamedQuery("Facultad.findAll", Facultad.class);
-        facultadList = q.getResultList();
+        TypedQuery<TipoPrograma> q = em.createNamedQuery("TipoPrograma.findAll", TipoPrograma.class);
+        tipoProgramList = q.getResultList();
     }
-    public void buscarFacultadPorId(Integer id) {
-        facultadSearch = buscarById(id);
+    public void buscarTipoPorId(Integer id) {
+        tipoProgramSearch = buscarById(id);
     }
 
-    public Facultad buscarById(Integer id) {
+    public TipoPrograma buscarById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> facultad = em.createNamedQuery("Facultad.findById", Facultad.class);
-        facultad.setParameter("id", id);
-        return (facultad.getResultList().isEmpty())?  null : facultad.getResultList().get(0);
+        TypedQuery<TipoPrograma> tipo = em.createNamedQuery("TipoPrograma.findById", TipoPrograma.class);
+        tipo.setParameter("id", id);
+        return (tipo.getResultList().isEmpty())?  null : tipo.getResultList().get(0);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void guardarFacultad() {
+    public void guardarTipo() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.persist(facultad);
+            em.persist(tipoProgram);
             em.getTransaction().commit();
             em.close();
-            facultad = new Facultad();
-            obtenerFacultades(); //Actualiza lista
+            tipoProgram = new TipoPrograma();
+            obtenerTipoPrograma(); //Actualiza lista
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -126,22 +104,22 @@ public class facultadBean {
     }
 
     //INDISPENSABLE tener este método
-    public void enableEditarOption(Facultad facultad, boolean estado) {
-        facultad.setEditable(estado);
+    public void enableEditarOption(TipoPrograma tipo, boolean estado) {
+        tipo.setEditable(estado);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void editarFacultad(Facultad f) {
+    public void editarTipo(TipoPrograma s) {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.merge(facultad);
+            em.merge(tipoProgram);
             em.getTransaction().commit();
             em.close();
-            obtenerFacultades(); //Actualiza lista
-            f.setEditable(false);
-            facultad = new Facultad();
+            obtenerTipoPrograma(); //Actualiza lista
+            s.setEditable(false);
+            tipoProgram = new TipoPrograma();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -149,20 +127,21 @@ public class facultadBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void eliminarFacultad() {
+    public void eliminarTipo() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            if (!em.contains(facultad)) {
-                facultad = em.merge(facultad);
+            if (!em.contains(tipoProgram)) {
+                tipoProgram = em.merge(tipoProgram);
             }
-            em.remove(facultad);
+            em.remove(tipoProgram);
             em.getTransaction().commit();
-            obtenerFacultades(); //Actualiza lista
-            facultad = new Facultad();
+            obtenerTipoPrograma(); //Actualiza lista
+            tipoProgram = new TipoPrograma();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -170,6 +149,7 @@ public class facultadBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+
     @FacesConverter(forClass = Sede.class)
     public static class SedeBeanConverter implements Converter {
 
@@ -186,7 +166,7 @@ public class facultadBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((facultadBean) context.getApplication().evaluateExpressionGet(context, "#{" + "facultadBean" + "}", facultadBean.class)).buscarById(getKey(value));
+            return ((tipoProgramaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "tipoProgramaBean" + "}", tipoProgramaBean.class)).buscarById(getKey(value));
         }
 
         @Override
@@ -201,4 +181,5 @@ public class facultadBean {
         }
 
     }
+
 }

@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -53,8 +54,21 @@ public class TipoPrograma implements Serializable {
     private boolean activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidTipo")
     private Collection<Programa> programaCollection;
+    //Atributo para poder renderizar los campos de editar en la tabla
+    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
+    @Transient
+    private boolean editable;
 
     public TipoPrograma() {
+        editable = false;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public TipoPrograma(Integer id) {

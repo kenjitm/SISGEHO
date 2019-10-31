@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -53,12 +54,25 @@ public class Rol implements Serializable {
     private boolean activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidRol")
     private Collection<UsuarioRol> usuarioRolCollection;
+    //Atributo para poder renderizar los campos de editar en la tabla
+    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
+    @Transient
+    private boolean editable;
 
     public Rol() {
+        editable = false;
     }
 
     public Rol(Integer id) {
         this.id = id;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public Rol(Integer id, String nombre, String descripcion, boolean activo) {

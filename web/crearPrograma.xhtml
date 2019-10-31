@@ -79,10 +79,33 @@
                         <p:inputText value="#{crearProgramaBean.program.email}"  class="form-control"  required=""/>
                     </div>
                     <div class="form-group mt-2">
+                            <p:outputLabel for="facultad" value="Facultad " />
+                            <h:selectOneMenu class="form-control" id="facultad" value="#{crearProgramaBean.program.rowidFacultad}" style="width: 100%"
+                                             >
+                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{facultadBean.facultadList}" var="facultad" itemLabel="#{facultad.descripcion}" itemValue="#{facultad.id}" />
+            </h:selectOneMenu>
+                        </div>
+                    <div class="form-group mt-2">
                         <p:outputLabel id="Jornada" value="Jornada:"></p:outputLabel>
                         <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.jornada}"  class="form-control"  required=""/>
                     </div>
-                    
+                    <div class="form-group mt-2">
+                            <p:outputLabel for="tipoPrograma" value="Tipo Programa " />
+                            <h:selectOneMenu class="form-control" id="tipoPrograma" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%"
+                                             >
+                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{tipoProgramaBean.tipoProgramList}" var="tipos" itemLabel="#{tipos.descripcion}" itemValue="#{tipos.id}" />
+            </h:selectOneMenu>
+                        </div>
+                    <div class="form-group mt-2">
+                            <p:outputLabel for="modalidad" value="Modalidad Programa " />
+                            <h:selectOneMenu class="form-control" id="modalidad" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%"
+                                             >
+                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{modalidadPrograma.modalList}" var="modal" itemLabel="#{modal.descripcion}" itemValue="#{modal.id}" />
+            </h:selectOneMenu>
+                        </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">
                             <h:commandButton value="Registrar Programa" action="#{crearProgramaBean.guardarPrograma()}" class="btn azul"/>

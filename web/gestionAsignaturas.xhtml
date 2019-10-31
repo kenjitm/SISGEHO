@@ -64,7 +64,7 @@
                     <div class="form-group mt-3">
                         <h:selectOneMenu class="form-control" value="#{asignaturaBean.asignatura.rowidPrograma}" style="width: 100%">
                             <f:selectItem itemLabel="PROGRAMA" itemDisabled="true"  />
-                            <f:selectItems value="#{crearProgramaBean.getAllPrograms()}"/>
+                            <f:selectItems value="#{crearProgramaBean.programList}"/>
                         </h:selectOneMenu>
                     </div>
                     <div class="checkbox mt-2">
@@ -138,7 +138,7 @@
                             <f:facet name="header">Programa académico</f:facet>
                             <h:selectOneMenu class="form-control" value="#{asignaturaBean.asignatura.rowidPrograma}" style="width: 100%" rendered="#{asignatura.editable}">
                                 <f:selectItem itemLabel="PROGRAMA" itemDisabled="true"  />
-                                <f:selectItems value="#{crearProgramaBean.getAllPrograms()}"/>
+                                <f:selectItems value="#{crearProgramaBean.programList}"/>
                             </h:selectOneMenu>
                             <h:outputText value="#{asignatura.rowidPrograma.nombre}" rendered="#{not asignatura.editable}" />
                         </p:column>
