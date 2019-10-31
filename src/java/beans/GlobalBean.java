@@ -33,7 +33,10 @@ public class GlobalBean {
         String usuarioLogueado = (String) getObjectFromSession("user");
         return usuarioLogueado;
     }
-
+    public String getLoggedUserName() {
+        String usuarioLogueado = (String) getObjectFromSession("username");
+        return usuarioLogueado;
+    }
     public String getUserRoles() {
         String rolesCadena = (String) getObjectFromSession("roles");
         return rolesCadena;
