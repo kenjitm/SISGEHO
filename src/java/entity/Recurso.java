@@ -59,10 +59,10 @@ public class Recurso implements Serializable {
     @Column(name = "activo")
     private boolean activo;
     @JoinColumn(name = "rowid_tipo", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private TipoRecurso rowidTipo;
     @JoinColumn(name = "rowid_sede", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Sede rowidSede;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidRecurso")
     private Collection<HorarioAsignado> horarioAsignadoCollection;

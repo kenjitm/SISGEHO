@@ -75,13 +75,13 @@ public class Programa implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidPrograma")
     private Collection<Asignatura> asignaturaCollection;
     @JoinColumn(name = "rowid_facultad", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Facultad rowidFacultad;
     @JoinColumn(name = "rowid_tipo", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private TipoPrograma rowidTipo;
     @JoinColumn(name = "rowid_modalidad", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private ModalidadPrograma rowidModalidad;
     //Atributo para poder renderizar los campos de editar en la tabla
     //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
