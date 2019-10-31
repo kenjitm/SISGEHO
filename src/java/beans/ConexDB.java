@@ -5,12 +5,14 @@
  */
 package beans;
 
+import entity.Rol;
+import entity.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import entity.UsuarioRol;
 /**
  *
  * @author IngenieroDesarrollo
@@ -43,5 +45,36 @@ public class ConexDB {
 		pstmt.close();
 		connect.close();
           return rs;      
+    }
+    public UsuarioRol getUserRols(Integer id) throws ClassNotFoundException, SQLException{
+        UsuarioRol userRol = new UsuarioRol();
+        Connection connect = null;
+		try {
+
+			Class.forName("com.mysql.jdbc.Driver");
+
+			connect = DriverManager.getConnection(url, username, password);
+			// System.out.println("Connection established"+connect);
+
+		} catch (SQLException ex) {
+			System.out.println("in exec");
+			System.out.println(ex.getMessage());
+		}
+                String query = "SELECT * FROM usuario_rol WHERE rowid_usuario = "+id;
+                System.out.println("*********Consulta UsuarioRoles: "+query);
+              PreparedStatement pstmt = connect
+				.prepareStatement(query);
+		ResultSet rs = pstmt.executeQuery(query);
+                while (rs.next()) {
+                        userRol.setId(rs.getInt("id"));
+                        userRol.setRowidRol(rs.getObject("rowid_rol", Rol.class));
+                        userRol.setRowidUsuario(rs.getObject("rowid_usuario", Usuario.class));
+		}
+                //close resources
+		rs.close();
+		pstmt.close();
+		connect.close();
+          
+        return userRol;
     }
 }

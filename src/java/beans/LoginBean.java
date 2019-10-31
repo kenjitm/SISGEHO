@@ -20,6 +20,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpSession;
 import utils.SessionUtils;
+import entity.UsuarioRol;
 
 /**
  *
@@ -81,6 +82,18 @@ public class LoginBean implements Serializable {
             consultaUsuarios.setParameter("usuario", usuario);
             List<Usuario> lista = consultaUsuarios.getResultList();
             Usuario user = consultaUsuarios.getResultList().get(0);
+            usuarioRolBean userBean = new usuarioRolBean();
+            /*ConexDB db = new ConexDB();
+            UsuarioRol userRol = new UsuarioRol();
+            try
+            {
+               userRol =  db.getUserRols(user.getId());
+            }catch(Exception ex)
+            {
+                System.out.println("Error consultando Roles Usuarios: "+ex.getMessage());
+            }*/
+            List<UsuarioRol> userRolList = userBean.getUserRolList();
+            
             lista = lista.stream().filter(lu -> lu != null && lu.getUsuario() != null && lu.getUsuario().equals(usuario)).collect(Collectors.toList());
             System.out.println("lista " + lista.size());
             if (lista != null) {
@@ -88,6 +101,8 @@ public class LoginBean implements Serializable {
 
                     FacesContext context = FacesContext.getCurrentInstance();
                     context.getExternalContext().getSessionMap().put("user", usuario);
+                    context.getExternalContext().getSessionMap().put("username", user.getNombre());
+                    //context.getExternalContext().getSessionMap().put("roles", userRol.getRowidRol().getNombre());
                     //session = new SessionUtils();
                     //session.add("user", usuario);
 
