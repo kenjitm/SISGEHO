@@ -78,4 +78,13 @@ public class usuarioRolBean {
         user.setParameter("rowid_usuario", id);
         return (user.getResultList().isEmpty())?  null : user.getResultList().get(0);
     }
+    
+    public List<UsuarioRol> buscarListByIdUser(Integer id) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<UsuarioRol> user = em.createNamedQuery("UsuarioRol.findByIdUser", UsuarioRol.class);
+        user.setParameter("rowid_usuario", id);
+        return (user.getResultList().isEmpty())?  null : user.getResultList();
+    }
 }
