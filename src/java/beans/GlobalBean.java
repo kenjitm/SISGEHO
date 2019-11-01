@@ -26,7 +26,7 @@ import javax.persistence.TypedQuery;
 public class GlobalBean {
 
     public GlobalBean() {
-        this.getLoggedUser();
+        
     }
 
     public String getLoggedUser() {
@@ -42,13 +42,13 @@ public class GlobalBean {
         return rolesCadena;
     }
 
-    private Object getObjectFromSession(String key) {
+    public Object getObjectFromSession(String key) {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(key);
     }
 
-    private void saveObjectInSession(String value, String key) {
+    public void saveObjectInSession(String value, String key) {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.getExternalContext().getSessionMap().put(value, key);
+        context.getExternalContext().getSessionMap().put(key, value);
     }
 
 }

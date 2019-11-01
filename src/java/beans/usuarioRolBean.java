@@ -5,6 +5,8 @@
  */
 package beans;
 
+import entity.Facultad;
+import entity.Programa;
 import entity.Sede;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -14,6 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+
 /**
  *
  * @author IngenieroDesarrollo
@@ -21,11 +24,13 @@ import javax.persistence.TypedQuery;
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class usuarioRolBean {
+
     private UsuarioRol userRol;
     private UsuarioRol userRolSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<UsuarioRol> userRolList;
-    public usuarioRolBean(){
+
+    public usuarioRolBean() {
         userRol = new UsuarioRol();
         userRolSearch = new UsuarioRol();
     }
