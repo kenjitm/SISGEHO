@@ -28,7 +28,6 @@ public class usuarioRolBean {
     public usuarioRolBean(){
         userRol = new UsuarioRol();
         userRolSearch = new UsuarioRol();
-        obtenerUsuariosRoles();
     }
 
     public UsuarioRol getUserRol() {
@@ -49,34 +48,5 @@ public class usuarioRolBean {
 
     public List<UsuarioRol> getUserRolList() {
         return userRolList;
-    }
-    //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    private void obtenerUsuariosRoles() {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-        TypedQuery<UsuarioRol> q = em.createNamedQuery("UsuarioRol.findAll", UsuarioRol.class);
-        userRolList = q.getResultList();
-    }
-    public void buscarUsuarioRolPorId(Integer id) {
-        userRolSearch = buscarById(id);
-    }
-
-    public UsuarioRol buscarById(Integer id) {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-        TypedQuery<UsuarioRol> user = em.createNamedQuery("UsuarioRol.findById", UsuarioRol.class);
-        user.setParameter("id", id);
-        return (user.getResultList().isEmpty())?  null : user.getResultList().get(0);
-    }
-    
-    public List<UsuarioRol> buscarListByIdUser(Integer id) {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-        TypedQuery<UsuarioRol> user = em.createNamedQuery("UsuarioRol.findByIdUser", UsuarioRol.class);
-        user.setParameter("rowid_usuario", id);
-        return (user.getResultList().isEmpty())?  null : user.getResultList();
     }
 }
