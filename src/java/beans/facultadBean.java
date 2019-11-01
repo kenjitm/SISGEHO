@@ -170,8 +170,8 @@ public class facultadBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    @FacesConverter(forClass = Sede.class)
-    public static class SedeBeanConverter implements Converter {
+    @FacesConverter(forClass = Facultad.class)
+    public static class facultadBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);

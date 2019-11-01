@@ -150,8 +150,8 @@ public class tipoProgramaBean {
         }
     }
 
-    @FacesConverter(forClass = Sede.class)
-    public static class SedeBeanConverter implements Converter {
+    @FacesConverter(forClass = TipoPrograma.class)
+    public static class tipoProgramaBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);

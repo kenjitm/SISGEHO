@@ -103,7 +103,7 @@
                             <h:selectOneMenu class="form-control" id="modalidad" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%"
                                              >
                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{modalidadPrograma.modalList}" var="modal" itemLabel="#{modal.descripcion}" itemValue="#{modal.id}" />
+                <f:selectItems value="#{modalidadProgramaBean.modalList}" var="modal" itemLabel="#{modal.descripcion}" itemValue="#{modal.id}" />
             </h:selectOneMenu>
                         </div>
                     <center>
