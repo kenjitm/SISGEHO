@@ -5,10 +5,10 @@
  */
 package beans;
 
+import entity.Sede;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import entity.Rol;
-import entity.Sede;
+import entity.Usuario;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -25,71 +25,67 @@ import javax.persistence.TypedQuery;
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class rolBean {
-    private Rol rol;
-    private Rol rolSearch;
+public class UsuariosBean {
+    private Usuario user;
+    private Usuario userSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
-    private static List<Rol> rolList;
-    public rolBean()
-    {
-        rol = new Rol();
-        rolSearch = new Rol();
-        obtenerRol();
-    }
-    public String irRol() {
-        return "gestionRol.xhtml";
-    }
-    public List<Rol> getRolList() {
-        return rolList;
+    private static List<Usuario> userList;
+    public UsuariosBean(){
+        user = new Usuario();
+        userSearch = new Usuario();
     }
 
-    public Rol getRol() {
-        return rol;
+    public Usuario getUser() {
+        return user;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 
-    public Rol getRolSearch() {
-        return rolSearch;
+    public Usuario getUserSearch() {
+        return userSearch;
     }
 
-    public void setRolSearch(Rol rolSearch) {
-        this.rolSearch = rolSearch;
+    public void setUserSearch(Usuario userSearch) {
+        this.userSearch = userSearch;
+    }
+
+    public List<Usuario> getUserList() {
+        return userList;
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    private void obtenerRol() {
+    private void obtenerUsuarios() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Rol> q = em.createNamedQuery("Rol.findAll", Rol.class);
-        rolList = q.getResultList();
+        TypedQuery<Usuario> q = em.createNamedQuery("UsuariofindAll", Usuario.class);
+        userList = q.getResultList();
     }
-    public void buscarRolPorId(Integer id) {
-        rolSearch = buscarById(id);
+    public void buscarUserPorId(Integer id) {
+        userSearch = buscarById(id);
     }
 
-    public Rol buscarById(Integer id) {
+    public Usuario buscarById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Rol> rol = em.createNamedQuery("Rol.findById", Rol.class);
-        rol.setParameter("id", id);
-        return (rol.getResultList().isEmpty())?  null : rol.getResultList().get(0);
+        TypedQuery<Usuario> user = em.createNamedQuery("UsuariofindById", Usuario.class);
+        user.setParameter("id", id);
+        return (user.getResultList().isEmpty())?  null : user.getResultList().get(0);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void guardarRol() {
+    public void guardarUsuario() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.persist(rol);
+            em.persist(user);
             em.getTransaction().commit();
             em.close();
-            rol = new Rol();
-            obtenerRol(); //Actualiza lista
+            user = new Usuario();
+            obtenerUsuarios(); //Actualiza lista
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -103,22 +99,22 @@ public class rolBean {
     }
 
     //INDISPENSABLE tener este método
-    public void enableEditarOption(Rol rol, boolean estado) {
-        rol.setEditable(estado);
+    public void enableEditarOption(Usuario us, boolean estado) {
+        us.setEditable(estado);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void editarRol(Rol r) {
+    public void editarUsuarioRol(Usuario s) {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.merge(rol);
+            em.merge(user);
             em.getTransaction().commit();
             em.close();
-            obtenerRol(); //Actualiza lista
-            r.setEditable(false);
-            rol = new Rol();
+            obtenerUsuarios(); //Actualiza lista
+            s.setEditable(false);
+            user = new Usuario();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -127,19 +123,19 @@ public class rolBean {
         }
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void eliminarRol() {
+    public void eliminarUsuario() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            if (!em.contains(rol)) {
-                rol = em.merge(rol);
+            if (!em.contains(user)) {
+                user = em.merge(user);
             }
-            em.remove(rol);
+            em.remove(user);
             em.getTransaction().commit();
-            obtenerRol(); //Actualiza lista
-            rol = new Rol();
+            obtenerUsuarios(); //Actualiza lista
+            user = new Usuario();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -147,8 +143,8 @@ public class rolBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    @FacesConverter(forClass = Rol.class)
-    public static class rolBeanConverter implements Converter {
+    @FacesConverter(forClass = Usuario.class)
+    public static class UsuariosBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);
@@ -163,7 +159,7 @@ public class rolBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((rolBean) context.getApplication().evaluateExpressionGet(context, "#{" + "rolBean" + "}", rolBean.class)).buscarById(getKey(value));
+            return ((UsuariosBean) context.getApplication().evaluateExpressionGet(context, "#{" + "UsuariosBean" + "}", UsuariosBean.class)).buscarById(getKey(value));
         }
 
         @Override

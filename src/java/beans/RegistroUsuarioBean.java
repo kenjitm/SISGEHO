@@ -7,10 +7,12 @@ package beans;
 
 import entity.Asignatura;
 import entity.Docente;
+import entity.Rol;
 import entity.Sede;
 import entity.TipoId;
 import entity.TipoRol;
 import entity.Usuario;
+import entity.UsuarioRol;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -51,6 +53,8 @@ public class RegistroUsuarioBean {
     private String usuario;
     private String password;
     private Integer edad;
+    private Rol rowRol;
+    private UsuarioRol userRol;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<Usuario> usersList;
      //INDISPENSABLE EL MÉTODO GET. SÓLO EL GET
@@ -60,6 +64,22 @@ public class RegistroUsuarioBean {
 
     public Usuario getUser() {
         return user;
+    }
+
+    public Rol getRowRol() {
+        return rowRol;
+    }
+
+    public UsuarioRol getUserRol() {
+        return userRol;
+    }
+
+    public void setUserRol(UsuarioRol userRol) {
+        this.userRol = userRol;
+    }
+
+    public void setRowRol(Rol rowRol) {
+        this.rowRol = rowRol;
     }
 
     public void setUser(Usuario user) {
@@ -77,6 +97,7 @@ public class RegistroUsuarioBean {
     public RegistroUsuarioBean() {
         user = new Usuario();
         userSearch = new Usuario();
+        userRol = new UsuarioRol();
         obtenerUsuarios();
     }
 
@@ -206,6 +227,13 @@ public class RegistroUsuarioBean {
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
             em.persist(user);
+            em.getTransaction().commit();
+            em.close();
+            //userRol.setRowidRol(rowRol);
+            userRol.setRowidUsuario(user);
+            userRol.setActivo(true);
+            em.getTransaction().begin();
+            em.persist(userRol);
             em.getTransaction().commit();
             em.close();
             user = new Usuario();
