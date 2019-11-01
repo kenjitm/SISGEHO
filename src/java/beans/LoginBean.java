@@ -143,7 +143,6 @@ public class LoginBean implements Serializable {
                     obtenerRoles(user.getId());
                     obtenerNombresRoles();
                     GlobalBean globalBean = new GlobalBean();
-                    System.out.println("roles " + nombreRol);
                     globalBean.saveObjectInSession(nombreRol, "roles");
                     //usuario correcto
                     return "Dashboard";
@@ -173,6 +172,9 @@ public class LoginBean implements Serializable {
             for (UsuarioRol usuarioRol : listaUsuarioRoles) {
                 if (usuarioRol != null && usuarioRol.getRowidRol() != null) {
                     listaRoles.add(usuarioRol.getRowidRol());
+                    
+                    GlobalBean globalBean = new GlobalBean();
+                    globalBean.saveObjectInSession(nombreRol, "listaRoles");
                 }
             }
         }

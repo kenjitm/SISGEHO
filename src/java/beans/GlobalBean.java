@@ -6,8 +6,10 @@
 package beans;
 
 import entity.Asignatura;
+import entity.Rol;
 import entity.TipoSemestre;
 import entity.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -26,17 +28,25 @@ import javax.persistence.TypedQuery;
 public class GlobalBean {
 
     public GlobalBean() {
-        
+
     }
 
     public String getLoggedUser() {
         String usuarioLogueado = (String) getObjectFromSession("user");
         return usuarioLogueado;
     }
+
     public String getLoggedUserName() {
         String usuarioLogueado = (String) getObjectFromSession("username");
         return usuarioLogueado;
     }
+
+    public List<Rol> getListaRoles() {
+        List<Rol> listaRoles = new ArrayList<>();
+        listaRoles = (List) getObjectFromSession("listaRoles");
+        return listaRoles;
+    }
+
     public String getUserRoles() {
         String rolesCadena = (String) getObjectFromSession("roles");
         return rolesCadena;
