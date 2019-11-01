@@ -44,11 +44,18 @@
                             <h4 class="card-title text-white">Registros de horarios</h4>                
                         </div>            
                     </div> 
-                    
                     <h:form>
                         <div class="form-group mt-3">
+                            <p:outputLabel for="periodo" value="Periodo " />
+                            <h:selectOneMenu class="form-control" id="periodo" value="#{relacionDocenteMateriaHorarioBean.grupoAsig.rowidPeriodo}" style="width: 100%"
+                                             >
+                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{beanPeriodo.periodoList}" var="periodo" itemLabel="#{periodo.descripcion}" itemValue="#{periodo.id}" />
+            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group mt-3">
                             <p:outputLabel for="docente" value="Docente " />
-                            <h:selectOneMenu class="form-control" id="docente" value="#{docenteBean.docentes.id}" style="width: 100%"
+                            <h:selectOneMenu class="form-control" id="docente" value="#{relacionDocenteMateriaHorarioBean.asignaturaAsig.rowidDocente}" style="width: 100%"
                                              
                                              >
                                              
@@ -56,17 +63,10 @@
                 <f:selectItems value="#{docenteBean.docenteList}" var="doc" itemLabel="#{doc.toString()}" itemValue="#{doc.id}" />
             </h:selectOneMenu>
                         </div>
-                        <div class="form-group mt-3">
-                            <p:outputLabel for="facultad" value="Facultad " />
-                            <h:selectOneMenu class="form-control" id="facultad" value="#{facultadBean.facultad.id}" style="width: 100%"
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{facultadBean.facultadList}" var="facultad" itemLabel="#{facultad.descripcion}" itemValue="#{facultad.id}" />
-            </h:selectOneMenu>
-                        </div>
+                        
                         <div class="form-group mt-3">
                             <p:outputLabel for="grupo" value="Grupo " />
-                            <h:selectOneMenu class="form-control" id="grupo" value="#{grupoBean.grupos.id}" style="width: 100%"
+                            <h:selectOneMenu class="form-control" id="grupo" value="#{relacionDocenteMateriaHorarioBean.grupoAsig.rowidGrupo}" style="width: 100%"
                                              
                                              >
                                              
@@ -76,16 +76,15 @@
                         </div>
                         <div class="form-group mt-3">
                             <p:outputLabel for="asignatura" value="Asignatura " />
-                            <h:selectOneMenu class="form-control" id="asignatura" value="#{asignaturaBean.asignatura.id}" style="width: 100%" >
-                                             >
+                            <h:selectOneMenu class="form-control" id="asignatura" value="#{relacionDocenteMateriaHorarioBean.asignaturaAsig.rowidAsignatura}" style="width: 100%" >
                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{asignaturaBean.asignaturasList}"  var="asig" itemValue="#{asig.id}" itemLabel="#{asig.descripcion}" />
             </h:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
                             <p:outputLabel for="horario" value="Horario " />
-                            <h:selectOneMenu class="form-control" id="horario" value="#{horarioBean.horario.id}" style="width: 100%" >
-                                             >
+                            <h:selectOneMenu class="form-control" id="horario" value="#{relacionDocenteMateriaHorarioBean.horarioAsig.rowidHorario}" style="width: 100%" >
+                                             
                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{horarioBean.horarioList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.toString()}" />
             </h:selectOneMenu>
@@ -93,7 +92,7 @@
                         <h:panelGroup layout="block" rendered="#{relacionDocenteMateriaHorarioBean.relacion.show}">
     <div class="form-group mt-3">
                             <p:outputLabel for="recursos" value="Recurso " />
-                            <h:selectOneMenu class="form-control" id="recursos" value="#{recursoBean.recurso.id}" style="width: 100%" >
+                            <h:selectOneMenu class="form-control" id="recursos" value="#{relacionDocenteMateriaHorarioBean.horarioAsig.rowidRecurso}" style="width: 100%" >
                                              >
                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{recursoBean.recursoList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />

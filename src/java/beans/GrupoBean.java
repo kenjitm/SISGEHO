@@ -261,8 +261,8 @@ public class GrupoBean implements Serializable {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-@FacesConverter(forClass = Sede.class)
-    public static class SedeBeanConverter implements Converter {
+@FacesConverter(forClass = Grupo.class)
+    public static class GrupoBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);

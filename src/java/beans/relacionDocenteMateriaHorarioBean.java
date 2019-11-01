@@ -7,6 +7,10 @@ package beans;
 
 import entity.RelacionDocenteHorarioMateria;
 import entity.Usuario;
+import entity.HorarioAsignado;
+import entity.GrupoAsignaturaP;
+import entity.AsignaturaDocente;
+import entity.Sede;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,8 +23,15 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
@@ -32,6 +43,10 @@ import org.primefaces.context.RequestContext;
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class relacionDocenteMateriaHorarioBean implements Serializable {
     private RelacionDocenteHorarioMateria relacion;
+    private RelacionDocenteHorarioMateria relacionSearch;
+    private HorarioAsignado horarioAsig;
+    private GrupoAsignaturaP grupoAsig;
+    private AsignaturaDocente asignaturaAsig;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<RelacionDocenteHorarioMateria> relacionesList;
 
@@ -46,11 +61,43 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
     public List<RelacionDocenteHorarioMateria> getRelacionesList() {
         return relacionesList;
     }
+
+    public HorarioAsignado getHorarioAsig() {
+        return horarioAsig;
+    }
+
+    public void setHorarioAsig(HorarioAsignado horarioAsig) {
+        this.horarioAsig = horarioAsig;
+    }
+
+    public GrupoAsignaturaP getGrupoAsig() {
+        return grupoAsig;
+    }
+
+    public void setGrupoAsig(GrupoAsignaturaP grupoAsig) {
+        this.grupoAsig = grupoAsig;
+    }
+
+    public AsignaturaDocente getAsignaturaAsig() {
+        return asignaturaAsig;
+    }
+
+    public void setAsignaturaAsig(AsignaturaDocente asignaturaAsig) {
+        this.asignaturaAsig = asignaturaAsig;
+    }
     
     public relacionDocenteMateriaHorarioBean() throws ClassNotFoundException, SQLException{
         relacion = new RelacionDocenteHorarioMateria();
+        asignaturaAsig = new AsignaturaDocente();
+        grupoAsig = new GrupoAsignaturaP();
+        horarioAsig = new HorarioAsignado();
         relacionDMH();
-        
+        GlobalBean globalBean = new GlobalBean();
+        String rol = globalBean.getObjectFromSession("roles").toString(); 
+        if("BINESTAR".equals(rol))
+        {
+            relacion.setShow(true);
+        }
     }
     public void relacionDMH() throws ClassNotFoundException, SQLException {
 
@@ -178,6 +225,73 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 		//return relaciones;
 
 	}
-    
- 
+ public void guardarSede() {
+        try {
+            EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            em.persist(asignaturaAsig);
+            em.getTransaction().commit();
+            em.close();
+            grupoAsig.setRowidAsignaturaDocente(asignaturaAsig);
+            em.getTransaction().begin();
+            em.persist(grupoAsig);
+            em.getTransaction().commit();
+            em.close();
+            horarioAsig.setRowidGrupoAsignatura(grupoAsig);
+            em.getTransaction().begin();
+            em.persist(horarioAsig);
+            em.getTransaction().commit();
+            em.close();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo guardar los datos. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }  
+public void buscarRelacionPorId(Integer id) {
+        relacionSearch = buscarById(id);
+    }
+
+    public RelacionDocenteHorarioMateria buscarById(Integer id) {
+        EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<RelacionDocenteHorarioMateria> relaciones = em.createNamedQuery("RelacionDocenteHorarioMateria.findById", RelacionDocenteHorarioMateria.class);
+        relaciones.setParameter("id", id);
+        return (relaciones.getResultList().isEmpty())?  null : relaciones.getResultList().get(0);
+    } 
+ @FacesConverter(forClass = RelacionDocenteHorarioMateria.class)
+    public static class relacionDocenteMateriaHorarioBeanConverter implements Converter {
+
+        Integer getKey(String value) {
+            return Integer.valueOf(value);
+        }
+
+        String getStringKey(Integer value) {
+            return new StringBuilder().append(value).toString();
+        }
+
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            return ((relacionDocenteMateriaHorarioBean) context.getApplication().evaluateExpressionGet(context, "#{" + "relacionDocenteMateriaHorarioBean" + "}", relacionDocenteMateriaHorarioBean.class)).buscarById(getKey(value));
+        }
+
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            if (value == null) {
+                return null;
+            } else if (value instanceof Sede) {
+                return getStringKey(((Sede) value).getId());
+            } else {
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+            }
+        }
+
+    }
 }

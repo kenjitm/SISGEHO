@@ -171,7 +171,7 @@ public class RecursoBean {
         }
     }
 
-    @FacesConverter(forClass = Sede.class)
+    @FacesConverter(forClass = Recurso.class)
     public static class SedeBeanConverter implements Converter {
 
         Integer getKey(String value) {

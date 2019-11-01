@@ -262,7 +262,7 @@ public class docenteBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    @FacesConverter(forClass = Horario.class)
+    @FacesConverter(forClass = Docente.class)
     public static class docenteBeanConverter implements Converter {
 
         Integer getKey(String value) {

@@ -6,12 +6,16 @@
 package beans;
 
 import entity.Asignatura;
+import entity.Sede;
 import entity.TipoSemestre;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -174,5 +178,36 @@ public class AsignaturaBean {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo eliminar los datos. Inténtelo más tarde");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+    }
+    @FacesConverter(forClass = Asignatura.class)
+    public static class AsignaturaBeanConverter implements Converter {
+
+        Integer getKey(String value) {
+            return Integer.valueOf(value);
+        }
+
+        String getStringKey(Integer value) {
+            return new StringBuilder().append(value).toString();
+        }
+
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            return ((AsignaturaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "AsignaturaBean" + "}", AsignaturaBean.class)).buscarById(getKey(value));
+        }
+
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            if (value == null) {
+                return null;
+            } else if (value instanceof Sede) {
+                return getStringKey(((Sede) value).getId());
+            } else {
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+            }
+        }
+
     }
 }
