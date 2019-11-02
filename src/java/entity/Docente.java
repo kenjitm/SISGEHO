@@ -55,10 +55,10 @@ public class Docente implements Serializable {
     private String apellido;
     @Basic(optional = false)
     @Column(name = "edad")
-    private int edad;
+    private Integer edad;
     @Basic(optional = false)
     @Column(name = "identificacion")
-    private int identificacion;
+    private Integer identificacion;
     @Basic(optional = false)
     @Column(name = "email")
     private String email;
@@ -91,7 +91,7 @@ public class Docente implements Serializable {
         this.id = id;
     }
 
-    public Docente(Integer id, String nombre, String apellido, int edad, int identificacion, String email, String tipoContrato, boolean activo) {
+    public Docente(Integer id, String nombre, String apellido, Integer edad, Integer identificacion, String email, String tipoContrato, boolean activo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -126,19 +126,19 @@ public class Docente implements Serializable {
         this.apellido = apellido;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
-    public int getIdentificacion() {
+    public Integer getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentificacion(int identificacion) {
+    public void setIdentificacion(Integer identificacion) {
         this.identificacion = identificacion;
     }
 

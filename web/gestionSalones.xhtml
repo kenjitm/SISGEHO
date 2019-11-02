@@ -55,31 +55,26 @@
                     <h4>Registrar Recurso</h4>                 
                 </div>
                 <h:form>
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="doc" value="Sede:"></p:outputLabel>
+                    <div class="form-group mt-2">                        
                         <h:selectOneMenu value="#{recursoBean.recurso.rowidSede}" class="form-control" style="width: 100%">
                                 <f:selectItem itemLabel="Sede" itemDisabled="true"  />
                                 <f:selectItems value="#{sedeBean.sedesList}"/>
                             </h:selectOneMenu>
                     </div>
                     <div class="form-group mt-2">
-                        <p:outputLabel id="Nombre" value="Tipo de recurso:"></p:outputLabel>
                         <h:selectOneMenu value="#{recursoBean.recurso.rowidTipo}" class="form-control" style="width: 100%">
                                 <f:selectItem itemLabel="Tipo de recurso" itemDisabled="true"  />
                                 <f:selectItems value="#{tipoRecursoBean.obtenerTiposRecurso()}"/>
                             </h:selectOneMenu>
                     </div>
                     <div class="form-group mt-2">
-                        <p:outputLabel id="Apellido" value="Nomenclatura:"></p:outputLabel>
                         <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.nomenclatura}" class="form-control" placeholder="Nomenclatura" required=""/>
                     </div>
                     <div class="checkbox mt-2">
-                        <p:outputLabel id="TipoContrato" value="Descripciòn:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.descripcion}" class="form-control" placeholder="Descripción" required=""/>
                     </div>
                     <div class="checkbox mt-2">
-                        <p:outputLabel id="Edad" value="Capacidad:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.capacidad}" class="form-control" placeholder="Edad" required="" type="number"/>
+                        <p:inputText style="text-transform: uppercase" value="#{recursoBean.recurso.capacidad}" class="form-control" placeholder="Capacidad" required="" type="number"/>
                     </div>
                     <div class="checkbox mt-2 mb-2">
                         <h:selectBooleanCheckbox id="check" value="#{recursoBean.recurso.activo}"/>
@@ -108,7 +103,7 @@
                     <h:outputText value="Nomenclatura: #{recursoBean.recursoSearch.nomenclatura}" rendered="#{recursoBean.recursoSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Descripciòn: #{recursoBean.recursoSearch.descripcion}" rendered="#{recursoBean.recursoSearch != null}"/>
+                    <h:outputText value="Descripción: #{recursoBean.recursoSearch.descripcion}" rendered="#{recursoBean.recursoSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Capacidad: #{recursoBean.recursoSearch.capacidad}" rendered="#{recursoBean.recursoSearch != null}"/>
@@ -152,7 +147,7 @@
                             <h:outputText value="#{recurso.nomenclatura}" rendered="#{not recurso.editable}" />
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Descripciòn</f:facet>
+                            <f:facet name="header">Descripción</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{recurso.descripcion}" class="form-control" rendered="#{recurso.editable}"/>
                             <h:outputText value="#{recurso.descripcion}" rendered="#{not recurso.editable}" />
                         </p:column>

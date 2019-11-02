@@ -58,12 +58,10 @@ and open the template in the editor.
                 </div>
                 <h:form>
                     <div class="form-group mt-2">
-                        <p:outputLabel for="codigo" value="Còdigo " />
-                        <p:inputText id="codigo" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.codigo}" class="form-control" placeholder="Còdigo" required=""/>
+                        <p:inputText id="codigo" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.codigo}" class="form-control" placeholder="Código" required=""/>
                     </div>
                     <div class="form-group mt-2">
-                        <p:outputLabel for="descripcion" value="Descripciòn " />
-                        <p:inputText id="descripcion" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                        <p:inputText id="descripcion" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.descripcion}" class="form-control" placeholder="Descripción" required=""/>
                     </div>
                     
                     <div class="checkbox mt-2 mb-2">
@@ -87,10 +85,10 @@ and open the template in the editor.
                     <h:outputText value="ID: #{tipoProgramaBean.tipoProgramSearch.id}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Còdigo: #{tipoProgramaBean.tipoProgramSearch.codigo}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
+                    <h:outputText value="Código: #{tipoProgramaBean.tipoProgramSearch.codigo}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Descripciòn: #{tipoProgramaBean.tipoProgramSearch.descripcion}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
+                    <h:outputText value="Descripción: #{tipoProgramaBean.tipoProgramSearch.descripcion}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Estado: #{tipoProgramaBean.transformActivo(tipoProgramaBean.tipoProgramSearch.activo)}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
@@ -108,12 +106,12 @@ and open the template in the editor.
                             <h:outputText value="#{tipos.id}"/>
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Còdigo</f:facet>
+                            <f:facet name="header">Código</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{tipos.codigo}" class="form-control" rendered="#{tipos.editable}"/>
                             <h:outputText value="#{tipos.codigo}" rendered="#{not tipos.editable}" />
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Descripciòn</f:facet>
+                            <f:facet name="header">Descripción</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{tipos.descripcion}" class="form-control" rendered="#{tipos.editable}"/>
                             <h:outputText style="text-transform: uppercase" value="#{tipos.descripcion}" rendered="#{not tipos.editable}" />
                         </p:column>

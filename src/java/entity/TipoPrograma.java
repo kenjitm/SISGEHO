@@ -45,7 +45,7 @@ public class TipoPrograma implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "codigo")
-    private int codigo;
+    private Integer codigo;
     @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
@@ -75,7 +75,7 @@ public class TipoPrograma implements Serializable {
         this.id = id;
     }
 
-    public TipoPrograma(Integer id, int codigo, String descripcion, boolean activo) {
+    public TipoPrograma(Integer id, Integer codigo, String descripcion, boolean activo) {
         this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -90,11 +90,11 @@ public class TipoPrograma implements Serializable {
         this.id = id;
     }
 
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 

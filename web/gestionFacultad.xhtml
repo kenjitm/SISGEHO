@@ -61,7 +61,7 @@ and open the template in the editor.
                 </div>
                 <h:form>
                     <div class="form-group mt-2">
-                        <p:inputText style="text-transform: uppercase" value="#{facultadBean.facultad.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{facultadBean.facultad.descripcion}" class="form-control" placeholder="Descripción" required=""/>
                     </div>
                     
                     <div class="checkbox mt-2 mb-2">
@@ -85,7 +85,7 @@ and open the template in the editor.
                     <h:outputText value="ID: #{facultadBean.facultadSearch.id}" rendered="#{facultadBean.facultadSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Descripciòn: #{facultadBean.facultadSearch.descripcion}" rendered="#{facultadBean.facultadSearch != null}"/>
+                    <h:outputText value="Descripción: #{facultadBean.facultadSearch.descripcion}" rendered="#{facultadBean.facultadSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Estado: #{facultadBean.transformActivo(facultadBean.facultadSearch.activo)}" rendered="#{facultadBean.facultadSearch != null}"/>
@@ -103,7 +103,7 @@ and open the template in the editor.
                             <h:outputText value="#{facultad.id}"/>
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Descripciòn</f:facet>
+                            <f:facet name="header">Descripción</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{facultad.descripcion}" class="form-control" rendered="#{facultad.editable}"/>
                             <h:outputText value="#{facultad.descripcion}" rendered="#{not facultad.editable}" />
                         </p:column>

@@ -55,7 +55,7 @@
                 </div>
                 <h:form>
                     <div class="form-group mt-2">
-                        <p:inputText id="descripcion" style="text-transform: uppercase" value="#{beanPeriodo.periodo.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                        <p:inputText id="descripcion" style="text-transform: uppercase" value="#{beanPeriodo.periodo.descripcion}" class="form-control" placeholder="Descripción" required=""/>
                     </div>
                     <div class="form-group mt-2">
                         
@@ -92,7 +92,7 @@
                     <h:outputText value="ID: #{beanPeriodo.periodoSearch.id}" rendered="#{beanPeriodo.periodoSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Descripciòn: #{beanPeriodo.periodoSearch.descripcion}" rendered="#{beanPeriodo.periodoSearch != null}">
+                    <h:outputText value="Descripción: #{beanPeriodo.periodoSearch.descripcion}" rendered="#{beanPeriodo.periodoSearch != null}">
                     </h:outputText>
                 </div>
                 <div class="form-group mt-2">
@@ -123,7 +123,7 @@
                             <h:outputText value="#{periodo.id}"/>
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Descripciòn</f:facet>
+                            <f:facet name="header">Descripción</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{periodo.descripcion}" class="form-control" rendered="#{periodo.editable}"/>
                             <h:outputText value="#{periodo.descripcion}" rendered="#{not periodo.editable}" />
                         </p:column>

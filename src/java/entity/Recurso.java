@@ -54,7 +54,7 @@ public class Recurso implements Serializable {
     private String nomenclatura;
     @Basic(optional = false)
     @Column(name = "capacidad")
-    private int capacidad;
+    private Integer capacidad;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
@@ -86,7 +86,7 @@ public class Recurso implements Serializable {
         this.id = id;
     }
 
-    public Recurso(Integer id, String descripcion, String nomenclatura, int capacidad, boolean activo) {
+    public Recurso(Integer id, String descripcion, String nomenclatura, Integer capacidad, boolean activo) {
         this.id = id;
         this.descripcion = descripcion;
         this.nomenclatura = nomenclatura;
@@ -118,11 +118,11 @@ public class Recurso implements Serializable {
         this.nomenclatura = nomenclatura;
     }
 
-    public int getCapacidad() {
+    public Integer getCapacidad() {
         return capacidad;
     }
 
-    public void setCapacidad(int capacidad) {
+    public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
 
