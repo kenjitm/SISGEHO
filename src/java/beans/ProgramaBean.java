@@ -31,9 +31,9 @@ public class ProgramaBean implements Serializable {
      * Creates a new instance of LoginBean
      */
     private Programa programa;
-
+    private Programa programaSearch;
     public ProgramaBean() {
-        this.consultarProgramas();
+        
     }
 
     public Programa getPrograma() {
@@ -52,29 +52,5 @@ public class ProgramaBean implements Serializable {
         return "gestionGrupos.xhtml";
     }
 
-    public List<Programa> consultarProgramas() {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-
-        TypedQuery<Programa> consultaProgramas = em.createNamedQuery("Programa.findAll", Programa.class);
-        return consultaProgramas.getResultList();
-    }
-
-    public Programa consultarProgramaById(Integer id) {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-
-        return em.find(Programa.class, id);
-    }
-
-    public void guardarPrograma() {
-        Programa programa = new Programa();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(programa);
-        em.getTransaction().commit();
-    }
+    
 }

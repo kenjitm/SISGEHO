@@ -70,6 +70,7 @@
                             <div class="form-group mt-2">
                                 <p:outputLabel for="facultad" value="Facultad " />
                                 <h:selectOneMenu class="form-control" id="facultad" value="#{crearProgramaBean.program.rowidFacultad}" style="width: 100%"
+                                                 
                                                  >
                                     <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
                                     <f:selectItems value="#{facultadBean.facultadList}" var="facultad" itemLabel="#{facultad.descripcion}" itemValue="#{facultad.id}" />

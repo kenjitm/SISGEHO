@@ -170,6 +170,7 @@ public class facultadBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+    
     @FacesConverter(forClass = Facultad.class)
     public static class facultadBeanConverter implements Converter {
 
@@ -193,8 +194,8 @@ public class facultadBean {
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Facultad) {
+                return getStringKey(((Facultad) value).getId());
             } else {
                 throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
             }
