@@ -14,6 +14,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import static javax.management.Query.value;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -60,5 +61,8 @@ public class GlobalBean {
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getSessionMap().put(key, value);
     }
-
+    public void saveObjectInSessionBit(Boolean valeBit, String key) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getSessionMap().put(key, valeBit);
+    }
 }

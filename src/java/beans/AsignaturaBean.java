@@ -33,7 +33,6 @@ public class AsignaturaBean {
     private Asignatura asignatura;
     private Asignatura asignaturaBusqueda;
     private TipoSemestre semestre;
-
     private static List<Asignatura> asignaturasList;
 
     public AsignaturaBean() {

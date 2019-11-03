@@ -101,7 +101,10 @@ public class rolBean {
     public String transformActivo(Boolean activo) {
         return (activo) ? "ACTIVA" : "INACTIVA";
     }
-
+    //Agregar este método para campos booleanos, como "habilitado"
+    public String transformHabilitado(Boolean bitBool) {
+        return (bitBool) ? "HABILITADO" : "INHABILITADO";
+    }
     //INDISPENSABLE tener este método
     public void enableEditarOption(Rol rol, boolean estado) {
         rol.setEditable(estado);

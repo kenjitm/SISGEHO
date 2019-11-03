@@ -13,8 +13,7 @@ and open the template in the editor.
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-        <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="resources/css/materialize-icons.css"/>
+        
        
         <title>Gestión Usuarios</title>
     </h:head>
@@ -53,7 +52,8 @@ and open the template in the editor.
                     </div>
                     <p:separator class="mt-4"/>
                 </h:form>
-                <div class="row">
+                <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+                    <div class="row">
                     <h4>Registrar Usuario</h4>                 
                 </div>
                 <h:form>
@@ -82,6 +82,8 @@ and open the template in the editor.
                         </div>
                     </center>
                 </h:form>
+                </h:panelGroup>
+                
                 <p:separator class="mt-4"/>
                 <div class="row">
                     <h4>Resultado búsqueda</h4>                 
@@ -155,12 +157,15 @@ and open the template in the editor.
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>
                             <center>
-                                <h:commandLink class="btn btn-info btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
                                                action="#{registroUsuarioBean.enableEditarOption(user, true)}"
                                                rendered="#{not user.editable}">
                                     <i class="material-icons">create</i>
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
                                                action="#{registroUsuarioBean.editarUsuario(user)}"
@@ -175,14 +180,17 @@ and open the template in the editor.
                                                rendered="#{user.editable}">
                                     <i class="material-icons">close</i>
                                 </h:commandLink>
-                                <h:commandLink class="btn btn-danger btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
+                                    <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
-                                               action="#{registroUsuarioBean.eliminarPeriodo()}"
+                                               action="#{registroUsuarioBean.eliminarUsuario()}"
                                                rendered="#{not user.editable}">
                                     <i class="material-icons">delete</i>
                                     <f:setPropertyActionListener 
                                         target="#{registroUsuarioBean.user}" value="#{user}" />
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                             </center>
                         </h:column>
                     </h:dataTable>

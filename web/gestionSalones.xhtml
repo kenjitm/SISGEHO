@@ -51,7 +51,8 @@
                     </div>
                     <p:separator class="mt-4"/>
                 </h:form>
-                <div class="row">
+                <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+                    <div class="row">
                     <h4>Registrar Recurso</h4>                 
                 </div>
                 <h:form>
@@ -86,6 +87,7 @@
                         </div>
                     </center>
                 </h:form>
+                </h:panelGroup>
                 <p:separator class="mt-4"/>
                 <div class="row">
                     <h4>Resultado búsqueda</h4>                 
@@ -164,12 +166,15 @@
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>
                             <center>
-                                <h:commandLink class="btn btn-info btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
                                                action="#{recursoBean.enableEditarOption(recurso, true)}"
                                                rendered="#{not recurso.editable}">
                                     <i class="material-icons">create</i>
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
                                                action="#{recursoBean.editarRecurso(recurso)}"
@@ -184,7 +189,8 @@
                                                rendered="#{recurso.editable}">
                                     <i class="material-icons">close</i>
                                 </h:commandLink>
-                                <h:commandLink class="btn btn-danger btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
+                                    <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
                                                action="#{recursoBean.eliminarRecurso()}"
                                                rendered="#{not recurso.editable}">
@@ -192,6 +198,8 @@
                                     <f:setPropertyActionListener 
                                         target="#{recursoBean.recurso}" value="#{recurso}" />
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                             </center>
                         </h:column>
                     </h:dataTable>

@@ -41,7 +41,7 @@ public class LoginBean implements Serializable {
     private List<Rol> listaRoles;
     private List<String> nombresRoles;
     private String nombreRol;
-
+    private int idRol;
     public String getUsuario() {
         return usuario;
     }
@@ -172,9 +172,12 @@ public class LoginBean implements Serializable {
             for (UsuarioRol usuarioRol : listaUsuarioRoles) {
                 if (usuarioRol != null && usuarioRol.getRowidRol() != null) {
                     listaRoles.add(usuarioRol.getRowidRol());
-                    
+                    Rol rol = usuarioRol.getRowidRol();
                     GlobalBean globalBean = new GlobalBean();
                     globalBean.saveObjectInSession(nombreRol, "listaRoles");
+                    globalBean.saveObjectInSessionBit(rol.getBitInsert(), "bitInsert");
+                    globalBean.saveObjectInSessionBit(rol.getBitUpdate(), "bitUpdate");
+                    globalBean.saveObjectInSessionBit(rol.getBitDelete(), "bitDelete");
                 }
             }
         }

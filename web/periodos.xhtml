@@ -8,8 +8,7 @@
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-        <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="./resources/css/materialize-icons.css"/>
+        
 
         <title>Gestión Salones</title>
     </h:head>
@@ -50,7 +49,8 @@
                     </div>
                     <p:separator class="mt-4"/>
                 </h:form>
-                <div class="row">
+                <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+                    <div class="row">
                     <h4>Registrar Periodo</h4>                 
                 </div>
                 <h:form>
@@ -81,6 +81,8 @@
                         </div>
                     </center>
                 </h:form>
+                </h:panelGroup>
+                
                 <p:separator class="mt-4"/>
                 <div class="row">
                     <h4>Resultado búsqueda</h4>                 
@@ -155,12 +157,15 @@
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>
                             <center>
-                                <h:commandLink class="btn btn-info btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
                                                action="#{beanPeriodo.enableEditarOption(periodo, true)}"
                                                rendered="#{not periodo.editable}">
                                     <i class="material-icons">create</i>
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
                                                action="#{beanPeriodo.editarPeriodo(periodo)}"
@@ -175,7 +180,8 @@
                                                rendered="#{periodo.editable}">
                                     <i class="material-icons">close</i>
                                 </h:commandLink>
-                                <h:commandLink class="btn btn-danger btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
+                                    <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
                                                action="#{beanPeriodo.eliminarPeriodo()}"
                                                rendered="#{not periodo.editable}">
@@ -183,6 +189,8 @@
                                     <f:setPropertyActionListener 
                                         target="#{beanPeriodo.periodo}" value="#{periodo}" />
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                             </center>
                         </h:column>
                     </h:dataTable>
