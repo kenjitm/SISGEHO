@@ -9,28 +9,28 @@
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-        
-        
+
+
         <title>Gestión Salones</title>
     </h:head>
     <h:body> 
-            <div class="row" id="rowmenu">
-                <div >
-            <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-            </div>                      
-        </div>
+        <div class="row" id="rowmenu">
+            <div >
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
             </div>
-            <div class="row" id="rowmenu">  
-                <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
-        <!--fin barra de navegacion-->
+        </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+            <!--fin barra de navegacion-->
         </div>  
         <div>
             <div  style="background-color: #0050a0">
                 <div class="card-body">
                     <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
-                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Horario</h6>                  
+                    <h6 class="card-subtitle mb-2 text-warning">Gestión de Hora</h6>                  
                 </div>            
             </div>
         </div>
@@ -49,93 +49,50 @@
                     <p:separator class="mt-4"/>
                 </h:form>
                 <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
-                   <div class="row">
-                    <h4>Registrar Horario</h4>                 
-                </div>
-                <h:form>
-                    <div class="form-group mt-2">
-                        <h:selectOneMenu class="form-control" value="#{horarioBean.horario.dia}"  style="width: 100%">
-                                <f:selectItem itemLabel="Dia" itemDisabled="true"   />
-                                <f:selectItems value="#{horarioBean.tipoDias}" var="tipo"
-                                           itemValue="#{tipo}" itemLabel="#{tipo.label}" />
-                        </h:selectOneMenu>
+                    <div class="row">
+                        <h4>Registrar Horario</h4>                 
                     </div>
-                    <div class="form-group mt-2">
-                        <div class="input-group mb-1">
+                    <h:form>
+                        <div class="form-group mt-2">
+                            <div class="input-group mb-1">
                                 <div>
                                     <span class="input-group-text" id="basic-addon1">
-                                          <i class="material-icons">alarm</i>
+                                        <i class="material-icons">alarm</i>
                                     </span>
                                 </div>
-                                <p:calendar id="horaInicio" value="#{horarioBean.horario.horaInicio}" timeZone="America/Bogota" 
-                                        pattern="HH:mm" timeOnly="true"  placeholder="Hora Inicial" style="width: 50%">
-                            </p:calendar>
+                                <p:calendar id="horaInicio" value="#{horarioBean.horario.descripcion}" timeZone="America/Bogota" 
+                                            pattern="HH:mm" timeOnly="true"  placeholder="Hora" style="width: 50%">
+                                </p:calendar>
                             </div>
-                    </div>
-                    <div class="form-group mt-2">
-                        <div class="input-group mb-1">
-                                <div>
-                                    <span class="input-group-text" id="basic-addon1">
-                                          <i class="material-icons">alarm</i>
-                                    </span>
-                                </div>
-                              <p:calendar id="horaFinal" value="#{horarioBean.horario.horaFin}" timeZone="America/Bogota" 
-                                        pattern="HH:mm" timeOnly="true"  placeholder="Hora Final" style="width: 50%">
-                            </p:calendar>  
+                        </div>
+
+                        <center>
+                            <div class="btn-group" role="group" aria-label="Third group">
+                                <h:commandButton value="Registrar Hora" class="btn azul" action="#{horarioBean.guardarHorario()}"/>
                             </div>
-                    </div>
-                    <div class="form-group mt-2">
-                            <h:selectOneMenu class="form-control" value="#{horarioBean.horario.frecuencia}" style="width: 100%">
-                            <f:selectItem itemLabel="Frecuencia" itemDisabled="true"  />
-                            <f:selectItems value="#{horarioBean.tipoFrecuencias}" var="tipo"
-                                           itemValue="#{tipo}" itemLabel="#{tipo.label}" />
-                        </h:selectOneMenu>
-                        </div>
-                    <div class="checkbox mt-2 mb-2">
-                        <h:selectBooleanCheckbox id="check" value="#{horarioBean.horario.activo}"/>
-                        <h:outputLabel class="ml-2" value="¿Poner el horario como activo?" for="check" />
-                    </div>
-                    <center>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Horario" class="btn azul" action="#{horarioBean.guardarHorario()}"/>
-                        </div>
-                    </center>
-                </h:form> 
+                        </center>
+                    </h:form> 
                 </h:panelGroup>
                 <p:separator class="mt-4"/>
                 <div class="row">
                     <h4>Resultado búsqueda</h4>                 
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="No se encontró el horario buscado" rendered="#{horarioBean.horarioSearch == null}"/>
+                    <h:outputText value="No se encontró la hora buscada" rendered="#{horarioBean.horarioSearch == null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="ID: #{horarioBean.horarioSearch.id}" rendered="#{horarioBean.horarioSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Dia: #{horarioBean.horarioSearch.dia}" rendered="#{horarioBean.horarioSearch != null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Hora Inicial: #{horarioBean.horarioSearch.horaInicio}" rendered="#{horarioBean.horarioSearch != null}">
-                        <f:convertDateTime dateStyle="full" pattern="HH:mm"/>  
-                    </h:outputText>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Hora Final: #{horarioBean.horarioSearch.horaFin}" rendered="#{horarioBean.horarioSearch != null}">
+                    <h:outputText value="Hora: #{horarioBean.horarioSearch.descripcion}" rendered="#{horarioBean.horarioSearch != null}" >
                     <f:convertDateTime dateStyle="full" pattern="HH:mm"/>  
                     </h:outputText>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Frecuencia: #{horarioBean.horarioSearch.frecuencia}" rendered="#{horarioBean.horarioSearch != null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Estado: #{horarioBean.transformActivo(horarioBean.horarioSearch.activo)}" rendered="#{horarioBean.horarioSearch != null}"/>
                 </div>
                 <p:separator/>
             </div>
             <div class="col-sm-8">
                 <div class="row mt-3">
-                    <h4>Lista de Horarios</h4>                 
+                    <h4>Lista de Horas</h4>                 
                 </div> 
                 <h:form>
                     <h:dataTable class="table table-hover text-center" id="tablaHorario" value="#{horarioBean.horarioList}" var="h"
@@ -146,48 +103,24 @@
                             <h:outputText value="#{h.id}"/>
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Dia</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{h.dia}" class="form-control" rendered="#{h.editable}"/>
-                            <h:outputText value="#{h.dia}" rendered="#{not h.editable}" />
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Hora Inicial</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{horarioBean.convertir(h.horaInicio)}" class="form-control" rendered="#{h.editable}"/>
-                            <h:outputText value="#{h.horaInicio}" rendered="#{not h.editable}">
-                            <f:convertDateTime dateStyle="full" pattern="HH:mm"/>  
-                            </h:outputText>
-                            
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Hora Final</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{horarioBean.convertir(h.horaFin)}" class="form-control" rendered="#{h.editable}"/>
-                            <h:outputText value="#{h.horaFin}" rendered="#{not h.editable}">
+                            <f:facet name="header">Hora</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{h.descripcion}" class="form-control" rendered="#{h.editable}"/>
+                            <h:outputText value="#{h.descripcion}" rendered="#{not h.editable}">
                                 <f:convertDateTime dateStyle="full" pattern="HH:mm"/>  
                             </h:outputText>
-                            
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Frecuencia</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{horario.frecuencia}" class="form-control" rendered="#{h.editable}"/>
-                            <h:outputText value="#{h.frecuencia}" rendered="#{not h.editable}" />
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Estado</f:facet>
-                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{h.activo}" class="form-control" rendered="#{h.editable}"/>
-                            <h:outputText value="#{horarioBean.transformActivo(h.activo)}" rendered="#{not h.editable}" />
                         </p:column>
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>
                             <center>
                                 <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
                                     <h:commandLink class="btn btn-info btn-sm"
-                                               style="color: #fff"
-                                               action="#{horarioBean.enableEditarOption(h, true)}"
-                                               rendered="#{not horario.editable}">
-                                    <i class="material-icons">create</i>
-                                </h:commandLink>
+                                                   style="color: #fff"
+                                                   action="#{horarioBean.enableEditarOption(h, true)}"
+                                                   rendered="#{not horario.editable}">
+                                        <i class="material-icons">create</i>
+                                    </h:commandLink>
                                 </h:panelGroup>
-                                
+
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
                                                action="#{horarioBean.editarHorario(h)}"
@@ -204,15 +137,15 @@
                                 </h:commandLink>
                                 <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
                                     <h:commandLink class="btn btn-danger btn-sm"
-                                               style="color: #fff"
-                                               action="#{horarioBean.eliminarHorario()}"
-                                               rendered="#{not horario.editable}">
-                                    <i class="material-icons">delete</i>
-                                    <f:setPropertyActionListener 
-                                        target="#{horarioBean.horario}" value="#{h}" />
-                                </h:commandLink>
+                                                   style="color: #fff"
+                                                   action="#{horarioBean.eliminarHorario()}"
+                                                   rendered="#{not horario.editable}">
+                                        <i class="material-icons">delete</i>
+                                        <f:setPropertyActionListener 
+                                            target="#{horarioBean.horario}" value="#{h}" />
+                                    </h:commandLink>
                                 </h:panelGroup>
-                                
+
                             </center>
                         </h:column>
                     </h:dataTable>

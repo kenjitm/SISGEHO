@@ -7,9 +7,6 @@ package beans;
 
 import entity.RelacionDocenteHorarioMateria;
 import entity.Usuario;
-import entity.HorarioAsignado;
-import entity.GrupoAsignaturaP;
-import entity.AsignaturaDocente;
 import entity.Sede;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -44,9 +41,6 @@ import org.primefaces.context.RequestContext;
 public class relacionDocenteMateriaHorarioBean implements Serializable {
     private RelacionDocenteHorarioMateria relacion;
     private RelacionDocenteHorarioMateria relacionSearch;
-    private HorarioAsignado horarioAsig;
-    private GrupoAsignaturaP grupoAsig;
-    private AsignaturaDocente asignaturaAsig;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<RelacionDocenteHorarioMateria> relacionesList;
 
@@ -61,36 +55,9 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
     public List<RelacionDocenteHorarioMateria> getRelacionesList() {
         return relacionesList;
     }
-
-    public HorarioAsignado getHorarioAsig() {
-        return horarioAsig;
-    }
-
-    public void setHorarioAsig(HorarioAsignado horarioAsig) {
-        this.horarioAsig = horarioAsig;
-    }
-
-    public GrupoAsignaturaP getGrupoAsig() {
-        return grupoAsig;
-    }
-
-    public void setGrupoAsig(GrupoAsignaturaP grupoAsig) {
-        this.grupoAsig = grupoAsig;
-    }
-
-    public AsignaturaDocente getAsignaturaAsig() {
-        return asignaturaAsig;
-    }
-
-    public void setAsignaturaAsig(AsignaturaDocente asignaturaAsig) {
-        this.asignaturaAsig = asignaturaAsig;
-    }
     
     public relacionDocenteMateriaHorarioBean() throws ClassNotFoundException, SQLException{
         relacion = new RelacionDocenteHorarioMateria();
-        asignaturaAsig = new AsignaturaDocente();
-        grupoAsig = new GrupoAsignaturaP();
-        horarioAsig = new HorarioAsignado();
         relacionDMH();
         GlobalBean globalBean = new GlobalBean();
         String rol = globalBean.getObjectFromSession("roles").toString(); 
@@ -230,20 +197,7 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
-            em.persist(asignaturaAsig);
-            em.getTransaction().commit();
-            em.close();
-            grupoAsig.setRowidAsignaturaDocente(asignaturaAsig);
-            em.getTransaction().begin();
-            em.persist(grupoAsig);
-            em.getTransaction().commit();
-            em.close();
-            horarioAsig.setRowidGrupoAsignatura(grupoAsig);
-            em.getTransaction().begin();
-            em.persist(horarioAsig);
-            em.getTransaction().commit();
-            em.close();
+
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {

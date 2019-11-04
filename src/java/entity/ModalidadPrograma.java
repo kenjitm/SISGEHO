@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "modalidad_programa")
@@ -51,7 +50,7 @@ public class ModalidadPrograma implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidModalidad")
+    @OneToMany(mappedBy = "rowidModalidad")
     private Collection<Programa> programaCollection;
 
     public ModalidadPrograma() {

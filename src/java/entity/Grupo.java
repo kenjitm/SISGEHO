@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "grupo")
@@ -52,26 +51,23 @@ public class Grupo implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidGrupo")
-    private Collection<GrupoAsignaturaP> grupoAsignaturaPCollection;
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    @Transient
+    @OneToMany(mappedBy = "rowidGrupo")
+    private Collection<Asignacion> asignacionCollection;
+@Transient
     private boolean editable;
     public Grupo() {
-        editable = false;
     }
-    //Indispensable poner los set y get del atributo "editable"
+
+    public Grupo(Integer id) {
+        this.id = id;
+    }
+
     public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
-    }
-
-    public Grupo(Integer id) {
-        this.id = id;
     }
 
     public Grupo(Integer id, String nomenclatura, String descripcion, boolean activo) {
@@ -114,12 +110,12 @@ public class Grupo implements Serializable {
     }
 
     @XmlTransient
-    public Collection<GrupoAsignaturaP> getGrupoAsignaturaPCollection() {
-        return grupoAsignaturaPCollection;
+    public Collection<Asignacion> getAsignacionCollection() {
+        return asignacionCollection;
     }
 
-    public void setGrupoAsignaturaPCollection(Collection<GrupoAsignaturaP> grupoAsignaturaPCollection) {
-        this.grupoAsignaturaPCollection = grupoAsignaturaPCollection;
+    public void setAsignacionCollection(Collection<Asignacion> asignacionCollection) {
+        this.asignacionCollection = asignacionCollection;
     }
 
     @Override

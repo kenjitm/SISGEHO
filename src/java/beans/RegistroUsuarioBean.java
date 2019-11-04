@@ -309,7 +309,7 @@ public class RegistroUsuarioBean {
         //user.set(rol);
         user.setEmail(email);
         user.setUsuario(usuario);
-        user.setContraseña(password);
+        user.setPassword(password);
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
@@ -364,7 +364,7 @@ public Usuario getUsuarioUser(String userName) throws SQLException, ClassNotFoun
                         user.setApellido(rs.getNString("apellido"));
                         user.setUsuario(rs.getNString("usuario"));
                         user.setEmail(rs.getNString("email"));
-                        user.setContraseña(rs.getNString("contraseña"));
+                        user.setPassword(rs.getNString("contraseña"));
                         user.setActivo(rs.getBoolean("activo"));
 		}
 

@@ -6,7 +6,9 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +16,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -60,7 +64,9 @@ public class Rol implements Serializable {
     @Basic(optional = false)
     @Column(name = "bitDelete")
     private boolean bitDelete;
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidRol")
+    private Collection<UsuarioRol> usuarioRolCollection;
+@Transient
     private boolean editable;
     public Rol() {
     }
@@ -68,13 +74,15 @@ public class Rol implements Serializable {
     public Rol(Integer id) {
         this.id = id;
     }
-public boolean isEditable() {
+
+    public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
+
     public Rol(Integer id, String nombre, String descripcion, boolean activo, boolean bitInsert, boolean bitUpdate, boolean bitDelete) {
         this.id = id;
         this.nombre = nombre;
@@ -139,6 +147,15 @@ public boolean isEditable() {
 
     public void setBitDelete(boolean bitDelete) {
         this.bitDelete = bitDelete;
+    }
+
+    @XmlTransient
+    public Collection<UsuarioRol> getUsuarioRolCollection() {
+        return usuarioRolCollection;
+    }
+
+    public void setUsuarioRolCollection(Collection<UsuarioRol> usuarioRolCollection) {
+        this.usuarioRolCollection = usuarioRolCollection;
     }
 
     @Override

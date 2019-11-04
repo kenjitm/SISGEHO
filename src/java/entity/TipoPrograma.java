@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "tipo_programa")
@@ -45,22 +44,22 @@ public class TipoPrograma implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "codigo")
-    private Integer codigo;
+    private int codigo;
     @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidTipo")
+    @OneToMany(mappedBy = "rowidTipo")
     private Collection<Programa> programaCollection;
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    @Transient
+@Transient
     private boolean editable;
-
     public TipoPrograma() {
-        editable = false;
+    }
+
+    public TipoPrograma(Integer id) {
+        this.id = id;
     }
 
     public boolean isEditable() {
@@ -71,11 +70,7 @@ public class TipoPrograma implements Serializable {
         this.editable = editable;
     }
 
-    public TipoPrograma(Integer id) {
-        this.id = id;
-    }
-
-    public TipoPrograma(Integer id, Integer codigo, String descripcion, boolean activo) {
+    public TipoPrograma(Integer id, int codigo, String descripcion, boolean activo) {
         this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -90,11 +85,11 @@ public class TipoPrograma implements Serializable {
         this.id = id;
     }
 
-    public Integer getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

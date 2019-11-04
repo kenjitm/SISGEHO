@@ -7,7 +7,7 @@ package beans;
 
 import entity.Asignatura;
 import entity.Docente;
-import entity.Horario;
+import entity.Hora;
 import entity.RelacionDocenteHorarioMateria;
 import entity.Sede;
 import entity.TipoId;
@@ -316,10 +316,10 @@ public class docenteBean {
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Horario) {
-                return getStringKey(((Horario) value).getId());
+            } else if (value instanceof Docente) {
+                return getStringKey(((Docente) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Horario.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Docente.class.getName());
             }
         }
 

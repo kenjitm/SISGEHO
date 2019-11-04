@@ -5,7 +5,7 @@
  */
 package beans;
 
-import entity.Horario;
+import entity.Hora;
 import entity.Sede;
 import entity.TipoDia;
 import entity.TipoFrecuencia;
@@ -31,19 +31,19 @@ import javax.persistence.TypedQuery;
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class HorarioBean {
 
-    private Horario horario; //Falta llenar
-    private Horario horarioSearch;
+    private Hora horario; //Falta llenar
+    private Hora horarioSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
-    private static List<Horario> horarioList;
+    private static List<Hora> horarioList;
     //INDISPENSABLE EL MÉTODO GET. SÓLO EL GET
-    public List<Horario> getHorarioList() {
+    public List<Hora> getHorarioList() {
         return horarioList;
     }
-    public Horario getHorarioSearch() {
+    public Hora getHorarioSearch() {
         return horarioSearch;
     }
 
-    public void setHorarioSearch(Horario horarioSearch) {
+    public void setHorarioSearch(Hora horarioSearch) {
         this.horarioSearch = horarioSearch;
     }
     public TipoDia[] getTipoDias() {
@@ -54,11 +54,11 @@ public class HorarioBean {
         return TipoFrecuencia.values();
     }
     
-    public Horario getHorario() {
+    public Hora getHorario() {
         return horario;
     }
 
-    public void setHorario(Horario horario) {
+    public void setHorario(Hora horario) {
         this.horario = horario;
     }
 
@@ -66,8 +66,8 @@ public class HorarioBean {
      * Creates a new instance of HorarioBean
      */
     public HorarioBean() {
-        horario = new Horario();
-        horarioSearch = new Horario();
+        horario = new Hora();
+        horarioSearch = new Hora();
         obtenerHorariosList();
     }
     //Agregar este método para campos booleanos, como "activo"
@@ -75,7 +75,7 @@ public class HorarioBean {
         return (activo) ? "ACTIVA" : "INACTIVA";
     }
     //INDISPENSABLE tener este método
-    public void enableEditarOption(Horario horario, boolean estado) {
+    public void enableEditarOption(Hora horario, boolean estado) {
         horario.setEditable(estado);
     }
     public String irHorario() {
@@ -84,11 +84,11 @@ public class HorarioBean {
     public java.sql.Date convertir(java.util.Date fechaUtilDate){
         return new java.sql.Date(fechaUtilDate.getTime());
     }
-    public List<Horario> obtenerHorarios() {
+    public List<Hora> obtenerHorarios() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Horario> q = em.createNamedQuery("Horario.findAll", Horario.class);
+        TypedQuery<Hora> q = em.createNamedQuery("Hora.findAll", Hora.class);
         return q.getResultList();
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
@@ -96,28 +96,28 @@ public class HorarioBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Horario> q = em.createNamedQuery("Horario.findAll", Horario.class);
+        TypedQuery<Hora> q = em.createNamedQuery("Hora.findAll", Hora.class);
         horarioList = q.getResultList();
     }
     public void buscarHorarioPorId(Integer id) {
         horarioSearch = buscarById(id);
     }
-    public Horario buscarById(Integer id) {
+    public Hora buscarById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Horario> hora = em.createNamedQuery("Horario.findById", Horario.class);
+        TypedQuery<Hora> hora = em.createNamedQuery("Hora.findById", Hora.class);
         hora.setParameter("id", id);
         return (hora.getResultList().isEmpty())?  null : hora.getResultList().get(0);
     }
     
-    public Horario buscarPorId(Integer id) {
+    public Hora buscarPorId(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Horario> sedes = em.createNamedQuery("Horario.findById", Horario.class);
-        sedes.setParameter("id", id);
-        return sedes.getResultList().get(0);
+        TypedQuery<Hora> h = em.createNamedQuery("Hora.findById", Hora.class);
+        h.setParameter("id", id);
+        return h.getResultList().get(0);
     }
 
     public void guardarHorario() {
@@ -129,7 +129,7 @@ public class HorarioBean {
             em.persist(horario);
             em.getTransaction().commit();
             em.close();
-            horario = new Horario();
+            horario = new Hora();
             obtenerHorarios(); //Actualiza lista
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -139,7 +139,7 @@ public class HorarioBean {
         }
     }
  //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void editarHorario(Horario h) {
+    public void editarHorario(Hora h) {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
@@ -150,7 +150,7 @@ public class HorarioBean {
             em.close();
             obtenerHorarios(); //Actualiza lista
             h.setEditable(false);
-            horario = new Horario();
+            horario = new Hora();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -171,7 +171,7 @@ public class HorarioBean {
             em.remove(horario);
             em.getTransaction().commit();
             obtenerHorarios(); //Actualiza lista
-            horario = new Horario();
+            horario = new Hora();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -179,7 +179,7 @@ public class HorarioBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    @FacesConverter(forClass = Horario.class)
+    @FacesConverter(forClass = Hora.class)
     public static class HorarioBeanConverter implements Converter {
 
         Integer getKey(String value) {
@@ -202,10 +202,10 @@ public class HorarioBean {
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Horario) {
-                return getStringKey(((Horario) value).getId());
+            } else if (value instanceof Hora) {
+                return getStringKey(((Hora) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Horario.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Hora.class.getName());
             }
         }
 
