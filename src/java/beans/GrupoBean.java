@@ -278,7 +278,7 @@ public class GrupoBean implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((GrupoBean) context.getApplication().evaluateExpressionGet(context, "#{" + "GrupoBean" + "}", GrupoBean.class)).buscarById(getKey(value));
+            return ((GrupoBean) context.getApplication().evaluateExpressionGet(context, "#{" + "grupoBean" + "}", GrupoBean.class)).buscarById(getKey(value));
         }
 
         @Override

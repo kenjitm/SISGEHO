@@ -12,9 +12,6 @@
         <title>Creacion horarios</title>
     </h:head>
     <h:body>
-
-
-
         <div class="row" id="rowmenu">
             <div >
                 <div class="card-body" style="text-align: center">
@@ -41,77 +38,66 @@
                     <div class="col-sm-4">
                         <div class="form-group mt-3">
                             <p:outputLabel for="periodo" value="Periodo " />
-                            <h:selectOneMenu class="form-control" id="periodo" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidPeriodo}" style="width: 100%"
-                                             >
-                                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{beanPeriodo.periodoList}" var="periodo" itemLabel="#{periodo.descripcion}" itemValue="#{periodo.id}" />
+                            <h:selectOneMenu class="form-control" id="periodo" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidPeriodo}" style="width: 100%">
+                                <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
+                                <f:selectItems value="#{beanPeriodo.periodoList}"/>
                             </h:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
                             <p:outputLabel for="docente" value="Docente " />
-                            <h:selectOneMenu class="form-control" id="docente" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidDocente}" style="width: 100%"
-                                             >
-
-                                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{docenteBean.docenteList}" var="doc" itemLabel="#{doc.toString()}" itemValue="#{doc.id}" />
+                            <h:selectOneMenu class="form-control" id="docente" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidDocente}" style="width: 100%">
+                                <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
+                                <f:selectItems value="#{docenteBean.docenteList}"/>
                             </h:selectOneMenu>
                         </div>
-
                         <div class="form-group mt-3">
                             <p:outputLabel for="grupo" value="Grupo " />
-                            <h:selectOneMenu class="form-control" id="grupo" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidGrupo}" style="width: 100%"
-                                             >
-
-                                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{grupoBean.gruposList}" var="grupo" itemLabel="#{grupo.nomenclatura}" itemValue="#{grupo.id}" />
+                            <h:selectOneMenu class="form-control" id="grupo" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidGrupo}" style="width: 100%">
+                                <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
+                                <f:selectItems value="#{grupoBean.gruposList}"/>
                             </h:selectOneMenu>
                         </div>
-
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group mt-3">
                             <p:outputLabel for="asignatura" value="Asignatura " />
                             <h:selectOneMenu class="form-control" id="asignatura" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidAsignatura}" style="width: 100%" >
-                                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{asignaturaBean.asignaturasList}"  var="asig" itemValue="#{asig.id}" itemLabel="#{asig.descripcion}" />
+                                <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
+                                <f:selectItems value="#{asignaturaBean.asignaturasList}"/>
                             </h:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
                             <p:outputLabel for="horario" value="Horario " />
                             <h:selectOneMenu class="form-control" id="horario" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidHora}" style="width: 100%" >
-
-                                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{horarioBean.horarioList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.toString()}" />
+                                <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
+                                <f:selectItems value="#{horarioBean.horarioList}"/>
                             </h:selectOneMenu>
                         </div> 
                         <div class="form-group mt-3">
                             <p:outputLabel for="dia" value="Dia " />
                             <h:selectOneMenu class="form-control" id="dia" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidDia}" style="width: 100%" >
-
-                                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{diaBean.dayList}" var="day" itemValue="#{day.id}" itemLabel="#{day.descripcion}" />
+                                <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+                                <f:selectItems value="#{diaBean.dayList}"/>
                             </h:selectOneMenu>
                         </div> 
-
-                        
                     </div>
                 </div>
                 <div class="row">
                     <h:panelGroup layout="block" rendered="#{relacionDocenteMateriaHorarioBean.relacion.show}">
-                            <div class="form-group mt-3">
-                                <p:outputLabel for="recursos" value="Recurso " />
-                                <h:selectOneMenu class="form-control" id="recursos" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidRecurso}" style="width: 100%" >
-                                    >
-                                    <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                    <f:selectItems value="#{recursoBean.recursoList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
-                                </h:selectOneMenu>
-                            </div>    
-                        </h:panelGroup>
+                        <div class="form-group mt-3">
+                            <p:outputLabel for="recursos" value="Recurso " />
+                            <h:selectOneMenu class="form-control" id="recursos" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidRecurso}" style="width: 100%" >
+                                >
+                                <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+                                <f:selectItems value="#{recursoBean.recursoList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
+                            </h:selectOneMenu>
+                        </div>    
+                    </h:panelGroup>
                 </div>
                 <div class="row" id="centro">
                     <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Asignar" class="btn btn-warning"/>
-                        </div>
+                        <h:commandButton value="Asignar" class="btn btn-warning" action="#{relacionDocenteMateriaHorarioBean.guardarAsignacion()}"/>
+                    </div>
                 </div>
             </h:form>
 

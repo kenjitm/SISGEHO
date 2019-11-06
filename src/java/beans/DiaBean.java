@@ -159,7 +159,7 @@ public class DiaBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((DiaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "DiaBean" + "}", DiaBean.class)).buscarById(getKey(value));
+            return ((DiaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "diaBean" + "}", DiaBean.class)).buscarById(getKey(value));
         }
 
         @Override

@@ -185,7 +185,7 @@ public boolean isEditable() {
 
     @Override
     public String toString() {
-        return "entity.Asignatura[ id=" + id + " ]";
+        return descripcion;
     }
     
 }

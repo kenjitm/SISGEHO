@@ -194,17 +194,17 @@ public class AsignaturaBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((AsignaturaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "AsignaturaBean" + "}", AsignaturaBean.class)).buscarById(getKey(value));
+            return ((AsignaturaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "asignaturaBean" + "}", AsignaturaBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Asignatura) {
+                return getStringKey(((Asignatura) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Asignatura.class.getName());
             }
         }
 

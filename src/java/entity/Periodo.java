@@ -158,7 +158,7 @@ public class Periodo implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Periodo[ id=" + id + " ]";
+        return descripcion;
     }
     
 }

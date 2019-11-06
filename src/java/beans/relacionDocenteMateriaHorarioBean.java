@@ -211,7 +211,7 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
 		//return relaciones;
 
 	}
- public void guardarSede() {
+ public void guardarAsignacion() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");

@@ -115,7 +115,7 @@ public class Dia implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Dia[ id=" + id + " ]";
+        return descripcion;
     }
     
 }
