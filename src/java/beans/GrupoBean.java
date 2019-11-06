@@ -261,7 +261,8 @@ public class GrupoBean implements Serializable {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-@FacesConverter(forClass = Grupo.class)
+
+    @FacesConverter(forClass = Grupo.class)
     public static class GrupoBeanConverter implements Converter {
 
         Integer getKey(String value) {
@@ -284,10 +285,10 @@ public class GrupoBean implements Serializable {
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Grupo) {
+                return getStringKey(((Grupo) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Grupo.class.getName());
             }
         }
 

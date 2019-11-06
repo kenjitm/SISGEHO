@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -118,7 +119,8 @@ public class Hora implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Hora[ id=" + id + " ]";
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");  
+        return formatter.format(descripcion);
     }
     
 }

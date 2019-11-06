@@ -24,6 +24,7 @@ public class RelacionDocenteHorarioMateria {
     private String Jueves;
     private String Viernes;
     private String Sabado;
+    private int id;
     //Atributo para poder renderizar los campos de editar en la tabla
     //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
     @Transient
@@ -31,6 +32,14 @@ public class RelacionDocenteHorarioMateria {
 
     public boolean isShow() {
         return show;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setShow(boolean show) {

@@ -188,7 +188,7 @@ public class Docente implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Docente[ id=" + id + " ]";
+        return nombre+" "+apellido;
     }
     
 }

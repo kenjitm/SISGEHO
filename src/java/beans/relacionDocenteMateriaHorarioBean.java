@@ -8,6 +8,7 @@ package beans;
 import entity.RelacionDocenteHorarioMateria;
 import entity.Usuario;
 import entity.Sede;
+import entity.Asignacion;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -43,9 +44,26 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
     private RelacionDocenteHorarioMateria relacionSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<RelacionDocenteHorarioMateria> relacionesList;
-
+    private int id;
+    private Asignacion horarios;
     public RelacionDocenteHorarioMateria getRelacion() {
         return relacion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Asignacion getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(Asignacion horarios) {
+        this.horarios = horarios;
     }
 
     public void setRelacion(RelacionDocenteHorarioMateria relacion) {
@@ -58,6 +76,7 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
     
     public relacionDocenteMateriaHorarioBean() throws ClassNotFoundException, SQLException{
         relacion = new RelacionDocenteHorarioMateria();
+        horarios = new Asignacion();
         relacionDMH();
         GlobalBean globalBean = new GlobalBean();
         String rol = globalBean.getObjectFromSession("roles").toString(); 
@@ -197,7 +216,12 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
-
+            em.getTransaction().begin();
+            em.persist(horarios);
+            em.getTransaction().commit();
+            em.close();
+            horarios = new Asignacion();
+            relacionDMH();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -240,10 +264,10 @@ public void buscarRelacionPorId(Integer id) {
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof RelacionDocenteHorarioMateria) {
+                return getStringKey(((RelacionDocenteHorarioMateria) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + RelacionDocenteHorarioMateria.class.getName());
             }
         }
 

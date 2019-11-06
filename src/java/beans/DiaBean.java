@@ -33,6 +33,7 @@ public class DiaBean {
     {
         day = new Dia();
         daySearch = new Dia();
+        obtenerDias();
     }
     
     public String irDias() {
