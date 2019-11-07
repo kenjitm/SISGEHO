@@ -6,12 +6,31 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
+
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
 
         <title>Creacion horarios</title>
     </h:head>
     <h:body>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">Modal with Dynamic Content</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row" id="rowmenu">
             <div >
                 <div class="card-body" style="text-align: center">
@@ -51,11 +70,28 @@
                             </h:selectOneMenu>
                         </div>
                         <div class="form-group mt-3">
-                            <p:outputLabel for="grupo" value="Grupo " />
-                            <h:selectOneMenu class="form-control" id="grupo" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidGrupo}" style="width: 100%">
+                            <p:outputLabel value="Grupo " />
+                            <h:commandLink class="btn btn-info btn-sm"
+                                               style="color: #fff"
+                                               action="#{relacionDocenteMateriaHorarioBean.addGrupo()}"
+                                               >
+                                    <i class="material-icons">add</i>
+                                </h:commandLink>
+                            <h:dataTable class="table table-hover text-center" value="#{relacionDocenteMateriaHorarioBean.asigGrupList}" var="grupo"
+                                         >
+                                <p:column>
+                                    <f:facet name="header">Grupo</f:facet>
+                                    <h:selectOneMenu class="form-control" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidGrupo}" style="width: 100%">
                                 <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
                                 <f:selectItems value="#{grupoBean.gruposList}"/>
                             </h:selectOneMenu>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Cantidad Estudiantes</f:facet>
+                                    <h:inputText class="form-control" value="#{relacionDocenteMateriaHorarioBean.asigGrup.cantidadEstudiantes}" />
+                                </p:column>
+                            </h:dataTable>
+                            
                         </div>
                     </div>
                     <div class="col-sm-4">
