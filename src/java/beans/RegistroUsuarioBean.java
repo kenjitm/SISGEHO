@@ -310,6 +310,7 @@ public class RegistroUsuarioBean {
         user.setEmail(email);
         user.setUsuario(usuario);
         user.setPassword(password);
+        user.setActivo(true);
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
