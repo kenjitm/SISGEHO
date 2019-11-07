@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "asignacion")
@@ -46,9 +46,6 @@ public class Asignacion implements Serializable {
     @JoinColumn(name = "rowid_periodo", referencedColumnName = "id")
     @ManyToOne
     private Periodo rowidPeriodo;
-    @JoinColumn(name = "rowid_grupo", referencedColumnName = "id")
-    @ManyToOne
-    private Grupo rowidGrupo;
     @JoinColumn(name = "rowid_dia", referencedColumnName = "id")
     @ManyToOne
     private Dia rowidDia;
@@ -99,14 +96,6 @@ public class Asignacion implements Serializable {
 
     public void setRowidPeriodo(Periodo rowidPeriodo) {
         this.rowidPeriodo = rowidPeriodo;
-    }
-
-    public Grupo getRowidGrupo() {
-        return rowidGrupo;
-    }
-
-    public void setRowidGrupo(Grupo rowidGrupo) {
-        this.rowidGrupo = rowidGrupo;
     }
 
     public Dia getRowidDia() {

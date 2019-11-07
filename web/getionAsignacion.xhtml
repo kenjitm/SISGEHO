@@ -77,21 +77,20 @@
                                                >
                                     <i class="material-icons">add</i>
                                 </h:commandLink>
-                            <h:dataTable class="table table-hover text-center" value="#{relacionDocenteMateriaHorarioBean.asigGrupList}" var="grupo"
-                                         >
+                            <h:dataTable class="table table-hover text-center" value="#{relacionDocenteMateriaHorarioBean.asigGrupList}" var="grupo">
                                 <p:column>
                                     <f:facet name="header">Grupo</f:facet>
-                                    <h:selectOneMenu class="form-control" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidGrupo}" style="width: 100%">
-                                <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
-                                <f:selectItems value="#{grupoBean.gruposList}"/>
-                            </h:selectOneMenu>
+                                    <h:selectOneMenu class="form-control" value="#{grupo.rowidGrupo}" style="width: 100%">
+                                        <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
+                                        <f:selectItems value="#{grupoBean.gruposList}"/>
+                                    </h:selectOneMenu>
                                 </p:column>
                                 <p:column>
                                     <f:facet name="header">Cantidad Estudiantes</f:facet>
-                                    <h:inputText class="form-control" value="#{relacionDocenteMateriaHorarioBean.asigGrup.cantidadEstudiantes}" />
+                                    <h:inputText class="form-control" value="#{grupo.cantidadEstudiantes}" />
                                 </p:column>
                             </h:dataTable>
-                            
+                            <h:commandButton action="#{relacionDocenteMateriaHorarioBean.verificarFilas()}" value="Obtener Filas"></h:commandButton>
                         </div>
                     </div>
                     <div class="col-sm-4">

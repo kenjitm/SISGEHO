@@ -51,8 +51,7 @@ public class Grupo implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(mappedBy = "rowidGrupo")
-    private Collection<Asignacion> asignacionCollection;
+    
 @Transient
     private boolean editable;
     public Grupo() {
@@ -109,14 +108,7 @@ public class Grupo implements Serializable {
         this.activo = activo;
     }
 
-    @XmlTransient
-    public Collection<Asignacion> getAsignacionCollection() {
-        return asignacionCollection;
-    }
-
-    public void setAsignacionCollection(Collection<Asignacion> asignacionCollection) {
-        this.asignacionCollection = asignacionCollection;
-    }
+   
 
     @Override
     public int hashCode() {

@@ -19,6 +19,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -41,7 +43,7 @@ import org.primefaces.context.RequestContext;
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class relacionDocenteMateriaHorarioBean implements Serializable {
+public class RelacionDocenteMateriaHorarioBean implements Serializable {
 
     private RelacionDocenteHorarioMateria relacion;
     private RelacionDocenteHorarioMateria relacionSearch;
@@ -111,7 +113,7 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
         this.grupo = grupo;
     }
 
-    public relacionDocenteMateriaHorarioBean() throws ClassNotFoundException, SQLException {
+    /*public relacionDocenteMateriaHorarioBean() throws ClassNotFoundException, SQLException {
         relacion = new RelacionDocenteHorarioMateria();
         horarios = new Asignacion();
         relacionDMH();
@@ -135,9 +137,32 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
             System.out.println("Error: "+ex.getMessage());
         }
         
+    }*/
+    public RelacionDocenteMateriaHorarioBean() throws ClassNotFoundException, SQLException {
+        relacion = new RelacionDocenteHorarioMateria();
+        horarios = new Asignacion();
+        relacionDMH();
+        GlobalBean globalBean = new GlobalBean();
+        String rol = globalBean.getObjectFromSession("roles").toString();
+        if ("BINESTAR".equals(rol)) {
+            relacion.setShow(true);
+        }
+        try {
+            asigGrupList = new ArrayList<>();
+            addGrupo();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
+    public void verificarFilas() {
+        for (int i = 0; i < asigGrupList.size(); i++) {
+            AsignacionGrupos a = asigGrupList.get(i);
+            System.out.println("CANTIDAD ESTUDIANTES: "+ String.valueOf(a.getCantidadEstudiantes()));
+            //Logger.getLogger(RelacionDocenteMateriaHorarioBean.class).log(Level.INFO, "CANTIDAD ESTUDIANTES: "+ String.valueOf(a.getCantidadEstudiantes()));
+        }
     }
 
-    public void addGrupo() {
+    /*public void addGrupo() {
         AsignacionGrupos asigGrupAdd = new AsignacionGrupos();
         grupo = new Grupo();
         asig = new Asignacion();
@@ -145,6 +170,9 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
         asigGrupAdd.setRowidAsignacion(asig);
         asigGrupAdd.setCantidadEstudiantes(0);
         asigGrupList.add(asigGrupAdd);
+    }*/
+    public final void addGrupo() {
+        asigGrupList.add(new AsignacionGrupos());
     }
 
     public void relacionDMH() throws ClassNotFoundException, SQLException {
@@ -290,13 +318,23 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
             em.getTransaction().commit();
             em.close();
             em = emf.createEntityManager();
-            for (AsignacionGrupos grups : asigGrupList) {
+            /*for (AsignacionGrupos grups : asigGrupList) {
                 grups.setRowidAsignacion(horarios);
                 em.getTransaction().begin();
                 em.persist(grups);
                 em.getTransaction().commit();
                 em.close();
-            }
+            }*/
+            for (int i = 0; i < asigGrupList.size(); i++) {
+            AsignacionGrupos a = asigGrupList.get(i);
+            System.out.println("CANTIDAD ESTUDIANTES: "+ String.valueOf(a.getCantidadEstudiantes()));
+            a.setRowidAsignacion(horarios);
+            em.getTransaction().begin();
+                em.persist(a);
+                em.getTransaction().commit();
+                em.close();
+            //Logger.getLogger(RelacionDocenteMateriaHorarioBean.class).log(Level.INFO, "CANTIDAD ESTUDIANTES: "+ String.valueOf(a.getCantidadEstudiantes()));
+        }
             horarios = new Asignacion();
             relacionDMH();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
@@ -336,7 +374,7 @@ public class relacionDocenteMateriaHorarioBean implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((relacionDocenteMateriaHorarioBean) context.getApplication().evaluateExpressionGet(context, "#{" + "relacionDocenteMateriaHorarioBean" + "}", relacionDocenteMateriaHorarioBean.class)).buscarById(getKey(value));
+            return ((RelacionDocenteMateriaHorarioBean) context.getApplication().evaluateExpressionGet(context, "#{" + "relacionDocenteMateriaHorarioBean" + "}", RelacionDocenteMateriaHorarioBean.class)).buscarById(getKey(value));
         }
 
         @Override
