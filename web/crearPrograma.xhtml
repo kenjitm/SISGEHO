@@ -69,11 +69,9 @@
                             </div>
                             <div class="form-group mt-2">
                                 <p:outputLabel for="facultad" value="Facultad " />
-                                <h:selectOneMenu class="form-control" id="facultad" value="#{crearProgramaBean.program.rowidFacultad}" style="width: 100%"
-                                                 
-                                                 >
+                                <h:selectOneMenu class="form-control" id="facultad" value="#{crearProgramaBean.program.rowidFacultad}" style="width: 100%">
                                     <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                    <f:selectItems value="#{facultadBean.facultadList}" var="facultad" itemLabel="#{facultad.descripcion}" itemValue="#{facultad.id}" />
+                                    <f:selectItems value="#{facultadBean.facultadList}" var="facultad" itemLabel="#{facultad.descripcion}"/>
                                 </h:selectOneMenu>
                             </div>                                       
                         </div>
@@ -85,18 +83,16 @@
                             </div> 
                             <div class="form-group mt-2">
                                 <p:outputLabel for="tipoPrograma" value="Tipo Programa " />
-                                <h:selectOneMenu class="form-control" id="tipoPrograma" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%"
-                                                 >
+                                <h:selectOneMenu class="form-control" id="tipoPrograma" value="#{crearProgramaBean.program.rowidTipo}" style="width: 100%">
                                     <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                    <f:selectItems value="#{tipoProgramaBean.tipoProgramList}" var="tipos" itemLabel="#{tipos.descripcion}" itemValue="#{tipos.id}" />
+                                    <f:selectItems value="#{tipoProgramaBean.tipoProgramList}" var="tipos" itemLabel="#{tipos.descripcion}"/>
                                 </h:selectOneMenu>
                             </div>
                             <div class="form-group mt-2">
                                 <p:outputLabel for="modalidad" value="Modalidad Programa " />
-                                <h:selectOneMenu class="form-control" id="modalidad" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%"
-                                                 >
+                                <h:selectOneMenu class="form-control" id="modalidad" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%">
                                     <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                    <f:selectItems value="#{modalidadProgramaBean.modalList}" var="modal" itemLabel="#{modal.descripcion}" itemValue="#{modal.id}" />
+                                    <f:selectItems value="#{modalidadProgramaBean.modalList}" var="modal" itemLabel="#{modal.descripcion}" />
                                 </h:selectOneMenu>
                             </div>
                             <center>
