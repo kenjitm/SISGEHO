@@ -118,7 +118,7 @@ public class LoginBean implements Serializable {
             consultaUsuarios.setParameter("usuario", usuario);
             List<Usuario> lista = consultaUsuarios.getResultList();
             Usuario user = consultaUsuarios.getResultList().get(0);
-            usuarioRolBean userBean = new usuarioRolBean();
+            UsuarioRolBean userBean = new UsuarioRolBean();
             /*ConexDB db = new ConexDB();
             UsuarioRol userRol = new UsuarioRol();
             try

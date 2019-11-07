@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -48,6 +49,9 @@ public class UsuarioRol implements Serializable {
     @JoinColumn(name = "rowid_rol", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Rol rowidRol;
+    
+    @Transient
+    private Boolean editable;
 
     public UsuarioRol() {
     }
@@ -93,6 +97,14 @@ public class UsuarioRol implements Serializable {
         this.rowidRol = rowidRol;
     }
 
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -60,20 +60,20 @@ and open the template in the editor.
                     <div class="form-group mt-2">
                         <p:outputLabel for="usuario" value="Usuario " />
                         <h:selectOneMenu class="form-control" id="usuario" value="#{usuarioRolBean.userRol.rowidUsuario}" style="width: 100%"
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{usuariosBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" />
-            </h:selectOneMenu>
+                                         >
+                            <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{usuariosBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" />
+                        </h:selectOneMenu>
                     </div>
                     <div class="form-group mt-2">
                         <p:outputLabel for="rol" value="Rol " />
                         <h:selectOneMenu class="form-control" id="rol" value="#{usuarioRolBean.userRol.rowidRol}" style="width: 100%"
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{rolBean.rolList}" var="rol" itemLabel="#{rol.nombre}" itemValue="#{rol.id}" />
-            </h:selectOneMenu>
+                                         >
+                            <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{rolBean.rolList}" var="rol" itemLabel="#{rol.nombre}" itemValue="#{rol.id}" />
+                        </h:selectOneMenu>
                     </div>
-                    
+
                     <div class="checkbox mt-2 mb-2">
                         <h:selectBooleanCheckbox id="check" value="#{rolBean.rol.activo}"/>
                         <h:outputLabel class="ml-2" value="¿Poner el usuario por rol como activo?" for="check" />
@@ -119,18 +119,18 @@ and open the template in the editor.
                             <f:facet name="header">Usuario</f:facet>
                             <h:selectOneMenu class="form-control" id="usuario" value="#{usuarioRolBean.userRol.rowidUsuario}" style="width: 100%"
                                              >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{usuariosBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" rendered="#{userRol.editable}" />
-            </h:selectOneMenu>
+                                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{usuariosBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" rendered="#{userRol.editable}" />
+                            </h:selectOneMenu>
                             <h:outputText value="#{userRol.rowidUsuario.usuario}" rendered="#{not userRol.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Rol</f:facet>
                             <h:selectOneMenu class="form-control" id="rol" value="#{usuarioRolBean.userRol.rowidRol}" style="width: 100%"
                                              >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{rolBean.rolList}" var="rol" itemLabel="#{rol.nombre}" itemValue="#{rol.id}" rendered="#{userRol.editable}" />
-            </h:selectOneMenu>
+                                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{rolBean.rolList}" var="rol" itemLabel="#{rol.nombre}" itemValue="#{rol.id}" rendered="#{userRol.editable}" />
+                            </h:selectOneMenu>
                             <h:outputText value="#{userRol.rowidRol.nombre}" rendered="#{not userRol.editable}" />
                         </p:column>
 
