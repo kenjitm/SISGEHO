@@ -5,9 +5,6 @@
  */
 package beans;
 
-import entity.Facultad;
-import entity.Programa;
-import entity.Sede;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import entity.UsuarioRol;
@@ -28,19 +25,19 @@ import javax.persistence.TypedQuery;
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class usuarioRolBean {
+public class UsuarioRolBean {
 
     private UsuarioRol userRol;
     private UsuarioRol userRolSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<UsuarioRol> userRolList;
 
-    public usuarioRolBean() {
+    public UsuarioRolBean() {
         userRol = new UsuarioRol();
         userRolSearch = new UsuarioRol();
     }
     public String irUserRol(){
-        return "gestionUsuarioRol.xthml";
+        return "gestionUsuarioRol.xhtml";
     }
     
     public UsuarioRol getUserRol() {
@@ -167,17 +164,17 @@ public class usuarioRolBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((usuarioRolBean) context.getApplication().evaluateExpressionGet(context, "#{" + "usuarioRolBean" + "}", usuarioRolBean.class)).buscarById(getKey(value));
+            return ((UsuarioRolBean) context.getApplication().evaluateExpressionGet(context, "#{" + "usuarioRolBean" + "}", UsuarioRolBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof UsuarioRol) {
+                return getStringKey(((UsuarioRol) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + UsuarioRol.class.getName());
             }
         }
 
