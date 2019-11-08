@@ -185,7 +185,7 @@ public boolean isEditable() {
 
     @Override
     public String toString() {
-        return descripcion;
+        return codigo +"  - "+ descripcion;
     }
     
 }

@@ -29,7 +29,18 @@ public class RelacionDocenteHorarioMateria {
     //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
     @Transient
     private boolean show;
+@Transient
+    private boolean editable;
+public RelacionDocenteHorarioMateria(){
+     editable = false;
+}
+public boolean isEditable() {
+        return editable;
+    }
 
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
     public boolean isShow() {
         return show;
     }
@@ -133,7 +144,6 @@ public class RelacionDocenteHorarioMateria {
         this.IdMateria = IdMateria;
         this.IdHorario = IdHorario;
     }
-    public RelacionDocenteHorarioMateria() {
-    }
+   
     
 }

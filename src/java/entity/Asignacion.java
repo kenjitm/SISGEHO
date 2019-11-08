@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -58,10 +59,21 @@ public class Asignacion implements Serializable {
     @JoinColumn(name = "rowid_recurso", referencedColumnName = "id")
     @ManyToOne
     private Recurso rowidRecurso;
-
+    @JoinColumn(name = "rowid_hora_final", referencedColumnName = "id")
+    @ManyToOne
+    private Hora rowidHoraFinal;
+@Transient
+    private boolean editable;
     public Asignacion() {
+        editable = false;
+    }
+ public boolean isEditable() {
+        return editable;
     }
 
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
     public Asignacion(Integer id) {
         this.id = id;
     }
@@ -128,6 +140,14 @@ public class Asignacion implements Serializable {
 
     public void setRowidRecurso(Recurso rowidRecurso) {
         this.rowidRecurso = rowidRecurso;
+    }
+
+    public Hora getRowidHoraFinal() {
+        return rowidHoraFinal;
+    }
+
+    public void setRowidHoraFinal(Hora rowidHoraFinal) {
+        this.rowidHoraFinal = rowidHoraFinal;
     }
 
     @Override

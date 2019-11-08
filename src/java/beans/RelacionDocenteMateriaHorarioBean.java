@@ -144,7 +144,7 @@ public class RelacionDocenteMateriaHorarioBean implements Serializable {
         relacionDMH();
         GlobalBean globalBean = new GlobalBean();
         String rol = globalBean.getObjectFromSession("roles").toString();
-        if ("BINESTAR".equals(rol)) {
+        if (!"COORDINACION ACADEMICA".equals(rol)) {
             relacion.setShow(true);
         }
         try {
@@ -201,7 +201,7 @@ public class RelacionDocenteMateriaHorarioBean implements Serializable {
 				.prepareStatement("SELECT CONCAT( CONCAT(Dia, \" \", hora_inicio), \" a \", hora_fin) AS jornada"+
                                         ", (SELECT 'MATERIA' FROM horario WHERE Dia = 'Lunes') AS Lunes FROM horario");*/
         try {
-            String Query = "SELECT CONCAT(hora_inicio, \" a \", hora_fin) AS jornada"
+            /*String Query = "SELECT CONCAT(hora_inicio, \" a \", hora_fin) AS jornada"
                     + ", (SELECT CONCAT(CONCAT(a.descripcion, \"-\",g.Nomenclatura),\"-\",r.nomenclatura) FROM horario as h "
                     + "INNER JOIN horario_asignado as hasig on hasig.rowid_horario = h.id "
                     + "INNER JOIN grupo as g on g.id = hasig.rowid_grupo_asignatura "
@@ -246,7 +246,73 @@ public class RelacionDocenteMateriaHorarioBean implements Serializable {
                     + "INNER JOIN asignatura a on a.id = dasig.rowid_asignatura "
                     + "INNER JOIN recurso r on r.id = hasig.rowid_recurso "
                     + "WHERE Dia = 'SABADO') AS Sabado"
-                    + " FROM horario";
+                    + " FROM horario";*/
+            String Query = "SELECT CONCAT(horaIn.descripcion, \" a \", horaFi.descripcion) AS jornada,\n" +
+"(SELECT CONCAT(CONCAT(CONCAT(CONCAT(mat.codigo, \"-\", mat.descripcion),\"-\",doc.nombre),\" \",doc.apellido), \"-\",per.descripcion) as asignacion \n" +
+"FROM asignacion as asig\n" +
+"LEFT OUTER JOIN asignatura as mat on mat.id = asig.rowid_asignatura\n" +
+"LEFT OUTER JOIN docente as doc on doc.id = asig.rowid_docente\n" +
+"LEFT OUTER JOIN periodo as per on per.id = asig.rowid_periodo\n" +
+"LEFT OUTER JOIN hora as h on h.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN dia as d on d.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN sede as se on se.id = asig.rowid_sede\n" +
+"LEFT OUTER JOIN recurso as rec on rec.id = asig.rowid_recurso\n" +
+"WHERE d.descripcion = \"Lunes\" and asig.id = asignaciones.id) as Lunes,\n" +
+"(SELECT CONCAT(CONCAT(CONCAT(CONCAT(mat.codigo, \"-\", mat.descripcion),\"-\",doc.nombre),\" \",doc.apellido), \"-\",per.descripcion) as asignacion \n" +
+"FROM asignacion as asig\n" +
+"LEFT OUTER JOIN asignatura as mat on mat.id = asig.rowid_asignatura\n" +
+"LEFT OUTER JOIN docente as doc on doc.id = asig.rowid_docente\n" +
+"LEFT OUTER JOIN periodo as per on per.id = asig.rowid_periodo\n" +
+"LEFT OUTER JOIN hora as h on h.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN dia as d on d.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN sede as se on se.id = asig.rowid_sede\n" +
+"LEFT OUTER JOIN recurso as rec on rec.id = asig.rowid_recurso\n" +
+"WHERE d.descripcion = \"Martes\" and asig.id = asignaciones.id) as Martes,\n" +
+"(SELECT CONCAT(CONCAT(CONCAT(CONCAT(mat.codigo, \"-\", mat.descripcion),\"-\",doc.nombre),\" \",doc.apellido), \"-\",per.descripcion) as asignacion \n" +
+"FROM asignacion as asig\n" +
+"LEFT OUTER JOIN asignatura as mat on mat.id = asig.rowid_asignatura\n" +
+"LEFT OUTER JOIN docente as doc on doc.id = asig.rowid_docente\n" +
+"LEFT OUTER JOIN periodo as per on per.id = asig.rowid_periodo\n" +
+"LEFT OUTER JOIN hora as h on h.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN dia as d on d.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN sede as se on se.id = asig.rowid_sede\n" +
+"LEFT OUTER JOIN recurso as rec on rec.id = asig.rowid_recurso\n" +
+"WHERE d.descripcion = \"Miercoles\" and asig.id = asignaciones.id) as Miercoles,\n" +
+"(SELECT CONCAT(CONCAT(CONCAT(CONCAT(mat.codigo, \"-\", mat.descripcion),\"-\",doc.nombre),\" \",doc.apellido), \"-\",per.descripcion) as asignacion \n" +
+"FROM asignacion as asig\n" +
+"LEFT OUTER JOIN asignatura as mat on mat.id = asig.rowid_asignatura\n" +
+"LEFT OUTER JOIN docente as doc on doc.id = asig.rowid_docente\n" +
+"LEFT OUTER JOIN periodo as per on per.id = asig.rowid_periodo\n" +
+"LEFT OUTER JOIN hora as h on h.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN dia as d on d.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN sede as se on se.id = asig.rowid_sede\n" +
+"LEFT OUTER JOIN recurso as rec on rec.id = asig.rowid_recurso\n" +
+"WHERE d.descripcion = \"Jueves\" and asig.id = asignaciones.id) as Jueves,\n" +
+"(SELECT CONCAT(CONCAT(CONCAT(CONCAT(mat.codigo, \"-\", mat.descripcion),\"-\",doc.nombre),\" \",doc.apellido), \"-\",per.descripcion) as asignacion \n" +
+"FROM asignacion as asig\n" +
+"LEFT OUTER JOIN asignatura as mat on mat.id = asig.rowid_asignatura\n" +
+"LEFT OUTER JOIN docente as doc on doc.id = asig.rowid_docente\n" +
+"LEFT OUTER JOIN periodo as per on per.id = asig.rowid_periodo\n" +
+"LEFT OUTER JOIN hora as h on h.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN dia as d on d.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN sede as se on se.id = asig.rowid_sede\n" +
+"LEFT OUTER JOIN recurso as rec on rec.id = asig.rowid_recurso\n" +
+"WHERE d.descripcion = \"Viernes\" and asig.id = asignaciones.id) as Viernes,\n" +
+"(SELECT CONCAT(CONCAT(CONCAT(CONCAT(mat.codigo, \"-\", mat.descripcion),\"-\",doc.nombre),\" \",doc.apellido), \"-\",per.descripcion) as asignacion \n" +
+"FROM asignacion as asig\n" +
+"LEFT OUTER JOIN asignatura as mat on mat.id = asig.rowid_asignatura\n" +
+"LEFT OUTER JOIN docente as doc on doc.id = asig.rowid_docente\n" +
+"LEFT OUTER JOIN periodo as per on per.id = asig.rowid_periodo\n" +
+"LEFT OUTER JOIN hora as h on h.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN dia as d on d.id = asig.rowid_dia\n" +
+"LEFT OUTER JOIN sede as se on se.id = asig.rowid_sede\n" +
+"LEFT OUTER JOIN recurso as rec on rec.id = asig.rowid_recurso\n" +
+"WHERE d.descripcion = \"Sabado\" and asig.id = asignaciones.id) as Sabado\n" +
+ ", asignaciones.id "+                   
+"FROM asignacion as asignaciones\n" +
+"INNER JOIN hora as horaIn on horaIn.id = asignaciones.rowid_hora\n" +
+"INNER JOIN hora as horaFi  on horaFi.id = asignaciones.rowid_hora_final "+
+  "WHERE COALESCE(asignaciones.rowid_recurso, 0)  = 0"  ;
             PreparedStatement pstmt = connect
                     .prepareStatement(Query);
             System.out.println("***********Consulta: " + Query);
@@ -256,10 +322,11 @@ public class RelacionDocenteMateriaHorarioBean implements Serializable {
             while (rs.next()) {
 
                 relacion = new RelacionDocenteHorarioMateria();
-                //objRelacion.setId(rs.getInt("id"));
+                
                 relacion.setIdDocente(0);
                 relacion.setIdHorario(0);
                 relacion.setIdMateria(0);
+                relacion.setId(rs.getInt("id"));
                 relacion.setJornada(rs.getString("jornada"));
                 if (rs.getString("Lunes") != null) {
                     relacion.setLunes(rs.getString("Lunes"));
@@ -287,7 +354,7 @@ public class RelacionDocenteMateriaHorarioBean implements Serializable {
                     relacion.setViernes("");
                 }
                 if (rs.getString("Sabado") != null) {
-                    relacion.setViernes(rs.getString("Sabado"));
+                    relacion.setSabado(rs.getString("Sabado"));
                 } else {
                     relacion.setSabado("");
                 }
@@ -357,6 +424,8 @@ public class RelacionDocenteMateriaHorarioBean implements Serializable {
         relaciones.setParameter("id", id);
         return (relaciones.getResultList().isEmpty()) ? null : relaciones.getResultList().get(0);
     }
+    
+    
 
     @FacesConverter(forClass = RelacionDocenteHorarioMateria.class)
     public static class relacionDocenteMateriaHorarioBeanConverter implements Converter {

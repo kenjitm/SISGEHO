@@ -233,6 +233,7 @@ public class RegistroUsuarioBean {
             em.persist(user);
             em.getTransaction().commit();
             em.close();
+            em = emf.createEntityManager();
             userRol.setRowidRol(rol);
             userRol.setRowidUsuario(user);
             userRol.setActivo(true);
