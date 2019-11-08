@@ -54,6 +54,7 @@ public class UsuarioRol implements Serializable {
     private Boolean editable;
 
     public UsuarioRol() {
+        editable = false;
     }
 
     public UsuarioRol(Integer id) {

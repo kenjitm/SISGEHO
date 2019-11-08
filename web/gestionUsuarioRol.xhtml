@@ -117,7 +117,8 @@ and open the template in the editor.
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Usuario</f:facet>
-                            <h:selectOneMenu class="form-control" id="usuario" value="#{usuarioRolBean.userRol.rowidUsuario}" style="width: 100%"
+                            <h:selectOneMenu class="form-control" id="usuario" value="#{userRol.rowidRol}" style="width: 100%"
+                                             rendered="#{userRol.editable}"
                                              >
                                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
                                 <f:selectItems value="#{usuariosBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" rendered="#{userRol.editable}" />
@@ -127,6 +128,7 @@ and open the template in the editor.
                         <p:column>    				
                             <f:facet name="header">Rol</f:facet>
                             <h:selectOneMenu class="form-control" id="rol" value="#{usuarioRolBean.userRol.rowidRol}" style="width: 100%"
+                                             rendered="#{userRol.editable}"
                                              >
                                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
                                 <f:selectItems value="#{rolBean.rolList}" var="rol" itemLabel="#{rol.nombre}" itemValue="#{rol.id}" rendered="#{userRol.editable}" />

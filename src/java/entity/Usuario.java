@@ -71,6 +71,7 @@ public class Usuario implements Serializable {
 @Transient
     private boolean editable;
     public Usuario() {
+        editable = false;
     }
 
     public Usuario(Integer id) {

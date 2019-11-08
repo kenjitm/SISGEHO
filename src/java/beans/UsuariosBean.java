@@ -33,6 +33,7 @@ public class UsuariosBean {
     public UsuariosBean(){
         user = new Usuario();
         userSearch = new Usuario();
+        obtenerUsuarios();
     }
 
     public Usuario getUser() {
@@ -59,7 +60,7 @@ public class UsuariosBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Usuario> q = em.createNamedQuery("UsuariofindAll", Usuario.class);
+        TypedQuery<Usuario> q = em.createNamedQuery("Usuario.findAll", Usuario.class);
         userList = q.getResultList();
     }
     public void buscarUserPorId(Integer id) {

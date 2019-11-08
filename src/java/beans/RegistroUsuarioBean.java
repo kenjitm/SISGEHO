@@ -225,11 +225,15 @@ public class RegistroUsuarioBean {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
+            Rol rol = new Rol();
+            rolBean processRol = new rolBean();
+            rol = processRol.buscarById(6);
+            System.out.println("***beans.RegistroUsuarioBean.guardarUsuarios: -Rol-"+rol.getNombre());
             em.getTransaction().begin();
             em.persist(user);
             em.getTransaction().commit();
             em.close();
-            //userRol.setRowidRol(rowRol);
+            userRol.setRowidRol(rol);
             userRol.setRowidUsuario(user);
             userRol.setActivo(true);
             em.getTransaction().begin();

@@ -35,6 +35,7 @@ public class UsuarioRolBean {
     public UsuarioRolBean() {
         userRol = new UsuarioRol();
         userRolSearch = new UsuarioRol();
+        obtenerUsuariosRoles();
     }
     public String irUserRol(){
         return "gestionUsuarioRol.xhtml";
@@ -105,7 +106,7 @@ public class UsuarioRolBean {
 
     //INDISPENSABLE tener este método
     public void enableEditarOption(UsuarioRol rol, boolean estado) {
-        //rol.setEditable(estado);
+        rol.setEditable(estado);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
     public void editarUsuarioRol(UsuarioRol s) {
@@ -118,7 +119,7 @@ public class UsuarioRolBean {
             em.getTransaction().commit();
             em.close();
             obtenerUsuariosRoles(); //Actualiza lista
-            //s.setEditable(false);
+            s.setEditable(false);
             userRol = new UsuarioRol();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
