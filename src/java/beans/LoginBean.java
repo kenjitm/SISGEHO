@@ -175,6 +175,7 @@ public class LoginBean implements Serializable {
                     Rol rol = usuarioRol.getRowidRol();
                     GlobalBean globalBean = new GlobalBean();
                     globalBean.saveObjectInSession(nombreRol, "listaRoles");
+                    System.out.println("*****beans.LoginBean.obtenerRoles: Rol: "+nombreRol+" Insert: "+rol.getBitInsert());
                     globalBean.saveObjectInSessionBit(rol.getBitInsert(), "bitInsert");
                     globalBean.saveObjectInSessionBit(rol.getBitUpdate(), "bitUpdate");
                     globalBean.saveObjectInSessionBit(rol.getBitDelete(), "bitDelete");

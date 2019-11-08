@@ -45,6 +45,7 @@ public class permisosBean {
     public permisosBean(){
         GlobalBean globalBean = new GlobalBean();
         bitInsert = (Boolean)globalBean.getObjectFromSession("bitInsert"); 
+        System.out.println("********beans.permisosBean: Permiso Insert: --"+bitInsert.toString());
         bitUpdate = (Boolean)globalBean.getObjectFromSession("bitUpdate"); 
         bitDelete = (Boolean)globalBean.getObjectFromSession("bitDelete"); 
     }
