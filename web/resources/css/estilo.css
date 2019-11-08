@@ -1,0 +1,51 @@
+
+body{
+    background-color: #818182;
+}
+#barraNav{
+    display: flex;
+    background-color: #00427e;
+}
+.active{
+    background-color: gold;   
+}
+
+.centro{
+    text-align: center;
+}
+
+.azul{
+    background-color: #0050a0;
+    color: white;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    background-color: aliceblue
+}
+.row{
+    justify-content: center;
+}
+#rowmenu{
+    background-color: #00427e!important;
+}
+.layoutUnit{
+    background-color: #00427e;
+}
+
+.ui-menu, .ui-menubar, .ui-helper-clearfix
+{
+    border: 1px solid #aed0ea !important;
+    background: #00427e;
+    color: white !important;
+    font-weight: bolder !important;
+    
+}
+
+.prueba{
+    background-color: #e83e8c;
+    
+}
+
+

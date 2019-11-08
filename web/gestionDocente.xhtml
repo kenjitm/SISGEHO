@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+
+        <title>Gestión Docentes</title>
+    </h:head>
+    <h:body>
+
+        <div class="container" style="background-color: white">    
+            <div class="row" id="rowmenu">
+                <div >
+            <div class="card-body" style="text-align: center">
+                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+            </div>                      
+        </div>
+            </div>
+            <div class="row" id="rowmenu">  
+                <!--barra de navegacion-->
+        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+        <!--fin barra de navegacion-->
+        </div>  
+            <div class="row mb-6">
+            <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                            <h6 class="card-subtitle mb-2 text-warning">Gestión de docentes</h6>                  
+                        </div>            
+                    </div>
+            </div>
+            <div class="row mb-4">
+                
+                <div class="col-sm-1">
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Ingresar Docente</h4>                
+                        </div>            
+                    </div> 
+                    <p:separator></p:separator>
+                    <h:form>
+                        <div class="form-group mt-3">
+                            <p:inputText value="#{docenteBean.id}" class="form-control" placeholder="ID" required="true" type="number"/>
+                        </div>       
+                        <div class="form-group mt-3">
+                            <p:inputText value="#{docenteBean.nombre}" class="form-control" placeholder="Nombre" required="true" type="text"/>
+                        </div>
+                        <div class="form-group mt-3">
+                            <p:inputText value="#{docenteBean.apellido}" class="form-control" placeholder="Apellido" required="true" type="text"/>
+                        </div>
+                        <div class="form-group mt-3">
+                            <p:inputText value="#{docenteBean.tipo_contrato}" class="form-control" placeholder="Tipo de Contrato" required=""/>
+                        </div>
+                        <div class="input-group mt-3"> 
+                            <p:inputText value="#{docenteBean.edad}" class="form-control" placeholder="Edad" required="true" type="number"/>
+                        </div>
+                        <div class="input-group mt-3"> 
+                            <p:inputText value="#{docenteBean.email}" class="form-control" placeholder="Email" required="true" type="text"/>
+                        </div>
+                        <br/>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Docente" class="btn btn-warning" action="#{docenteBean.registrarDocenteV()}"/>
+                        </div>   
+                    </h:form>                  
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Listado de docentes</h4>                 
+                        </div>            
+                    </div> 
+                    
+                    <p:dataTable class="bordered centered highlight" value="#{docenteBean.obtenerDocentes()}" var="docente">
+                        <p:column headerText="Id">
+                            #{docente.id}
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            #{docente.nombre}
+                        </p:column>
+                        <p:column headerText="Apellido">
+                            #{docente.apellido}
+                        </p:column>
+                        <p:column headerText="Edad">
+                            #{docente.edad}
+                        </p:column>
+                        <p:column headerText="Email">
+                            #{docente.email}
+                        </p:column>
+                        <p:column headerText="Opciones">
+                            <!-- Integrar una ventana modal -->
+                            <h:form>
+                                <h:commandButton value="Editar" class="btn btn-warning" />
+                                <h:commandButton value="Eliminar" class="btn btn-danger" action="#{asignaturaBean.eliminarAsignatura(r.id)}"/>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+                
+                <div class="col-sm-1">
+
+                </div>
+                
+            </div>
+        </div>
+        <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+        <!--fin barra de footer-->
+    </h:body>
+</html>

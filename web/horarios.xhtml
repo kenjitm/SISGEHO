@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+        <h:outputStylesheet name="./css/materialize-icons.css"/>
+        <h:outputStylesheet name="./resources/css/materialize-icons.css"/>
+
+        <title>Gestión Salones</title>
+    </h:head>
+    <h:body>
+
+        <div class="container" style="background-color: white">     
+            <div class="row" id="rowmenu">
+                <div >
+            <div class="card-body" style="text-align: center">
+                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+            </div>                      
+        </div>
+            </div>
+            <div class="row" id="rowmenu">  
+                <!--barra de navegacion-->
+        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+        <!--fin barra de navegacion-->
+        </div>  
+            <div class="row" id="centro">
+            <div class="row mb-6">
+            <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                            <h6 class="card-subtitle mb-2 text-warning">Gestión de Horario</h6>                  
+                        </div>            
+                    </div>
+            </div>
+            <div class="row mb-6"></div>
+            </div>
+            <div class="row mb-4">
+
+                <div class="col-sm-4">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Registro de horario</h4>                
+                        </div>            
+                    </div> 
+                    <h:form>
+                        <div class="form-group mt-3">
+                            <p:inputText value="#{horarioBean.horario.id}" class="form-control" placeholder="ID" required="true" type="number"/>
+                        </div>
+                        <div class="form-group mt-3">
+                            <p:selectOneMenu value="#{horarioBean.horario.dia}" class="mt-3" style="width: 100%">
+                            <f:selectItem itemLabel="Dia" itemDisabled="true"  />
+                            <f:selectItems value="#{horarioBean.tipoDias}" var="tipo"
+                                           itemValue="#{tipo}" itemLabel="#{tipo.label}" />
+                        </p:selectOneMenu>
+                        </div>
+                        <div class="form-group mt-3">
+                            <p:calendar id="time" value="" timeZone="America/Bogota" 
+                                        pattern="HH:mm" timeOnly="true"  placeholder="Hora">
+                            </p:calendar>
+                        </div>
+                        <div class="form-group mt-3">
+                            <p:selectOneMenu value="#{horarioBean.horario.frecuencia}" class="mt-3" style="width: 100%">
+                            <f:selectItem itemLabel="Frecuencia" itemDisabled="true"  />
+                            <f:selectItems value="#{horarioBean.tipoFrecuencias}" var="tipo"
+                                           itemValue="#{tipo}" itemLabel="#{tipo.label}" />
+                        </p:selectOneMenu>
+                        </div>
+                        
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Horario" class="btn btn-warning" action="#{horarioBean.guardarHorario()}"/>
+                        </div>                                                      
+                    </h:form>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Listado de Horarios</h4>                
+                        </div>            
+                    </div> 
+                    <p:dataTable class="bordered centered highlight" value="#{horarioBean.obtenerHorarios()}" var="h">
+                        <p:column headerText="Id">
+                            #{h.id}
+                        </p:column>
+                        <p:column headerText="Dia">
+                            #{h.dia}
+                        </p:column>
+                        <p:column headerText="Hora">
+                            
+                        </p:column>
+                        <p:column headerText="Frecuencia">
+                            #{h.frecuencia}
+                        </p:column>
+                        <p:column headerText="Opciones">
+                            <h:form>
+                                <!-- Integrar una ventana modal -->
+                                <h:commandButton value="Editar" class="btn btn-warning" />
+                                <h:commandButton value="Eliminar" class="btn btn-danger" action="#{recursoBean.eliminarRecurso(r.id)}"/>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
+                    <p:separator></p:separator>
+                </div>
+            </div>
+
+        </div>
+        <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+        <!--fin barra de footer-->
+    </h:body>
+</html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+       
+
+        <title>Programas</title>
+    </h:head>
+
+    <h:body>
+
+
+        <div class="container" style="background-color: white">           
+           <div class="row" id="rowmenu">
+                <div >
+            <div class="card-body" style="text-align: center">
+                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+            </div>                      
+        </div>
+            </div>
+            <div class="row" id="rowmenu">  
+                <!--barra de navegacion-->
+        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+        <!--fin barra de navegacion-->
+        </div>  
+         <div class="row mb-6">
+            <div class="card shadow mt-5" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                            <h6 class="card-subtitle mb-2 text-warning">Gestión de docentes</h6>                  
+                        </div>            
+                    </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-sm-4">
+                    
+                    <h:form>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{crearProgramaBean.titulo}" class="form-control" placeholder="Título" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{crearProgramaBean.descripcionPrograma}" class="form-control" placeholder="Descripción" required=""/>
+                        </div>
+                        <div class="form-group">
+                            <p:inputText value="#{crearProgramaBean.descripcionTipo}" class="form-control" placeholder="Tipo" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{crearProgramaBean.modalidad}" class="form-control" placeholder="Modalidad" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{crearProgramaBean.duracion}" class="form-control" placeholder="Duración" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{crearProgramaBean.registroCalificado}" class="form-control" placeholder="Registro Calificado" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{crearProgramaBean.snies}" class="form-control" placeholder="SNIES" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{crearProgramaBean.director}" class="form-control" placeholder="Director" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText value="#{crearProgramaBean.email}" class="form-control" placeholder="Email" required=""/>
+                        </div>
+                        
+                        <p:separator/>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <h:commandButton value="Registrar Programa" class="btn btn-warning" action="#{crearProgramaBean.crear()}"/>
+                        </div>
+                    </h:form>                 
+                </div>
+            <div class="col-sm-8">
+            <div class="card shadow" style="background-color: #0050a0">
+                        <div class="card-body">
+                            <h4 class="card-title text-white">Lista de Programas</h4>                 
+                        </div>            
+                    </div> 
+                    <h:form>  
+                        <p:dataTable var="programa"      >
+                            <p:column headerText="Id">
+                                <h:outputText    />
+                            </p:column>
+                            <p:column headerText="Título">
+                                <h:outputText     />
+                            </p:column>
+                            <p:column headerText="Descripción">
+                                <h:outputText     />
+                            </p:column>
+                            <p:column headerText="Tipo">
+                                <h:outputText     />
+                            </p:column>
+                            <p:column headerText="Modalidad">
+                                <h:outputText     />
+                            </p:column>
+                             <p:column headerText="Duración">
+                                <h:outputText     />
+                            </p:column>
+                            <p:column headerText="Director">
+                                <h:outputText     />
+                            </p:column>
+                            <p:column headerText="Opciones">
+                                <h:commandButton value="Editar" class="btn btn-warning" />
+                                <h:commandButton value="Eliminar" class="btn btn-danger"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+            </div>
+        </div>        
+        </div>
+        <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+        <!--fin barra de footer-->
+    </h:body>
+</html>
