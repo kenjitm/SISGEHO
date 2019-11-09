@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +17,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Asignacion.findAll", query = "SELECT a FROM Asignacion a"),
     @NamedQuery(name = "Asignacion.findById", query = "SELECT a FROM Asignacion a WHERE a.id = :id")})
 public class Asignacion implements Serializable {
+
+    @OneToMany(mappedBy = "rowidAsignacion")
+    private Collection<AsignacionGrupos> asignacionGruposCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -173,6 +179,15 @@ public class Asignacion implements Serializable {
     @Override
     public String toString() {
         return "entity.Asignacion[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<AsignacionGrupos> getAsignacionGruposCollection() {
+        return asignacionGruposCollection;
+    }
+
+    public void setAsignacionGruposCollection(Collection<AsignacionGrupos> asignacionGruposCollection) {
+        this.asignacionGruposCollection = asignacionGruposCollection;
     }
     
 }

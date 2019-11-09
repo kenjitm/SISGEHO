@@ -36,6 +36,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Grupo.findByActivo", query = "SELECT g FROM Grupo g WHERE g.activo = :activo")})
 public class Grupo implements Serializable {
 
+    @OneToMany(mappedBy = "rowidGrupo")
+    private Collection<AsignacionGrupos> asignacionGruposCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -133,6 +136,15 @@ public class Grupo implements Serializable {
     @Override
     public String toString() {
         return nomenclatura;
+    }
+
+    @XmlTransient
+    public Collection<AsignacionGrupos> getAsignacionGruposCollection() {
+        return asignacionGruposCollection;
+    }
+
+    public void setAsignacionGruposCollection(Collection<AsignacionGrupos> asignacionGruposCollection) {
+        this.asignacionGruposCollection = asignacionGruposCollection;
     }
     
 }

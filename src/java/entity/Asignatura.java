@@ -40,6 +40,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Asignatura.findByActivo", query = "SELECT a FROM Asignatura a WHERE a.activo = :activo")})
 public class Asignatura implements Serializable {
 
+    @Column(name = "semestre")
+    private Integer semestre;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,9 +54,6 @@ public class Asignatura implements Serializable {
     @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
-    @Basic(optional = false)
-    @Column(name = "semestre")
-    private int semestre;
     @Column(name = "creditos")
     private Integer creditos;
     @Basic(optional = false)
@@ -114,13 +114,6 @@ public boolean isEditable() {
         this.descripcion = descripcion;
     }
 
-    public int getSemestre() {
-        return semestre;
-    }
-
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
-    }
 
     public Integer getCreditos() {
         return creditos;
@@ -186,6 +179,14 @@ public boolean isEditable() {
     @Override
     public String toString() {
         return codigo +"  - "+ descripcion;
+    }
+
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Integer semestre) {
+        this.semestre = semestre;
     }
     
 }
