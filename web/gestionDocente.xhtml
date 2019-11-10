@@ -13,18 +13,18 @@
     </h:head>
     <h:body>
 
-        
-            <div class="row" id="rowmenu">
-                <div >
-            <div class="card-body" style="text-align: center">
-                <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
-            </div>                      
-        </div>
+
+        <div class="row" id="rowmenu">
+            <div >
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
             </div>
-            <div class="row" id="rowmenu">  
-                <!--barra de navegacion-->
-        <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
-        <!--fin barra de navegacion-->
+        </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+            <!--fin barra de navegacion-->
         </div>  
         <div>
             <div  style="background-color: #0050a0">
@@ -34,7 +34,7 @@
                 </div>            
             </div>
         </div>
-            <div class="row mb-4 ml-1 mr-1 overflow-auto">
+        <div class="row mb-4 ml-1 mr-1 overflow-auto">
             <div class="col-sm-4">
                 <div class="row mt-3">
                     <h4>Buscar Docente</h4>                 
@@ -50,37 +50,37 @@
                 </h:form>
                 <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
                     <div class="row">
-                    <h4>Registrar Docentes</h4>                 
-                </div>
-                <h:form>
-                    <div class="form-group mt-2">                        
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.identificacion}" class="form-control" placeholder="Documento de Identificación" required=""/>
+                        <h4>Registrar Docentes</h4>                 
                     </div>
-                    <div class="form-group mt-2">                       
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.nombre}" class="form-control" placeholder="Nombres" required=""/>
-                    </div>
-                    <div class="form-group mt-2">
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.apellido}" class="form-control" placeholder="Apellidos" required=""/>
-                    </div>
-                    <div class="checkbox mt-2">
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.tipoContrato}" class="form-control" placeholder="Tipo de Contrato" required=""/>
-                    </div>
-                    <div class="checkbox mt-2">                         
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.edad}" class="form-control" placeholder="Edad" required="" type="number"/>
-                    </div>
-                    <div class="checkbox mt-2">
-                        <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.email}" class="form-control" placeholder="Email" required="" type="text"/>
-                    </div>
-                    <div class="checkbox mt-3 mb-3">
-                        <h:selectBooleanCheckbox id="check" value="#{docenteBean.docentes.activo}"/>
-                        <h:outputLabel class="ml-2" value="¿Poner el docente como activo?" for="check" />
-                    </div>
-                    <center>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Docente" class="btn azul" action="#{docenteBean.registrarDocenteV()}"/>
+                    <h:form>
+                        <div class="form-group mt-2">                        
+                            <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.identificacion}" class="form-control" placeholder="Documento de Identificación" required=""/>
                         </div>
-                    </center>
-                </h:form>
+                        <div class="form-group mt-2">                       
+                            <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.nombre}" class="form-control" placeholder="Nombres" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.apellido}" class="form-control" placeholder="Apellidos" required=""/>
+                        </div>
+                        <div class="checkbox mt-2">
+                            <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.tipoContrato}" class="form-control" placeholder="Tipo de Contrato" required=""/>
+                        </div>
+                        <div class="checkbox mt-2">                         
+                            <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.edad}" class="form-control" placeholder="Edad" required="" type="number"/>
+                        </div>
+                        <div class="checkbox mt-2">
+                            <p:inputText style="text-transform: uppercase" value="#{docenteBean.docentes.email}" class="form-control" placeholder="Email" required="" type="text"/>
+                        </div>
+                        <div class="checkbox mt-3 mb-3">
+                            <h:selectBooleanCheckbox id="check" value="#{docenteBean.docentes.activo}"/>
+                            <h:outputLabel class="ml-2" value="¿Poner el docente como activo?" for="check" />
+                        </div>
+                        <center>
+                            <div class="btn-group" role="group" aria-label="Third group">
+                                <h:commandButton value="Registrar Docente" class="btn azul" action="#{docenteBean.registrarDocenteV()}"/>
+                            </div>
+                        </center>
+                    </h:form>
                 </h:panelGroup>
                 <p:separator class="mt-4"/>
                 <div class="row">
@@ -158,11 +158,11 @@
                             <center>
                                 <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
                                     <h:commandLink class="btn btn-info btn-sm"
-                                               style="color: #fff"
-                                               action="#{docenteBean.enableEditarOption(docentes, true)}"
-                                               rendered="#{not docentes.editable}">
-                                    <i class="material-icons">create</i>
-                                </h:commandLink>
+                                                   style="color: #fff"
+                                                   action="#{docenteBean.enableEditarOption(docentes, true)}"
+                                                   rendered="#{not docentes.editable}">
+                                        <i class="material-icons">create</i>
+                                    </h:commandLink>
                                 </h:panelGroup>
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
@@ -180,21 +180,90 @@
                                 </h:commandLink>
                                 <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
                                     <h:commandLink class="btn btn-danger btn-sm"
-                                               style="color: #fff"
-                                               action="#{docenteBean.eliminarDocente()}"
-                                               rendered="#{not docentes.editable}">
-                                    <i class="material-icons">delete</i>
-                                    <f:setPropertyActionListener 
-                                        target="#{docenteBean.docentes}" value="#{docentes}" />
-                                </h:commandLink>
+                                                   style="color: #fff"
+                                                   action="#{docenteBean.eliminarDocente()}"
+                                                   rendered="#{not docentes.editable}">
+                                        <i class="material-icons">delete</i>
+                                        <f:setPropertyActionListener 
+                                            target="#{docenteBean.docentes}" value="#{docentes}" />
+                                    </h:commandLink>
                                 </h:panelGroup>
+                                <h:commandLink class="btn btn-primary btn-sm"
+                                               style="color: #fff"
+                                               action="#{docenteDisponibilidadBean.tablaDisponibilidad(docentes)}"
+                                               rendered="#{not relacion.editable}"
+                                               >
+                                    <i class="material-icons">date_range</i>
+                                </h:commandLink>
                             </center>
                         </h:column>
                     </h:dataTable>
                 </h:form>
             </div>
         </div>
-            
+        <p:dialog id="dialogPDdisponibilidad" appendTo="@(body)" draggable="true" closeOnEscape="true"  
+                  showEffect="explode" header="#{docenteDisponibilidadBean.gestionTipo}" 
+                  closable="true" visible="#{docenteDisponibilidadBean.showDialog}" resizable="false"
+                  modal="true" width="75%">
+            <h:form id="formDialogDetalle">
+                <p:messages id="msgDetalle" />
+                <p:panel id="panelPNdetalle" >							
+                    <h:dataTable class="table table-hover text-center" value="#{docenteDisponibilidadBean.disponibilidadList}" var="disponibilidad">
+                        <p:column>
+                            <f:facet name="header">Jornada</f:facet>
+                            <h:outputText value="#{disponibilidad.jornada}"/>
+                        </p:column>
+                        <p:column>
+                                        <f:facet name="header">Lunes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.lunes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Martes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.martes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Miercoles</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.miercoles}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Jueves</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.jueves}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Viernes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.viernes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Sabado</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.sabado}" class="form-control" />
+                                    </p:column>
+                    </h:dataTable>
+                </p:panel>						   
+                <p:panel id="panelBotones">
+                    <div align="center">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="btn-group" role="group" aria-label="Third group">
+                                    <h:commandButton value="Registrar Disponibilidad" action="#{docenteDisponibilidadBean.guardarDisponibilidad()}" class="btn azul" />
+                            </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                       style="color: #fff"
+                                       value="Cerrar"
+                                       action="#{docenteDisponibilidadBean.closeDetail()}"
+
+                                       >
+                        </h:commandLink>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </p:panel>
+
+            </h:form>
+
+        </p:dialog>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

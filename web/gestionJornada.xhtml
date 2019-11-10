@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+        
+
+        <title>Grupoos</title>
+    </h:head>
+
+    <h:body>  
+        <div class="row" id="rowmenu">
+            <div >
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
+            </div>
+        </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+            <!--fin barra de navegacion-->
+        </div>  
+        <div style="background-color: #0050a0">
+            <div class="card-body">
+                <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                <h6 class="card-subtitle mb-2 text-warning">Gestión de Jornada</h6>                  
+            </div>            
+        </div>
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row mt-3">
+                    <h4>Buscar Jornada</h4>                 
+                </div>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{jornadaBeans.jornada.id}" type="number" class="form-control" placeholder="Identificación de la Jornada" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{jornadaBeans.buscarJornadaPorId(jornadaBeans.jornada.id)}" class="btn btn-warning"/>
+                        </div>
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+                    <div class="row">
+                        <h4>Registrar Jornada</h4>                 
+                    </div>
+                    <h:form>
+                        <div class="form-group mt-2">
+                            <p:inputText style="text-transform: uppercase" value="#{jornadaBeans.jornada.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                        </div>
+                        <center>
+                            <div class="btn-group" role="group" aria-label="Third group">
+                                <h:commandButton value="Registrar Jornada" class="btn azul" action="#{jornadaBeans.guardarJornada()}"/>
+                            </div>
+                        </center>
+                    </h:form>
+                </h:panelGroup>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró la jornada buscada" rendered="#{jornadaBeans.jornadaSearch == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{jornadaBeans.jornadaSearch.id}" rendered="#{jornadaBeans.jornadaSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripciòn: #{jornadaBeans.jornadaSearch.descripcion}" rendered="#{jornadaBeans.jornadaSearch != null}"/>
+                </div>
+                
+                <p:separator/>
+            </div>
+            <div class="col-sm-8">
+                <div class="row mt-3">
+                    <h4>Lista de Jornadas</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaJornadas" value="#{jornadaBeans.jornadaList}" var="jor">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{jor.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripciòn</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{jor.descripcion}" class="form-control" rendered="#{jor.editable}"/>
+                            <h:outputText value="#{jor.descripcion}" rendered="#{not jor.editable}" />
+                        </p:column>
+
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-info btn-sm"
+                                                   style="color: #fff"
+                                                   action="#{jornadaBeans.enableEditarOption(jor, true)}"
+                                                   rendered="#{not jor.editable}">
+                                        <i class="material-icons">create</i>
+                                    </h:commandLink>
+                                </h:panelGroup>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{jornadaBeans.editarJornada(jor)}"
+                                               rendered="#{jor.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{jornadaBeans.jornada}" value="#{jor}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{jornadaBeans.enableEditarOption(jor, false)}"
+                                               rendered="#{jor.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{jornadaBeans.eliminarJornada()}"
+                                               rendered="#{not jor.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{jornadaBeans.jornada}" value="#{jor}" />
+                                </h:commandLink>
+                                </h:panelGroup>
+                                
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+
+
+        <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+        <!--fin barra de footer-->
+    </h:body>
+</html>

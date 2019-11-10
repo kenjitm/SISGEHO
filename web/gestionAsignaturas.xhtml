@@ -50,6 +50,9 @@
                     <h4>Registrar Asignaturas</h4>                 
                 </div>
                 <h:form>
+                    <div class="form-group mt-2">
+                        <p:inputText style="text-transform: uppercase" value="#{asignaturaBean.asignatura.codigo}" class="form-control" placeholder="Código" required=""/>
+                        </div>
                     <div class="form-group mt-3">
                         <h:selectOneMenu class="form-control" value="#{asignaturaBean.semestre}" style="width: 100%">
                             <f:selectItem itemLabel="Semestre" itemDisabled="true"/>
@@ -94,6 +97,9 @@
                     <h:outputText value="ID: #{asignaturaBean.asignaturaBusqueda.id}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
                 </div>
                 <div class="form-group mt-2">
+                    <h:outputText value="Código: #{asignaturaBean.asignaturaBusqueda.codigo}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
                     <h:outputText value="Semestre: #{asignaturaBean.asignaturaBusqueda.semestre}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
                 </div>
                 <div class="form-group mt-2">
@@ -119,6 +125,11 @@
                         <p:column>
                             <f:facet name="header">ID</f:facet>
                             <h:outputText value="#{asignatura.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Código</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{asignatura.codigo}" class="form-control" rendered="#{asignatura.editable}"/>
+                            <h:outputText value="#{asignatura.codigo}" rendered="#{not asignatura.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Semestre</f:facet>

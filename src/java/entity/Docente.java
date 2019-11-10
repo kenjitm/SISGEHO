@@ -8,6 +8,7 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,6 +40,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Docente.findByTipoContrato", query = "SELECT d FROM Docente d WHERE d.tipoContrato = :tipoContrato"),
     @NamedQuery(name = "Docente.findByActivo", query = "SELECT d FROM Docente d WHERE d.activo = :activo")})
 public class Docente implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidDocente")
+    private Collection<DocenteDisponibilidad> docenteDisponibilidadCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -189,6 +193,15 @@ public class Docente implements Serializable {
     @Override
     public String toString() {
         return nombre+" "+apellido;
+    }
+
+    @XmlTransient
+    public Collection<DocenteDisponibilidad> getDocenteDisponibilidadCollection() {
+        return docenteDisponibilidadCollection;
+    }
+
+    public void setDocenteDisponibilidadCollection(Collection<DocenteDisponibilidad> docenteDisponibilidadCollection) {
+        this.docenteDisponibilidadCollection = docenteDisponibilidadCollection;
     }
     
 }
