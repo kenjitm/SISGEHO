@@ -53,9 +53,19 @@
 p{
     font-size: 14px;
 }
+html {
+  min-height: 90%;
+  position: relative;
+}
 
-#footer{
-   position:fixed;
-   bottom:0px;
-   width:100%;
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
 }
