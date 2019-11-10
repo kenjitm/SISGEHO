@@ -65,6 +65,7 @@ public class Periodo implements Serializable {
 @Transient
     private boolean editable;
     public Periodo() {
+        editable = false;
     }
 
     public Periodo(Integer id) {

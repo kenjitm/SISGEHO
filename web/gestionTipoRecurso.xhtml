@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+        
+
+        <title>Grupoos</title>
+    </h:head>
+
+    <h:body>  
+        <div class="row" id="rowmenu">
+            <div >
+                <div class="card-body" style="text-align: center">
+                    <h:graphicImage url="#{resource['imagenes/logo-uniajc.png']}" class="img-fluid" alt="Responsive image"/>  
+                </div>                      
+            </div>
+        </div>
+        <div class="row" id="rowmenu">  
+            <!--barra de navegacion-->
+            <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
+            <!--fin barra de navegacion-->
+        </div>  
+        <div style="background-color: #0050a0">
+            <div class="card-body">
+                <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
+                <h6 class="card-subtitle mb-2 text-warning">Gestión de Tipo Recurso</h6>                  
+            </div>            
+        </div>
+        <div class="row mb-4 ml-1 mr-1">
+            <div class="col-sm-4">
+                <div class="row mt-3">
+                    <h4>Buscar Tipo Recurso</h4>                 
+                </div>
+                <h:form>
+                    <div class="input-group mt-2"> 
+                        <p:inputText value="#{tipoRecursoBean.tipeRec.id}" type="number" class="form-control" placeholder="Identificación del Tipo Recurso" required=""/>
+                        <div>                                        
+                            <h:commandButton value="Consultar" action="#{tipoRecursoBean.buscarTipoRecursoPorId(tipoRecursoBean.tipeRec.id)}" class="btn btn-warning"/>
+                        </div>
+                    </div>
+                    <p:separator class="mt-4"/>
+                </h:form>
+                <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+                    <div class="row">
+                        <h4>Registrar Tipo Recurso</h4>                 
+                    </div>
+                    <h:form>
+                        <div class="form-group mt-2">
+                            <p:inputText style="text-transform: uppercase" value="#{tipoRecursoBean.tipeRec.codigo}" class="form-control" placeholder="Código" required=""/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <p:inputText style="text-transform: uppercase" value="#{tipoRecursoBean.tipeRec.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                        </div>
+
+                        <div class="checkbox mt-2 mb-2">
+                            <h:selectBooleanCheckbox id="check" value="#{tipoRecursoBean.tipeRec.activo}"/>
+                            <h:outputLabel class="ml-2" value="¿Activar el Tipo de Recurso?" for="check" />
+                        </div>
+                        <center>
+                            <div class="btn-group" role="group" aria-label="Third group">
+                                <h:commandButton value="Registrar Tipo Recurso" class="btn azul" action="#{tipoRecursoBean.guardarTipoRecurso()}"/>
+                            </div>
+                        </center>
+                    </h:form>
+                </h:panelGroup>
+                <p:separator class="mt-4"/>
+                <div class="row">
+                    <h4>Resultado búsqueda</h4>                 
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="No se encontró el tipo de recurso buscado" rendered="#{tipoRecursoBean.tipeRecSearch == null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="ID: #{tipoRecursoBean.tipeRecSearch.id}" rendered="#{tipoRecursoBean.tipeRecSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Código: #{tipoRecursoBean.tipeRecSearch.codigo}" rendered="#{tipoRecursoBean.tipeRecSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Descripciòn: #{tipoRecursoBean.tipeRecSearch.descripcion}" rendered="#{tipoRecursoBean.tipeRecSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Estado: #{tipoRecursoBean.transformActivo(tipoRecursoBean.tipeRecSearch.activo)}" rendered="#{tipoRecursoBean.tipeRecSearch != null}"/>
+                </div>
+                <p:separator/>
+            </div>
+            <div class="col-sm-8">
+                <div class="row mt-3">
+                    <h4>Lista de Tipos de Recursos</h4>                 
+                </div> 
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" id="tablaTipoRecursos" value="#{tipoRecursoBean.tipeRecList}" var="tipe">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{tipe.id}"/>
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Código</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{tipe.codigo}" class="form-control" rendered="#{tipe.editable}"/>
+                            <h:outputText value="#{tipe.codigo}" rendered="#{not tipe.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Descripciòn</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{tipe.descripcion}" class="form-control" rendered="#{tipe.editable}"/>
+                            <h:outputText value="#{tipe.descripcion}" rendered="#{not tipe.editable}" />
+                        </p:column>
+
+                        <p:column>    				
+                            <f:facet name="header">Estado</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Activa?" value="#{tipe.activo}" class="form-control" rendered="#{tipe.editable}"/>
+                            <h:outputText value="#{tipoRecursoBean.transformActivo(tipe.activo)}" rendered="#{not tipe.editable}" />
+                        </p:column>
+                        <h:column>
+                            <f:facet name="header">Acciones</f:facet>
+                            <center>
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-info btn-sm"
+                                                   style="color: #fff"
+                                                   action="#{tipoRecursoBean.enableEditarOption(tipe, true)}"
+                                                   rendered="#{not tipe.editable}">
+                                        <i class="material-icons">create</i>
+                                    </h:commandLink>
+                                </h:panelGroup>
+                                <h:commandLink class="btn btn-success btn-sm"
+                                               style="color: #fff"
+                                               action="#{tipoRecursoBean.editarTipo(tipe)}"
+                                               rendered="#{tipe.editable}">
+                                    <i class="material-icons">check</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{tipoRecursoBean.tipeRec}" value="#{tipe}" />
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-warning btn-sm"
+                                               style="color: #fff"
+                                               action="#{tipoRecursoBean.enableEditarOption(tipe, false)}"
+                                               rendered="#{tipe.editable}">
+                                    <i class="material-icons">close</i>
+                                </h:commandLink>
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-danger btn-sm"
+                                               style="color: #fff"
+                                               action="#{tipoRecursoBean.eliminarTipo()}"
+                                               rendered="#{not tipe.editable}">
+                                    <i class="material-icons">delete</i>
+                                    <f:setPropertyActionListener 
+                                        target="#{tipoRecursoBean.tipeRec}" value="#{tipe}" />
+                                </h:commandLink>
+                                </h:panelGroup>
+                                
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+
+
+        <!--barra de footer-->
+        <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
+        <!--fin barra de footer-->
+    </h:body>
+</html>

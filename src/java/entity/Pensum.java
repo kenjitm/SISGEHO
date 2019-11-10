@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -52,12 +53,22 @@ public class Pensum implements Serializable {
     private boolean activo;
     @OneToMany(mappedBy = "rowidPensum")
     private Collection<Asignatura> asignaturaCollection;
-
+@Transient
+    private boolean editable;
     public Pensum() {
+        editable = false;
     }
 
     public Pensum(Integer id) {
         this.id = id;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public Pensum(Integer id, String descripcion, String codigo, boolean activo) {

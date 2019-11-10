@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -52,8 +53,10 @@ public class TipoRecurso implements Serializable {
     private boolean activo;
     @OneToMany(mappedBy = "rowidTipo")
     private Collection<Recurso> recursoCollection;
-
+@Transient
+    private boolean editable;
     public TipoRecurso() {
+        editable = false;
     }
 
     public TipoRecurso(Integer id) {
@@ -65,6 +68,14 @@ public class TipoRecurso implements Serializable {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.activo = activo;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public Integer getId() {
