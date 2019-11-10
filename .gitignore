@@ -12,3 +12,4 @@ nbproject/
 
 # End of https://www.gitignore.io/api/netbeans
 src/conf/persistence.xml
+nbproject/project.properties
