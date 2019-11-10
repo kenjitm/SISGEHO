@@ -53,3 +53,9 @@
 p{
     font-size: 14px;
 }
+
+#footer{
+   position:fixed;
+   bottom:0px;
+   width:100%;
+}
