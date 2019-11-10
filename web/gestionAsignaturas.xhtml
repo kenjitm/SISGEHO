@@ -45,25 +45,26 @@
                     </div>
                     <p:separator class="mt-4"/>
                 </h:form>
-                <div class="row">
+                <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+                    <div class="row">
                     <h4>Registrar Asignaturas</h4>                 
                 </div>
                 <h:form>
                     <div class="form-group mt-3">
                         <h:selectOneMenu class="form-control" value="#{asignaturaBean.semestre}" style="width: 100%">
-                            <f:selectItem itemLabel="SEMESTRE" itemDisabled="true"/>
+                            <f:selectItem itemLabel="Semestre" itemDisabled="true"/>
                             <f:selectItems value="#{asignaturaBean.getTipoSemestres()}"/>
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group mt-3">
                         <h:selectOneMenu class="form-control" value="#{asignaturaBean.asignatura.rowidPensum}" style="width: 100%">
-                            <f:selectItem itemLabel="PENSUM" itemDisabled="true"  />
+                            <f:selectItem itemLabel="Pensum" itemDisabled="true"  />
                             <f:selectItems value="#{pensumBean.consultarPensums()}"/>
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group mt-3">
                         <h:selectOneMenu class="form-control" value="#{asignaturaBean.asignatura.rowidPrograma}" style="width: 100%">
-                            <f:selectItem itemLabel="PROGRAMA" itemDisabled="true"  />
+                            <f:selectItem itemLabel="Programa" itemDisabled="true"  />
                             <f:selectItems value="#{crearProgramaBean.programList}"/>
                         </h:selectOneMenu>
                     </div>
@@ -72,7 +73,7 @@
                         <h:outputLabel class="ml-2" value="¿Poner la asignatura como activa?" for="check" />
                     </div>
                     <div class="input-group mt-2"> 
-                        <p:inputTextarea style="text-transform: uppercase" rows="5" cols="50" value="#{asignaturaBean.asignatura.descripcion}" placeholder="Descripción" class="form-control" required="true"/>
+                        <p:inputTextarea style="text-transform: uppercase" rows="3" cols="50" value="#{asignaturaBean.asignatura.descripcion}" placeholder="Descripción" class="form-control" required="true"/>
                     </div>
                     <br/>
                     <center>
@@ -81,6 +82,7 @@
                         </div>
                     </center>
                 </h:form>
+                </h:panelGroup>
                 <p:separator class="mt-4"/>
                 <div class="row">
                     <h4>Resultado búsqueda</h4>                 
@@ -155,12 +157,14 @@
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>
                             <center>
-                                <h:commandLink class="btn btn-info btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
                                                action="#{asignaturaBean.enableEditarOption(asignatura, true)}"
                                                rendered="#{not asignatura.editable}">
                                     <i class="material-icons">create</i>
                                 </h:commandLink>
+                                </h:panelGroup>
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
                                                action="#{asignaturaBean.editarAsignatura(asignatura)}"
@@ -175,7 +179,8 @@
                                                rendered="#{asignatura.editable}">
                                     <i class="material-icons">close</i>
                                 </h:commandLink>
-                                <h:commandLink class="btn btn-danger btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
+                                    <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
                                                action="#{asignaturaBean.eliminarAsignatura()}"
                                                rendered="#{not asignatura.editable}">
@@ -183,6 +188,7 @@
                                     <f:setPropertyActionListener 
                                         target="#{asignaturaBean.asignatura}" value="#{asignatura}" />
                                 </h:commandLink>
+                                </h:panelGroup>
                             </center>
                         </h:column>
                     </h:dataTable>

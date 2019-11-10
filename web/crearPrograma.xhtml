@@ -3,7 +3,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
@@ -30,209 +31,218 @@
                 </div>            
             </div>
         </div>
-        <div class="row mb-4 ml-1 mr-1 overflow-auto">
-            <div class="col-sm-4">
-                <div class="row mt-3">
-                    <h4>Buscar Programa</h4>                 
-                </div>
+        <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+            <div class="row mt-4">                
                 <h:form>
-                    <div class="input-group mt-2"> 
-                        <p:inputText value="#{crearProgramaBean.program.id}" type="number" class="form-control" placeholder="ID del Programa" required=""/>
-                        <div>                                        
-                            <h:commandButton value="Consultar"  class="btn btn-warning"/>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group mt-2">
+                                <p:outputLabel id="Nombre" value="Nombre:"></p:outputLabel>
+                                <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.nombre}" class="form-control" required=""/>
+                            </div>
+                            <div class="input-group mt-2">                 
+                                <p:inputTextarea style="text-transform: uppercase" value="#{crearProgramaBean.program.descripcion}" 
+                                                 rows="3" cols="50"  placeholder="Descripción" class="form-control" required="true"/>
+                            </div>
+                            <div class="form-group mt-2">
+                                <p:outputLabel id="Duracion" value="Duración: (Semestre)"></p:outputLabel>
+                                <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.duracion}" class="form-control"  required=""/>
+                            </div>
+                            <div class="form-group mt-2">
+                                <p:outputLabel id="Registro_Calificado" value="Registro Calificado:"></p:outputLabel>
+                                <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.registroCalificado}"  class="form-control"  required=""/>
+                            </div>                                       
                         </div>
-                    </div>
-                    <p:separator class="mt-4"/>
-                </h:form>
-                <div class="row mt-3">
-                    <h4>Registrar Programa</h4>                 
-                </div>
-                <h:form>
-                    
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="Nombre" value="Nombre:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.nombre}" class="form-control" required=""/>
-                    </div>
-                    <div class="input-group mt-2"> 
-                        <p:outputLabel id="descripcion" value="Descripción:"></p:outputLabel>
-                        <p:inputTextarea style="text-transform: uppercase" value="#{crearProgramaBean.program.descripcion}" 
-                                         rows="5" cols="50"  placeholder="Descripción" class="form-control" required="true"/>
-                    </div>
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="Duracion" value="Duración: (Semestre)"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.duracion}" class="form-control"  required=""/>
-                    </div>
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="Registro_Calificado" value="Registro Calificado:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.registroCalificado}"  class="form-control"  required=""/>
-                    </div>
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="SNIES" value="SNIES:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.snies}"  class="form-control"  required=""/>
-                    </div>
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="Director" value="Director:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.director}"  class="form-control"  required=""/>
-                    </div>
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="Email" value="Email:"></p:outputLabel>
-                        <p:inputText value="#{crearProgramaBean.program.email}"  class="form-control"  required=""/>
-                    </div>
-                    <div class="form-group mt-2">
-                            <p:outputLabel for="facultad" value="Facultad " />
-                            <h:selectOneMenu class="form-control" id="facultad" value="#{crearProgramaBean.program.rowidFacultad}" style="width: 100%"
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{facultadBean.facultadList}" var="facultad" itemLabel="#{facultad.descripcion}" itemValue="#{facultad.id}" />
-            </h:selectOneMenu>
+
+                        <div class="col-sm-4">
+                            <div class="form-group mt-2">
+                                <p:outputLabel id="SNIES" value="SNIES:"></p:outputLabel>
+                                <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.snies}"  class="form-control"  required=""/>
+                            </div> 
+                            <div class="form-group mt-2">
+                                <p:outputLabel id="Director" value="Director:"></p:outputLabel>
+                                <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.director}"  class="form-control"  required=""/>
+                            </div>
+                            <div class="form-group mt-2">
+                                <p:outputLabel id="Email" value="Email:"></p:outputLabel>
+                                <p:inputText value="#{crearProgramaBean.program.email}"  class="form-control"  required=""/>
+                            </div>
+                            <div class="form-group mt-2">
+                                <p:outputLabel for="facultad" value="Facultad " />
+                                <h:selectOneMenu class="form-control" id="facultad" value="#{crearProgramaBean.program.rowidFacultad}" style="width: 100%">
+                                    <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{facultadBean.facultadList}" var="facultad" itemLabel="#{facultad.descripcion}"/>
+                                </h:selectOneMenu>
+                            </div>                                       
                         </div>
-                    <div class="form-group mt-2">
-                        <p:outputLabel id="Jornada" value="Jornada:"></p:outputLabel>
-                        <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.jornada}"  class="form-control"  required=""/>
-                    </div>
-                    <div class="form-group mt-2">
-                            <p:outputLabel for="tipoPrograma" value="Tipo Programa " />
-                            <h:selectOneMenu class="form-control" id="tipoPrograma" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%"
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{tipoProgramaBean.tipoProgramList}" var="tipos" itemLabel="#{tipos.descripcion}" itemValue="#{tipos.id}" />
-            </h:selectOneMenu>
-                        </div>
-                    <div class="form-group mt-2">
-                            <p:outputLabel for="modalidad" value="Modalidad Programa " />
-                            <h:selectOneMenu class="form-control" id="modalidad" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%"
-                                             >
-                <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{modalidadPrograma.modalList}" var="modal" itemLabel="#{modal.descripcion}" itemValue="#{modal.id}" />
-            </h:selectOneMenu>
-                        </div>
-                    <center>
-                        <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Programa" action="#{crearProgramaBean.guardarPrograma()}" class="btn azul"/>
-                        </div>
-                    </center>
-                </h:form>
-                <p:separator class="mt-4"/>
-                <div class="row">
-                    <h4>Resultado búsqueda</h4>                 
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="No se encontró el programa buscado" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="ID: #{crearProgramaBean.programSearch.id}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Nombre: #{crearProgramaBean.programSearch.nombre}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Descripción: #{crearProgramaBean.programSearch.descripcion}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Duración: #{crearProgramaBean.programSearch.duracion}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Registro Calificado: #{crearProgramaBean.programSearch.registroCalificado}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="SNIES: #{crearProgramaBean.programSearch.snies}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Director: #{crearProgramaBean.programSearch.director}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Email: #{crearProgramaBean.programSearch.email}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                <div class="form-group mt-2">
-                    <h:outputText value="Jornada: #{crearProgramaBean.programSearch.jornada}" rendered="#{crearProgramaBean.programSearch == null}"/>
-                </div>
-                 
-                <p:separator/>
-            </div>
-            <div class="col-sm-8">
-                <div class="row mt-3 mb-2">
-                    <h4>Lista de Programas</h4>                 
-                </div> 
-                <h:form>
-                    <h:dataTable class="table table-hover text-center" id="tablaProgramas" value="#{crearProgramaBean.programList}"  var="programas">
-                        <p:column>
-                            <f:facet name="header">ID</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{programas.id}" class="form-control" rendered="#{programas.editable}"/>
-                            <h:outputText value="#{programas.id}" rendered="#{not programas.editable}"/>
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Nombre</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{programas.nombre}" class="form-control" rendered="#{programas.editable}"/>
-                            <h:outputText value="#{programas.nombre}" rendered="#{not programas.editable}" />
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Descripción</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{programas.descripcion}" class="form-control" rendered="#{programas.editable}"/>
-                            <h:outputText value="#{programas.descripcion}" rendered="#{not programas.editable}" />
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Duración</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{programas.duracion}" class="form-control" rendered="#{programas.editable}"/>
-                            <h:outputText value="#{programas.duracion}" rendered="#{not programas.editable}" />
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">SNIES</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{programas.snies}" class="form-control" rendered="#{programas.editable}"/>
-                            <h:outputText value="#{programas.snies}" rendered="#{not programas.editable}" />
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Director</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{programas.descripcion}" class="form-control" rendered="#{programas.editable}"/>
-                            <h:outputText value="#{programas.descripcion}" rendered="#{not programas.editable}" />
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Email</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{programas.email}" class="form-control" rendered="#{programas.editable}"/>
-                            <h:outputText value="#{programas.email}" rendered="#{not programas.editable}" />
-                        </p:column>
-                        <p:column>    				
-                            <f:facet name="header">Jornada</f:facet>
-                            <p:inputText style="text-transform: uppercase" value="#{programas.jornada}" class="form-control" rendered="#{programas.editable}"/>
-                            <h:outputText value="#{programas.jornada}" rendered="#{not programas.editable}" />
-                        </p:column>
-                        
-                        <h:column>
-                            <f:facet name="header">Acciones</f:facet>
+
+                        <div class="col-sm-4">
+                            <div class="form-group mt-2">
+                                <p:outputLabel id="Jornada" value="Jornada:"></p:outputLabel>
+                                <p:inputText style="text-transform: uppercase" value="#{crearProgramaBean.program.jornada}"  class="form-control"  required=""/>
+                            </div> 
+                            <div class="form-group mt-2">
+                                <p:outputLabel for="tipoPrograma" value="Tipo Programa " />
+                                <h:selectOneMenu class="form-control" id="tipoPrograma" value="#{crearProgramaBean.program.rowidTipo}" style="width: 100%">
+                                    <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{tipoProgramaBean.tipoProgramList}" var="tipos" itemLabel="#{tipos.descripcion}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="form-group mt-2">
+                                <p:outputLabel for="modalidad" value="Modalidad Programa " />
+                                <h:selectOneMenu class="form-control" id="modalidad" value="#{crearProgramaBean.program.rowidModalidad}" style="width: 100%">
+                                    <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{modalidadProgramaBean.modalList}" var="modal" itemLabel="#{modal.descripcion}" />
+                                </h:selectOneMenu>
+                            </div>
                             <center>
+                                <div class="btn-group" role="group" aria-label="Third group">
+                                    <h:commandButton value="Registrar Programa" action="#{crearProgramaBean.guardarPrograma()}" class="btn azul"/>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </h:form>                  
+
+
+            </div>
+        </h:panelGroup>
+
+        <p:separator/>
+        <div class="row mt-4">
+            <h:form>               
+                <div class="input-group mt-2 mb-2"> 
+                    <p:inputText value="#{crearProgramaBean.program.id}" type="number" class="form-control" placeholder="ID del Programa" required=""/>
+                    <div>                                        
+                        <h:commandButton value="Consultar" action="#{crearProgramaBean.buscarProgramaPorId(crearProgramaBean.program.id)}"  class="btn btn-warning"/>
+                    </div>
+                </div>
+                <p:separator class="mt-4"/>
+            </h:form>   
+            <div class="form-group mt-2">
+                <h:outputText value="No se encontró el programa buscado" rendered="#{crearProgramaBean.programSearch == null}"/>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group mt-2">
+                        <h:outputText value="ID: #{crearProgramaBean.programSearch.id}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <h:outputText value="Nombre: #{crearProgramaBean.programSearch.nombre}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <h:outputText value="Descripción: #{crearProgramaBean.programSearch.descripcion}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>  
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group mt-2">
+                        <h:outputText value="Duración: #{crearProgramaBean.programSearch.duracion}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <h:outputText value="Registro Calificado: #{crearProgramaBean.programSearch.registroCalificado}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <h:outputText value="SNIES: #{crearProgramaBean.programSearch.snies}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group mt-2">
+                        <h:outputText value="Director: #{crearProgramaBean.programSearch.director}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <h:outputText value="Email: #{crearProgramaBean.programSearch.email}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>
+                    <div class="form-group mt-2">
+                        <h:outputText value="Jornada: #{crearProgramaBean.programSearch.jornada}" rendered="#{crearProgramaBean.programSearch != null}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding: 35px">
+            <h:form>
+                <h:dataTable class="table table-hover text-center" id="tablaProgramas" value="#{crearProgramaBean.programList}"  var="programas">
+                    <p:column>
+                        <f:facet name="header">ID</f:facet>
+                        <p:inputText style="text-transform: uppercase" value="#{programas.id}" class="form-control" rendered="#{programas.editable}"/>
+                        <h:outputText value="#{programas.id}" rendered="#{not programas.editable}"/>
+                    </p:column>
+                    <p:column>    				
+                        <f:facet name="header">Nombre</f:facet>
+                        <p:inputText style="text-transform: uppercase" value="#{programas.nombre}" class="form-control" rendered="#{programas.editable}"/>
+                        <h:outputText value="#{programas.nombre}" rendered="#{not programas.editable}" />
+                    </p:column>
+                    <p:column>    				
+                        <f:facet name="header">Descripción</f:facet>
+                        <p:inputText style="text-transform: uppercase" value="#{programas.descripcion}" class="form-control" rendered="#{programas.editable}"/>
+                        <h:outputText value="#{programas.descripcion}" rendered="#{not programas.editable}" />
+                    </p:column>
+                    <p:column>    				
+                        <f:facet name="header">Duración</f:facet>
+                        <p:inputText style="text-transform: uppercase" value="#{programas.duracion}" class="form-control" rendered="#{programas.editable}"/>
+                        <h:outputText value="#{programas.duracion}" rendered="#{not programas.editable}" />
+                    </p:column>
+                    <p:column>    				
+                        <f:facet name="header">SNIES</f:facet>
+                        <p:inputText style="text-transform: uppercase" value="#{programas.snies}" class="form-control" rendered="#{programas.editable}"/>
+                        <h:outputText value="#{programas.snies}" rendered="#{not programas.editable}" />
+                    </p:column>
+                    <p:column>    				
+                        <f:facet name="header">Director</f:facet>
+                        <p:inputText style="text-transform: uppercase" value="#{programas.descripcion}" class="form-control" rendered="#{programas.editable}"/>
+                        <h:outputText value="#{programas.descripcion}" rendered="#{not programas.editable}" />
+                    </p:column>
+                    <p:column>    				
+                        <f:facet name="header">Email</f:facet>
+                        <p:inputText style="text-transform: uppercase" value="#{programas.email}" class="form-control" rendered="#{programas.editable}"/>
+                        <h:outputText value="#{programas.email}" rendered="#{not programas.editable}" />
+                    </p:column>
+                    <p:column>    				
+                        <f:facet name="header">Jornada</f:facet>
+                        <p:inputText style="text-transform: uppercase" value="#{programas.jornada}" class="form-control" rendered="#{programas.editable}"/>
+                        <h:outputText value="#{programas.jornada}" rendered="#{not programas.editable}" />
+                    </p:column>
+
+                    <h:column>
+                        <f:facet name="header">Acciones</f:facet>
+                        <center>
+                            <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
                                 <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
                                                action="#{crearProgramaBean.enableEditarOption(programas, true)}"
                                                rendered="#{not programas.editable}">
                                     <i class="material-icons">create</i>
                                 </h:commandLink>
-                                <h:commandLink class="btn btn-success btn-sm"
-                                               style="color: #fff"
-                                               action="#{crearProgramaBean.editarPrograma(programas)}"
-                                               rendered="#{programas.editable}">
-                                    <i class="material-icons">check</i>
-                                    <f:setPropertyActionListener 
-                                        target="#{crearProgramaBean.program}" value="#{programas}" />
-                                </h:commandLink>
-                                <h:commandLink class="btn btn-warning btn-sm"
-                                               style="color: #fff"
-                                               action="#{crearProgramaBean.enableEditarOption(programas, false)}"
-                                               rendered="#{programas.editable}">
-                                    <i class="material-icons">close</i>
-                                </h:commandLink>
+                            </h:panelGroup>
+
+                            <h:commandLink class="btn btn-success btn-sm"
+                                           style="color: #fff"
+                                           action="#{crearProgramaBean.editarPrograma(programas)}"
+                                           rendered="#{programas.editable}">
+                                <i class="material-icons">check</i>
+                                <f:setPropertyActionListener 
+                                    target="#{crearProgramaBean.program}" value="#{programas}" />
+                            </h:commandLink>
+                            <h:commandLink class="btn btn-warning btn-sm"
+                                           style="color: #fff"
+                                           action="#{crearProgramaBean.enableEditarOption(programas, false)}"
+                                           rendered="#{programas.editable}">
+                                <i class="material-icons">close</i>
+                            </h:commandLink>
+                            <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
                                 <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
-                                               action="#{crearProgramaBean.eliminarDocente()}"
+                                               action="#{crearProgramaBean.eliminarPrograma()}"
                                                rendered="#{not programas.editable}">
                                     <i class="material-icons">delete</i>
                                     <f:setPropertyActionListener 
                                         target="#{crearProgramaBean.program}" value="#{programas}" />
                                 </h:commandLink>
-                            </center>
-                        </h:column>
-                    </h:dataTable>
-                </h:form>
-            </div>
-        </div>        
+                            </h:panelGroup>
+                        </center>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->

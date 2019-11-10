@@ -189,7 +189,7 @@ public class CrearProgramaBean implements Serializable {
     }
 
     @FacesConverter(forClass = Programa.class)
-    public static class PensumBeanConverter implements Converter {
+    public static class CrearProgramaBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);

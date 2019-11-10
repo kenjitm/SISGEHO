@@ -63,14 +63,25 @@ and open the template in the editor.
                     <div class="form-group mt-2">
                         <p:inputText style="text-transform: uppercase" value="#{rolBean.rol.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
                     </div>
-                    
+                    <div class="checkbox mt-2 mb-2">
+                        <h:selectBooleanCheckbox id="hablitadoIns" value="#{rolBean.rol.bitInsert}"/>
+                        <h:outputLabel class="ml-2" value="Habilitar Registro" for="check" />
+                    </div>
+                    <div class="checkbox mt-2 mb-2">
+                        <h:selectBooleanCheckbox id="habilitadoUps" value="#{rolBean.rol.bitUpdate}"/>
+                        <h:outputLabel class="ml-2" value="Habilitar Modificaciòn" for="check" />
+                    </div>
+                    <div class="checkbox mt-2 mb-2">
+                        <h:selectBooleanCheckbox id="habilitadoDel" value="#{rolBean.rol.bitDelete}"/>
+                        <h:outputLabel class="ml-2" value="Habilitar Eliminaciòn" for="check" />
+                    </div>
                     <div class="checkbox mt-2 mb-2">
                         <h:selectBooleanCheckbox id="check" value="#{rolBean.rol.activo}"/>
                         <h:outputLabel class="ml-2" value="¿Poner el rol como activo?" for="check" />
                     </div>
                     <center>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Registrar Sede" class="btn azul" action="#{rolBean.guardarRol()}"/>
+                            <h:commandButton value="Registrar Rol" class="btn azul" action="#{rolBean.guardarRol()}"/>
                         </div>
                     </center>
                 </h:form>
@@ -89,6 +100,15 @@ and open the template in the editor.
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Descripciòn: #{rolBean.rolSearch.descripcion}" rendered="#{rolBean.rolSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Registro: #{rolBean.transformHabilitado(rolBean.rolSearch.bitInsert)}" rendered="#{rolBean.rolSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Modificaciòn: #{rolBean.transformHabilitado(rolBean.rolSearch.bitUpdate)}" rendered="#{rolBean.rolSearch != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Eliminaciòn: #{rolBean.transformHabilitado(rolBean.rolSearch.bitDelete)}" rendered="#{rolBean.rolSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Estado: #{rolBean.transformActivo(rolBean.rolSearch.activo)}" rendered="#{rolBean.rolSearch != null}"/>
@@ -115,7 +135,21 @@ and open the template in the editor.
                             <p:inputText style="text-transform: uppercase" value="#{rol.descripcion}" class="form-control" rendered="#{rol.editable}"/>
                             <h:outputText value="#{rol.descripcion}" rendered="#{not rol.editable}" />
                         </p:column>
-
+                        <p:column>    				
+                            <f:facet name="header">Registro</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Habilitado?" value="#{rol.bitInsert}" class="form-control" rendered="#{rol.editable}"/>
+                            <h:outputText value="#{rolBean.transformHabilitado(rol.bitInsert)}" rendered="#{not rol.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Modificaciòn</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Habilitado?" value="#{rol.bitUpdate}" class="form-control" rendered="#{rol.editable}"/>
+                            <h:outputText value="#{rolBean.transformHabilitado(rol.bitUpdate)}" rendered="#{not rol.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Eliminaciòn</f:facet>
+                            <p:selectBooleanCheckbox itemLabel="Habilitado?" value="#{rol.bitDelete}" class="form-control" rendered="#{rol.editable}"/>
+                            <h:outputText value="#{rolBean.transformHabilitado(rol.bitDelete)}" rendered="#{not rol.editable}" />
+                        </p:column>
                         <p:column>    				
                             <f:facet name="header">Estado</f:facet>
                             <p:selectBooleanCheckbox itemLabel="Activa?" value="#{rol.activo}" class="form-control" rendered="#{rol.editable}"/>

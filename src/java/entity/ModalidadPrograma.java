@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "modalidad_programa")
@@ -36,6 +35,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ModalidadPrograma.findByActivo", query = "SELECT m FROM ModalidadPrograma m WHERE m.activo = :activo")})
 public class ModalidadPrograma implements Serializable {
 
+    @Column(name = "id_modalidad")
+    private Integer idModalidad;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,15 +45,12 @@ public class ModalidadPrograma implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "id_modalidad")
-    private int idModalidad;
-    @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidModalidad")
+    @OneToMany(mappedBy = "rowidModalidad")
     private Collection<Programa> programaCollection;
 
     public ModalidadPrograma() {
@@ -132,6 +131,14 @@ public class ModalidadPrograma implements Serializable {
     @Override
     public String toString() {
         return "entity.ModalidadPrograma[ id=" + id + " ]";
+    }
+
+   /* public Integer getIdModalidad() {
+        return idModalidad;
+    }*/
+
+    public void setIdModalidad(Integer idModalidad) {
+        this.idModalidad = idModalidad;
     }
     
 }

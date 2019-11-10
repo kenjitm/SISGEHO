@@ -14,8 +14,7 @@ and open the template in the editor.
     <h:head>
         <h:outputStylesheet name="./css/bootstrap.min.css"/>
         <h:outputStylesheet name="./css/estilo.css"/>
-        <h:outputStylesheet name="./css/materialize-icons.css"/>
-        <h:outputStylesheet name="#{resource['css/materialize-icons.css']}"/>
+        
 
         <title>Grupoos</title>
     </h:head>
@@ -56,12 +55,13 @@ and open the template in the editor.
                     </div>
                     <p:separator class="mt-4"/>
                 </h:form>
-                <div class="row">
+                <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+                    <div class="row">
                     <h4>Registrar Facultad</h4>                 
                 </div>
                 <h:form>
                     <div class="form-group mt-2">
-                        <p:inputText style="text-transform: uppercase" value="#{facultadBean.facultad.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                        <p:inputText style="text-transform: uppercase" value="#{facultadBean.facultad.descripcion}" class="form-control" placeholder="Descripción" required=""/>
                     </div>
                     
                     <div class="checkbox mt-2 mb-2">
@@ -74,6 +74,8 @@ and open the template in the editor.
                         </div>
                     </center>
                 </h:form>
+                </h:panelGroup>
+                
                 <p:separator class="mt-4"/>
                 <div class="row">
                     <h4>Resultado búsqueda</h4>                 
@@ -85,7 +87,7 @@ and open the template in the editor.
                     <h:outputText value="ID: #{facultadBean.facultadSearch.id}" rendered="#{facultadBean.facultadSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Descripciòn: #{facultadBean.facultadSearch.descripcion}" rendered="#{facultadBean.facultadSearch != null}"/>
+                    <h:outputText value="Descripción: #{facultadBean.facultadSearch.descripcion}" rendered="#{facultadBean.facultadSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Estado: #{facultadBean.transformActivo(facultadBean.facultadSearch.activo)}" rendered="#{facultadBean.facultadSearch != null}"/>
@@ -103,7 +105,7 @@ and open the template in the editor.
                             <h:outputText value="#{facultad.id}"/>
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Descripciòn</f:facet>
+                            <f:facet name="header">Descripción</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{facultad.descripcion}" class="form-control" rendered="#{facultad.editable}"/>
                             <h:outputText value="#{facultad.descripcion}" rendered="#{not facultad.editable}" />
                         </p:column>
@@ -115,12 +117,15 @@ and open the template in the editor.
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>
                             <center>
-                                <h:commandLink class="btn btn-info btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
                                                action="#{facultadBean.enableEditarOption(facultad, true)}"
                                                rendered="#{not facultad.editable}">
                                     <i class="material-icons">create</i>
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
                                                action="#{facultadBean.editarFacultad(facultad)}"
@@ -135,7 +140,8 @@ and open the template in the editor.
                                                rendered="#{facultad.editable}">
                                     <i class="material-icons">close</i>
                                 </h:commandLink>
-                                <h:commandLink class="btn btn-danger btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
+                                    <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
                                                action="#{facultadBean.eliminarFacultad()}"
                                                rendered="#{not facultad.editable}">
@@ -143,6 +149,8 @@ and open the template in the editor.
                                     <f:setPropertyActionListener 
                                         target="#{facultadBean.facultad}" value="#{facultad}" />
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                             </center>
                         </h:column>
                     </h:dataTable>

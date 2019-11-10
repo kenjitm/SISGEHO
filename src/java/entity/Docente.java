@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "docente")
@@ -59,22 +58,24 @@ public class Docente implements Serializable {
     @Basic(optional = false)
     @Column(name = "identificacion")
     private int identificacion;
-    @Basic(optional = false)
     @Column(name = "email")
     private String email;
-    @Basic(optional = false)
     @Column(name = "tipo_contrato")
     private String tipoContrato;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidDocente")
-    private Collection<AsignaturaDocente> asignaturaDocenteCollection;
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    @Transient
+    @OneToMany(mappedBy = "rowidDocente")
+    private Collection<Asignacion> asignacionCollection;
+@Transient
     private boolean editable;
-    //Indispensable poner los set y get del atributo "editable"
+    public Docente() {
+    }
+
+    public Docente(Integer id) {
+        this.id = id;
+    }
+
     public boolean isEditable() {
         return editable;
     }
@@ -82,23 +83,13 @@ public class Docente implements Serializable {
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
-    
-    public Docente() {
-        editable = false;
-    }
 
-    public Docente(Integer id) {
-        this.id = id;
-    }
-
-    public Docente(Integer id, String nombre, String apellido, int edad, int identificacion, String email, String tipoContrato, boolean activo) {
+    public Docente(Integer id, String nombre, String apellido, int edad, int identificacion, boolean activo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.identificacion = identificacion;
-        this.email = email;
-        this.tipoContrato = tipoContrato;
         this.activo = activo;
     }
 
@@ -167,12 +158,12 @@ public class Docente implements Serializable {
     }
 
     @XmlTransient
-    public Collection<AsignaturaDocente> getAsignaturaDocenteCollection() {
-        return asignaturaDocenteCollection;
+    public Collection<Asignacion> getAsignacionCollection() {
+        return asignacionCollection;
     }
 
-    public void setAsignaturaDocenteCollection(Collection<AsignaturaDocente> asignaturaDocenteCollection) {
-        this.asignaturaDocenteCollection = asignaturaDocenteCollection;
+    public void setAsignacionCollection(Collection<Asignacion> asignacionCollection) {
+        this.asignacionCollection = asignacionCollection;
     }
 
     @Override

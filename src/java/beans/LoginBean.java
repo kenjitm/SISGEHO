@@ -41,7 +41,7 @@ public class LoginBean implements Serializable {
     private List<Rol> listaRoles;
     private List<String> nombresRoles;
     private String nombreRol;
-
+    private int idRol;
     public String getUsuario() {
         return usuario;
     }
@@ -118,7 +118,7 @@ public class LoginBean implements Serializable {
             consultaUsuarios.setParameter("usuario", usuario);
             List<Usuario> lista = consultaUsuarios.getResultList();
             Usuario user = consultaUsuarios.getResultList().get(0);
-            usuarioRolBean userBean = new usuarioRolBean();
+            UsuarioRolBean userBean = new UsuarioRolBean();
             /*ConexDB db = new ConexDB();
             UsuarioRol userRol = new UsuarioRol();
             try
@@ -131,7 +131,7 @@ public class LoginBean implements Serializable {
 
             lista = lista.stream().filter(lu -> lu != null && lu.getUsuario() != null && lu.getUsuario().equals(usuario)).collect(Collectors.toList());
             if (lista != null) {
-                if (!lista.isEmpty() && lista.get(0) != null && lista.get(0).getContraseña().equals(password)) {
+                if (!lista.isEmpty() && lista.get(0) != null && lista.get(0).getPassword().equals(password)) {
 
                     FacesContext context = FacesContext.getCurrentInstance();
                     context.getExternalContext().getSessionMap().put("user", usuario);
@@ -172,9 +172,13 @@ public class LoginBean implements Serializable {
             for (UsuarioRol usuarioRol : listaUsuarioRoles) {
                 if (usuarioRol != null && usuarioRol.getRowidRol() != null) {
                     listaRoles.add(usuarioRol.getRowidRol());
-                    
+                    Rol rol = usuarioRol.getRowidRol();
                     GlobalBean globalBean = new GlobalBean();
                     globalBean.saveObjectInSession(nombreRol, "listaRoles");
+                    System.out.println("*****beans.LoginBean.obtenerRoles: Rol: "+nombreRol+" Insert: "+rol.getBitInsert());
+                    globalBean.saveObjectInSessionBit(rol.getBitInsert(), "bitInsert");
+                    globalBean.saveObjectInSessionBit(rol.getBitUpdate(), "bitUpdate");
+                    globalBean.saveObjectInSessionBit(rol.getBitDelete(), "bitDelete");
                 }
             }
         }

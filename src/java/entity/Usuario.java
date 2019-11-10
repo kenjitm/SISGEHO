@@ -6,7 +6,9 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,13 +16,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "usuario")
@@ -32,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByApellido", query = "SELECT u FROM Usuario u WHERE u.apellido = :apellido"),
     @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario"),
     @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
-    @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a"),
+    @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password"),
     @NamedQuery(name = "Usuario.findByActivo", query = "SELECT u FROM Usuario u WHERE u.activo = :activo")})
 public class Usuario implements Serializable {
 
@@ -55,16 +59,17 @@ public class Usuario implements Serializable {
     @Column(name = "email")
     private String email;
     @Basic(optional = false)
-    @Column(name = "contrase\u00f1a")
-    private String contraseña;
+    @Column(name = "password")
+    private String password;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    @Transient
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidUsuario")
+    private Collection<UsuarioRol> usuarioRolCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidUsuario")
+    private Collection<LogAuditoria> logAuditoriaCollection;
+@Transient
     private boolean editable;
-
     public Usuario() {
         editable = false;
     }
@@ -73,22 +78,22 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public Usuario(Integer id, String nombre, String apellido, String usuario, String email, String contraseña, boolean activo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.usuario = usuario;
-        this.email = email;
-        this.contraseña = contraseña;
-        this.activo = activo;
-    }
-//Indispensable poner los set y get del atributo "editable"
     public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+
+    public Usuario(Integer id, String nombre, String apellido, String usuario, String email, String password, boolean activo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.email = email;
+        this.password = password;
+        this.activo = activo;
     }
 
     public Integer getId() {
@@ -131,12 +136,12 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean getActivo() {
@@ -145,6 +150,24 @@ public class Usuario implements Serializable {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    @XmlTransient
+    public Collection<UsuarioRol> getUsuarioRolCollection() {
+        return usuarioRolCollection;
+    }
+
+    public void setUsuarioRolCollection(Collection<UsuarioRol> usuarioRolCollection) {
+        this.usuarioRolCollection = usuarioRolCollection;
+    }
+
+    @XmlTransient
+    public Collection<LogAuditoria> getLogAuditoriaCollection() {
+        return logAuditoriaCollection;
+    }
+
+    public void setLogAuditoriaCollection(Collection<LogAuditoria> logAuditoriaCollection) {
+        this.logAuditoriaCollection = logAuditoriaCollection;
     }
 
     @Override

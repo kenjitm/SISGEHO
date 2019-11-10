@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,20 +23,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "sede")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Sede.findAll", query = "SELECT s FROM Sede s")
-    ,
-    @NamedQuery(name = "Sede.findById", query = "SELECT s FROM Sede s WHERE s.id = :id")
-    ,
-    @NamedQuery(name = "Sede.findByUbicacion", query = "SELECT s FROM Sede s WHERE s.ubicacion = :ubicacion")
-    ,
-    @NamedQuery(name = "Sede.findBySubsede", query = "SELECT s FROM Sede s WHERE s.subsede = :subsede")
-    ,
+    @NamedQuery(name = "Sede.findAll", query = "SELECT s FROM Sede s"),
+    @NamedQuery(name = "Sede.findById", query = "SELECT s FROM Sede s WHERE s.id = :id"),
+    @NamedQuery(name = "Sede.findByUbicacion", query = "SELECT s FROM Sede s WHERE s.ubicacion = :ubicacion"),
+    @NamedQuery(name = "Sede.findBySubsede", query = "SELECT s FROM Sede s WHERE s.subsede = :subsede"),
     @NamedQuery(name = "Sede.findByActivo", query = "SELECT s FROM Sede s WHERE s.activo = :activo")})
 public class Sede implements Serializable {
 
@@ -50,32 +45,35 @@ public class Sede implements Serializable {
     @Basic(optional = false)
     @Column(name = "ubicacion")
     private String ubicacion;
-    @Basic(optional = false)
     @Column(name = "subsede")
     private String subsede;
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidSede")
+    @OneToMany(mappedBy = "rowidSede")
     private Collection<Recurso> recursoCollection;
-
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    @Transient
+    @OneToMany(mappedBy = "rowidSede")
+    private Collection<Asignacion> asignacionCollection;
+@Transient
     private boolean editable;
-    
     public Sede() {
-        editable = false;
     }
 
     public Sede(Integer id) {
         this.id = id;
     }
 
-    public Sede(Integer id, String ubicacion, String subsede, boolean activo) {
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
+    public Sede(Integer id, String ubicacion, boolean activo) {
         this.id = id;
-        this.ubicacion = ubicacion.toUpperCase();
-        this.subsede = subsede.toUpperCase();
+        this.ubicacion = ubicacion;
         this.activo = activo;
     }
 
@@ -92,7 +90,7 @@ public class Sede implements Serializable {
     }
 
     public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion.toUpperCase();
+        this.ubicacion = ubicacion;
     }
 
     public String getSubsede() {
@@ -100,7 +98,7 @@ public class Sede implements Serializable {
     }
 
     public void setSubsede(String subsede) {
-        this.subsede = subsede.toUpperCase();
+        this.subsede = subsede;
     }
 
     public boolean getActivo() {
@@ -110,7 +108,7 @@ public class Sede implements Serializable {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-    
+
     @XmlTransient
     public Collection<Recurso> getRecursoCollection() {
         return recursoCollection;
@@ -119,14 +117,14 @@ public class Sede implements Serializable {
     public void setRecursoCollection(Collection<Recurso> recursoCollection) {
         this.recursoCollection = recursoCollection;
     }
-    
-    //Indispensable poner los set y get del atributo "editable"
-    public boolean getEditable() {
-        return editable;
+
+    @XmlTransient
+    public Collection<Asignacion> getAsignacionCollection() {
+        return asignacionCollection;
     }
 
-    public void setEditable(boolean editable) {
-        this.editable = editable;
+    public void setAsignacionCollection(Collection<Asignacion> asignacionCollection) {
+        this.asignacionCollection = asignacionCollection;
     }
 
     @Override
@@ -151,7 +149,7 @@ public class Sede implements Serializable {
 
     @Override
     public String toString() {
-        return ubicacion + " | " + subsede;
+        return "entity.Sede[ id=" + id + " ]";
     }
-
+    
 }

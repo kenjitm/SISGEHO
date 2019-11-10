@@ -53,17 +53,16 @@ and open the template in the editor.
                     </div>
                     <p:separator class="mt-4"/>
                 </h:form>
-                <div class="row">
+                <h:panelGroup layout="block" rendered="#{permisosBean.bitInsert}">
+                    <div class="row">
                     <h4>Registrar Tipo Programa</h4>                 
                 </div>
                 <h:form>
                     <div class="form-group mt-2">
-                        <p:outputLabel for="codigo" value="Còdigo " />
-                        <p:inputText id="codigo" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.codigo}" class="form-control" placeholder="Còdigo" required=""/>
+                        <p:inputText id="codigo" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.codigo}" class="form-control" placeholder="Código" required=""/>
                     </div>
                     <div class="form-group mt-2">
-                        <p:outputLabel for="descripcion" value="Descripciòn " />
-                        <p:inputText id="descripcion" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.descripcion}" class="form-control" placeholder="Descripciòn" required=""/>
+                        <p:inputText id="descripcion" style="text-transform: uppercase" value="#{tipoProgramaBean.tipoProgram.descripcion}" class="form-control" placeholder="Descripción" required=""/>
                     </div>
                     
                     <div class="checkbox mt-2 mb-2">
@@ -76,6 +75,8 @@ and open the template in the editor.
                         </div>
                     </center>
                 </h:form>
+                </h:panelGroup>
+                
                 <p:separator class="mt-4"/>
                 <div class="row">
                     <h4>Resultado búsqueda</h4>                 
@@ -87,10 +88,10 @@ and open the template in the editor.
                     <h:outputText value="ID: #{tipoProgramaBean.tipoProgramSearch.id}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Còdigo: #{tipoProgramaBean.tipoProgramSearch.codigo}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
+                    <h:outputText value="Código: #{tipoProgramaBean.tipoProgramSearch.codigo}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
-                    <h:outputText value="Descripciòn: #{tipoProgramaBean.tipoProgramSearch.descripcion}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
+                    <h:outputText value="Descripción: #{tipoProgramaBean.tipoProgramSearch.descripcion}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Estado: #{tipoProgramaBean.transformActivo(tipoProgramaBean.tipoProgramSearch.activo)}" rendered="#{tipoProgramaBean.tipoProgramSearch != null}"/>
@@ -108,12 +109,12 @@ and open the template in the editor.
                             <h:outputText value="#{tipos.id}"/>
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Còdigo</f:facet>
+                            <f:facet name="header">Código</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{tipos.codigo}" class="form-control" rendered="#{tipos.editable}"/>
                             <h:outputText value="#{tipos.codigo}" rendered="#{not tipos.editable}" />
                         </p:column>
                         <p:column>    				
-                            <f:facet name="header">Descripciòn</f:facet>
+                            <f:facet name="header">Descripción</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{tipos.descripcion}" class="form-control" rendered="#{tipos.editable}"/>
                             <h:outputText style="text-transform: uppercase" value="#{tipos.descripcion}" rendered="#{not tipos.editable}" />
                         </p:column>
@@ -126,12 +127,15 @@ and open the template in the editor.
                         <h:column>
                             <f:facet name="header">Acciones</f:facet>
                             <center>
-                                <h:commandLink class="btn btn-info btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitUpdate}">
+                                    <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
                                                action="#{tipoProgramaBean.enableEditarOption(tipos, true)}"
                                                rendered="#{not tipos.editable}">
                                     <i class="material-icons">create</i>
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                                 <h:commandLink class="btn btn-success btn-sm"
                                                style="color: #fff"
                                                action="#{tipoProgramaBean.editarTipo(tipos)}"
@@ -146,7 +150,8 @@ and open the template in the editor.
                                                rendered="#{tipos.editable}">
                                     <i class="material-icons">close</i>
                                 </h:commandLink>
-                                <h:commandLink class="btn btn-danger btn-sm"
+                                <h:panelGroup layout="block" rendered="#{permisosBean.bitDelete}">
+                                    <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
                                                action="#{tipoProgramaBean.eliminarTipo()}"
                                                rendered="#{not tipos.editable}">
@@ -154,6 +159,8 @@ and open the template in the editor.
                                     <f:setPropertyActionListener 
                                         target="#{tipoProgramaBean.tipoProgram}" value="#{tipos}" />
                                 </h:commandLink>
+                                </h:panelGroup>
+                                
                             </center>
                         </h:column>
                     </h:dataTable>

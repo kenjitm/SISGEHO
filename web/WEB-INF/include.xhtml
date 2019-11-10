@@ -25,6 +25,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #c8cbcf">
                             <a class="dropdown-item" href="#{registroUsuarioBean.irUsuarios()}">Usuarios</a>
                             <a class="dropdown-item" href="#{rolBean.irRol()}">Roles</a>
+                            <a class="dropdown-item" href="#{usuarioRolBean.irUserRol()}">UsuarioxRoles</a>
                             <a class="dropdown-item" href="#{cambiarPasswordBean.irCambio()}">Cambiar Contraseña</a>
                         </div>
                     </li>
@@ -33,7 +34,7 @@
                             Parametrización
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #c8cbcf">
-                            <a class="dropdown-item" href="#{asignaturaBean.irAsignatura()}">Materias</a>
+                            <a class="dropdown-item" href="#{asignaturaBean.irAsignatura()}">Asignatura</a>
                             <a class="dropdown-item" href="#{docenteBean.irDocente()}">Docentes</a>
                             <a class="dropdown-item" href="#{grupoBean.irGrupo()}">Grupos</a>
                             <a class="dropdown-item" href="#{recursoBean.irSalones()}">Salones</a>
@@ -62,9 +63,9 @@
                     </li>
 
                     <li class="nav-item dropdown" style="">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Usuario</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> #{globalBean.loggedUser}</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #c8cbcf">
-                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Perfil</a>
                             <a class="dropdown-item" href="#{loginBean.home()}">Salir</a>
                         </div>
                     </li>

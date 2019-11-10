@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "facultad")
@@ -48,15 +47,15 @@ public class Facultad implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidFacultad")
+    @OneToMany(mappedBy = "rowidFacultad")
     private Collection<Programa> programaCollection;
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    @Transient
+@Transient
     private boolean editable;
-    
     public Facultad() {
-        editable = false;
+    }
+
+    public Facultad(Integer id) {
+        this.id = id;
     }
 
     public boolean isEditable() {
@@ -65,10 +64,6 @@ public class Facultad implements Serializable {
 
     public void setEditable(boolean editable) {
         this.editable = editable;
-    }
-
-    public Facultad(Integer id) {
-        this.id = id;
     }
 
     public Facultad(Integer id, String descripcion, boolean activo) {

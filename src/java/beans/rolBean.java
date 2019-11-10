@@ -101,7 +101,10 @@ public class rolBean {
     public String transformActivo(Boolean activo) {
         return (activo) ? "ACTIVA" : "INACTIVA";
     }
-
+    //Agregar este método para campos booleanos, como "habilitado"
+    public String transformHabilitado(Boolean bitBool) {
+        return (bitBool) ? "HABILITADO" : "INHABILITADO";
+    }
     //INDISPENSABLE tener este método
     public void enableEditarOption(Rol rol, boolean estado) {
         rol.setEditable(estado);
@@ -147,8 +150,8 @@ public class rolBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    @FacesConverter(forClass = Sede.class)
-    public static class SedeBeanConverter implements Converter {
+    @FacesConverter(forClass = Rol.class)
+    public static class rolBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);

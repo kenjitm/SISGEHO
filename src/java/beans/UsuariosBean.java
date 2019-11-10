@@ -5,14 +5,12 @@
  */
 package beans;
 
-import entity.Facultad;
-import entity.Recurso;
 import entity.Sede;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import entity.Usuario;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -21,98 +19,74 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.primefaces.context.RequestContext;
-
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class facultadBean {
-    private int id;
-    private String descripcion;
-    private Facultad facultad;
-    private Facultad facultadSearch;
+public class UsuariosBean {
+    private Usuario user;
+    private Usuario userSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
-    private static List<Facultad> facultadList;
-
-    public Facultad getFacultad() {
-        return facultad;
+    private static List<Usuario> userList;
+    public UsuariosBean(){
+        user = new Usuario();
+        userSearch = new Usuario();
+        obtenerUsuarios();
     }
 
-    public void setFacultad(Facultad facultad) {
-        this.facultad = facultad;
+    public Usuario getUser() {
+        return user;
     }
 
-    public Facultad getFacultadSearch() {
-        return facultadSearch;
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 
-    public void setFacultadSearch(Facultad facultadSearch) {
-        this.facultadSearch = facultadSearch;
+    public Usuario getUserSearch() {
+        return userSearch;
     }
 
-    public List<Facultad> getFacultadList() {
-        return facultadList;
-    }
-    
-    public int getId() {
-        return id;
+    public void setUserSearch(Usuario userSearch) {
+        this.userSearch = userSearch;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public List<Usuario> getUserList() {
+        return userList;
     }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-    public String irFacultad(){
-        return "gestionFacultad.xhtml";
-    }
-    public facultadBean(){
-        facultad = new Facultad();
-        facultadSearch = new Facultad();
-        obtenerFacultades();
-    }
-    
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    private void obtenerFacultades() {
+    private void obtenerUsuarios() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> q = em.createNamedQuery("Facultad.findAll", Facultad.class);
-        facultadList = q.getResultList();
+        TypedQuery<Usuario> q = em.createNamedQuery("Usuario.findAll", Usuario.class);
+        userList = q.getResultList();
     }
-    public void buscarFacultadPorId(Integer id) {
-        facultadSearch = buscarById(id);
+    public void buscarUserPorId(Integer id) {
+        userSearch = buscarById(id);
     }
 
-    public Facultad buscarById(Integer id) {
+    public Usuario buscarById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> facultad = em.createNamedQuery("Facultad.findById", Facultad.class);
-        facultad.setParameter("id", id);
-        return (facultad.getResultList().isEmpty())?  null : facultad.getResultList().get(0);
+        TypedQuery<Usuario> user = em.createNamedQuery("UsuariofindById", Usuario.class);
+        user.setParameter("id", id);
+        return (user.getResultList().isEmpty())?  null : user.getResultList().get(0);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void guardarFacultad() {
+    public void guardarUsuario() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.persist(facultad);
+            em.persist(user);
             em.getTransaction().commit();
             em.close();
-            facultad = new Facultad();
-            obtenerFacultades(); //Actualiza lista
+            user = new Usuario();
+            obtenerUsuarios(); //Actualiza lista
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -126,22 +100,22 @@ public class facultadBean {
     }
 
     //INDISPENSABLE tener este método
-    public void enableEditarOption(Facultad facultad, boolean estado) {
-        facultad.setEditable(estado);
+    public void enableEditarOption(Usuario us, boolean estado) {
+        us.setEditable(estado);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void editarFacultad(Facultad f) {
+    public void editarUsuarioRol(Usuario s) {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.merge(facultad);
+            em.merge(user);
             em.getTransaction().commit();
             em.close();
-            obtenerFacultades(); //Actualiza lista
-            f.setEditable(false);
-            facultad = new Facultad();
+            obtenerUsuarios(); //Actualiza lista
+            s.setEditable(false);
+            user = new Usuario();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -150,19 +124,19 @@ public class facultadBean {
         }
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void eliminarFacultad() {
+    public void eliminarUsuario() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            if (!em.contains(facultad)) {
-                facultad = em.merge(facultad);
+            if (!em.contains(user)) {
+                user = em.merge(user);
             }
-            em.remove(facultad);
+            em.remove(user);
             em.getTransaction().commit();
-            obtenerFacultades(); //Actualiza lista
-            facultad = new Facultad();
+            obtenerUsuarios(); //Actualiza lista
+            user = new Usuario();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -170,9 +144,8 @@ public class facultadBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    
-    @FacesConverter(forClass = Facultad.class)
-    public static class facultadBeanConverter implements Converter {
+    @FacesConverter(forClass = Usuario.class)
+    public static class UsuariosBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);
@@ -187,17 +160,17 @@ public class facultadBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((facultadBean) context.getApplication().evaluateExpressionGet(context, "#{" + "facultadBean" + "}", facultadBean.class)).buscarById(getKey(value));
+            return ((UsuariosBean) context.getApplication().evaluateExpressionGet(context, "#{" + "UsuariosBean" + "}", UsuariosBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Facultad) {
-                return getStringKey(((Facultad) value).getId());
+            } else if (value instanceof Sede) {
+                return getStringKey(((Sede) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Facultad.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
             }
         }
 

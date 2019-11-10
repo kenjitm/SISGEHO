@@ -171,8 +171,8 @@ public class RecursoBean {
         }
     }
 
-    @FacesConverter(forClass = Sede.class)
-    public static class SedeBeanConverter implements Converter {
+    @FacesConverter(forClass = Recurso.class)
+    public static class RecursoBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);
@@ -194,10 +194,10 @@ public class RecursoBean {
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Recurso) {
+                return getStringKey(((Recurso) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Recurso.class.getName());
             }
         }
 

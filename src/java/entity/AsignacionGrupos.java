@@ -6,9 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,22 +16,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author IngenieroDesarrollo
  */
 @Entity
-@Table(name = "grupo_asignatura_p")
+@Table(name = "asignacion_grupos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "GrupoAsignaturaP.findAll", query = "SELECT g FROM GrupoAsignaturaP g"),
-    @NamedQuery(name = "GrupoAsignaturaP.findById", query = "SELECT g FROM GrupoAsignaturaP g WHERE g.id = :id")})
-public class GrupoAsignaturaP implements Serializable {
+    @NamedQuery(name = "AsignacionGrupos.findAll", query = "SELECT a FROM AsignacionGrupos a"),
+    @NamedQuery(name = "AsignacionGrupos.findById", query = "SELECT a FROM AsignacionGrupos a WHERE a.id = :id"),
+    @NamedQuery(name = "AsignacionGrupos.findByCantidadEstudiantes", query = "SELECT a FROM AsignacionGrupos a WHERE a.cantidadEstudiantes = :cantidadEstudiantes")})
+public class AsignacionGrupos implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,22 +38,19 @@ public class GrupoAsignaturaP implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "rowid_Periodo", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Periodo rowidPeriodo;
-    @JoinColumn(name = "rowid_Asignatura_Docente", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private AsignaturaDocente rowidAsignaturaDocente;
+    @Column(name = "cantidadEstudiantes")
+    private Integer cantidadEstudiantes;
     @JoinColumn(name = "rowid_grupo", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Grupo rowidGrupo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidGrupoAsignatura")
-    private Collection<HorarioAsignado> horarioAsignadoCollection;
+    @JoinColumn(name = "rowid_asignacion", referencedColumnName = "id")
+    @ManyToOne
+    private Asignacion rowidAsignacion;
 
-    public GrupoAsignaturaP() {
+    public AsignacionGrupos() {
     }
 
-    public GrupoAsignaturaP(Integer id) {
+    public AsignacionGrupos(Integer id) {
         this.id = id;
     }
 
@@ -68,20 +62,12 @@ public class GrupoAsignaturaP implements Serializable {
         this.id = id;
     }
 
-    public Periodo getRowidPeriodo() {
-        return rowidPeriodo;
+    public Integer getCantidadEstudiantes() {
+        return cantidadEstudiantes;
     }
 
-    public void setRowidPeriodo(Periodo rowidPeriodo) {
-        this.rowidPeriodo = rowidPeriodo;
-    }
-
-    public AsignaturaDocente getRowidAsignaturaDocente() {
-        return rowidAsignaturaDocente;
-    }
-
-    public void setRowidAsignaturaDocente(AsignaturaDocente rowidAsignaturaDocente) {
-        this.rowidAsignaturaDocente = rowidAsignaturaDocente;
+    public void setCantidadEstudiantes(Integer cantidadEstudiantes) {
+        this.cantidadEstudiantes = cantidadEstudiantes;
     }
 
     public Grupo getRowidGrupo() {
@@ -92,13 +78,12 @@ public class GrupoAsignaturaP implements Serializable {
         this.rowidGrupo = rowidGrupo;
     }
 
-    @XmlTransient
-    public Collection<HorarioAsignado> getHorarioAsignadoCollection() {
-        return horarioAsignadoCollection;
+    public Asignacion getRowidAsignacion() {
+        return rowidAsignacion;
     }
 
-    public void setHorarioAsignadoCollection(Collection<HorarioAsignado> horarioAsignadoCollection) {
-        this.horarioAsignadoCollection = horarioAsignadoCollection;
+    public void setRowidAsignacion(Asignacion rowidAsignacion) {
+        this.rowidAsignacion = rowidAsignacion;
     }
 
     @Override
@@ -111,10 +96,10 @@ public class GrupoAsignaturaP implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GrupoAsignaturaP)) {
+        if (!(object instanceof AsignacionGrupos)) {
             return false;
         }
-        GrupoAsignaturaP other = (GrupoAsignaturaP) object;
+        AsignacionGrupos other = (AsignacionGrupos) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -123,7 +108,7 @@ public class GrupoAsignaturaP implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.GrupoAsignaturaP[ id=" + id + " ]";
+        return "entity.AsignacionGrupos[ id=" + id + " ]";
     }
     
 }

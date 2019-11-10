@@ -11,8 +11,7 @@ package entity;
  */
 public enum TipoId {
     CC("Cédula Ciudadanía"),
-    CE("Cédula Extranjería"),
-    NN("Sin Identificación");
+    CE("Cédula Extranjería");
 
     private final String label;
 

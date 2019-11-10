@@ -192,8 +192,8 @@ public class beanPeriodo {
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Periodo) {
+                return getStringKey(((Periodo) value).getId());
             } else {
                 throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Periodo.class.getName());
             }

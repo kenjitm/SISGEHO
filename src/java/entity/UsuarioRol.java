@@ -22,13 +22,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "usuario_rol")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "UsuarioRol.findAll", query = "SELECT u FROM UsuarioRol u"),
+    @NamedQuery(name = "UsuarioRol.findById", query = "SELECT u FROM UsuarioRol u WHERE u.id = :id"),
     @NamedQuery(name = "UsuarioRol.findByUserId", query = "SELECT u FROM UsuarioRol u WHERE u.id = :id"),
     @NamedQuery(name = "UsuarioRol.findByActivo", query = "SELECT u FROM UsuarioRol u WHERE u.activo = :activo")})
 public class UsuarioRol implements Serializable {
@@ -42,28 +43,19 @@ public class UsuarioRol implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
+    @JoinColumn(name = "rowid_usuario", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Usuario rowidUsuario;
     @JoinColumn(name = "rowid_rol", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Rol rowidRol;
-    @JoinColumn(name = "rowid_usuario", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    /*@Transient
-    private boolean editable;*/
-    private Usuario rowidUsuario;
+    
+    @Transient
+    private Boolean editable;
 
     public UsuarioRol() {
-        //editable = false;
+        editable = false;
     }
-
-    /*public boolean isEditable() {
-        return editable;
-    }
-
-    public void setEditable(boolean editable) {
-        this.editable = editable;
-    }*/
 
     public UsuarioRol(Integer id) {
         this.id = id;
@@ -90,14 +82,6 @@ public class UsuarioRol implements Serializable {
         this.activo = activo;
     }
 
-    public Rol getRowidRol() {
-        return rowidRol;
-    }
-
-    public void setRowidRol(Rol rowidRol) {
-        this.rowidRol = rowidRol;
-    }
-
     public Usuario getRowidUsuario() {
         return rowidUsuario;
     }
@@ -106,6 +90,22 @@ public class UsuarioRol implements Serializable {
         this.rowidUsuario = rowidUsuario;
     }
 
+    public Rol getRowidRol() {
+        return rowidRol;
+    }
+
+    public void setRowidRol(Rol rowidRol) {
+        this.rowidRol = rowidRol;
+    }
+
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

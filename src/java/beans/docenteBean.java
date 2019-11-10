@@ -7,7 +7,7 @@ package beans;
 
 import entity.Asignatura;
 import entity.Docente;
-import entity.Horario;
+import entity.Hora;
 import entity.RelacionDocenteHorarioMateria;
 import entity.Sede;
 import entity.TipoId;
@@ -47,9 +47,36 @@ public class docenteBean {
     private Docente docenteSearch;
    //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<Docente> docenteList;
+    private Boolean bitInsert;
+    private Boolean bitUpdate;
+    private Boolean bitDelete;
     //INDISPENSABLE EL MÉTODO GET. SÓLO EL GET
     public List<Docente> getDocenteList() {
         return docenteList;
+    }
+
+    public Boolean getBitInsert() {
+        return bitInsert;
+    }
+
+    public void setBitInsert(Boolean bitInsert) {
+        this.bitInsert = bitInsert;
+    }
+
+    public Boolean getBitUpdate() {
+        return bitUpdate;
+    }
+
+    public void setBitUpdate(Boolean bitUpdate) {
+        this.bitUpdate = bitUpdate;
+    }
+
+    public Boolean getBitDelete() {
+        return bitDelete;
+    }
+
+    public void setBitDelete(Boolean bitDelete) {
+        this.bitDelete = bitDelete;
     }
     
     public Docente getDocentes() {
@@ -80,6 +107,10 @@ public class docenteBean {
         docentes = new Docente();
         docenteSearch = new Docente();
         obtenerDocentes();
+        GlobalBean globalBean = new GlobalBean();
+        bitInsert = (Boolean)globalBean.getObjectFromSession("bitInsert"); 
+        bitUpdate = (Boolean)globalBean.getObjectFromSession("bitUpdate"); 
+        bitDelete = (Boolean)globalBean.getObjectFromSession("bitDelete"); 
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
     private void obtenerDocentes() {
@@ -262,7 +293,7 @@ public class docenteBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    @FacesConverter(forClass = Horario.class)
+    @FacesConverter(forClass = Docente.class)
     public static class docenteBeanConverter implements Converter {
 
         Integer getKey(String value) {
@@ -285,10 +316,10 @@ public class docenteBean {
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Horario) {
-                return getStringKey(((Horario) value).getId());
+            } else if (value instanceof Docente) {
+                return getStringKey(((Docente) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Horario.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Docente.class.getName());
             }
         }
 

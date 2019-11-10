@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "recurso")
@@ -59,31 +58,28 @@ public class Recurso implements Serializable {
     @Column(name = "activo")
     private boolean activo;
     @JoinColumn(name = "rowid_tipo", referencedColumnName = "id")
-    @ManyToOne(optional = true)
+    @ManyToOne
     private TipoRecurso rowidTipo;
     @JoinColumn(name = "rowid_sede", referencedColumnName = "id")
-    @ManyToOne(optional = true)
+    @ManyToOne
     private Sede rowidSede;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidRecurso")
-    private Collection<HorarioAsignado> horarioAsignadoCollection;
-
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    @Transient
+    @OneToMany(mappedBy = "rowidRecurso")
+    private Collection<Asignacion> asignacionCollection;
+@Transient
     private boolean editable;
-    //Indispensable poner los set y get del atributo "editable"
+    public Recurso() {
+    }
+
+    public Recurso(Integer id) {
+        this.id = id;
+    }
+
     public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
-    }
-    public Recurso() {
-    }
-
-    public Recurso(Integer id) {
-        this.id = id;
     }
 
     public Recurso(Integer id, String descripcion, String nomenclatura, int capacidad, boolean activo) {
@@ -151,12 +147,12 @@ public class Recurso implements Serializable {
     }
 
     @XmlTransient
-    public Collection<HorarioAsignado> getHorarioAsignadoCollection() {
-        return horarioAsignadoCollection;
+    public Collection<Asignacion> getAsignacionCollection() {
+        return asignacionCollection;
     }
 
-    public void setHorarioAsignadoCollection(Collection<HorarioAsignado> horarioAsignadoCollection) {
-        this.horarioAsignadoCollection = horarioAsignadoCollection;
+    public void setAsignacionCollection(Collection<Asignacion> asignacionCollection) {
+        this.asignacionCollection = asignacionCollection;
     }
 
     @Override

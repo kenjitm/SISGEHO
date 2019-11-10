@@ -5,14 +5,11 @@
  */
 package beans;
 
-import entity.Facultad;
-import entity.Recurso;
-import entity.Sede;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import entity.UsuarioRol;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -21,7 +18,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -29,90 +25,73 @@ import org.primefaces.context.RequestContext;
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class facultadBean {
-    private int id;
-    private String descripcion;
-    private Facultad facultad;
-    private Facultad facultadSearch;
+public class UsuarioRolBean {
+
+    private UsuarioRol userRol;
+    private UsuarioRol userRolSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
-    private static List<Facultad> facultadList;
+    private static List<UsuarioRol> userRolList;
 
-    public Facultad getFacultad() {
-        return facultad;
+    public UsuarioRolBean() {
+        userRol = new UsuarioRol();
+        userRolSearch = new UsuarioRol();
+        obtenerUsuariosRoles();
     }
-
-    public void setFacultad(Facultad facultad) {
-        this.facultad = facultad;
-    }
-
-    public Facultad getFacultadSearch() {
-        return facultadSearch;
-    }
-
-    public void setFacultadSearch(Facultad facultadSearch) {
-        this.facultadSearch = facultadSearch;
-    }
-
-    public List<Facultad> getFacultadList() {
-        return facultadList;
+    public String irUserRol(){
+        return "gestionUsuarioRol.xhtml";
     }
     
-    public int getId() {
-        return id;
+    public UsuarioRol getUserRol() {
+        return userRol;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserRol(UsuarioRol userRol) {
+        this.userRol = userRol;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public UsuarioRol getUserRolSearch() {
+        return userRolSearch;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setUserRolSearch(UsuarioRol userRolSearch) {
+        this.userRolSearch = userRolSearch;
     }
-    public String irFacultad(){
-        return "gestionFacultad.xhtml";
+
+    public List<UsuarioRol> getUserRolList() {
+        return userRolList;
     }
-    public facultadBean(){
-        facultad = new Facultad();
-        facultadSearch = new Facultad();
-        obtenerFacultades();
-    }
-    
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    private void obtenerFacultades() {
+    private void obtenerUsuariosRoles() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> q = em.createNamedQuery("Facultad.findAll", Facultad.class);
-        facultadList = q.getResultList();
+        TypedQuery<UsuarioRol> q = em.createNamedQuery("UsuarioRol.findAll", UsuarioRol.class);
+        userRolList = q.getResultList();
     }
-    public void buscarFacultadPorId(Integer id) {
-        facultadSearch = buscarById(id);
+    public void buscarUserRolPorId(Integer id) {
+        userRolSearch = buscarById(id);
     }
 
-    public Facultad buscarById(Integer id) {
+    public UsuarioRol buscarById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> facultad = em.createNamedQuery("Facultad.findById", Facultad.class);
-        facultad.setParameter("id", id);
-        return (facultad.getResultList().isEmpty())?  null : facultad.getResultList().get(0);
+        TypedQuery<UsuarioRol> user = em.createNamedQuery("UsuarioRol.findById", UsuarioRol.class);
+        user.setParameter("id", id);
+        return (user.getResultList().isEmpty())?  null : user.getResultList().get(0);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void guardarFacultad() {
+    public void guardarUsuarioRol() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.persist(facultad);
+            em.persist(userRol);
             em.getTransaction().commit();
             em.close();
-            facultad = new Facultad();
-            obtenerFacultades(); //Actualiza lista
+            userRol = new UsuarioRol();
+            obtenerUsuariosRoles(); //Actualiza lista
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -126,22 +105,22 @@ public class facultadBean {
     }
 
     //INDISPENSABLE tener este método
-    public void enableEditarOption(Facultad facultad, boolean estado) {
-        facultad.setEditable(estado);
+    public void enableEditarOption(UsuarioRol rol, boolean estado) {
+        rol.setEditable(estado);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void editarFacultad(Facultad f) {
+    public void editarUsuarioRol(UsuarioRol s) {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.merge(facultad);
+            em.merge(userRol);
             em.getTransaction().commit();
             em.close();
-            obtenerFacultades(); //Actualiza lista
-            f.setEditable(false);
-            facultad = new Facultad();
+            obtenerUsuariosRoles(); //Actualiza lista
+            s.setEditable(false);
+            userRol = new UsuarioRol();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -150,19 +129,19 @@ public class facultadBean {
         }
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void eliminarFacultad() {
+    public void eliminarUsuarioRol() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            if (!em.contains(facultad)) {
-                facultad = em.merge(facultad);
+            if (!em.contains(userRol)) {
+                userRol = em.merge(userRol);
             }
-            em.remove(facultad);
+            em.remove(userRol);
             em.getTransaction().commit();
-            obtenerFacultades(); //Actualiza lista
-            facultad = new Facultad();
+            obtenerUsuariosRoles(); //Actualiza lista
+            userRol = new UsuarioRol();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -170,9 +149,8 @@ public class facultadBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    
-    @FacesConverter(forClass = Facultad.class)
-    public static class facultadBeanConverter implements Converter {
+    @FacesConverter(forClass = UsuarioRol.class)
+    public static class usuarioRolBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);
@@ -187,17 +165,17 @@ public class facultadBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((facultadBean) context.getApplication().evaluateExpressionGet(context, "#{" + "facultadBean" + "}", facultadBean.class)).buscarById(getKey(value));
+            return ((UsuarioRolBean) context.getApplication().evaluateExpressionGet(context, "#{" + "usuarioRolBean" + "}", UsuarioRolBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Facultad) {
-                return getStringKey(((Facultad) value).getId());
+            } else if (value instanceof UsuarioRol) {
+                return getStringKey(((UsuarioRol) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Facultad.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + UsuarioRol.class.getName());
             }
         }
 

@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "programa")
@@ -72,21 +71,22 @@ public class Programa implements Serializable {
     @Basic(optional = false)
     @Column(name = "jornada")
     private String jornada;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidPrograma")
+    @OneToMany(mappedBy = "rowidPrograma")
     private Collection<Asignatura> asignaturaCollection;
     @JoinColumn(name = "rowid_facultad", referencedColumnName = "id")
-    @ManyToOne(optional = true)
+    @ManyToOne
     private Facultad rowidFacultad;
     @JoinColumn(name = "rowid_tipo", referencedColumnName = "id")
-    @ManyToOne(optional = true)
+    @ManyToOne
     private TipoPrograma rowidTipo;
     @JoinColumn(name = "rowid_modalidad", referencedColumnName = "id")
-    @ManyToOne(optional = true)
+    @ManyToOne
     private ModalidadPrograma rowidModalidad;
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
     @Transient
     private boolean editable;
+    public Programa() {
+        editable = false;
+    }
 
     public boolean isEditable() {
         return editable;
@@ -94,10 +94,6 @@ public class Programa implements Serializable {
 
     public void setEditable(boolean editable) {
         this.editable = editable;
-    }
-
-    public Programa() {
-        editable = false;
     }
 
     public Programa(Integer id) {

@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @Entity
 @Table(name = "grupo")
@@ -36,6 +35,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Grupo.findByDescripcion", query = "SELECT g FROM Grupo g WHERE g.descripcion = :descripcion"),
     @NamedQuery(name = "Grupo.findByActivo", query = "SELECT g FROM Grupo g WHERE g.activo = :activo")})
 public class Grupo implements Serializable {
+
+    @OneToMany(mappedBy = "rowidGrupo")
+    private Collection<AsignacionGrupos> asignacionGruposCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,26 +54,22 @@ public class Grupo implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidGrupo")
-    private Collection<GrupoAsignaturaP> grupoAsignaturaPCollection;
-    //Atributo para poder renderizar los campos de editar en la tabla
-    //Ponerlo como Transient para que no afecte los querys, ya que es un campo que no existe en la DB
-    @Transient
+    
+@Transient
     private boolean editable;
     public Grupo() {
-        editable = false;
     }
-    //Indispensable poner los set y get del atributo "editable"
+
+    public Grupo(Integer id) {
+        this.id = id;
+    }
+
     public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
-    }
-
-    public Grupo(Integer id) {
-        this.id = id;
     }
 
     public Grupo(Integer id, String nomenclatura, String descripcion, boolean activo) {
@@ -113,14 +111,7 @@ public class Grupo implements Serializable {
         this.activo = activo;
     }
 
-    @XmlTransient
-    public Collection<GrupoAsignaturaP> getGrupoAsignaturaPCollection() {
-        return grupoAsignaturaPCollection;
-    }
-
-    public void setGrupoAsignaturaPCollection(Collection<GrupoAsignaturaP> grupoAsignaturaPCollection) {
-        this.grupoAsignaturaPCollection = grupoAsignaturaPCollection;
-    }
+   
 
     @Override
     public int hashCode() {
@@ -144,7 +135,16 @@ public class Grupo implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Grupo[ id=" + id + " ]";
+        return nomenclatura;
+    }
+
+    @XmlTransient
+    public Collection<AsignacionGrupos> getAsignacionGruposCollection() {
+        return asignacionGruposCollection;
+    }
+
+    public void setAsignacionGruposCollection(Collection<AsignacionGrupos> asignacionGruposCollection) {
+        this.asignacionGruposCollection = asignacionGruposCollection;
     }
     
 }

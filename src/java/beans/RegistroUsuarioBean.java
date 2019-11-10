@@ -7,10 +7,12 @@ package beans;
 
 import entity.Asignatura;
 import entity.Docente;
+import entity.Rol;
 import entity.Sede;
 import entity.TipoId;
 import entity.TipoRol;
 import entity.Usuario;
+import entity.UsuarioRol;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -51,6 +53,8 @@ public class RegistroUsuarioBean {
     private String usuario;
     private String password;
     private Integer edad;
+    private Rol rowRol;
+    private UsuarioRol userRol;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<Usuario> usersList;
      //INDISPENSABLE EL MÉTODO GET. SÓLO EL GET
@@ -60,6 +64,22 @@ public class RegistroUsuarioBean {
 
     public Usuario getUser() {
         return user;
+    }
+
+    public Rol getRowRol() {
+        return rowRol;
+    }
+
+    public UsuarioRol getUserRol() {
+        return userRol;
+    }
+
+    public void setUserRol(UsuarioRol userRol) {
+        this.userRol = userRol;
+    }
+
+    public void setRowRol(Rol rowRol) {
+        this.rowRol = rowRol;
     }
 
     public void setUser(Usuario user) {
@@ -77,6 +97,7 @@ public class RegistroUsuarioBean {
     public RegistroUsuarioBean() {
         user = new Usuario();
         userSearch = new Usuario();
+        userRol = new UsuarioRol();
         obtenerUsuarios();
     }
 
@@ -204,8 +225,20 @@ public class RegistroUsuarioBean {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
+            Rol rol = new Rol();
+            rolBean processRol = new rolBean();
+            rol = processRol.buscarById(6);
+            System.out.println("***beans.RegistroUsuarioBean.guardarUsuarios: -Rol-"+rol.getNombre());
             em.getTransaction().begin();
             em.persist(user);
+            em.getTransaction().commit();
+            em.close();
+            em = emf.createEntityManager();
+            userRol.setRowidRol(rol);
+            userRol.setRowidUsuario(user);
+            userRol.setActivo(true);
+            em.getTransaction().begin();
+            em.persist(userRol);
             em.getTransaction().commit();
             em.close();
             user = new Usuario();
@@ -281,7 +314,8 @@ public class RegistroUsuarioBean {
         //user.set(rol);
         user.setEmail(email);
         user.setUsuario(usuario);
-        user.setContraseña(password);
+        user.setPassword(password);
+        user.setActivo(true);
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
@@ -336,7 +370,7 @@ public Usuario getUsuarioUser(String userName) throws SQLException, ClassNotFoun
                         user.setApellido(rs.getNString("apellido"));
                         user.setUsuario(rs.getNString("usuario"));
                         user.setEmail(rs.getNString("email"));
-                        user.setContraseña(rs.getNString("contraseña"));
+                        user.setPassword(rs.getNString("contraseña"));
                         user.setActivo(rs.getBoolean("activo"));
 		}
 

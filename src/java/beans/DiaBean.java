@@ -5,14 +5,11 @@
  */
 package beans;
 
-import entity.Facultad;
-import entity.Recurso;
-import entity.Sede;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import entity.Dia;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -21,98 +18,79 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import org.primefaces.context.RequestContext;
-
 /**
  *
- * @author IngenieroDesarrollo
+ * @author SougiroHylian
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class facultadBean {
-    private int id;
-    private String descripcion;
-    private Facultad facultad;
-    private Facultad facultadSearch;
+public class DiaBean {
+    private Dia day;
+    private Dia daySearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
-    private static List<Facultad> facultadList;
-
-    public Facultad getFacultad() {
-        return facultad;
-    }
-
-    public void setFacultad(Facultad facultad) {
-        this.facultad = facultad;
-    }
-
-    public Facultad getFacultadSearch() {
-        return facultadSearch;
-    }
-
-    public void setFacultadSearch(Facultad facultadSearch) {
-        this.facultadSearch = facultadSearch;
-    }
-
-    public List<Facultad> getFacultadList() {
-        return facultadList;
+    private static List<Dia> dayList;
+    public DiaBean()
+    {
+        day = new Dia();
+        daySearch = new Dia();
+        obtenerDias();
     }
     
-    public int getId() {
-        return id;
+    public String irDias() {
+        return "gestionDias.xhtml";
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Dia getDay() {
+        return day;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public void setDay(Dia day) {
+        this.day = day;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public Dia getDaySearch() {
+        return daySearch;
     }
-    public String irFacultad(){
-        return "gestionFacultad.xhtml";
+
+    public void setDaySearch(Dia daySearch) {
+        this.daySearch = daySearch;
     }
-    public facultadBean(){
-        facultad = new Facultad();
-        facultadSearch = new Facultad();
-        obtenerFacultades();
+
+    public List<Dia> getDayList() {
+        return dayList;
     }
-    
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    private void obtenerFacultades() {
+    private void obtenerDias() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> q = em.createNamedQuery("Facultad.findAll", Facultad.class);
-        facultadList = q.getResultList();
+        TypedQuery<Dia> q = em.createNamedQuery("Dia.findAll", Dia.class);
+        dayList = q.getResultList();
     }
-    public void buscarFacultadPorId(Integer id) {
-        facultadSearch = buscarById(id);
+    public void buscarDiaPorId(Integer id) {
+        daySearch = buscarById(id);
     }
 
-    public Facultad buscarById(Integer id) {
+    public Dia buscarById(Integer id) {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Facultad> facultad = em.createNamedQuery("Facultad.findById", Facultad.class);
-        facultad.setParameter("id", id);
-        return (facultad.getResultList().isEmpty())?  null : facultad.getResultList().get(0);
+        TypedQuery<Dia> dia = em.createNamedQuery("Dia.findById", Dia.class);
+        dia.setParameter("id", id);
+        return (dia.getResultList().isEmpty())?  null : dia.getResultList().get(0);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void guardarFacultad() {
+    public void guardarDia() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.persist(facultad);
+            em.persist(day);
             em.getTransaction().commit();
             em.close();
-            facultad = new Facultad();
-            obtenerFacultades(); //Actualiza lista
+            day = new Dia();
+            obtenerDias(); //Actualiza lista
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -120,28 +98,23 @@ public class facultadBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    //Agregar este método para campos booleanos, como "activo"
-    public String transformActivo(Boolean activo) {
-        return (activo) ? "ACTIVA" : "INACTIVA";
-    }
-
     //INDISPENSABLE tener este método
-    public void enableEditarOption(Facultad facultad, boolean estado) {
-        facultad.setEditable(estado);
+    public void enableEditarOption(Dia dia, boolean estado) {
+        dia.setEditable(estado);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void editarFacultad(Facultad f) {
+    public void editarDia(Dia s) {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.merge(facultad);
+            em.merge(day);
             em.getTransaction().commit();
             em.close();
-            obtenerFacultades(); //Actualiza lista
-            f.setEditable(false);
-            facultad = new Facultad();
+            obtenerDias(); //Actualiza lista
+            s.setEditable(false);
+            day = new Dia();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -150,19 +123,19 @@ public class facultadBean {
         }
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
-    public void eliminarFacultad() {
+    public void eliminarDia() {
         try {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            if (!em.contains(facultad)) {
-                facultad = em.merge(facultad);
+            if (!em.contains(day)) {
+                day = em.merge(day);
             }
-            em.remove(facultad);
+            em.remove(day);
             em.getTransaction().commit();
-            obtenerFacultades(); //Actualiza lista
-            facultad = new Facultad();
+            obtenerDias(); //Actualiza lista
+            day = new Dia();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se eliminó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -170,9 +143,8 @@ public class facultadBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    
-    @FacesConverter(forClass = Facultad.class)
-    public static class facultadBeanConverter implements Converter {
+    @FacesConverter(forClass = Dia.class)
+    public static class DiaBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);
@@ -187,17 +159,17 @@ public class facultadBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((facultadBean) context.getApplication().evaluateExpressionGet(context, "#{" + "facultadBean" + "}", facultadBean.class)).buscarById(getKey(value));
+            return ((DiaBean) context.getApplication().evaluateExpressionGet(context, "#{" + "diaBean" + "}", DiaBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Facultad) {
-                return getStringKey(((Facultad) value).getId());
+            } else if (value instanceof Dia) {
+                return getStringKey(((Dia) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Facultad.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Dia.class.getName());
             }
         }
 

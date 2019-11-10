@@ -6,7 +6,9 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +19,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -25,15 +30,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author SougiroHylian
  */
 @Entity
-@Table(name = "pensum")
+@Table(name = "hora")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pensum.findAll", query = "SELECT p FROM Pensum p"),
-    @NamedQuery(name = "Pensum.findById", query = "SELECT p FROM Pensum p WHERE p.id = :id"),
-    @NamedQuery(name = "Pensum.findByDescripcion", query = "SELECT p FROM Pensum p WHERE p.descripcion = :descripcion"),
-    @NamedQuery(name = "Pensum.findByCodigo", query = "SELECT p FROM Pensum p WHERE p.codigo = :codigo"),
-    @NamedQuery(name = "Pensum.findByActivo", query = "SELECT p FROM Pensum p WHERE p.activo = :activo")})
-public class Pensum implements Serializable {
+    @NamedQuery(name = "Hora.findAll", query = "SELECT h FROM Hora h"),
+    @NamedQuery(name = "Hora.findById", query = "SELECT h FROM Hora h WHERE h.id = :id"),
+    @NamedQuery(name = "Hora.findByDescripcion", query = "SELECT h FROM Hora h WHERE h.descripcion = :descripcion")})
+public class Hora implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,28 +46,30 @@ public class Pensum implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "descripcion")
-    private String descripcion;
-    @Basic(optional = false)
-    @Column(name = "codigo")
-    private String codigo;
-    @Basic(optional = false)
-    @Column(name = "activo")
-    private boolean activo;
-    @OneToMany(mappedBy = "rowidPensum")
-    private Collection<Asignatura> asignaturaCollection;
-
-    public Pensum() {
+    @Temporal(TemporalType.TIME)
+    private Date descripcion;
+    @OneToMany(mappedBy = "rowidHora")
+    private Collection<Asignacion> asignacionCollection;
+@Transient
+    private boolean editable;
+    public Hora() {
     }
 
-    public Pensum(Integer id) {
+    public Hora(Integer id) {
         this.id = id;
     }
 
-    public Pensum(Integer id, String descripcion, String codigo, boolean activo) {
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
+    public Hora(Integer id, Date descripcion) {
         this.id = id;
         this.descripcion = descripcion;
-        this.codigo = codigo;
-        this.activo = activo;
     }
 
     public Integer getId() {
@@ -75,37 +80,21 @@ public class Pensum implements Serializable {
         this.id = id;
     }
 
-    public String getDescripcion() {
+    public Date getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public void setDescripcion(Date descripcion) {
         this.descripcion = descripcion;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
     @XmlTransient
-    public Collection<Asignatura> getAsignaturaCollection() {
-        return asignaturaCollection;
+    public Collection<Asignacion> getAsignacionCollection() {
+        return asignacionCollection;
     }
 
-    public void setAsignaturaCollection(Collection<Asignatura> asignaturaCollection) {
-        this.asignaturaCollection = asignaturaCollection;
+    public void setAsignacionCollection(Collection<Asignacion> asignacionCollection) {
+        this.asignacionCollection = asignacionCollection;
     }
 
     @Override
@@ -118,10 +107,10 @@ public class Pensum implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pensum)) {
+        if (!(object instanceof Hora)) {
             return false;
         }
-        Pensum other = (Pensum) object;
+        Hora other = (Hora) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -130,7 +119,8 @@ public class Pensum implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Pensum[ id=" + id + " ]";
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");  
+        return formatter.format(descripcion);
     }
     
 }

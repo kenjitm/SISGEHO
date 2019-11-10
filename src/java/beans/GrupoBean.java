@@ -261,8 +261,9 @@ public class GrupoBean implements Serializable {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-@FacesConverter(forClass = Sede.class)
-    public static class SedeBeanConverter implements Converter {
+
+    @FacesConverter(forClass = Grupo.class)
+    public static class GrupoBeanConverter implements Converter {
 
         Integer getKey(String value) {
             return Integer.valueOf(value);
@@ -277,17 +278,17 @@ public class GrupoBean implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((GrupoBean) context.getApplication().evaluateExpressionGet(context, "#{" + "GrupoBean" + "}", GrupoBean.class)).buscarById(getKey(value));
+            return ((GrupoBean) context.getApplication().evaluateExpressionGet(context, "#{" + "grupoBean" + "}", GrupoBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Grupo) {
+                return getStringKey(((Grupo) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Grupo.class.getName());
             }
         }
 
