@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "DocenteDisponibilidad.findAll", query = "SELECT d FROM DocenteDisponibilidad d"),
     @NamedQuery(name = "DocenteDisponibilidad.findById", query = "SELECT d FROM DocenteDisponibilidad d WHERE d.id = :id"),
+    @NamedQuery(name = "DocenteDisponibilidad.findByDocenteId", query = "SELECT d FROM DocenteDisponibilidad d WHERE d.id = :id"),
     @NamedQuery(name = "DocenteDisponibilidad.findByJornada", query = "SELECT d FROM DocenteDisponibilidad d WHERE d.jornada = :jornada"),
     @NamedQuery(name = "DocenteDisponibilidad.findByLunes", query = "SELECT d FROM DocenteDisponibilidad d WHERE d.lunes = :lunes"),
     @NamedQuery(name = "DocenteDisponibilidad.findByMartes", query = "SELECT d FROM DocenteDisponibilidad d WHERE d.martes = :martes"),

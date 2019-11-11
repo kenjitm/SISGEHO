@@ -10,6 +10,7 @@ import entity.Usuario;
 import entity.Sede;
 import entity.Asignacion;
 import entity.AsignacionGrupos;
+import entity.DocenteDisponibilidad;
 import entity.Grupo;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -56,11 +57,14 @@ public class RelacionDocenteMateriaHorarioBean implements Serializable {
     private AsignacionGrupos asigGrup;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<AsignacionGrupos> asigGrupList;
-
+//INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
+    private static List<DocenteDisponibilidad> disponibilidadList;
     public RelacionDocenteHorarioMateria getRelacion() {
         return relacion;
     }
-
+public List<DocenteDisponibilidad> getDisponibilidadList() {
+        return disponibilidadList;
+    }
     public List<AsignacionGrupos> getAsigGrupList() {
         return asigGrupList;
     }
@@ -175,7 +179,13 @@ public class RelacionDocenteMateriaHorarioBean implements Serializable {
     public final void addGrupo() {
         asigGrupList.add(new AsignacionGrupos());
     }
-
+    public void disponibilidadDocente() throws ClassNotFoundException
+    {
+        DocenteDisponibilidadBean docBean = new DocenteDisponibilidadBean();
+        disponibilidadList = new ArrayList<>();
+        disponibilidadList = docBean.disponibilidadByDocente(horarios.getRowidDocente().getId());
+        
+    }
     public void relacionDMH() throws ClassNotFoundException, SQLException {
 
         Connection connect = null;

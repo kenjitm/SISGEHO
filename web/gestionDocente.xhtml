@@ -207,8 +207,9 @@
                   modal="true" width="75%">
             <h:form id="formDialogDetalle">
                 <p:messages id="msgDetalle" />
-                <p:panel id="panelPNdetalle" >							
-                    <h:dataTable class="table table-hover text-center" value="#{docenteDisponibilidadBean.disponibilidadList}" var="disponibilidad">
+                <p:panel id="panelPNdetalle" >	
+                    <div class="row overflow-auto">
+                        <h:dataTable class="table table-hover text-center" value="#{docenteDisponibilidadBean.disponibilidadList}" var="disponibilidad">
                         <p:column>
                             <f:facet name="header">Jornada</f:facet>
                             <h:outputText value="#{disponibilidad.jornada}"/>
@@ -238,14 +239,19 @@
                                         <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.sabado}" class="form-control" />
                                     </p:column>
                     </h:dataTable>
+                    </div>
+                    
                 </p:panel>						   
                 <p:panel id="panelBotones">
                     <div align="center">
                         <div class="row">
                             <div class="col-sm-4">
-                                <div class="btn-group" role="group" aria-label="Third group">
+                                <h:panelGroup layout="block" rendered="#{docenteDisponibilidadBean.showButton}">
+                                    <div class="btn-group" role="group" aria-label="Third group">
                                     <h:commandButton value="Registrar Disponibilidad" action="#{docenteDisponibilidadBean.guardarDisponibilidad()}" class="btn azul" />
                             </div>
+                                </h:panelGroup>
+                                
                             </div>
                             <div class="col-sm-4">
                                 <h:commandLink class="btn btn-danger btn-sm"

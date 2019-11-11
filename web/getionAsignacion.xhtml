@@ -65,10 +65,13 @@
                             </div>
                             <div class="form-group mt-3">
                                 <p:outputLabel for="docente" value="Docente " />
-                                <h:selectOneMenu class="form-control" id="docente" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidDocente}" style="width: 100%">
+                                <h:selectOneMenu class="form-control" id="docente" value="#{relacionDocenteMateriaHorarioBean.horarios.rowidDocente}" 
+                                                 
+                                                 style="width: 100%">
                                     <f:selectItem itemLabel="--Selecione--" itemDisabled="true" />
                                     <f:selectItems value="#{docenteBean.docenteList}"/>
                                 </h:selectOneMenu>
+                                <h:commandButton value="Disponibilidad" class="btn azul" action="#{relacionDocenteMateriaHorarioBean.disponibilidadDocente()}"/>
                             </div>
                             <div class="form-group mt-3">
                                 <p:outputLabel value="Grupo " />
@@ -91,7 +94,7 @@
                                         <h:inputText class="form-control" value="#{grupo.cantidadEstudiantes}" />
                                     </p:column>
                                 </h:dataTable>
-                                
+
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -137,17 +140,55 @@
                             </div> 
                         </div>
                     </div>
-                     <div class="row">
+                    <div class="row">
                         <div class="row" id="centro">
-                    <div class="btn-group" role="group" aria-label="Third group">
-                        <h:commandButton value="Asignar" class="btn btn-warning" action="#{relacionDocenteMateriaHorarioBean.guardarAsignacion()}"/>
-                    </div>
-                </div>
+                            <div class="btn-group" role="group" aria-label="Third group">
+                                <h:commandButton value="Asignar" class="btn btn-warning" action="#{relacionDocenteMateriaHorarioBean.guardarAsignacion()}"/>
                             </div>
+                        </div>
+                    </div>
                 </h:panelGroup>            
-                
-            </h:form>
 
+            </h:form>
+            <p:separator/>
+        </div>
+        <div class="row mt-4">
+            <div class="row overflow-auto">
+                <h:form>
+                    <h:dataTable class="table table-hover text-center" value="#{relacionDocenteMateriaHorarioBean.disponibilidadList}" var="disponibilidad">
+                        <p:column>
+                            <f:facet name="header">Jornada</f:facet>
+                            <h:outputText value="#{disponibilidad.jornada}"/>
+                        </p:column>
+                        <p:column>
+                                        <f:facet name="header">Lunes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.lunes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Martes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.martes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Miercoles</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.miercoles}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Jueves</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.jueves}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Viernes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.viernes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Sabado</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.sabado}" class="form-control" />
+                                    </p:column>
+                    </h:dataTable>
+                </h:form>
+                
+                    </div>
+            <p:separator/>
         </div>
         <div class="row mt-4">
             <h:form>
@@ -180,16 +221,16 @@
                         <f:facet name="header">Sabado</f:facet>
                         <h:outputText value="#{relacion.sabado}"/>
                     </p:column>
-                    
-                        <h:column>
-                            <f:facet name="header">Acciones</f:facet>
-                            <center>
+
+                    <h:column>
+                        <f:facet name="header">Acciones</f:facet>
+                        <center>
                             <h:panelGroup layout="block" rendered="#{relacionDocenteMateriaHorarioBean.relacion.show}">
-                            
+
                                 <h:commandLink class="btn btn-info btn-sm"
                                                style="color: #fff"
                                                action="#{asignacionBean.enableEditarOption(relacion.id, true)}"
-                                                   rendered="#{not relacion.editable}"
+                                               rendered="#{not relacion.editable}"
                                                >
                                     <i class="material-icons">add</i>
                                 </h:commandLink>
@@ -198,113 +239,177 @@
                                 <h:commandLink class="btn btn-danger btn-sm"
                                                style="color: #fff"
                                                action="#{asignacionBean.ShowDetail(relacion.id)}"
-                                                   rendered="#{not relacion.editable}"
+                                               rendered="#{not relacion.editable}"
                                                >
                                     <i class="material-icons">visibility</i>
                                 </h:commandLink>
                             </h:panelGroup>
-                                </center>
-                        </h:column>
-                    
+                        </center>
+                    </h:column>
+
 
                 </h:dataTable>
             </h:form>  
         </div>
         <p:dialog id="dialogPDGestionAsesoria" appendTo="@(body)" draggable="true" closeOnEscape="true"  
-          showEffect="explode" header="#{asignacionBean.gestionTipo}" 
-          closable="true" visible="#{asignacionBean.showDialog}" resizable="false"
+                  showEffect="explode" header="#{asignacionBean.gestionTipo}" 
+                  closable="true" visible="#{asignacionBean.showDialog}" resizable="false"
                   modal="true" width="30%">
             <h:form id="formDialog">
                 <p:messages id="msg" />
                 <p:panel id="panelPNGestionAsesoria" >							
                     <h:panelGrid width="100%" columns="2" id="panelGrid" >
 
-                        
-                            <p:outputLabel for="sede" value="Sede " />
-                            <h:selectOneMenu class="form-control" id="sede" value="#{asignacionBean.asignaciones.rowidSede}" style="width: 100%" >
-                                <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-                                <f:selectItems value="#{sedeBean.sedesList}" var="sed" itemValue="#{sed.id}" itemLabel="#{sed.ubicacion}" />
-                            </h:selectOneMenu>
-                        
+
+                        <p:outputLabel for="sede" value="Sede " />
+                        <h:selectOneMenu class="form-control" id="sede" value="#{asignacionBean.asignaciones.rowidSede}" style="width: 100%" >
+                            <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+                            <f:selectItems value="#{sedeBean.sedesList}" var="sed" itemValue="#{sed.id}" itemLabel="#{sed.ubicacion}" />
+                        </h:selectOneMenu>
+
                         <p:outputLabel for="subsede" value="Subsede " />
-                            <h:selectOneMenu class="form-control" id="subsede" value="#{asignacionBean.asignaciones.rowidSede}" style="width: 100%" >
-                                <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-                                <f:selectItems value="#{sedeBean.sedesList}" var="sed" itemValue="#{sed.id}" itemLabel="#{sed.subsede}" />
-                            </h:selectOneMenu>
-                        
-                            <p:outputLabel for="recursos" value="Recurso " />
-                            <h:selectOneMenu class="form-control" id="recursos" value="#{asignacionBean.asignaciones.rowidRecurso}" style="width: 100%" >
-                                <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-                                <f:selectItems value="#{recursoBean.recursoList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
-                            </h:selectOneMenu>
+                        <h:selectOneMenu class="form-control" id="subsede" value="#{asignacionBean.asignaciones.rowidSede}" style="width: 100%" >
+                            <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+                            <f:selectItems value="#{sedeBean.sedesList}" var="sed" itemValue="#{sed.id}" itemLabel="#{sed.subsede}" />
+                        </h:selectOneMenu>
+
+                        <p:outputLabel for="recursos" value="Recurso " />
+                        <h:selectOneMenu class="form-control" id="recursos" value="#{asignacionBean.asignaciones.rowidRecurso}" style="width: 100%" >
+                            <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+                            <f:selectItems value="#{recursoBean.recursoList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
+                        </h:selectOneMenu>
 
                     </h:panelGrid>
                 </p:panel>						   
                 <p:panel id="panelBotones">
                     <div align="center">					
                         <h:commandLink class="btn btn-success btn-sm"
-                                               style="color: #fff"
-                                               action="#{asignacionBean.editarAsignaciones(asignacionBean.asignaciones)}"
-                                               rendered="#{asignacionBean.asignaciones.editable}">
-                                    <i class="material-icons">check</i>
-                                    <f:setPropertyActionListener 
-                                        target="#{asignacionBean.asignaciones}" value="#{asignacionBean.asignaciones}" />
-                                </h:commandLink>
+                                       style="color: #fff"
+                                       action="#{asignacionBean.editarAsignaciones(asignacionBean.asignaciones)}"
+                                       rendered="#{asignacionBean.asignaciones.editable}">
+                            <i class="material-icons">check</i>
+                            <f:setPropertyActionListener 
+                                target="#{asignacionBean.asignaciones}" value="#{asignacionBean.asignaciones}" />
+                        </h:commandLink>
+                        				
+                        <h:commandLink class="btn btn-danger btn-sm"
+                                       style="color: #fff"
+                                       value="Cerrar"
+                                       action="#{asignacionBean.CloseDetail()}"
+
+                                       >
+                        </h:commandLink>
+                    
                     </div>
                 </p:panel>
 
             </h:form>
-            
+
         </p:dialog>
         <p:dialog id="dialogPDdetalle" appendTo="@(body)" draggable="true" closeOnEscape="true"  
-          showEffect="explode" header="#{asignacionBean.gestionTipo}" 
-          closable="true" visible="#{asignacionBean.showDialogDetalle}" resizable="false"
+                  showEffect="explode" header="#{asignacionBean.gestionTipo}" 
+                  closable="true" visible="#{asignacionBean.showDialogDetalle}" resizable="false"
                   modal="true" width="75%">
             <h:form id="formDialogDetalle">
                 <p:messages id="msgDetalle" />
                 <p:panel id="panelPNdetalle" >							
-                    <h:panelGrid width="100%" columns="8" id="panelGridDetalle" >
-                            <p:outputLabel  value="ID: " />
+                    <div class="row" id="center">
+                        <div class="col-sm-12">
+                            <p:outputLabel value="Informaciòn Asignatura"></p:outputLabel>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p:outputLabel  value="ID: " />
                             <p:outputLabel  value="#{asignacionBean.asignaciones.id} " />
-                            <p:outputLabel  value="Codigo Asignatura: " />
+                            </div>
+                            <div class="col-sm-3">
+                                <p:outputLabel  value="Codigo Asignatura: " />
                             <p:outputLabel  value="#{asignacionBean.asignaciones.rowidAsignatura.codigo} " />
-                            <p:outputLabel  value="Asignatura :" />
+                            </div>
+                            <div class="col-sm-3">
+                                <p:outputLabel  value="Asignatura :" />
                             <p:outputLabel  value="#{asignacionBean.asignaciones.rowidAsignatura.descripcion} " />
-                            <p:outputLabel  value="Periodo :" />
+                            </div>
+                            <div class="col-sm-3">
+                                <p:outputLabel  value="Periodo :" />
                             <p:outputLabel  value="#{asignacionBean.asignaciones.rowidPeriodo.descripcion} " />
-                            <!--Segunda Fila-->
-                            <p:outputLabel  value="Docente: " />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidDocente.toString()} " />
-                            <p:outputLabel  value="Hora Inicial: " />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidHora.toString()} " />
-                            <p:outputLabel  value="Hora Final :" />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidHoraFinal.toString()}" />
-                            <p:outputLabel  value="Dia :" />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidDia.descripcion} " />
-                            <!--Tercera Fila-->
-                            <p:outputLabel  value="Sede: " />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidSede.ubicacion} " />
-                            <p:outputLabel  value="Subsede: " />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidSede.ubicacion} " />
-                            <p:outputLabel  value="Recurso :" />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidRecurso.nomenclatura}" />
+                            </div>
                             
+                        </div>
+                        <div class="col-sm-12">
+                        <p:separator/>
+                        </div>
+                    </div>
+                    <div class="row" id="center">
+                        <div class="col-sm-12">
+                        <p:outputLabel value="Informaciòn Docente"></p:outputLabel>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Docente: " />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidDocente.toString()} " />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Hora Inicial: " />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidHora.toString()} " />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Hora Final :" />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidHoraFinal.toString()}" />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Dia :" />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidDia.descripcion} " />
+                            </div>
+                        </div>    
+                        <div class="col-sm-12">
+                        <p:separator/>
+                        </div>
+                    </div>
+                    <div class="row" id="center">
+                        <div class="col-sm-12">
+                        <p:outputLabel value="Informaciòn Recurso"></p:outputLabel>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                           <p:outputLabel  value="Sede: " />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidSede.ubicacion} " />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Subsede: " />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidSede.ubicacion} " />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Recurso :" />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidRecurso.nomenclatura}" /> 
+                            </div>
+                            <div class="col-sm-3">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--Segunda Fila-->
+                    
+                    <!--Tercera Fila-->
+                    
+                    <h:panelGrid width="100%" columns="8" id="panelGridDetalle" > 
                     </h:panelGrid>
                 </p:panel>						   
                 <p:panel id="panelBotones">
                     <div align="center">					
                         <h:commandLink class="btn btn-danger btn-sm"
-                                               style="color: #fff"
-                                               value="Cerrar"
-                                               action="#{asignacionBean.CloseDetail()}"
-                                               
-                                               >
-                                </h:commandLink>
+                                       style="color: #fff"
+                                       value="Cerrar"
+                                       action="#{asignacionBean.CloseDetail()}"
+
+                                       >
+                        </h:commandLink>
                     </div>
                 </p:panel>
 
             </h:form>
-            
+
         </p:dialog>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>

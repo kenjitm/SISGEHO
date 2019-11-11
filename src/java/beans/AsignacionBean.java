@@ -130,6 +130,7 @@ public class AsignacionBean implements Serializable{
     }
      public void CloseDetail() {
         setShowDialogDetalle(false);
+         setShowDialog(false);
     }
     //EL MÉTODO DEBE QUEDAR ASÍ MISMO
     public void editarAsignaciones(Asignacion asig) {

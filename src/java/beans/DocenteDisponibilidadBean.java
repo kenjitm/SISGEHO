@@ -12,6 +12,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import entity.DocenteDisponibilidad;
 import entity.Jornada;
+import entity.RelacionDocenteHorarioMateria;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -36,6 +42,7 @@ public class DocenteDisponibilidadBean {
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<DocenteDisponibilidad> disponibilidadList;
     private boolean showDialog;
+    private boolean showButton;
     private String gestionTipo;
     private Docente docente;
 
@@ -48,13 +55,129 @@ public class DocenteDisponibilidadBean {
         jornadaList = q.getResultList();
     }
 
-    private void obtenerDisponibilidadByDocente(int id) {
-        EntityManagerFactory emf
+    private void obtenerDisponibilidadByDocente(int id) throws ClassNotFoundException {
+        /*EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<DocenteDisponibilidad> q = em.createNamedQuery("DocenteDisponibilidad.findById", DocenteDisponibilidad.class);
+        TypedQuery<DocenteDisponibilidad> q = em.createNamedQuery("DocenteDisponibilidad.findByDocenteId", DocenteDisponibilidad.class);
         q.setParameter("id", id);
-        disponibilidadList = q.getResultList();
+        disponibilidadList = q.getResultList();*/
+        Connection connect = null;
+
+        String url = "jdbc:mysql://localhost:3306/uniajc";
+
+        String username = "root";
+        String password = "";
+
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+
+            connect = DriverManager.getConnection(url, username, password);
+            // System.out.println("Connection established"+connect);
+
+        } catch (SQLException ex) {
+            System.out.println("in exec");
+            System.out.println(ex.getMessage());
+        }
+        try {
+            String Query = "SELECT * FROM docente_disponibilidad WHERE rowid_docente = "+id;
+            PreparedStatement pstmt = connect
+                    .prepareStatement(Query);
+            System.out.println("***********Consulta: " + Query);
+            ResultSet rs = pstmt.executeQuery();
+            System.out.println("***********Inicia recorrido");
+            disponibilidadList = new ArrayList();
+            while (rs.next()) {
+                DocenteDisponibilidad docDis = new DocenteDisponibilidad();
+                docDis.setId(rs.getInt("id"));
+                //docDis.setRowidDocente(rs.getObject("rowid_docente", Docente.class));
+                docDis.setJornada(rs.getString("jornada"));
+                docDis.setLunes(rs.getBoolean("Lunes"));
+                docDis.setMartes(rs.getBoolean("Martes"));
+                docDis.setMiercoles(rs.getBoolean("Miercoles"));
+                docDis.setJueves(rs.getBoolean("Jueves"));
+                docDis.setViernes(rs.getBoolean("Viernes"));
+                docDis.setSabado(rs.getBoolean("Sabado"));
+                disponibilidadList.add(docDis);
+                
+            }
+            
+            // close resources
+            rs.close();
+            pstmt.close();
+            connect.close();
+        } catch (Exception ex) {
+            System.out.println("in Sql consult");
+            System.out.println(ex.getMessage());
+        }
+    }
+public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassNotFoundException {
+        /*EntityManobteneragerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<DocenteDisponibilidad> q = em.createNamedQuery("DocenteDisponibilidad.findByDocenteId", DocenteDisponibilidad.class);
+        q.setParameter("id", id);
+        disponibilidadList = q.getResultList();*/
+        Connection connect = null;
+
+        String url = "jdbc:mysql://localhost:3306/uniajc";
+
+        String username = "root";
+        String password = "";
+
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+
+            connect = DriverManager.getConnection(url, username, password);
+            // System.out.println("Connection established"+connect);
+
+        } catch (SQLException ex) {
+            System.out.println("in exec");
+            System.out.println(ex.getMessage());
+        }
+        List<DocenteDisponibilidad> disponibilidadListReturn = new ArrayList();
+        try {
+            String Query = "SELECT * FROM docente_disponibilidad WHERE rowid_docente = "+id;
+            PreparedStatement pstmt = connect
+                    .prepareStatement(Query);
+            System.out.println("***********Consulta: " + Query);
+            ResultSet rs = pstmt.executeQuery();
+            System.out.println("***********Inicia recorrido");
+            
+            while (rs.next()) {
+                DocenteDisponibilidad docDis = new DocenteDisponibilidad();
+                docDis.setId(rs.getInt("id"));
+                //docDis.setRowidDocente(rs.getObject("rowid_docente", Docente.class));
+                docDis.setJornada(rs.getString("jornada"));
+                docDis.setLunes(rs.getBoolean("Lunes"));
+                docDis.setMartes(rs.getBoolean("Martes"));
+                docDis.setMiercoles(rs.getBoolean("Miercoles"));
+                docDis.setJueves(rs.getBoolean("Jueves"));
+                docDis.setViernes(rs.getBoolean("Viernes"));
+                docDis.setSabado(rs.getBoolean("Sabado"));
+                disponibilidadListReturn.add(docDis);
+                
+            }
+            
+            // close resources
+            rs.close();
+            pstmt.close();
+            connect.close();
+            
+        } catch (Exception ex) {
+            System.out.println("in Sql consult");
+            System.out.println(ex.getMessage());
+        }
+        return disponibilidadListReturn;
+    }
+    public boolean isShowButton() {
+        return showButton;
+    }
+
+    public void setShowButton(boolean showButton) {
+        this.showButton = showButton;
     }
 
     public DocenteDisponibilidadBean() {
@@ -87,16 +210,21 @@ public class DocenteDisponibilidadBean {
     public void tablaDisponibilidad(Docente docentes) {
         setShowDialog(true);
         gestionTipo = "Disponibilidad Horaria";
+        disponibilidadList = new ArrayList<>();
         try {
             obtenerDisponibilidadByDocente(docentes.getId());
-            if (disponibilidadList == null) {
-                disponibilidadList = new ArrayList<>();
+            if (disponibilidadList.isEmpty()) {
+                
                 for (int i = 0; i < jornadaList.size(); i++) {
                     jornada = jornadaList.get(i);
                     DocenteDisponibilidad dispon = new DocenteDisponibilidad();
                     dispon.setJornada(jornada.getDescripcion());
                     disponibilidadList.add(dispon);
                 }
+                setShowButton(true);
+            }else
+            {
+                setShowButton(false);
             }
 
             docente = docentes;
