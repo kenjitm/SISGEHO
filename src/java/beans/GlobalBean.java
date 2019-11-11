@@ -47,6 +47,12 @@ public class GlobalBean {
         listaRoles = (List) getObjectFromSession("listaRoles");
         return listaRoles;
     }
+    
+    public Rol getUserRol(){
+        Rol rol = new Rol();
+        rol = (Rol) getObjectFromSession("rol");
+        return rol;
+    }
 
     public String getUserRoles() {
         String rolesCadena = (String) getObjectFromSession("roles");
@@ -58,6 +64,10 @@ public class GlobalBean {
     }
 
     public void saveObjectInSession(String value, String key) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getSessionMap().put(key, value);
+    }
+     public void saveObjectFormatInSession(Object value, String key) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getSessionMap().put(key, value);
     }

@@ -42,6 +42,7 @@ public class LoginBean implements Serializable {
     private List<String> nombresRoles;
     private String nombreRol;
     private int idRol;
+
     public String getUsuario() {
         return usuario;
     }
@@ -77,8 +78,6 @@ public class LoginBean implements Serializable {
     public void setNombreRol(String nombreRol) {
         this.nombreRol = nombreRol;
     }
-    
-    
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
@@ -143,6 +142,7 @@ public class LoginBean implements Serializable {
                     obtenerRoles(user.getId());
                     obtenerNombresRoles();
                     GlobalBean globalBean = new GlobalBean();
+                    System.out.print("roles " + nombreRol);
                     globalBean.saveObjectInSession(nombreRol, "roles");
                     //usuario correcto
                     return "Dashboard";
@@ -165,20 +165,25 @@ public class LoginBean implements Serializable {
     }
 
     public void obtenerRoles(int id) {
-        List<UsuarioRol> listaUsuarioRoles = new ArrayList<>();
+        List<UsuarioRol> listaUsuarioRoles = new ArrayList<UsuarioRol>();
         listaRoles = new ArrayList<>();
-        listaUsuarioRoles = consultarUsuarioRol(id);
+        listaUsuarioRoles = consultarUsuarioRol();
+        try {
+            listaUsuarioRoles = listaUsuarioRoles.stream().filter(lu -> lu != null && lu.getRowidUsuario() != null && lu.getRowidUsuario().getId() == id).collect(Collectors.toList());
+            Rol rol = new Rol();
+            rol = listaUsuarioRoles.get(0).getRowidRol();
+
+            if (rol != null) {
+                GlobalBean globalBean = new GlobalBean();
+                globalBean.saveObjectFormatInSession(rol, "rol");
+            }
+        } catch (Exception e) {
+
+        }
         if (listaUsuarioRoles != null) {
             for (UsuarioRol usuarioRol : listaUsuarioRoles) {
                 if (usuarioRol != null && usuarioRol.getRowidRol() != null) {
                     listaRoles.add(usuarioRol.getRowidRol());
-                    Rol rol = usuarioRol.getRowidRol();
-                    GlobalBean globalBean = new GlobalBean();
-                    globalBean.saveObjectInSession(nombreRol, "listaRoles");
-                    System.out.println("*****beans.LoginBean.obtenerRoles: Rol: "+nombreRol+" Insert: "+rol.getBitInsert());
-                    globalBean.saveObjectInSessionBit(rol.getBitInsert(), "bitInsert");
-                    globalBean.saveObjectInSessionBit(rol.getBitUpdate(), "bitUpdate");
-                    globalBean.saveObjectInSessionBit(rol.getBitDelete(), "bitDelete");
                 }
             }
         }
@@ -189,7 +194,7 @@ public class LoginBean implements Serializable {
         nombreRol = "";
         if (listaRoles != null && !listaRoles.isEmpty()) {
             for (Rol rol : listaRoles) {
-                if (rol.getNombre() != null ) {
+                if (rol.getNombre() != null) {
                     nombresRoles.add(rol.getNombre());
                     if (nombreRol.isEmpty()) {
                         nombreRol += rol.getNombre();
@@ -201,13 +206,12 @@ public class LoginBean implements Serializable {
         }
     }
 
-    public List<UsuarioRol> consultarUsuarioRol(int id) {
+    public List<UsuarioRol> consultarUsuarioRol() {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
 
-        TypedQuery<UsuarioRol> usuariosRoles = em.createNamedQuery("UsuarioRol.findByUserId", UsuarioRol.class);
-        usuariosRoles.setParameter("id", id);
+        TypedQuery<UsuarioRol> usuariosRoles = em.createNamedQuery("UsuarioRol.findAll", UsuarioRol.class);
         return (usuariosRoles.getResultList().isEmpty()) ? null : usuariosRoles.getResultList();
     }
 
