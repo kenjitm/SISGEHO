@@ -152,6 +152,7 @@
             </h:form>
             <p:separator/>
         </div>
+        <h:panelGroup layout="block" rendered="#{not relacionDocenteMateriaHorarioBean.relacion.show}">
         <div class="row mt-4">
             <div class="row overflow-auto">
                 <h:form>
@@ -190,6 +191,7 @@
                     </div>
             <p:separator/>
         </div>
+        </panelGroup>
         <div class="row mt-4">
             <h:form>
                 <h:dataTable class="table table-hover text-center" id="tablaAsignaciones" value="#{relacionDocenteMateriaHorarioBean.relacionesList}" var="relacion">
