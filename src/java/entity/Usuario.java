@@ -6,9 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,15 +14,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "usuario")
@@ -37,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByUsuario", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario"),
     @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
     @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password"),
-    @NamedQuery(name = "Usuario.findByActivo", query = "SELECT u FROM Usuario u WHERE u.activo = :activo")})
+    @NamedQuery(name = "Usuario.findByActivo", query = "SELECT u FROM Usuario u WHERE u.activo = :activo"),
+    @NamedQuery(name = "Usuario.findByIdentificacion", query = "SELECT u FROM Usuario u WHERE u.identificacion = :identificacion")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,10 +61,9 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidUsuario")
-    private Collection<UsuarioRol> usuarioRolCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidUsuario")
-    private Collection<LogAuditoria> logAuditoriaCollection;
+    @Basic(optional = false)
+    @Column(name = "identificacion")
+    private int identificacion;
 @Transient
     private boolean editable;
     public Usuario() {
@@ -86,7 +82,7 @@ public class Usuario implements Serializable {
         this.editable = editable;
     }
 
-    public Usuario(Integer id, String nombre, String apellido, String usuario, String email, String password, boolean activo) {
+    public Usuario(Integer id, String nombre, String apellido, String usuario, String email, String password, boolean activo, int identificacion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -94,6 +90,7 @@ public class Usuario implements Serializable {
         this.email = email;
         this.password = password;
         this.activo = activo;
+        this.identificacion = identificacion;
     }
 
     public Integer getId() {
@@ -152,22 +149,12 @@ public class Usuario implements Serializable {
         this.activo = activo;
     }
 
-    @XmlTransient
-    public Collection<UsuarioRol> getUsuarioRolCollection() {
-        return usuarioRolCollection;
+    public int getIdentificacion() {
+        return identificacion;
     }
 
-    public void setUsuarioRolCollection(Collection<UsuarioRol> usuarioRolCollection) {
-        this.usuarioRolCollection = usuarioRolCollection;
-    }
-
-    @XmlTransient
-    public Collection<LogAuditoria> getLogAuditoriaCollection() {
-        return logAuditoriaCollection;
-    }
-
-    public void setLogAuditoriaCollection(Collection<LogAuditoria> logAuditoriaCollection) {
-        this.logAuditoriaCollection = logAuditoriaCollection;
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
     }
 
     @Override

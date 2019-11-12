@@ -41,7 +41,10 @@ public class GlobalBean {
         String usuarioLogueado = (String) getObjectFromSession("username");
         return usuarioLogueado;
     }
-
+public int getIdentificacion() {
+        int usuarioIdentificacion = (int) getObjectFromSession("identificacion");
+        return usuarioIdentificacion;
+    }
     public List<Rol> getListaRoles() {
         List<Rol> listaRoles = new ArrayList<>();
         listaRoles = (List) getObjectFromSession("listaRoles");

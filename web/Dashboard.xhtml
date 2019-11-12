@@ -69,7 +69,7 @@ and open the template in the editor.
                                           <i class="material-icons">date_range</i>
                                     </span>
                                 </div>
-                                <h:commandButton class="btn azul mb-1" value="Disponibilidad horaria" action="#{asignarHorarioBean.irAsignar()}"></h:commandButton>  
+                                <h:commandButton class="btn azul mb-1" value="Disponibilidad horaria" action="#{docenteDisponibilidadBean.disponibilidadIdentificacion()}"></h:commandButton>  
                             </div>
                            <div class="input-group mb-3">
                                 <div>
@@ -84,7 +84,75 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-        
+        <p:dialog id="dialogPDdisponibilidad" appendTo="@(body)" draggable="true" closeOnEscape="true"  
+                  showEffect="explode" header="#{docenteDisponibilidadBean.gestionTipo}" 
+                  closable="true" visible="#{docenteDisponibilidadBean.showDialog}" resizable="false"
+                  modal="true" width="75%">
+            <h:form id="formDialogDetalle">
+                <p:messages id="msgDetalle" />
+                <p:panel id="panelPNdetalle" >	
+                    <div class="row overflow-auto">
+                        <h:dataTable class="table table-hover text-center" value="#{docenteDisponibilidadBean.disponibilidadList}" var="disponibilidad">
+                        <p:column>
+                            <f:facet name="header">Jornada</f:facet>
+                            <h:outputText value="#{disponibilidad.jornada}"/>
+                        </p:column>
+                        <p:column>
+                                        <f:facet name="header">Lunes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.lunes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Martes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.martes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Miercoles</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.miercoles}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Jueves</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.jueves}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Viernes</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.viernes}" class="form-control" />
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Sabado</f:facet>
+                                        <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.sabado}" class="form-control" />
+                                    </p:column>
+                    </h:dataTable>
+                    </div>
+                    
+                </p:panel>						   
+                <p:panel id="panelBotones">
+                    <div align="center">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h:panelGroup layout="block" rendered="#{docenteDisponibilidadBean.showButton}">
+                                    <div class="btn-group" role="group" aria-label="Third group">
+                                    <h:commandButton value="Registrar Disponibilidad" action="#{docenteDisponibilidadBean.guardarDisponibilidad()}" class="btn azul" />
+                            </div>
+                                </h:panelGroup>
+                                
+                            </div>
+                            <div class="col-sm-4">
+                                <h:commandLink class="btn btn-danger btn-sm"
+                                       style="color: #fff"
+                                       value="Cerrar"
+                                       action="#{docenteDisponibilidadBean.closeDetail()}"
+
+                                       >
+                        </h:commandLink>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </p:panel>
+
+            </h:form>
+
+        </p:dialog>
          <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
                 <!--fin barra de footer-->

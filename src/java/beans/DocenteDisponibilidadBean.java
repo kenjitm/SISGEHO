@@ -266,4 +266,20 @@ public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassN
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+    public void disponibilidadIdentificacion()
+    {
+        GlobalBean global = new GlobalBean();
+        int identificacion = global.getIdentificacion();
+        System.out.println("*****beans.DocenteDisponibilidadBean.disponibilidadIdentificacion: Identificacion-"+identificacion);
+        EntityManagerFactory emf
+                    = Persistence.createEntityManagerFactory("SisgehoPU");
+            EntityManager em = emf.createEntityManager();
+        Docente docenteId = new Docente();
+            TypedQuery<Docente> consultaDocente = em.createNamedQuery("Docente.findByIdentificacion", Docente.class);
+            consultaDocente.setParameter("identificacion", identificacion);
+            docenteId = consultaDocente.getResultList().get(0);
+            tablaDisponibilidad(docenteId);
+            setShowDialog(true);
+            
+    }
 }

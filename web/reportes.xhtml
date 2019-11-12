@@ -158,33 +158,87 @@
                   modal="true" width="75%">
             <h:form id="formDialogDetalle">
                 <p:messages id="msgDetalle" />
-                <p:panel id="panelPNdetalle" >							
-                    <h:panelGrid width="100%" columns="8" id="panelGridDetalle" >
-                            <p:outputLabel  value="ID: " />
+                <p:panel id="panelPNdetalle" >	
+                <div class="row" id="center">
+                        <div class="col-sm-12">
+                            <p:outputLabel value="Informaciòn Asignatura"></p:outputLabel>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p:outputLabel  value="ID: " />
                             <p:outputLabel  value="#{asignacionBean.asignaciones.id} " />
-                            <p:outputLabel  value="Codigo Asignatura: " />
+                            </div>
+                            <div class="col-sm-3">
+                                <p:outputLabel  value="Codigo Asignatura: " />
                             <p:outputLabel  value="#{asignacionBean.asignaciones.rowidAsignatura.codigo} " />
-                            <p:outputLabel  value="Asignatura :" />
+                            </div>
+                            <div class="col-sm-3">
+                                <p:outputLabel  value="Asignatura :" />
                             <p:outputLabel  value="#{asignacionBean.asignaciones.rowidAsignatura.descripcion} " />
-                            <p:outputLabel  value="Periodo :" />
+                            </div>
+                            <div class="col-sm-3">
+                                <p:outputLabel  value="Periodo :" />
                             <p:outputLabel  value="#{asignacionBean.asignaciones.rowidPeriodo.descripcion} " />
-                            <!--Segunda Fila-->
-                            <p:outputLabel  value="Docente: " />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidDocente.toString()} " />
-                            <p:outputLabel  value="Hora Inicial: " />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidHora.toString()} " />
-                            <p:outputLabel  value="Hora Final :" />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidHoraFinal.toString()}" />
-                            <p:outputLabel  value="Dia :" />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidDia.descripcion} " />
-                            <!--Tercera Fila-->
-                            <p:outputLabel  value="Sede: " />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidSede.ubicacion} " />
-                            <p:outputLabel  value="Subsede: " />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidSede.ubicacion} " />
-                            <p:outputLabel  value="Recurso :" />
-                            <p:outputLabel  value="#{asignacionBean.asignaciones.rowidRecurso.nomenclatura}" />
+                            </div>
                             
+                        </div>
+                        <div class="col-sm-12">
+                        <p:separator/>
+                        </div>
+                    </div>
+                    <div class="row" id="center">
+                        <div class="col-sm-12">
+                        <p:outputLabel value="Informaciòn Docente"></p:outputLabel>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Docente: " />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidDocente.toString()} " />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Hora Inicial: " />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidHora.toString()} " />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Hora Final :" />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidHoraFinal.toString()}" />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Dia :" />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidDia.descripcion} " />
+                            </div>
+                        </div>    
+                        <div class="col-sm-12">
+                        <p:separator/>
+                        </div>
+                    </div>
+                    <div class="row" id="center">
+                        <div class="col-sm-12">
+                        <p:outputLabel value="Informaciòn Recurso"></p:outputLabel>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                           <p:outputLabel  value="Sede: " />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidSede.ubicacion} " />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Subsede: " />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidSede.ubicacion} " />
+                            </div>
+                            <div class="col-sm-3">
+                    <p:outputLabel  value="Recurso :" />
+                    <p:outputLabel  value="#{asignacionBean.asignaciones.rowidRecurso.nomenclatura}" /> 
+                            </div>
+                            <div class="col-sm-3">
+                                
+                            </div>
+                        </div>
+                    </div>
+                						
+                    
+                            
+                            <h:panelGrid width="100%" columns="8" id="panelGridDetalle" >
                     </h:panelGrid>
                 </p:panel>						   
                 <p:panel id="panelBotones">

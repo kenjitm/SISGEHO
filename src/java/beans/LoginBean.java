@@ -5,6 +5,7 @@
  */
 package beans;
 
+import entity.Docente;
 import entity.Rol;
 import entity.Usuario;
 import java.io.Serializable;
@@ -118,6 +119,7 @@ public class LoginBean implements Serializable {
             List<Usuario> lista = consultaUsuarios.getResultList();
             Usuario user = consultaUsuarios.getResultList().get(0);
             UsuarioRolBean userBean = new UsuarioRolBean();
+            
             /*ConexDB db = new ConexDB();
             UsuarioRol userRol = new UsuarioRol();
             try
@@ -135,6 +137,7 @@ public class LoginBean implements Serializable {
                     FacesContext context = FacesContext.getCurrentInstance();
                     context.getExternalContext().getSessionMap().put("user", usuario);
                     context.getExternalContext().getSessionMap().put("username", user.getNombre());
+                    context.getExternalContext().getSessionMap().put("identificacion", user.getIdentificacion());
                     //context.getExternalContext().getSessionMap().put("roles", userRol.getRowidRol().getNombre());
                     //session = new SessionUtils();
                     //session.add("user", usuario);

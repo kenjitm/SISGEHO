@@ -53,6 +53,7 @@ public class RegistroUsuarioBean {
     private String usuario;
     private String password;
     private Integer edad;
+    private Integer docIdentidad;
     private Rol rowRol;
     private UsuarioRol userRol;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
@@ -72,6 +73,14 @@ public class RegistroUsuarioBean {
 
     public UsuarioRol getUserRol() {
         return userRol;
+    }
+
+    public Integer getDocIdentidad() {
+        return docIdentidad;
+    }
+
+    public void setDocIdentidad(Integer docIdentidad) {
+        this.docIdentidad = docIdentidad;
     }
 
     public void setUserRol(UsuarioRol userRol) {
@@ -315,6 +324,7 @@ public class RegistroUsuarioBean {
         user.setEmail(email);
         user.setUsuario(usuario);
         user.setPassword(password);
+        user.setIdentificacion(docIdentidad);
         user.setActivo(true);
         em.getTransaction().begin();
         em.persist(user);
@@ -380,6 +390,21 @@ public Usuario getUsuarioUser(String userName) throws SQLException, ClassNotFoun
 		connect.close();
         
         return user;
+}
+public void crearUsuario(){
+    String sSubCadena = nombre.substring(0,2);
+    String userName = sSubCadena+""+apellido;
+    EntityManagerFactory emf
+                = Persistence.createEntityManagerFactory("SisgehoPU");
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Usuario> q = em.createNamedQuery("Usuario.findByUsuario", Usuario.class);
+        q.setParameter("usuario", userName);
+        int value = q.getResultList().size();
+        if(value > 0)
+        {
+           userName +=  ""+value;
+        }
+        setUsuario(userName);
 }
 public String irUsuarios(){
     return "gestionUsuario.xhtml";

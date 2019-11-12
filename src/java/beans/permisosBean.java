@@ -5,9 +5,10 @@
  */
 package beans;
 
+import entity.Rol;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
+import entity.UsuarioRol;
 /**
  *
  * @author SougiroHylian
@@ -44,9 +45,11 @@ public class permisosBean {
     }
     public permisosBean(){
         GlobalBean globalBean = new GlobalBean();
-        bitInsert = (Boolean)globalBean.getObjectFromSession("bitInsert"); 
+        Rol rol = new Rol();
+        rol = globalBean.getUserRol();
+        bitInsert = rol.getBitInsert();//(Boolean)globalBean.getObjectFromSession("bitInsert"); 
         System.out.println("********beans.permisosBean: Permiso Insert: --"+bitInsert.toString());
-        bitUpdate = (Boolean)globalBean.getObjectFromSession("bitUpdate"); 
-        bitDelete = (Boolean)globalBean.getObjectFromSession("bitDelete"); 
+        bitUpdate = rol.getBitUpdate();//(Boolean)globalBean.getObjectFromSession("bitUpdate"); 
+        bitDelete = rol.getBitDelete();//(Boolean)globalBean.getObjectFromSession("bitDelete"); 
     }
 }
