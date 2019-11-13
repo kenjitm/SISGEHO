@@ -282,4 +282,13 @@ public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassN
             setShowDialog(true);
             
     }
+    
+    public String hacerVisible(boolean valor){
+        if(valor){
+        return "imagenes/chulo.png";
+        }
+        else{
+        return "imagenes/x.png";
+        }
+    }
 }
