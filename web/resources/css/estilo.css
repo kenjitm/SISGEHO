@@ -69,3 +69,7 @@ body {
   height: 40px;
   width: 100%;
 }
+
+.ui-widget-overlay{
+   width: 100% !important;
+}
