@@ -19,7 +19,8 @@ and open the template in the editor.
         <title>Grupoos</title>
     </h:head>
 
-    <h:body>  
+    <h:body> 
+        <div class="container-fluid">
         <div class="row" id="rowmenu">
             <div >
                 <div class="card-body" style="text-align: center">
@@ -32,7 +33,7 @@ and open the template in the editor.
             <div id="menu"><ui:include src="/WEB-INF/include.xhtml" /></div>     
             <!--fin barra de navegacion-->
         </div>  
-        <div style="background-color: #0050a0">
+        <div class="row" style="background-color: #0050a0">
             <div class="card-body">
                 <h4 class="card-title text-white">SISGEHO UNIAJC</h4>
                 <h6 class="card-subtitle mb-2 text-warning">Gestión de Jornada</h6>                  
@@ -142,7 +143,7 @@ and open the template in the editor.
             </div>
         </div>
 
-
+        </div>
         <!--barra de footer-->
         <div id="footer"><ui:include src="/WEB-INF/footer.xhtml" /></div>
         <!--fin barra de footer-->
