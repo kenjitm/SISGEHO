@@ -88,7 +88,7 @@
                         <h:commandButton value="Limpiar" class="btn btn-primary"  type="reset"/>
                     </div>
                     <div class="btn-group" role="group" aria-label="Third group">
-                        <h:commandButton value="Exportar PDF" class="btn btn-danger"  />
+                        <h:commandLink target="_blank" value="Exportar PDF" class="btn btn-danger" action="#{reportesBean.generarPDF()}" />
                     </div>
                     <div class="btn-group" role="group" aria-label="Third group">
                         <h:commandButton value="Exportar EXCEL" class="btn btn-success"  />
