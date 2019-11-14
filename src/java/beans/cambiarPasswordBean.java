@@ -60,7 +60,7 @@ public class cambiarPasswordBean {
         em.createQuery("update usuario set contraseña = \'"+password+"\' where id="+user.getId())
         .executeUpdate();*/
         ConexDB db = new ConexDB();
-        int rs = db.executeQuery("update usuario set contraseña = \'"+password+"\' where id="+user.getId());
+        int rs = db.executeQuery("update usuario set password = \'"+password+"\' where id="+user.getId());
         System.out.println("********* Resultado: "+rs+"******************");
         if(rs > 0)
         {
