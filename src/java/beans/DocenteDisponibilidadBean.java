@@ -42,6 +42,7 @@ public class DocenteDisponibilidadBean {
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<DocenteDisponibilidad> disponibilidadList;
     private boolean showDialog;
+    private boolean showDialogReq;
     private boolean showButton;
     private String gestionTipo;
     private Docente docente;
@@ -172,6 +173,15 @@ public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassN
         }
         return disponibilidadListReturn;
     }
+
+    public boolean isShowDialogReq() {
+        return showDialogReq;
+    }
+
+    public void setShowDialogReq(boolean showDialogReq) {
+        this.showDialogReq = showDialogReq;
+    }
+
     public boolean isShowButton() {
         return showButton;
     }
@@ -208,7 +218,7 @@ public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassN
     }
 
     public void tablaDisponibilidad(Docente docentes) {
-        setShowDialog(true);
+        
         gestionTipo = "Disponibilidad Horaria";
         disponibilidadList = new ArrayList<>();
         try {
@@ -222,9 +232,13 @@ public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassN
                     disponibilidadList.add(dispon);
                 }
                 setShowButton(true);
+                setShowDialogReq(true);
+                setShowDialog(false);
             }else
             {
                 setShowButton(false);
+                setShowDialog(true);
+                setShowDialogReq(false);
             }
 
             docente = docentes;
@@ -235,8 +249,9 @@ public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassN
 
     public void closeDetail() {
         setShowDialog(false);
+        setShowDialogReq(false);
     }
-
+    
     public void guardarDisponibilidad() {
         try {
             EntityManagerFactory emf
@@ -257,7 +272,7 @@ public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassN
                 //Logger.getLogger(RelacionDocenteMateriaHorarioBean.class).log(Level.INFO, "CANTIDAD ESTUDIANTES: "+ String.valueOf(a.getCantidadEstudiantes()));
             }
             em.close();
-            setShowDialog(false);
+            setShowDialogReq(false);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -279,7 +294,7 @@ public List<DocenteDisponibilidad> disponibilidadByDocente(int id) throws ClassN
             consultaDocente.setParameter("identificacion", identificacion);
             docenteId = consultaDocente.getResultList().get(0);
             tablaDisponibilidad(docenteId);
-            setShowDialog(true);
+            //setShowDialog(true);
             
     }
     

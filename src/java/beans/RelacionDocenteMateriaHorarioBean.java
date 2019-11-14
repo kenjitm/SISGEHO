@@ -143,6 +143,7 @@ public List<DocenteDisponibilidad> getDisponibilidadList() {
         
     }*/
     public RelacionDocenteMateriaHorarioBean() throws ClassNotFoundException, SQLException {
+        disponibilidadList = new ArrayList<>();
         relacion = new RelacionDocenteHorarioMateria();
         horarios = new Asignacion();
         relacionDMH();

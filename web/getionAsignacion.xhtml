@@ -157,35 +157,41 @@
                 <h:panelGroup layout="block" rendered="#{not relacionDocenteMateriaHorarioBean.relacion.show}">
                     <h:form>
                         <h:dataTable class="table table-hover text-center" value="#{relacionDocenteMateriaHorarioBean.disponibilidadList}" var="disponibilidad">
-                            <p:column>
-                                <f:facet name="header">Jornada</f:facet>
-                                <h:outputText value="#{disponibilidad.jornada}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Lunes</f:facet>
-                                <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.lunes}" class="form-control" />
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Martes</f:facet>
-                                <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.martes}" class="form-control" />
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Miercoles</f:facet>
-                                <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.miercoles}" class="form-control" />
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Jueves</f:facet>
-                                <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.jueves}" class="form-control" />
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Viernes</f:facet>
-                                <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.viernes}" class="form-control" />
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Sabado</f:facet>
-                                <p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.sabado}" class="form-control" />
-                            </p:column>
-                        </h:dataTable>
+                        <p:column>
+                            <f:facet name="header">Jornada</f:facet>
+                            <h:outputText value="#{disponibilidad.jornada}"/>
+                        </p:column>
+                        <p:column>
+                                        <f:facet name="header">Lunes</f:facet>
+                                        <h:graphicImage url="#{resource[docenteDisponibilidadBean.hacerVisible(disponibilidad.lunes)]}" class="img-fluid" alt="Responsive image" width="40" height="40"/>
+                                        <!--p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.lunes}" class="form-control" /-->
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Martes</f:facet>
+                                        <h:graphicImage url="#{resource[docenteDisponibilidadBean.hacerVisible(disponibilidad.martes)]}" class="img-fluid" alt="Responsive image" width="40" height="40"/>
+                                        <!--p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.martes}" class="form-control" /-->
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Miercoles</f:facet>
+                                        <h:graphicImage url="#{resource[docenteDisponibilidadBean.hacerVisible(disponibilidad.miercoles)]}" class="img-fluid" alt="Responsive image" width="40" height="40"/>
+                                        <!--p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.miercoles}" class="form-control" /-->
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Jueves</f:facet>
+                                        <h:graphicImage url="#{resource[docenteDisponibilidadBean.hacerVisible(disponibilidad.jueves)]}" class="img-fluid" alt="Responsive image" width="40" height="40"/>
+                                        <!--p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.jueves}" class="form-control" /-->
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Viernes</f:facet>
+                                        <h:graphicImage url="#{resource[docenteDisponibilidadBean.hacerVisible(disponibilidad.viernes)]}" class="img-fluid" alt="Responsive image" width="40" height="40"/>
+                                        <!--p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.viernes}" class="form-control" /-->
+                                    </p:column>
+                        <p:column>
+                                        <f:facet name="header">Sabado</f:facet>
+                                        <h:graphicImage url="#{resource[docenteDisponibilidadBean.hacerVisible(disponibilidad.sabado)]}" class="img-fluid" alt="Responsive image" width="40" height="40"/>
+                                        <!--p:selectBooleanCheckbox itemLabel="Disponible?" value="#{disponibilidad.sabado}" class="form-control" /-->
+                                    </p:column>
+                    </h:dataTable>
                     </h:form>
                     
 
