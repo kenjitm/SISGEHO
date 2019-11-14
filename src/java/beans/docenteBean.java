@@ -144,7 +144,7 @@ public class docenteBean {
         Docente doce = new Docente();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        doce.setId(id);
+        doce.setIdentificacion(id);
         doce.setNombre(nombre);
         doce.setApellido(apellido);
         doce.setEdad(edad);

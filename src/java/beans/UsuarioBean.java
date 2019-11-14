@@ -25,17 +25,17 @@ import javax.persistence.TypedQuery;
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class UsuariosBean {
+public class UsuarioBean {
     private Usuario user;
     private Usuario userSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<Usuario> userList;
-    public UsuariosBean(){
+    
+    public UsuarioBean(){
         user = new Usuario();
         userSearch = new Usuario();
         obtenerUsuarios();
     }
-
     public Usuario getUser() {
         return user;
     }
@@ -71,7 +71,8 @@ public class UsuariosBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Usuario> user = em.createNamedQuery("UsuariofindById", Usuario.class);
+        System.out.println("beans.UsuariosBean.buscarById: id-"+id);
+        TypedQuery<Usuario> user = em.createNamedQuery("Usuario.findById", Usuario.class);
         user.setParameter("id", id);
         return (user.getResultList().isEmpty())?  null : user.getResultList().get(0);
     }
@@ -160,17 +161,18 @@ public class UsuariosBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((UsuariosBean) context.getApplication().evaluateExpressionGet(context, "#{" + "UsuariosBean" + "}", UsuariosBean.class)).buscarById(getKey(value));
+            System.out.println("beans.UsuariosBean.UsuariosBeanConverter.getAsObject() Value: "+value);
+            return ((UsuarioBean) context.getApplication().evaluateExpressionGet(context, "#{" + "UsuariosBean" + "}", UsuarioBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Usuario) {
+                return getStringKey(((Usuario) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Usuario.class.getName());
             }
         }
 

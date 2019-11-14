@@ -224,6 +224,7 @@ public class RegistroUsuarioBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
+        System.out.println("beans.RegistroUsuarioBean.buscarById() Id:"+id);
         TypedQuery<Usuario> users = em.createNamedQuery("Usuario.findById", Usuario.class);
         users.setParameter("id", id);
         return (users.getResultList().isEmpty())?  null : users.getResultList().get(0);
@@ -238,6 +239,8 @@ public class RegistroUsuarioBean {
             rolBean processRol = new rolBean();
             rol = processRol.buscarById(6);
             System.out.println("***beans.RegistroUsuarioBean.guardarUsuarios: -Rol-"+rol.getNombre());
+            System.out.println("***beans.RegistroUsuarioBean.guardarUsuarios: -Nombre:"+user.getNombre()+"-Apellido:"+user.getApellido()+"-Usuario:"+user.getUsuario()+"Identificacion:"+user.getIdentificacion());
+            user.setActivo(true);
             em.getTransaction().begin();
             em.persist(user);
             em.getTransaction().commit();
@@ -250,10 +253,20 @@ public class RegistroUsuarioBean {
             em.persist(userRol);
             em.getTransaction().commit();
             em.close();
+            /************* Registro de Docentes **************/
+            setId(user.getIdentificacion());
+            setNombre(user.getNombre());
+            setApellido(user.getApellido());
+            setEmail(user.getEmail());
+            docenteBean blDocente = new docenteBean();
+            blDocente.registrarDocente(id, nombre, apellido, edad, email,tipo_contrato);
             user = new Usuario();
             obtenerUsuarios(); //Actualiza lista
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se guardó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+        String outcome = "index";// Do your thing?
+        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, outcome);
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo guardar los datos. Inténtelo más tarde");
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -380,7 +393,7 @@ public Usuario getUsuarioUser(String userName) throws SQLException, ClassNotFoun
                         user.setApellido(rs.getNString("apellido"));
                         user.setUsuario(rs.getNString("usuario"));
                         user.setEmail(rs.getNString("email"));
-                        user.setPassword(rs.getNString("contraseña"));
+                        user.setPassword(rs.getNString("password"));
                         user.setActivo(rs.getBoolean("activo"));
 		}
 
@@ -392,8 +405,8 @@ public Usuario getUsuarioUser(String userName) throws SQLException, ClassNotFoun
         return user;
 }
 public void crearUsuario(){
-    String sSubCadena = nombre.substring(0,2);
-    String userName = sSubCadena+""+apellido;
+    String sSubCadena = user.getNombre().substring(0,2);
+    String userName = sSubCadena+""+user.getApellido();
     EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
@@ -402,9 +415,9 @@ public void crearUsuario(){
         int value = q.getResultList().size();
         if(value > 0)
         {
-           userName +=  ""+value;
+           userName += ""+value;
         }
-        setUsuario(userName);
+        user.setUsuario(userName);
 }
 public String irUsuarios(){
     return "gestionUsuario.xhtml";
@@ -432,10 +445,10 @@ public String irUsuarios(){
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Usuario) {
+                return getStringKey(((Usuario) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Usuario.class.getName());
             }
         }
 

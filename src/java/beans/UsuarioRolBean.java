@@ -8,6 +8,8 @@ package beans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import entity.UsuarioRol;
+import entity.Usuario;
+import entity.Rol;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -26,13 +28,16 @@ import javax.persistence.TypedQuery;
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
 public class UsuarioRolBean {
-
+    private Usuario user;
+    private Rol rol;
     private UsuarioRol userRol;
     private UsuarioRol userRolSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<UsuarioRol> userRolList;
 
     public UsuarioRolBean() {
+        user = new Usuario();
+        rol = new Rol();
         userRol = new UsuarioRol();
         userRolSearch = new UsuarioRol();
         obtenerUsuariosRoles();
@@ -43,6 +48,22 @@ public class UsuarioRolBean {
     
     public UsuarioRol getUserRol() {
         return userRol;
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     public void setUserRol(UsuarioRol userRol) {
@@ -86,6 +107,7 @@ public class UsuarioRolBean {
             EntityManagerFactory emf
                     = Persistence.createEntityManagerFactory("SisgehoPU");
             EntityManager em = emf.createEntityManager();
+            System.out.println("beans.UsuarioRolBean.guardarUsuarioRol: UserId:" +userRol.getRowidUsuario().getId()+" RolId: "+userRol.getRowidRol().getId()+" Activo: "+userRol.getActivo());
             em.getTransaction().begin();
             em.persist(userRol);
             em.getTransaction().commit();

@@ -63,7 +63,7 @@ and open the template in the editor.
                         <h:selectOneMenu class="form-control" id="usuario" value="#{usuarioRolBean.userRol.rowidUsuario}" style="width: 100%"
                                          >
                             <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{usuariosBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" />
+                            <f:selectItems value="#{usuarioBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" />
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group mt-2">
@@ -122,7 +122,7 @@ and open the template in the editor.
                                              rendered="#{userRol.editable}"
                                              >
                                 <f:selectItem itemLabel="--Selecione--" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{usuariosBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" rendered="#{userRol.editable}" />
+                                <f:selectItems value="#{usuarioBean.userList}" var="user" itemLabel="#{user.usuario}" itemValue="#{user.id}" rendered="#{userRol.editable}" />
                             </h:selectOneMenu>
                             <h:outputText value="#{userRol.rowidUsuario.usuario}" rendered="#{not userRol.editable}" />
                         </p:column>
