@@ -25,17 +25,17 @@ import javax.persistence.TypedQuery;
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class UsuariosBean {
+public class UsuarioBean {
     private Usuario user;
     private Usuario userSearch;
     //INDISPENSABLE ESTA VARIABLE CON EL ALCANCE ESTÁTICO
     private static List<Usuario> userList;
-    public UsuariosBean(){
+    
+    public UsuarioBean(){
         user = new Usuario();
         userSearch = new Usuario();
         obtenerUsuarios();
     }
-
     public Usuario getUser() {
         return user;
     }

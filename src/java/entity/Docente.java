@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "docente")
@@ -40,9 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Docente.findByTipoContrato", query = "SELECT d FROM Docente d WHERE d.tipoContrato = :tipoContrato"),
     @NamedQuery(name = "Docente.findByActivo", query = "SELECT d FROM Docente d WHERE d.activo = :activo")})
 public class Docente implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidDocente")
-    private Collection<DocenteDisponibilidad> docenteDisponibilidadCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -69,23 +66,23 @@ public class Docente implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidDocente")
+    private Collection<DocenteDisponibilidad> docenteDisponibilidadCollection;
     @OneToMany(mappedBy = "rowidDocente")
     private Collection<Asignacion> asignacionCollection;
 @Transient
     private boolean editable;
     public Docente() {
     }
-
-    public Docente(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Docente(Integer id) {
+        this.id = id;
     }
 
     public Docente(Integer id, String nombre, String apellido, int edad, int identificacion, boolean activo) {
@@ -162,6 +159,15 @@ public class Docente implements Serializable {
     }
 
     @XmlTransient
+    public Collection<DocenteDisponibilidad> getDocenteDisponibilidadCollection() {
+        return docenteDisponibilidadCollection;
+    }
+
+    public void setDocenteDisponibilidadCollection(Collection<DocenteDisponibilidad> docenteDisponibilidadCollection) {
+        this.docenteDisponibilidadCollection = docenteDisponibilidadCollection;
+    }
+
+    @XmlTransient
     public Collection<Asignacion> getAsignacionCollection() {
         return asignacionCollection;
     }
@@ -193,15 +199,6 @@ public class Docente implements Serializable {
     @Override
     public String toString() {
         return nombre+" "+apellido;
-    }
-
-    @XmlTransient
-    public Collection<DocenteDisponibilidad> getDocenteDisponibilidadCollection() {
-        return docenteDisponibilidadCollection;
-    }
-
-    public void setDocenteDisponibilidadCollection(Collection<DocenteDisponibilidad> docenteDisponibilidadCollection) {
-        this.docenteDisponibilidadCollection = docenteDisponibilidadCollection;
     }
     
 }

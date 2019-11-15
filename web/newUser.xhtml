@@ -56,13 +56,13 @@ and open the template in the editor.
                                            itemValue="#{tipo}" itemLabel="#{tipo.label}" />
                         </p:selectOneMenu>
                         <div class="form-group mt-3">
-                            <p:inputText value="#{registroUsuarioBean.id}" class="form-control" placeholder="Identificación" required=""/>
+                            <p:inputText value="#{registroUsuarioBean.user.identificacion}" class="form-control" placeholder="Identificación" required=""/>
                         </div>                            
                         <div class="form-group mt-2">
-                            <p:inputText value="#{registroUsuarioBean.nombre}" class="form-control" placeholder="Nombres" required=""/>
+                            <p:inputText value="#{registroUsuarioBean.user.nombre}" class="form-control" placeholder="Nombres" required=""/>
                         </div>
                         <div class="form-group mt-2">
-                            <p:inputText value="#{registroUsuarioBean.apellido}" class="form-control" placeholder="Apellidos" required=""/>
+                            <p:inputText value="#{registroUsuarioBean.user.apellido}" class="form-control" placeholder="Apellidos" required=""/>
                         </div>
                         <div class="form-group mt-2">
                             <p:inputText value="#{registroUsuarioBean.tipo_contrato}" class="form-control" placeholder="Tipo de Contrato" required=""/>
@@ -71,19 +71,19 @@ and open the template in the editor.
                             <p:inputText value="#{registroUsuarioBean.edad}" class="form-control" placeholder="Edad" required=""/>
                         </div>
                         <div class="form-group mt-2">
-                            <p:inputText value="#{registroUsuarioBean.email}" class="form-control" type="email" placeholder="Email" required=""/>
+                            <p:inputText value="#{registroUsuarioBean.user.email}" class="form-control" type="email" placeholder="Email" required=""/>
                         </div>                            
                         <div class="form-group mt-2">
-                            <p:inputText value="#{registroUsuarioBean.usuario}" class="form-control" placeholder="Usuario" required="" disabled="true"/>
+                            <p:inputText value="#{registroUsuarioBean.user.usuario}" class="form-control" placeholder="Usuario" required="" disabled="true"/>
                             <h:commandButton value="Crear Usuario" class="btn btn-primary" action="#{registroUsuarioBean.crearUsuario()}"/>
                         </div>
                         <div class="form-group mt-2">
-                            <p:inputText value="#{registroUsuarioBean.password}" class="form-control" type="password" placeholder="Contraseña" required=""/>
+                            <p:inputText value="#{registroUsuarioBean.user.password}" class="form-control" type="password" placeholder="Contraseña" required=""/>
                         </div>
                                              
                         <p:separator/>
                         <div class="btn-group" role="group" aria-label="Third group">
-                            <h:commandButton value="Crear Cuenta" class="btn btn-warning" action="#{registroUsuarioBean.registrarse()}"/>
+                            <h:commandButton value="Crear Cuenta" class="btn btn-warning" action="#{registroUsuarioBean.guardarUsuarios()}"/>
                         </div>                                                      
                     </h:form>
                 </div>

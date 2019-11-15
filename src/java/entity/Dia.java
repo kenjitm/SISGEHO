@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "dia")
@@ -48,17 +48,14 @@ public class Dia implements Serializable {
 @Transient
     private boolean editable;
     public Dia() {
-        editable = false;
     }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
-
     public Dia(Integer id) {
         this.id = id;
     }

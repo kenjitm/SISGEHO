@@ -35,9 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Asignacion.findById", query = "SELECT a FROM Asignacion a WHERE a.id = :id")})
 public class Asignacion implements Serializable {
 
-    @OneToMany(mappedBy = "rowidAsignacion")
-    private Collection<AsignacionGrupos> asignacionGruposCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,10 +65,11 @@ public class Asignacion implements Serializable {
     @JoinColumn(name = "rowid_hora_final", referencedColumnName = "id")
     @ManyToOne
     private Hora rowidHoraFinal;
+    @OneToMany(mappedBy = "rowidAsignacion")
+    private Collection<AsignacionGrupos> asignacionGruposCollection;
 @Transient
     private boolean editable;
     public Asignacion() {
-        editable = false;
     }
  public boolean isEditable() {
         return editable;
@@ -156,6 +154,15 @@ public class Asignacion implements Serializable {
         this.rowidHoraFinal = rowidHoraFinal;
     }
 
+    @XmlTransient
+    public Collection<AsignacionGrupos> getAsignacionGruposCollection() {
+        return asignacionGruposCollection;
+    }
+
+    public void setAsignacionGruposCollection(Collection<AsignacionGrupos> asignacionGruposCollection) {
+        this.asignacionGruposCollection = asignacionGruposCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -179,15 +186,6 @@ public class Asignacion implements Serializable {
     @Override
     public String toString() {
         return "entity.Asignacion[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<AsignacionGrupos> getAsignacionGruposCollection() {
-        return asignacionGruposCollection;
-    }
-
-    public void setAsignacionGruposCollection(Collection<AsignacionGrupos> asignacionGruposCollection) {
-        this.asignacionGruposCollection = asignacionGruposCollection;
     }
     
 }

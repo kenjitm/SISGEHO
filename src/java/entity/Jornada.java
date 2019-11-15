@@ -43,19 +43,16 @@ public class Jornada implements Serializable {
 @Transient
     private boolean editable;
     public Jornada() {
-        editable = false;
     }
-
-    public Jornada(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Jornada(Integer id) {
+        this.id = id;
     }
 
     public Jornada(Integer id, String descripcion) {

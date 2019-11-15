@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "programa")
@@ -82,20 +82,17 @@ public class Programa implements Serializable {
     @JoinColumn(name = "rowid_modalidad", referencedColumnName = "id")
     @ManyToOne
     private ModalidadPrograma rowidModalidad;
-    @Transient
+@Transient
     private boolean editable;
     public Programa() {
-        editable = false;
     }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
-
     public Programa(Integer id) {
         this.id = id;
     }
@@ -237,7 +234,7 @@ public class Programa implements Serializable {
 
     @Override
     public String toString() {
-        return nombre;
+        return "entity.Programa[ id=" + id + " ]";
     }
     
 }

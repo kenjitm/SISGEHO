@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "usuario_rol")
@@ -30,7 +30,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "UsuarioRol.findAll", query = "SELECT u FROM UsuarioRol u"),
     @NamedQuery(name = "UsuarioRol.findById", query = "SELECT u FROM UsuarioRol u WHERE u.id = :id"),
-    @NamedQuery(name = "UsuarioRol.findByUserId", query = "SELECT u FROM UsuarioRol u WHERE u.id = :id"),
     @NamedQuery(name = "UsuarioRol.findByActivo", query = "SELECT u FROM UsuarioRol u WHERE u.activo = :activo")})
 public class UsuarioRol implements Serializable {
 
@@ -49,14 +48,17 @@ public class UsuarioRol implements Serializable {
     @JoinColumn(name = "rowid_rol", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Rol rowidRol;
-    
-    @Transient
-    private Boolean editable;
-
+@Transient
+    private boolean editable;
     public UsuarioRol() {
-        editable = false;
+    }
+ public boolean isEditable() {
+        return editable;
     }
 
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
     public UsuarioRol(Integer id) {
         this.id = id;
     }
@@ -98,14 +100,6 @@ public class UsuarioRol implements Serializable {
         this.rowidRol = rowidRol;
     }
 
-    public Boolean getEditable() {
-        return editable;
-    }
-
-    public void setEditable(Boolean editable) {
-        this.editable = editable;
-    }
-    
     @Override
     public int hashCode() {
         int hash = 0;

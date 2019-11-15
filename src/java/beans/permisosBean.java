@@ -19,6 +19,7 @@ public class permisosBean {
     private Boolean bitInsert;
     private Boolean bitUpdate;
     private Boolean bitDelete;
+    private Boolean bitCoordinacion;
 
     public Boolean getBitInsert() {
         return bitInsert;
@@ -40,6 +41,14 @@ public class permisosBean {
         return bitDelete;
     }
 
+    public Boolean getBitCoordinacion() {
+        return bitCoordinacion;
+    }
+
+    public void setBitCoordinacion(Boolean bitCoordinacion) {
+        this.bitCoordinacion = bitCoordinacion;
+    }
+
     public void setBitDelete(Boolean bitDelete) {
         this.bitDelete = bitDelete;
     }
@@ -51,5 +60,10 @@ public class permisosBean {
         System.out.println("********beans.permisosBean: Permiso Insert: --"+bitInsert.toString());
         bitUpdate = rol.getBitUpdate();//(Boolean)globalBean.getObjectFromSession("bitUpdate"); 
         bitDelete = rol.getBitDelete();//(Boolean)globalBean.getObjectFromSession("bitDelete"); 
+        String rolDes = globalBean.getObjectFromSession("roles").toString();
+        if ("DOCENTE".equals(rolDes)) {
+            setBitCoordinacion(true);
+        }else
+            setBitCoordinacion(false);
     }
 }

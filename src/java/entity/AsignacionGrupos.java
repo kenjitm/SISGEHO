@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -46,10 +47,17 @@ public class AsignacionGrupos implements Serializable {
     @JoinColumn(name = "rowid_asignacion", referencedColumnName = "id")
     @ManyToOne
     private Asignacion rowidAsignacion;
-
+@Transient
+    private boolean editable;
     public AsignacionGrupos() {
     }
+ public boolean isEditable() {
+        return editable;
+    }
 
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
     public AsignacionGrupos(Integer id) {
         this.id = id;
     }
