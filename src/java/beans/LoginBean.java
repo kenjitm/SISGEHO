@@ -117,9 +117,6 @@ public class LoginBean implements Serializable {
             TypedQuery<Usuario> consultaUsuarios = em.createNamedQuery("Usuario.findByUsuario", Usuario.class);
             consultaUsuarios.setParameter("usuario", usuario);
             List<Usuario> lista = consultaUsuarios.getResultList();
-            Usuario user = consultaUsuarios.getResultList().get(0);
-            UsuarioRolBean userBean = new UsuarioRolBean();
-            
             /*ConexDB db = new ConexDB();
             UsuarioRol userRol = new UsuarioRol();
             try
@@ -131,8 +128,10 @@ public class LoginBean implements Serializable {
             }*/
 
             lista = lista.stream().filter(lu -> lu != null && lu.getUsuario() != null && lu.getUsuario().equals(usuario)).collect(Collectors.toList());
-            if (lista != null) {
-                if (!lista.isEmpty() && lista.get(0) != null && lista.get(0).getPassword().equals(password)) {
+            if (lista != null && !lista.isEmpty()) {
+                Usuario user = consultaUsuarios.getResultList().get(0);
+                UsuarioRolBean userBean = new UsuarioRolBean();
+                if (lista.get(0) != null && lista.get(0).getPassword().equals(password)) {
 
                     FacesContext context = FacesContext.getCurrentInstance();
                     context.getExternalContext().getSessionMap().put("user", usuario);
