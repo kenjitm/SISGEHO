@@ -425,17 +425,17 @@ public String irUsuarios(){
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((RegistroUsuarioBean) context.getApplication().evaluateExpressionGet(context, "#{" + "RegistroUsuarioBean" + "}", RegistroUsuarioBean.class)).buscarById(getKey(value));
+            return ((RegistroUsuarioBean) context.getApplication().evaluateExpressionGet(context, "#{" + "registroUsuarioBean" + "}", RegistroUsuarioBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Usuario) {
+                return getStringKey(((Usuario) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Usuario.class.getName());
             }
         }
 

@@ -71,7 +71,7 @@ public class UsuariosBean {
         EntityManagerFactory emf
                 = Persistence.createEntityManagerFactory("SisgehoPU");
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Usuario> user = em.createNamedQuery("UsuariofindById", Usuario.class);
+        TypedQuery<Usuario> user = em.createNamedQuery("Usuario.findById", Usuario.class);
         user.setParameter("id", id);
         return (user.getResultList().isEmpty())?  null : user.getResultList().get(0);
     }
@@ -160,17 +160,17 @@ public class UsuariosBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((UsuariosBean) context.getApplication().evaluateExpressionGet(context, "#{" + "UsuariosBean" + "}", UsuariosBean.class)).buscarById(getKey(value));
+            return ((UsuariosBean) context.getApplication().evaluateExpressionGet(context, "#{" + "usuariosBean" + "}", UsuariosBean.class)).buscarById(getKey(value));
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             if (value == null) {
                 return null;
-            } else if (value instanceof Sede) {
-                return getStringKey(((Sede) value).getId());
+            } else if (value instanceof Usuario) {
+                return getStringKey(((Usuario) value).getId());
             } else {
-                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Sede.class.getName());
+                throw new IllegalArgumentException("object " + value + " is of type " + value.getClass().getName() + "; expected type: " + Usuario.class.getName());
             }
         }
 

@@ -180,7 +180,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Rol[ id=" + id + " ]";
+        return nombre;
     }
     
 }
