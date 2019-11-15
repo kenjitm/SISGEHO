@@ -116,7 +116,7 @@ and open the template in the editor.
                             <f:facet name="header">Usuario</f:facet>
                             <h:selectOneMenu class="form-control" id="usuario" value="#{userRol.rowidUsuario}" style="width: 100%" rendered="#{userRol.editable}">
                                 <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-                                <f:selectItems value="#{usuariosBean.userList}" rendered="#{userRol.editable}" />
+                                <f:selectItems value="#{usuarioBean.userList}" rendered="#{userRol.editable}" />
                             </h:selectOneMenu>
                             <h:outputText value="#{userRol.rowidUsuario.usuario}" rendered="#{not userRol.editable}" />
                         </p:column>

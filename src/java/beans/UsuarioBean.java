@@ -160,7 +160,7 @@ public class UsuarioBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            return ((UsuariosBean) context.getApplication().evaluateExpressionGet(context, "#{" + "usuariosBean" + "}", UsuariosBean.class)).buscarById(getKey(value));
+            return ((UsuarioBean) context.getApplication().evaluateExpressionGet(context, "#{" + "usuariosBean" + "}", UsuarioBean.class)).buscarById(getKey(value));
         }
 
         @Override
