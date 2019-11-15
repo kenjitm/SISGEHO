@@ -188,8 +188,7 @@ public class RecursoBean implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            System.out.println("beans.RecursoBean.RecursoBeanConverter.getAsObject: value:"+value);
-            return ((RecursoBean) context.getApplication().evaluateExpressionGet(context, "#{" + "RecursoBean" + "}", RecursoBean.class)).buscarById(getKey(value));
+            return ((RecursoBean) context.getApplication().evaluateExpressionGet(context, "#{" + "recursoBean" + "}", RecursoBean.class)).buscarById(getKey(value));
         }
 
         @Override

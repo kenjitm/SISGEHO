@@ -272,19 +272,19 @@
                             <p:outputLabel for="sede" value="Sede " />
                             <h:selectOneMenu class="form-control" id="sede" value="#{asignacionBean.asignaciones.rowidSede}" style="width: 100%" >
                                 <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-                                <f:selectItems value="#{sedeBean.sedesList}" var="sed" itemValue="#{sed.id}" itemLabel="#{sed.ubicacion}" />
+                                <f:selectItems value="#{sedeBean.sedesList}" var="sed" itemValue="#{sed}" itemLabel="#{sed.ubicacion}" />
                             </h:selectOneMenu>
 
                             <p:outputLabel for="subsede" value="Subsede " />
                             <h:selectOneMenu class="form-control" id="subsede" value="#{asignacionBean.asignaciones.rowidSede}" style="width: 100%" >
                                 <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-                                <f:selectItems value="#{sedeBean.sedesList}" var="sed" itemValue="#{sed.id}" itemLabel="#{sed.subsede}" />
+                                <f:selectItems value="#{sedeBean.sedesList}" var="sed" itemValue="#{sed}" itemLabel="#{sed.subsede}" />
                             </h:selectOneMenu>
 
                             <p:outputLabel for="recursos" value="Recurso " />
                             <h:selectOneMenu class="form-control" id="recursos" value="#{asignacionBean.asignaciones.rowidRecurso}" style="width: 100%" >
                                 <f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
-                                <f:selectItems value="#{recursoBean.recursoList}" var="rec" itemValue="#{rec.id}" itemLabel="#{rec.nomenclatura}" />
+                                <f:selectItems value="#{recursoBean.recursoList}" var="rec" itemValue="#{rec}" itemLabel="#{rec.nomenclatura}" />
                             </h:selectOneMenu>
 
                         </h:panelGrid>
