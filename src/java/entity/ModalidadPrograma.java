@@ -17,12 +17,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "modalidad_programa")
@@ -35,16 +36,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ModalidadPrograma.findByActivo", query = "SELECT m FROM ModalidadPrograma m WHERE m.activo = :activo")})
 public class ModalidadPrograma implements Serializable {
 
-    @Column(name = "id_modalidad")
-    private Integer idModalidad;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
+    @Column(name = "id_modalidad")
+    private Integer idModalidad;
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
@@ -52,18 +51,23 @@ public class ModalidadPrograma implements Serializable {
     private boolean activo;
     @OneToMany(mappedBy = "rowidModalidad")
     private Collection<Programa> programaCollection;
-
+@Transient
+    private boolean editable;
     public ModalidadPrograma() {
     }
+public boolean isEditable() {
+        return editable;
+    }
 
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
     public ModalidadPrograma(Integer id) {
         this.id = id;
     }
 
-    public ModalidadPrograma(Integer id, int idModalidad, String descripcion, boolean activo) {
+    public ModalidadPrograma(Integer id, boolean activo) {
         this.id = id;
-        this.idModalidad = idModalidad;
-        this.descripcion = descripcion;
         this.activo = activo;
     }
 
@@ -75,11 +79,11 @@ public class ModalidadPrograma implements Serializable {
         this.id = id;
     }
 
-    public int getIdModalidad() {
+    public Integer getIdModalidad() {
         return idModalidad;
     }
 
-    public void setIdModalidad(int idModalidad) {
+    public void setIdModalidad(Integer idModalidad) {
         this.idModalidad = idModalidad;
     }
 
@@ -131,14 +135,6 @@ public class ModalidadPrograma implements Serializable {
     @Override
     public String toString() {
         return "entity.ModalidadPrograma[ id=" + id + " ]";
-    }
-
-   /* public Integer getIdModalidad() {
-        return idModalidad;
-    }*/
-
-    public void setIdModalidad(Integer idModalidad) {
-        this.idModalidad = idModalidad;
     }
     
 }

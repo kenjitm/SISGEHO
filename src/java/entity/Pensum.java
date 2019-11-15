@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "pensum")
@@ -56,19 +56,16 @@ public class Pensum implements Serializable {
 @Transient
     private boolean editable;
     public Pensum() {
-        editable = false;
     }
-
-    public Pensum(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Pensum(Integer id) {
+        this.id = id;
     }
 
     public Pensum(Integer id, String descripcion, String codigo, boolean activo) {
@@ -141,7 +138,7 @@ public class Pensum implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Pensum[ id=" + id + " ]";
+        return codigo+"-"+descripcion;
     }
     
 }

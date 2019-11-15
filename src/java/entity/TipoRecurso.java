@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "tipo_recurso")
@@ -56,9 +56,14 @@ public class TipoRecurso implements Serializable {
 @Transient
     private boolean editable;
     public TipoRecurso() {
-        editable = false;
+    }
+ public boolean isEditable() {
+        return editable;
     }
 
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
     public TipoRecurso(Integer id) {
         this.id = id;
     }
@@ -68,14 +73,6 @@ public class TipoRecurso implements Serializable {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.activo = activo;
-    }
-
-    public boolean isEditable() {
-        return editable;
-    }
-
-    public void setEditable(boolean editable) {
-        this.editable = editable;
     }
 
     public Integer getId() {

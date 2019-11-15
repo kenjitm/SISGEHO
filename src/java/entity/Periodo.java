@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "periodo")
@@ -65,19 +65,16 @@ public class Periodo implements Serializable {
 @Transient
     private boolean editable;
     public Periodo() {
-        editable = false;
     }
-
-    public Periodo(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Periodo(Integer id) {
+        this.id = id;
     }
 
     public Periodo(Integer id, String descripcion, Date fechainicio, Date fechafin, boolean activo) {
@@ -159,7 +156,7 @@ public class Periodo implements Serializable {
 
     @Override
     public String toString() {
-        return descripcion;
+        return "entity.Periodo[ id=" + id + " ]";
     }
     
 }

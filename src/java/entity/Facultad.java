@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "facultad")
@@ -53,17 +53,15 @@ public class Facultad implements Serializable {
     private boolean editable;
     public Facultad() {
     }
-
-    public Facultad(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Facultad(Integer id) {
+        this.id = id;
     }
 
     public Facultad(Integer id, String descripcion, boolean activo) {
@@ -127,7 +125,7 @@ public class Facultad implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Facultad[ id=" + id + " ]";
+        return descripcion;
     }
     
 }

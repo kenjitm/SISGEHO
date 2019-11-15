@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "grupo")
@@ -35,9 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Grupo.findByDescripcion", query = "SELECT g FROM Grupo g WHERE g.descripcion = :descripcion"),
     @NamedQuery(name = "Grupo.findByActivo", query = "SELECT g FROM Grupo g WHERE g.activo = :activo")})
 public class Grupo implements Serializable {
-
-    @OneToMany(mappedBy = "rowidGrupo")
-    private Collection<AsignacionGrupos> asignacionGruposCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,22 +51,21 @@ public class Grupo implements Serializable {
     @Basic(optional = false)
     @Column(name = "activo")
     private boolean activo;
-    
+    @OneToMany(mappedBy = "rowidGrupo")
+    private Collection<AsignacionGrupos> asignacionGruposCollection;
 @Transient
     private boolean editable;
     public Grupo() {
     }
-
-    public Grupo(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Grupo(Integer id) {
+        this.id = id;
     }
 
     public Grupo(Integer id, String nomenclatura, String descripcion, boolean activo) {
@@ -111,7 +107,14 @@ public class Grupo implements Serializable {
         this.activo = activo;
     }
 
-   
+    @XmlTransient
+    public Collection<AsignacionGrupos> getAsignacionGruposCollection() {
+        return asignacionGruposCollection;
+    }
+
+    public void setAsignacionGruposCollection(Collection<AsignacionGrupos> asignacionGruposCollection) {
+        this.asignacionGruposCollection = asignacionGruposCollection;
+    }
 
     @Override
     public int hashCode() {
@@ -135,16 +138,7 @@ public class Grupo implements Serializable {
 
     @Override
     public String toString() {
-        return nomenclatura;
-    }
-
-    @XmlTransient
-    public Collection<AsignacionGrupos> getAsignacionGruposCollection() {
-        return asignacionGruposCollection;
-    }
-
-    public void setAsignacionGruposCollection(Collection<AsignacionGrupos> asignacionGruposCollection) {
-        this.asignacionGruposCollection = asignacionGruposCollection;
+        return "entity.Grupo[ id=" + id + " ]";
     }
     
 }

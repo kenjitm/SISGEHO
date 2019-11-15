@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "hora")
@@ -50,21 +50,21 @@ public class Hora implements Serializable {
     private Date descripcion;
     @OneToMany(mappedBy = "rowidHora")
     private Collection<Asignacion> asignacionCollection;
+    @OneToMany(mappedBy = "rowidHoraFinal")
+    private Collection<Asignacion> asignacionCollection1;
 @Transient
     private boolean editable;
     public Hora() {
     }
-
-    public Hora(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Hora(Integer id) {
+        this.id = id;
     }
 
     public Hora(Integer id, Date descripcion) {
@@ -95,6 +95,15 @@ public class Hora implements Serializable {
 
     public void setAsignacionCollection(Collection<Asignacion> asignacionCollection) {
         this.asignacionCollection = asignacionCollection;
+    }
+
+    @XmlTransient
+    public Collection<Asignacion> getAsignacionCollection1() {
+        return asignacionCollection1;
+    }
+
+    public void setAsignacionCollection1(Collection<Asignacion> asignacionCollection1) {
+        this.asignacionCollection1 = asignacionCollection1;
     }
 
     @Override

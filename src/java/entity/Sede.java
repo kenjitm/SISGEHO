@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "sede")
@@ -58,17 +58,15 @@ public class Sede implements Serializable {
     private boolean editable;
     public Sede() {
     }
-
-    public Sede(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Sede(Integer id) {
+        this.id = id;
     }
 
     public Sede(Integer id, String ubicacion, boolean activo) {
@@ -149,7 +147,7 @@ public class Sede implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Sede[ id=" + id + " ]";
+        return ubicacion+"-"+subsede;
     }
     
 }

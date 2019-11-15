@@ -7,6 +7,7 @@ package beans;
 
 import entity.Recurso;
 import entity.Sede;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -27,7 +28,7 @@ import javax.persistence.TypedQuery;
  */
 @ManagedBean
 @ViewScoped //INDISPENSABLE PONER ESTA ANOTACIÓN EN VEZ DEL REQUESTSCOPED
-public class RecursoBean {
+public class RecursoBean implements Serializable {
 
     private Recurso recurso;
     private Recurso recursoSearch;
@@ -187,6 +188,7 @@ public class RecursoBean {
             if (value == null || value.length() == 0) {
                 return null;
             }
+            System.out.println("beans.RecursoBean.RecursoBeanConverter.getAsObject: value:"+value);
             return ((RecursoBean) context.getApplication().evaluateExpressionGet(context, "#{" + "RecursoBean" + "}", RecursoBean.class)).buscarById(getKey(value));
         }
 

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "recurso")
@@ -69,17 +69,15 @@ public class Recurso implements Serializable {
     private boolean editable;
     public Recurso() {
     }
-
-    public Recurso(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Recurso(Integer id) {
+        this.id = id;
     }
 
     public Recurso(Integer id, String descripcion, String nomenclatura, int capacidad, boolean activo) {

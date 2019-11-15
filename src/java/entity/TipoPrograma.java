@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "tipo_programa")
@@ -57,17 +57,15 @@ public class TipoPrograma implements Serializable {
     private boolean editable;
     public TipoPrograma() {
     }
-
-    public TipoPrograma(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public TipoPrograma(Integer id) {
+        this.id = id;
     }
 
     public TipoPrograma(Integer id, int codigo, String descripcion, boolean activo) {

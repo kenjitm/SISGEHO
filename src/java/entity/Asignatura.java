@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "asignatura")
@@ -40,9 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Asignatura.findByActivo", query = "SELECT a FROM Asignatura a WHERE a.activo = :activo")})
 public class Asignatura implements Serializable {
 
-    @Column(name = "semestre")
-    private Integer semestre;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,6 +51,8 @@ public class Asignatura implements Serializable {
     @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
+    @Column(name = "semestre")
+    private Integer semestre;
     @Column(name = "creditos")
     private Integer creditos;
     @Basic(optional = false)
@@ -67,29 +66,27 @@ public class Asignatura implements Serializable {
     @JoinColumn(name = "rowid_pensum", referencedColumnName = "id")
     @ManyToOne
     private Pensum rowidPensum;
-    @Transient
+@Transient
     private boolean editable;
     public Asignatura() {
-        editable = false;
     }
-
-    public Asignatura(Integer id) {
-        this.id = id;
-    }
-
-    public Asignatura(Integer id, String descripcion, int semestre, boolean activo) {
-        this.id = id;
-        this.descripcion = descripcion;
-        this.semestre = semestre;
-        this.activo = activo;
-    }
-public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
+    public Asignatura(Integer id) {
+        this.id = id;
+    }
+
+    public Asignatura(Integer id, String descripcion, boolean activo) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.activo = activo;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -114,6 +111,13 @@ public boolean isEditable() {
         this.descripcion = descripcion;
     }
 
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Integer semestre) {
+        this.semestre = semestre;
+    }
 
     public Integer getCreditos() {
         return creditos;
@@ -178,15 +182,7 @@ public boolean isEditable() {
 
     @Override
     public String toString() {
-        return codigo +"  - "+ descripcion;
-    }
-
-    public Integer getSemestre() {
-        return semestre;
-    }
-
-    public void setSemestre(Integer semestre) {
-        this.semestre = semestre;
+        return codigo+"-"+descripcion;
     }
     
 }

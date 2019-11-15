@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SougiroHylian
+ * @author IngenieroDesarrollo
  */
 @Entity
 @Table(name = "rol")
@@ -70,17 +70,15 @@ public class Rol implements Serializable {
     private boolean editable;
     public Rol() {
     }
-
-    public Rol(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Rol(Integer id) {
+        this.id = id;
     }
 
     public Rol(Integer id, String nombre, String descripcion, boolean activo, boolean bitInsert, boolean bitUpdate, boolean bitDelete) {

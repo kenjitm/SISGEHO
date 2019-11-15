@@ -6,7 +6,9 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +16,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -64,22 +68,23 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "identificacion")
     private int identificacion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidUsuario")
+    private Collection<UsuarioRol> usuarioRolCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rowidUsuario")
+    private Collection<LogAuditoria> logAuditoriaCollection;
 @Transient
     private boolean editable;
     public Usuario() {
-        editable = false;
     }
-
-    public Usuario(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isEditable() {
+ public boolean isEditable() {
         return editable;
     }
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+    public Usuario(Integer id) {
+        this.id = id;
     }
 
     public Usuario(Integer id, String nombre, String apellido, String usuario, String email, String password, boolean activo, int identificacion) {
@@ -155,6 +160,24 @@ public class Usuario implements Serializable {
 
     public void setIdentificacion(int identificacion) {
         this.identificacion = identificacion;
+    }
+
+    @XmlTransient
+    public Collection<UsuarioRol> getUsuarioRolCollection() {
+        return usuarioRolCollection;
+    }
+
+    public void setUsuarioRolCollection(Collection<UsuarioRol> usuarioRolCollection) {
+        this.usuarioRolCollection = usuarioRolCollection;
+    }
+
+    @XmlTransient
+    public Collection<LogAuditoria> getLogAuditoriaCollection() {
+        return logAuditoriaCollection;
+    }
+
+    public void setLogAuditoriaCollection(Collection<LogAuditoria> logAuditoriaCollection) {
+        this.logAuditoriaCollection = logAuditoriaCollection;
     }
 
     @Override

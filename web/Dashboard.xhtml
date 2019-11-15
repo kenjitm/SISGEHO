@@ -64,6 +64,7 @@ and open the template in the editor.
                 <div class="col-sm-6">
                     <div class="row mt-2">
                         <h:form>
+                            <h:panelGroup layout="block" rendered="#{permisosBean.bitCoordinacion}">
                             <div class="input-group mb-1">
                                 <div>
                                     <span class="input-group-text" id="basic-addon1">
@@ -72,6 +73,7 @@ and open the template in the editor.
                                 </div>
                                 <h:commandButton class="btn azul mb-1" value="Disponibilidad horaria" action="#{docenteDisponibilidadBean.disponibilidadIdentificacion()}"></h:commandButton>  
                             </div>
+                            </h:panelGroup>
                            <div class="input-group mb-3">
                                 <div>
                                     <span class="input-group-text" id="basic-addon1">
