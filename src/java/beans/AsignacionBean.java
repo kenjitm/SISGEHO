@@ -143,10 +143,14 @@ public class AsignacionBean implements Serializable{
             em.getTransaction().commit();
             em.close();
             obtenerAsginaciones(); //Actualiza lista
+            setShowDialog(false);
             asig.setEditable(false);
             asig = new Asignacion();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se actualizó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+        String outcome = "getionAsignacion";// Do your thing?
+        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, outcome);
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo editar los datos. Inténtelo más tarde");
             FacesContext.getCurrentInstance().addMessage(null, msg);

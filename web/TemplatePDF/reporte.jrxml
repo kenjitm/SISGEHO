@@ -50,7 +50,8 @@ LEFT OUTER JOIN hora as horaFi  on horaFi.id = asig.rowid_hora_final
 INNER JOIN asignacion_grupos as asiggru on asiggru.rowid_asignacion = asig.id
 INNER JOIN grupo as gru on gru.id = asiggru.rowid_grupo
 LEFT OUTER JOIN tipo_recurso as tip_rec on tip_rec.id = rec.rowid_tipo
-$P!{filtro}]]>
+$P!{filtro}
+ORDER BY CONCAT(doc.nombre, ' ',doc.apellido)]]>
 	</queryString>
 	<field name="codigo_asignatura" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="codigo_asignatura"/>

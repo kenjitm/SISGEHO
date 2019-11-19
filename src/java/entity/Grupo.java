@@ -138,7 +138,7 @@ public class Grupo implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Grupo[ id=" + id + " ]";
+        return nomenclatura;
     }
     
 }

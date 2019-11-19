@@ -34,6 +34,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -41,6 +42,8 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
 
 /**
  *
@@ -513,6 +516,64 @@ public class ReportesBean {
             response.setHeader("Content-Disposition", "inline;filename=" + "reporte.pdf");
             response.getOutputStream().write(JasperExportManager.exportReportToPdf(print));
             response.flushBuffer();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se generó correctamente");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (JRException | IOException ex) {
+            Logger.getLogger(ReportesBean.class.getName()).log(Level.SEVERE, null, ex);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "NO SE PUDO REALIZAR", "No se pudo generar el documento. Inténtelo más tarde");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    public void generarExcel() {
+        Connection connect = null;
+        String url = "jdbc:mysql://localhost:3306/uniajc";
+        String username = "root";
+        String password = "";
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+
+            connect = DriverManager.getConnection(url, username, password);
+            // System.out.println("Connection established"+connect);
+
+        } catch (SQLException ex) {
+            System.out.println("in exec");
+            System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ReportesBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            String reportPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/TemplatePDF/reporte.jrxml");
+            String imgPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/TemplatePDF/LOGO UNIAJC.png");
+            File img = new File(imgPath);
+            JasperReport archivo = JasperCompileManager.compileReport(reportPath);
+            Map<String, Object> params = new HashMap<>();
+            //params.put("filtro", getConsulta());
+            params.put("filtro", "WHERE TRUE " + condicionReporte);
+            Logger.getLogger(ReportesBean.class.getName()).log(Level.INFO, condicionReporte);
+            params.put("img", img.getAbsolutePath());
+            JasperPrint print = JasperFillManager.fillReport(archivo, params, connect);
+
+// Mostrando el documento
+            HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            ServletOutputStream servletOutputStream = response.getOutputStream();
+            response.setHeader("Content-disposition", "attachment; filename=reporte.xls");
+            response.setContentType("application/vnd.ms-excel");
+//httpServletResponse.setContentLength(arrayOutputStream.toByteArray().length);
+
+            JRXlsExporter exporterXLS = new JRXlsExporter();
+
+            exporterXLS.setParameter(JRXlsExporterParameter.JASPER_PRINT, print);
+            exporterXLS.setParameter(JRXlsExporterParameter.OUTPUT_STREAM, servletOutputStream);
+            exporterXLS.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
+            exporterXLS.setParameter(JRXlsExporterParameter.IS_DETECT_CELL_TYPE, Boolean.TRUE);
+            exporterXLS.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
+            exporterXLS.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
+            exporterXLS.exportReport();
+
+            FacesContext.getCurrentInstance().responseComplete();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "REALIZADO CON ÉXITO", "Se generó correctamente");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (JRException | IOException ex) {

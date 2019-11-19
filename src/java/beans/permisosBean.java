@@ -57,6 +57,7 @@ public class permisosBean {
         Rol rol = new Rol();
         rol = globalBean.getUserRol();
         bitInsert = rol.getBitInsert();//(Boolean)globalBean.getObjectFromSession("bitInsert"); 
+        System.out.println("********beans.permisosBean: Rol Name: --"+rol.getNombre());
         System.out.println("********beans.permisosBean: Permiso Insert: --"+bitInsert.toString());
         bitUpdate = rol.getBitUpdate();//(Boolean)globalBean.getObjectFromSession("bitUpdate"); 
         bitDelete = rol.getBitDelete();//(Boolean)globalBean.getObjectFromSession("bitDelete"); 

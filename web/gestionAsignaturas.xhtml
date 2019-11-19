@@ -72,9 +72,12 @@
                             <f:selectItems value="#{crearProgramaBean.programList}"/>
                         </h:selectOneMenu>
                     </div>
+                     <div class="form-group mt-2">
+                         <p:inputText style="text-transform: uppercase" value="#{asignaturaBean.asignatura.creditos}" class="form-control" placeholder="Creditos" required=""/>
+                        </div>
                     <div class="checkbox mt-2">
                         <h:selectBooleanCheckbox id="check" value="#{asignaturaBean.asignatura.activo}"/>
-                        <h:outputLabel class="ml-2" value="¿Poner la asignatura como activa?" for="check" />
+                        <h:outputLabel class="ml-2" value="¿Dejar la asignatura como activa?" for="check" />
                     </div>
                     <div class="input-group mt-2"> 
                         <p:inputTextarea style="text-transform: uppercase" rows="3" cols="50" value="#{asignaturaBean.asignatura.descripcion}" placeholder="Descripción" class="form-control" required="true"/>
@@ -99,6 +102,9 @@
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Código: #{asignaturaBean.asignaturaBusqueda.codigo}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
+                </div>
+                <div class="form-group mt-2">
+                    <h:outputText value="Creditos: #{asignaturaBean.asignaturaBusqueda.creditos}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
                 </div>
                 <div class="form-group mt-2">
                     <h:outputText value="Semestre: #{asignaturaBean.asignaturaBusqueda.semestre}" rendered="#{asignaturaBean.asignaturaBusqueda != null}"/>
@@ -131,6 +137,11 @@
                             <f:facet name="header">Código</f:facet>
                             <p:inputText style="text-transform: uppercase" value="#{asignatura.codigo}" class="form-control" rendered="#{asignatura.editable}"/>
                             <h:outputText value="#{asignatura.codigo}" rendered="#{not asignatura.editable}" />
+                        </p:column>
+                        <p:column>    				
+                            <f:facet name="header">Creditos</f:facet>
+                            <p:inputText style="text-transform: uppercase" value="#{asignatura.creditos}" class="form-control" rendered="#{asignatura.editable}"/>
+                            <h:outputText value="#{asignatura.creditos}" rendered="#{not asignatura.editable}" />
                         </p:column>
                         <p:column>    				
                             <f:facet name="header">Semestre</f:facet>
